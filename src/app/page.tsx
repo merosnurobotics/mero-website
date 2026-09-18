@@ -35,10 +35,10 @@ export default function Home() {
 
             <div className="fade-up mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link
-                href="/contact"
+                href="/support"
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-black transition-transform hover:scale-105"
               >
-                Join the club
+                Support club
                 <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link

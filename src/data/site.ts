@@ -15,8 +15,9 @@ export const site = {
     { label: "Equipment", href: "/equipment" },
     { label: "Projects", href: "/projects" },
     { label: "Events", href: "/events" },
+    { label: "People", href: "/people" },
     { label: "Schedule", href: "/schedule" },
-    { label: "Join", href: "/contact" },
+    { label: "Support club", href: "/support" },
   ],
   // Key figures shown in the hero section
   stats: [
@@ -47,6 +48,38 @@ export const about = [
     icon: "code",
   },
 ];
+
+// ------------------------------------------------------------
+//  People — current members and alumni
+//  Add or edit a person by changing a line below.
+//  - name:  full name shown under the photo
+//  - role:  their role in the club (e.g. "President", "Robotics Lead")
+//  - year:  the class/cohort year, or a range for alumni (e.g. "2019–2022")
+//  - image: path to a photo in /public/people (replace with your own)
+//  Split into two lists: `current` (active) and `alumni` (past members).
+// ------------------------------------------------------------
+export const people = {
+  advisors: [
+    { name: "Prof. Jaehyun Moon", role: "Faculty Advisor", year: "Dept. of Mechanical Eng.", image: "/people/jaehyun-moon.svg" },
+    { name: "Prof. Hyeri Baek", role: "Faculty Advisor", year: "Dept. of Electrical Eng.", image: "/people/hyeri-baek.svg" },
+  ],
+  current: [
+    { name: "Jiwon Park", role: "President", year: "2023", image: "/people/jiwon-park.svg" },
+    { name: "Minseok Lee", role: "Vice President", year: "2023", image: "/people/minseok-lee.svg" },
+    { name: "Soyeon Kim", role: "Robotics Lead", year: "2024", image: "/people/soyeon-kim.svg" },
+    { name: "Hyunwoo Choi", role: "Embedded Lead", year: "2024", image: "/people/hyunwoo-choi.svg" },
+    { name: "Dahye Jung", role: "Software Lead", year: "2024", image: "/people/dahye-jung.svg" },
+    { name: "Junho Kang", role: "Treasurer", year: "2025", image: "/people/junho-kang.svg" },
+    { name: "Yerin Han", role: "Member", year: "2025", image: "/people/yerin-han.svg" },
+    { name: "Taeyang Seo", role: "Member", year: "2025", image: "/people/taeyang-seo.svg" },
+  ],
+  alumni: [
+    { name: "Woojin Yoon", role: "Founder · President", year: "2018–2021", image: "/people/woojin-yoon.svg" },
+    { name: "Eunji Shin", role: "Robotics Lead", year: "2019–2022", image: "/people/eunji-shin.svg" },
+    { name: "Sangmin Oh", role: "Software Lead", year: "2020–2023", image: "/people/sangmin-oh.svg" },
+    { name: "Nari Cho", role: "President", year: "2021–2023", image: "/people/nari-cho.svg" },
+  ],
+};
 
 // ------------------------------------------------------------
 //  Equipment

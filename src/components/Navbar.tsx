@@ -27,17 +27,21 @@ export default function Navbar() {
           : "border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-mono text-lg font-bold tracking-tight"
-        >
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-accent to-accent-2 text-sm font-black text-black">
-            M
-          </span>
-          <span className="text-gradient">{site.name}</span>
-        </Link>
+      <nav className="mx-auto flex max-w-6xl items-center px-6 py-4">
+        {/* Logo — left */}
+        <div className="flex-1">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 font-mono text-lg font-bold tracking-tight"
+          >
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-accent to-accent-2 text-sm font-black text-black">
+              M
+            </span>
+            <span className="text-gradient">{site.name}</span>
+          </Link>
+        </div>
 
+        {/* Desktop menu — centered in the bar */}
         <ul className="hidden items-center gap-8 md:flex">
           {site.nav.map((item) => {
             const active = pathname === item.href;
@@ -56,14 +60,7 @@ export default function Navbar() {
           })}
         </ul>
 
-        <Link
-          href="/contact"
-          className="hidden rounded-full bg-white px-5 py-2 text-sm font-semibold text-black transition-transform hover:scale-105 md:inline-block"
-        >
-          Join
-        </Link>
-
-        {/* Mobile toggle */}
+        {/* Mobile toggle — centered on mobile */}
         <button
           aria-label="Open menu"
           onClick={() => setOpen((v) => !v)}
@@ -71,12 +68,15 @@ export default function Navbar() {
         >
           <span className="text-xl">{open ? "✕" : "☰"}</span>
         </button>
+
+        {/* Right spacer — balances the logo so the menu/toggle stays centered */}
+        <div className="flex-1" />
       </nav>
 
       {/* Mobile menu */}
       {open && (
         <div className="border-t border-white/10 bg-background/95 px-6 py-4 md:hidden">
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col items-center gap-4 text-center">
             {site.nav.map((item) => (
               <li key={item.href}>
                 <Link
@@ -88,15 +88,6 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href="/contact"
-                onClick={closeMenu}
-                className="mt-2 block rounded-full bg-white px-5 py-2 text-center text-sm font-semibold text-black"
-              >
-                Join
-              </Link>
-            </li>
           </ul>
         </div>
       )}

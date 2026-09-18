@@ -34,6 +34,27 @@ const items = [
   ["events/campus-hackathon-2.svg", "Demo Night", "#6d5efc", "#a78bfa"],
 ];
 
+// Square avatar placeholders for People. [path, fullName, colorA, colorB]
+const avatars = [
+  // Advisors
+  ["people/jaehyun-moon.svg", "Jaehyun Moon", "#22d3ee", "#6d5efc"],
+  ["people/hyeri-baek.svg", "Hyeri Baek", "#6d5efc", "#22d3ee"],
+  // Current members
+  ["people/jiwon-park.svg", "Jiwon Park", "#6d5efc", "#22d3ee"],
+  ["people/minseok-lee.svg", "Minseok Lee", "#22d3ee", "#6d5efc"],
+  ["people/soyeon-kim.svg", "Soyeon Kim", "#f43f5e", "#f59e0b"],
+  ["people/hyunwoo-choi.svg", "Hyunwoo Choi", "#10b981", "#22d3ee"],
+  ["people/dahye-jung.svg", "Dahye Jung", "#a78bfa", "#f43f5e"],
+  ["people/junho-kang.svg", "Junho Kang", "#f59e0b", "#6d5efc"],
+  ["people/yerin-han.svg", "Yerin Han", "#22d3ee", "#10b981"],
+  ["people/taeyang-seo.svg", "Taeyang Seo", "#6d5efc", "#a78bfa"],
+  // Alumni
+  ["people/woojin-yoon.svg", "Woojin Yoon", "#a78bfa", "#6d5efc"],
+  ["people/eunji-shin.svg", "Eunji Shin", "#f59e0b", "#f43f5e"],
+  ["people/sangmin-oh.svg", "Sangmin Oh", "#10b981", "#22d3ee"],
+  ["people/nari-cho.svg", "Nari Cho", "#f43f5e", "#f59e0b"],
+];
+
 function svg(label, a, b) {
   const id = Math.random().toString(36).slice(2, 8);
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
@@ -57,10 +78,45 @@ function svg(label, a, b) {
 `;
 }
 
+// Derive up-to-two-letter initials from a full name.
+function initials(name) {
+  return name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
+function avatar(name, a, b) {
+  const id = Math.random().toString(36).slice(2, 8);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="a${id}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="${a}"/>
+      <stop offset="1" stop-color="${b}"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="#0b0b12"/>
+  <rect width="400" height="400" fill="url(#a${id})" opacity="0.3"/>
+  <text x="200" y="200" font-family="sans-serif" font-size="150" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central" opacity="0.92">${initials(name)}</text>
+</svg>
+`;
+}
+
 for (const [path, label, a, b] of items) {
   const full = join(pub, path);
   await mkdir(dirname(full), { recursive: true });
   await writeFile(full, svg(label, a, b), "utf8");
   console.log("wrote", path);
 }
-console.log(`\nDone. Generated ${items.length} placeholder images.`);
+
+for (const [path, name, a, b] of avatars) {
+  const full = join(pub, path);
+  await mkdir(dirname(full), { recursive: true });
+  await writeFile(full, avatar(name, a, b), "utf8");
+  console.log("wrote", path);
+}
+
+console.log(
+  `\nDone. Generated ${items.length} image + ${avatars.length} avatar placeholders.`,
+);

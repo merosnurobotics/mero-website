@@ -2,12 +2,12 @@ import PageShell from "@/components/PageShell";
 import { MailIcon, MapPinIcon } from "@/components/Icons";
 import { contact } from "@/data/site";
 
-export default function ContactPage() {
+export default function SupportPage() {
   return (
     <PageShell
-      eyebrow="Join"
-      title="Ready to build with us?"
-      description="Whatever your major or year, anyone who loves making things is welcome."
+      eyebrow="Support club"
+      title="Support the club"
+      description="Whether you want to join, mentor, sponsor, or just cheer us on, we'd love to hear from you."
     >
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-accent/10 via-transparent to-accent-2/10 p-10 text-center sm:p-16">
         <div className="pointer-events-none absolute -bottom-20 left-1/2 h-64 w-96 -translate-x-1/2 rounded-full bg-accent/20 blur-[100px]" />
