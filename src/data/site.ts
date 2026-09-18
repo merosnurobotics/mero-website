@@ -1,148 +1,342 @@
 // ============================================================
-//  MERO 동아리 홈페이지 콘텐츠 데이터
-//  이 파일만 수정하면 홈페이지 내용이 바로 바뀝니다.
-//  (GitHub에서 이 파일을 고치고 커밋하면 Vercel이 자동 배포)
+//  MERO club homepage content data
+//  Edit this file to update the homepage content directly.
+//  (Editing and committing this file on GitHub auto-deploys via Vercel)
 // ============================================================
 
 export const site = {
   name: "MERO",
-  tagline: "만들고, 실험하고, 함께 성장하는 로보틱스 · 메이커 동아리",
+  tagline: "A robotics & maker club that builds, experiments, and grows together",
   description:
-    "MERO는 아이디어를 직접 손으로 만들어내는 사람들의 모임입니다. 로봇, 임베디드, 소프트웨어를 넘나들며 매 학기 프로젝트와 대회에 도전합니다.",
-  // 상단 내비게이션 메뉴
+    "MERO is a community of people who turn ideas into things with their own hands. We move freely across robotics, embedded systems, and software, taking on projects and competitions every semester.",
+  // Top navigation menu (each item links to a separate page)
   nav: [
-    { label: "소개", href: "#about" },
-    { label: "장비", href: "#equipment" },
-    { label: "프로젝트", href: "#projects" },
-    { label: "행사", href: "#events" },
-    { label: "일정", href: "#schedule" },
-    { label: "가입", href: "#contact" },
+    { label: "About", href: "/about" },
+    { label: "Equipment", href: "/equipment" },
+    { label: "Projects", href: "/projects" },
+    { label: "Events", href: "/events" },
+    { label: "Schedule", href: "/schedule" },
+    { label: "Join", href: "/contact" },
   ],
-  // 히어로 영역에 표시할 핵심 수치
+  // Key figures shown in the hero section
   stats: [
-    { value: "48+", label: "활동 부원" },
-    { value: "12", label: "진행 프로젝트" },
-    { value: "9", label: "참여 대회·행사" },
-    { value: "2018", label: "설립 연도" },
+    { value: "40", label: "Active members" },
+    { value: "12", label: "Ongoing projects" },
+    { value: "9", label: "Competitions & events" },
+    { value: "2018", label: "Founded" },
   ],
 };
 
 // ------------------------------------------------------------
-//  소개 — 우리가 하는 일
+//  About — what we do
 // ------------------------------------------------------------
 export const about = [
   {
-    title: "로보틱스",
-    desc: "자율주행 로봇, 로봇팔, 드론 등 하드웨어와 제어 시스템을 직접 설계하고 제작합니다.",
+    title: "Robotics",
+    desc: "We design and build hardware and control systems ourselves, including autonomous robots, robotic arms, and drones.",
     icon: "robot",
   },
   {
-    title: "임베디드 · IoT",
-    desc: "센서와 마이크로컨트롤러를 활용해 물리 세계와 소프트웨어를 연결하는 시스템을 만듭니다.",
+    title: "Embedded · IoT",
+    desc: "We use sensors and microcontrollers to build systems that connect the physical world with software.",
     icon: "chip",
   },
   {
-    title: "소프트웨어",
-    desc: "웹, 앱, 컴퓨터 비전, 데이터까지 프로젝트를 완성하는 데 필요한 모든 코드를 함께 짭니다.",
+    title: "Software",
+    desc: "From web and apps to computer vision and data, we write all the code needed to complete a project together.",
     icon: "code",
   },
 ];
 
 // ------------------------------------------------------------
-//  보유 장비
+//  Equipment
+//  - slug:  unique id used for the detail page URL (/equipment/<slug>)
+//  - image: path to a photo in the /public folder (replace with your own)
+//  - detail: longer description shown on the detail page
+//  - specs: list of { label, value } rows shown on the detail page
 // ------------------------------------------------------------
 export const equipment = [
-  { name: "3D 프린터", model: "Bambu Lab X1C · Prusa MK4", qty: 4, tag: "제작" },
-  { name: "레이저 커터", model: "FSL Muse 3D", qty: 1, tag: "제작" },
-  { name: "오실로스코프", model: "Rigol DS1054Z", qty: 3, tag: "계측" },
-  { name: "납땜 스테이션", model: "Hakko FX-888D", qty: 6, tag: "제작" },
-  { name: "임베디드 보드", model: "Raspberry Pi 5 · Jetson Orin Nano", qty: 12, tag: "컴퓨팅" },
-  { name: "드론 플랫폼", model: "DJI Tello · 커스텀 FPV", qty: 5, tag: "비행" },
-  { name: "로봇팔", model: "Dobot Magician", qty: 2, tag: "로보틱스" },
-  { name: "전동 공구 세트", model: "드릴 · 그라인더 · 밴드쏘", qty: 1, tag: "가공" },
+  {
+    slug: "3d-printers",
+    name: "3D Printers",
+    model: "Bambu Lab X1C · Prusa MK4",
+    qty: 4,
+    tag: "Fabrication",
+    image: "/equipment/3d-printers.svg",
+    detail:
+      "Our fleet of FDM printers lets multiple teams prototype in parallel. From quick draft parts to production-quality enclosures, we print in PLA, PETG, and TPU almost every day.",
+    specs: [
+      { label: "Build volume", value: "256 × 256 × 256 mm" },
+      { label: "Materials", value: "PLA · PETG · TPU · ABS" },
+      { label: "Nozzle", value: "0.4 mm (swappable)" },
+    ],
+  },
+  {
+    slug: "laser-cutter",
+    name: "Laser Cutter",
+    model: "FSL Muse 3D",
+    qty: 1,
+    tag: "Fabrication",
+    image: "/equipment/laser-cutter.svg",
+    detail:
+      "A CO2 laser cutter for acrylic, plywood, and cardboard. Great for enclosures, gears, and precise flat parts that would be slow to print.",
+    specs: [
+      { label: "Work area", value: "500 × 300 mm" },
+      { label: "Laser", value: "40W CO2" },
+      { label: "Materials", value: "Acrylic · Wood · Paper" },
+    ],
+  },
+  {
+    slug: "oscilloscopes",
+    name: "Oscilloscopes",
+    model: "Rigol DS1054Z",
+    qty: 3,
+    tag: "Measurement",
+    image: "/equipment/oscilloscopes.svg",
+    detail:
+      "Four-channel digital oscilloscopes for debugging analog and digital circuits, checking signal integrity, and teaching electronics fundamentals.",
+    specs: [
+      { label: "Bandwidth", value: "50 MHz" },
+      { label: "Channels", value: "4" },
+      { label: "Sample rate", value: "1 GSa/s" },
+    ],
+  },
+  {
+    slug: "soldering-stations",
+    name: "Soldering Stations",
+    model: "Hakko FX-888D",
+    qty: 6,
+    tag: "Fabrication",
+    image: "/equipment/soldering-stations.svg",
+    detail:
+      "Temperature-controlled soldering stations at our electronics bench for through-hole and surface-mount work.",
+    specs: [
+      { label: "Temp range", value: "200–480 °C" },
+      { label: "Stations", value: "6 seats" },
+      { label: "Tips", value: "Fine · Chisel · Bevel" },
+    ],
+  },
+  {
+    slug: "embedded-boards",
+    name: "Embedded Boards",
+    model: "Raspberry Pi 5 · Jetson Orin Nano",
+    qty: 12,
+    tag: "Computing",
+    image: "/equipment/embedded-boards.svg",
+    detail:
+      "A shared pool of single-board computers and microcontrollers for robotics, computer vision, and IoT projects. Members can check them out for a semester.",
+    specs: [
+      { label: "SBCs", value: "Raspberry Pi 5 · Jetson Orin Nano" },
+      { label: "MCUs", value: "ESP32 · STM32 · Arduino" },
+      { label: "Available units", value: "12" },
+    ],
+  },
+  {
+    slug: "drone-platforms",
+    name: "Drone Platforms",
+    model: "DJI Tello · Custom FPV",
+    qty: 5,
+    tag: "Flight",
+    image: "/equipment/drone-platforms.svg",
+    detail:
+      "Ready-to-fly and custom-built drones for programming practice, aerial imaging, and FPV racing experiments.",
+    specs: [
+      { label: "Ready-to-fly", value: "DJI Tello" },
+      { label: "Custom", value: "5-inch FPV quad" },
+      { label: "Control", value: "SDK · Betaflight" },
+    ],
+  },
+  {
+    slug: "robotic-arms",
+    name: "Robotic Arms",
+    model: "Dobot Magician",
+    qty: 2,
+    tag: "Robotics",
+    image: "/equipment/robotic-arms.svg",
+    detail:
+      "Desktop robotic arms used for pick-and-place demos, motion planning, and human-robot interaction projects.",
+    specs: [
+      { label: "Reach", value: "320 mm" },
+      { label: "Payload", value: "500 g" },
+      { label: "Axes", value: "4" },
+    ],
+  },
+  {
+    slug: "power-tool-set",
+    name: "Power Tool Set",
+    model: "Drill · Grinder · Band saw",
+    qty: 1,
+    tag: "Machining",
+    image: "/equipment/power-tool-set.svg",
+    detail:
+      "A basic workshop corner for cutting, drilling, and finishing metal and wood parts that finish off a build.",
+    specs: [
+      { label: "Cutting", value: "Band saw · Angle grinder" },
+      { label: "Drilling", value: "Bench + hand drill" },
+      { label: "Safety", value: "Goggles · Gloves provided" },
+    ],
+  },
 ];
 
 // ------------------------------------------------------------
-//  프로젝트
+//  Projects
+//  - slug:  unique id used for the detail page URL (/projects/<slug>)
+//  - image: path to a photo in the /public folder (replace with your own)
+//  - detail: longer description shown on the detail page
+//  - highlights: bullet points shown on the detail page
+//  - team: who worked on it (free text)
 // ------------------------------------------------------------
 export const projects = [
   {
-    title: "자율주행 배송 로봇",
-    period: "2025 봄",
-    status: "진행 중",
-    desc: "라이다와 카메라 기반 SLAM으로 캠퍼스 내 실내외를 주행하는 배송 로봇.",
-    tags: ["ROS2", "LiDAR", "컴퓨터비전"],
+    slug: "autonomous-delivery-robot",
+    title: "Autonomous Delivery Robot",
+    period: "Spring 2025",
+    status: "In progress",
+    desc: "A delivery robot that navigates indoors and outdoors on campus using LiDAR- and camera-based SLAM.",
+    tags: ["ROS2", "LiDAR", "Computer Vision"],
+    image: "/projects/autonomous-delivery-robot.svg",
+    detail:
+      "We're building a wheeled robot that can carry small packages between campus buildings on its own. It fuses LiDAR and camera data for mapping and obstacle avoidance, and plans routes with a ROS2 navigation stack.",
+    highlights: [
+      "Real-time SLAM with sensor fusion",
+      "Autonomous path planning and re-routing",
+      "Custom chassis with a lockable cargo bay",
+    ],
+    team: "Robotics team · 6 members",
   },
   {
-    title: "스마트 재배 시스템",
-    period: "2024 가을",
-    status: "완료",
-    desc: "온습도·조도 센서와 자동 급수로 식물 생육을 최적화하는 IoT 시스템.",
+    slug: "smart-cultivation-system",
+    title: "Smart Cultivation System",
+    period: "Fall 2024",
+    status: "Completed",
+    desc: "An IoT system that optimizes plant growth with temperature/humidity/light sensors and automatic watering.",
     tags: ["ESP32", "IoT", "React"],
+    image: "/projects/smart-cultivation-system.svg",
+    detail:
+      "A closed-loop growing box that monitors temperature, humidity, and light, then automatically waters and adjusts lighting. A React dashboard shows live readings and history.",
+    highlights: [
+      "ESP32 firmware with sensor polling",
+      "Automatic watering and grow-light control",
+      "Live dashboard with charts",
+    ],
+    team: "IoT team · 4 members",
   },
   {
-    title: "제스처 인식 로봇팔",
-    period: "2024 봄",
-    status: "완료",
-    desc: "손 동작을 실시간으로 인식해 로봇팔을 조종하는 인터랙션 프로젝트.",
+    slug: "gesture-controlled-robotic-arm",
+    title: "Gesture-Controlled Robotic Arm",
+    period: "Spring 2024",
+    status: "Completed",
+    desc: "An interaction project that controls a robotic arm by recognizing hand gestures in real time.",
     tags: ["MediaPipe", "Python", "Arduino"],
+    image: "/projects/gesture-controlled-robotic-arm.svg",
+    detail:
+      "Using a webcam and MediaPipe hand tracking, this project maps finger and wrist movements to a robotic arm in real time, letting you move objects without touching a controller.",
+    highlights: [
+      "Real-time hand landmark tracking",
+      "Gesture-to-motion mapping",
+      "Sub-100ms control latency",
+    ],
+    team: "Vision team · 3 members",
   },
   {
-    title: "FPV 레이싱 드론",
-    period: "2025 여름",
-    status: "진행 중",
-    desc: "직접 설계·조립한 프레임과 커스텀 펌웨어로 완성한 레이싱 드론.",
-    tags: ["Betaflight", "PCB설계", "3D프린팅"],
+    slug: "fpv-racing-drone",
+    title: "FPV Racing Drone",
+    period: "Summer 2025",
+    status: "In progress",
+    desc: "A racing drone built with a self-designed, self-assembled frame and custom firmware.",
+    tags: ["Betaflight", "PCB Design", "3D Printing"],
+    image: "/projects/fpv-racing-drone.svg",
+    detail:
+      "A 5-inch FPV racing quad designed from the frame up. We're tuning a custom Betaflight configuration and iterating on a 3D-printed frame for durability and weight.",
+    highlights: [
+      "Self-designed 3D-printed frame",
+      "Custom Betaflight tune",
+      "Low-latency analog FPV feed",
+    ],
+    team: "Flight team · 5 members",
   },
 ];
 
 // ------------------------------------------------------------
-//  행사 · 대회 참여
+//  Events & competitions
+//  - slug:  unique id used for the detail page URL (/events/<slug>)
+//  - image: path to a photo in the /public folder (replace with your own)
+//  - detail: longer recap shown on the detail page
+//  - gallery: list of image paths shown on the detail page
 // ------------------------------------------------------------
 export const events = [
   {
-    name: "전국 대학생 로봇경진대회",
+    slug: "national-university-robot-competition",
+    name: "National University Robot Competition",
     year: "2024",
-    result: "본선 진출 · 특별상",
-    place: "코엑스",
+    result: "Finalist · Special Award",
+    place: "COEX",
+    image: "/events/national-university-robot-competition.svg",
+    detail:
+      "Two of our teams reached the finals of the national robot competition. One picked up a special award for its innovative gripper design after three intense days of qualifiers.",
+    gallery: [
+      "/events/national-university-robot-competition.svg",
+      "/events/national-university-robot-competition-2.svg",
+    ],
   },
   {
-    name: "메이커 페어 서울",
+    slug: "maker-faire-seoul",
+    name: "Maker Faire Seoul",
     year: "2024",
-    result: "부스 전시 참가",
-    place: "문화비축기지",
+    result: "Booth exhibitor",
+    place: "Oil Tank Culture Park",
+    image: "/events/maker-faire-seoul.svg",
+    detail:
+      "We ran a hands-on booth showing off member projects and let visitors try our gesture-controlled arm. A great weekend of sharing what we build with the public.",
+    gallery: [
+      "/events/maker-faire-seoul.svg",
+      "/events/maker-faire-seoul-2.svg",
+    ],
   },
   {
-    name: "임베디드 SW 경진대회",
+    slug: "embedded-sw-competition",
+    name: "Embedded SW Competition",
     year: "2023",
-    result: "동상 수상",
-    place: "온라인",
+    result: "Bronze Award",
+    place: "Online",
+    image: "/events/embedded-sw-competition.svg",
+    detail:
+      "Our embedded team took home a bronze award in this online competition with a low-power sensor node design that impressed the judges on efficiency.",
+    gallery: ["/events/embedded-sw-competition.svg"],
   },
   {
-    name: "교내 해커톤",
+    slug: "campus-hackathon",
+    name: "Campus Hackathon",
     year: "2025",
-    result: "대상 · 인기상",
-    place: "공학관",
+    result: "Grand Prize · Popularity Award",
+    place: "Engineering Hall",
+    image: "/events/campus-hackathon.svg",
+    detail:
+      "A 24-hour build sprint where members split into teams and shipped working prototypes overnight. We swept both the grand prize and the popularity vote.",
+    gallery: [
+      "/events/campus-hackathon.svg",
+      "/events/campus-hackathon-2.svg",
+    ],
   },
 ];
 
 // ------------------------------------------------------------
-//  일정 — 다가오는 활동
+//  Schedule — upcoming activities
 // ------------------------------------------------------------
 export const schedule = [
-  { date: "03.14", title: "신입 부원 오리엔테이션", tag: "모집" },
-  { date: "03.28", title: "아두이노 기초 워크숍", tag: "세미나" },
-  { date: "04.12", title: "프로젝트 팀 빌딩 데이", tag: "프로젝트" },
-  { date: "05.09", title: "중간 발표 & 시연회", tag: "발표" },
-  { date: "06.20", title: "여름 대회 준비 부트캠프", tag: "대회" },
+  { date: "03.14", title: "New Member Orientation", tag: "Recruiting" },
+  { date: "03.28", title: "Arduino Basics Workshop", tag: "Seminar" },
+  { date: "04.12", title: "Project Team Building Day", tag: "Project" },
+  { date: "05.09", title: "Midterm Showcase & Demo", tag: "Showcase" },
+  { date: "06.20", title: "Summer Competition Bootcamp", tag: "Competition" },
 ];
 
 // ------------------------------------------------------------
-//  연락처 · 가입
+//  Contact & join
 // ------------------------------------------------------------
 export const contact = {
   email: "mero.club@example.com",
-  location: "공학관 3층 302호 동아리방",
+  location: "Club Room 302, 3rd Floor, Engineering Hall",
   socials: [
     { label: "Instagram", href: "https://instagram.com" },
     { label: "GitHub", href: "https://github.com" },
