@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { projects, ui } from "@/data/site";
+import { periodRank, projects, ui } from "@/data/site";
 import { useLang } from "@/components/LanguageProvider";
 
 export default function ProjectsPage() {
   const { t } = useLang();
+  // Show the most recent projects first (by period year/season, newest on top).
+  const sortedProjects = [...projects].sort(
+    (a, b) => periodRank(b.period.en) - periodRank(a.period.en),
+  );
   return (
     <PageShell
       eyebrow={t(ui.projects.eyebrow)}
@@ -14,7 +18,7 @@ export default function ProjectsPage() {
       description={t(ui.projects.description)}
     >
       <div className="grid gap-6 md:grid-cols-2">
-        {projects.map((p) => (
+        {sortedProjects.map((p) => (
           <Link
             key={p.slug}
             href={`/projects/${p.slug}`}

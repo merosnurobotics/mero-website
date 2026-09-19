@@ -7,6 +7,8 @@ import { useLang } from "@/components/LanguageProvider";
 
 export default function EventsPage() {
   const { t } = useLang();
+  // Show the most recent events first (sorted by year, newest on top).
+  const sortedEvents = [...events].sort((a, b) => Number(b.year) - Number(a.year));
   return (
     <PageShell
       eyebrow={t(ui.events.eyebrow)}
@@ -14,7 +16,7 @@ export default function EventsPage() {
       description={t(ui.events.description)}
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        {events.map((ev) => (
+        {sortedEvents.map((ev) => (
           <Link
             key={ev.slug}
             href={`/events/${ev.slug}`}

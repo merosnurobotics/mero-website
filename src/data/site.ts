@@ -22,6 +22,23 @@ export function t(value: LocalizedText, lang: Lang): string {
   return value[lang];
 }
 
+// Turn a project period like "Spring 2025" into a sortable number (year + season)
+// so lists can show the most recent projects first. Falls back gracefully.
+export function periodRank(period: string): number {
+  const year = Number(period.match(/\d{4}/)?.[0] ?? 0);
+  const seasonOrder: Record<string, number> = {
+    spring: 1,
+    summer: 2,
+    fall: 3,
+    autumn: 3,
+    winter: 4,
+  };
+  const season = period
+    .toLowerCase()
+    .match(/spring|summer|fall|autumn|winter/)?.[0];
+  return year * 10 + (season ? seasonOrder[season] : 0);
+}
+
 // ------------------------------------------------------------
 //  Site-wide text: name, tagline, navigation, stats
 // ------------------------------------------------------------

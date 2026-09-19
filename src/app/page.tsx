@@ -4,11 +4,15 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowIcon } from "@/components/Icons";
-import { projects, site, ui } from "@/data/site";
+import { periodRank, projects, site, ui } from "@/data/site";
 import { useLang } from "@/components/LanguageProvider";
 
 export default function Home() {
   const { t } = useLang();
+  // Feature the 3 most recent projects (newest first).
+  const featuredProjects = [...projects]
+    .sort((a, b) => periodRank(b.period.en) - periodRank(a.period.en))
+    .slice(0, 3);
 
   return (
     <>
@@ -106,7 +110,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {projects.slice(0, 3).map((p) => (
+            {featuredProjects.map((p) => (
               <Link
                 key={p.slug}
                 href={`/projects/${p.slug}`}
