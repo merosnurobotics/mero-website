@@ -186,6 +186,36 @@ title: { en: "Projects", ko: "프로젝트" }
 
 ---
 
+## 7-1. 후원·협력사(Sponsors) 추가·수정하기
+
+동아리를 후원하는 기업·기관 로고를 **연락처(Contact) 페이지 아래쪽**에 보여줍니다.
+`export const sponsors` 부분을 찾으세요. 각 후원사는 한 줄입니다.
+
+```ts
+{ name: "Robotis", logo: "/sponsors/robotis.svg", href: "https://example.com" },
+```
+
+| 항목 | 설명 |
+| --- | --- |
+| `name` | 회사·기관 이름 (로고 대체 텍스트로도 쓰임). 언어 공통 |
+| `logo` | 로고 이미지 경로. `/sponsors/` 폴더 안의 파일 |
+| `href` | (선택) 후원사 홈페이지 주소. 링크가 없으면 `""` (빈 값)으로 두면 됩니다 |
+
+**추가 예시** — 목록 안에 한 줄 추가:
+
+```ts
+export const sponsors = [
+  { name: "Robotis", logo: "/sponsors/robotis.svg", href: "https://example.com" },
+  { name: "새 후원사", logo: "/sponsors/new-company.svg", href: "" }, // ← 이 줄 추가
+];
+```
+
+> 📌 로고 이미지는 `public/sponsors/` 폴더에 넣습니다. (경로는 `public`을 빼고 `/sponsors/...` 부터)
+> 카드 배경이 어두우므로 **배경이 투명하거나 밝은 색 로고**가 잘 보입니다.
+> `href` 를 채우면 로고를 누를 때 새 탭으로 해당 사이트가 열립니다.
+
+---
+
 ## 8. 사진 넣기
 
 사진은 모두 `public/` 폴더 안에 종류별로 있습니다.
@@ -195,7 +225,8 @@ public/
 ├─ people/       ← 부원 사진
 ├─ projects/     ← 프로젝트 사진
 ├─ equipment/    ← 장비 사진
-└─ events/       ← 행사 사진
+├─ events/       ← 행사 사진
+└─ sponsors/     ← 후원사 로고
 ```
 
 **사진 바꾸는 방법 (둘 중 하나):**
