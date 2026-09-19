@@ -55,6 +55,16 @@ const avatars = [
   ["people/nari-cho.svg", "Nari Cho", "#f43f5e", "#f59e0b"],
 ];
 
+// Sponsor/honor logo placeholders. [path, companyName, colorA, colorB]
+const sponsorLogos = [
+  ["sponsors/robotis.svg", "Robotis", "#6d5efc", "#22d3ee"],
+  ["sponsors/nvidia.svg", "NVIDIA", "#10b981", "#22d3ee"],
+  ["sponsors/samsung.svg", "Samsung Electronics", "#22d3ee", "#6d5efc"],
+  ["sponsors/lg-innotek.svg", "LG Innotek", "#f43f5e", "#f59e0b"],
+  ["sponsors/naver.svg", "Naver", "#10b981", "#6d5efc"],
+  ["sponsors/university-foundation.svg", "University Foundation", "#a78bfa", "#6d5efc"],
+];
+
 function svg(label, a, b) {
   const id = Math.random().toString(36).slice(2, 8);
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
@@ -110,6 +120,23 @@ for (const [path, label, a, b] of items) {
   console.log("wrote", path);
 }
 
+function logo(name, a, b) {
+  const id = Math.random().toString(36).slice(2, 8);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" width="320" height="120">
+  <defs>
+    <linearGradient id="l${id}" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="${a}"/>
+      <stop offset="1" stop-color="${b}"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="120" rx="12" fill="#0b0b12"/>
+  <rect width="320" height="120" rx="12" fill="url(#l${id})" opacity="0.12"/>
+  <circle cx="42" cy="60" r="20" fill="url(#l${id})"/>
+  <text x="76" y="60" font-family="sans-serif" font-size="22" font-weight="700" fill="#eaeaf0" text-anchor="start" dominant-baseline="central">${name}</text>
+</svg>
+`;
+}
+
 for (const [path, name, a, b] of avatars) {
   const full = join(pub, path);
   await mkdir(dirname(full), { recursive: true });
@@ -117,6 +144,13 @@ for (const [path, name, a, b] of avatars) {
   console.log("wrote", path);
 }
 
+for (const [path, name, a, b] of sponsorLogos) {
+  const full = join(pub, path);
+  await mkdir(dirname(full), { recursive: true });
+  await writeFile(full, logo(name, a, b), "utf8");
+  console.log("wrote", path);
+}
+
 console.log(
-  `\nDone. Generated ${items.length} image + ${avatars.length} avatar placeholders.`,
+  `\nDone. Generated ${items.length} image + ${avatars.length} avatar + ${sponsorLogos.length} sponsor placeholders.`,
 );

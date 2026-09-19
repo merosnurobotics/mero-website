@@ -43,7 +43,7 @@ export const site = {
     { label: { en: "Events", ko: "행사" }, href: "/events" },
     { label: { en: "People", ko: "구성원" }, href: "/people" },
     { label: { en: "Schedule", ko: "일정" }, href: "/schedule" },
-    { label: { en: "Support club", ko: "동아리 후원" }, href: "/support" },
+    { label: { en: "Contact", ko: "연락처" }, href: "/support" },
   ],
   // Key figures shown in the hero section (value shared; label translated)
   stats: [
@@ -66,7 +66,7 @@ export const ui = {
     headlineA: { en: "People who turn ideas into", ko: "아이디어를" },
     headlineHighlight: { en: "reality", ko: "현실" },
     headlineB: { en: ", this is", ko: "로 만드는 사람들," },
-    ctaPrimary: { en: "Support club", ko: "동아리 후원" },
+    ctaPrimary: { en: "Contact us", ko: "연락하기" },
     ctaSecondary: { en: "Browse projects", ko: "프로젝트 둘러보기" },
     featuredEyebrow: { en: "Featured Projects", ko: "주요 프로젝트" },
     featuredTitle: { en: "What we're building", ko: "우리가 만드는 것들" },
@@ -131,8 +131,8 @@ export const ui = {
     },
   },
   support: {
-    eyebrow: { en: "Support club", ko: "동아리 후원" },
-    title: { en: "Support the club", ko: "동아리를 응원해 주세요" },
+    eyebrow: { en: "Contact", ko: "연락처" },
+    title: { en: "Get in touch", ko: "연락 주세요" },
     description: {
       en: "Whether you want to join, mentor, sponsor, or just cheer us on, we'd love to hear from you.",
       ko: "가입, 멘토링, 후원, 혹은 응원까지 — 어떤 방식이든 연락 주시면 반갑겠습니다.",
@@ -140,6 +140,11 @@ export const ui = {
     getInTouchA: { en: "Get in", ko: "아래로" },
     getInTouchHighlight: { en: "touch", ko: "연락" },
     getInTouchB: { en: "below", ko: "주세요" },
+    sponsorsTitle: { en: "Honor & Sponsors", ko: "후원 · 협력사" },
+    sponsorsDesc: {
+      en: "Thank you to the organizations that support MERO.",
+      ko: "MERO를 후원해 주시는 기업·기관에 감사드립니다.",
+    },
   },
   footer: {
     tagline: { en: "Build, experiment, together.", ko: "만들고 실험하고 함께." },
@@ -537,3 +542,19 @@ export const contact = {
     { label: "YouTube", href: "https://youtube.com" },
   ],
 };
+
+// ------------------------------------------------------------
+//  Honor & Sponsors — companies/organizations that support the club
+//  Shown on the Contact page. To add a sponsor, add a line below.
+//  - name:  company/organization name (shown as the logo alt text)
+//  - logo:  path to a logo in /public/sponsors (replace with a real logo)
+//  - href:  (optional) the sponsor's website; leave "" for no link
+// ------------------------------------------------------------
+export const sponsors = [
+  { name: "Robotis", logo: "/sponsors/robotis.svg", href: "https://example.com" },
+  { name: "NVIDIA", logo: "/sponsors/nvidia.svg", href: "https://example.com" },
+  { name: "Samsung Electronics", logo: "/sponsors/samsung.svg", href: "https://example.com" },
+  { name: "LG Innotek", logo: "/sponsors/lg-innotek.svg", href: "https://example.com" },
+  { name: "Naver", logo: "/sponsors/naver.svg", href: "https://example.com" },
+  { name: "University Foundation", logo: "/sponsors/university-foundation.svg", href: "" },
+];

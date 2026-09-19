@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" width="320" height="120">
+  <defs>
+    <linearGradient id="ld5jnkw" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6d5efc"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="120" rx="12" fill="#0b0b12"/>
+  <rect width="320" height="120" rx="12" fill="url(#ld5jnkw)" opacity="0.12"/>
+  <circle cx="42" cy="60" r="20" fill="url(#ld5jnkw)"/>
+  <text x="76" y="60" font-family="sans-serif" font-size="22" font-weight="700" fill="#eaeaf0" text-anchor="start" dominant-baseline="central">Robotis</text>
+</svg>

@@ -2,7 +2,7 @@
 
 import PageShell from "@/components/PageShell";
 import { MailIcon, MapPinIcon } from "@/components/Icons";
-import { contact, ui } from "@/data/site";
+import { contact, sponsors, ui } from "@/data/site";
 import { useLang } from "@/components/LanguageProvider";
 
 export default function SupportPage() {
@@ -51,6 +51,48 @@ export default function SupportPage() {
           </div>
         </div>
       </div>
+
+      {/* Honor & Sponsors */}
+      <section className="mt-16">
+        <div className="text-center">
+          <h2 className="text-xl font-black sm:text-2xl">
+            {t(ui.support.sponsorsTitle)}
+          </h2>
+          <p className="mx-auto mt-2 max-w-xl text-sm text-white/60">
+            {t(ui.support.sponsorsDesc)}
+          </p>
+        </div>
+
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {sponsors.map((s) => {
+            const inner = (
+              <div className="card flex h-24 items-center justify-center rounded-2xl p-5 transition-colors group-hover:border-white/40">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  className="max-h-12 w-auto max-w-full opacity-80 transition-opacity group-hover:opacity-100"
+                />
+              </div>
+            );
+            return s.href ? (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group block"
+              >
+                {inner}
+              </a>
+            ) : (
+              <div key={s.name} className="group">
+                {inner}
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </PageShell>
   );
 }
