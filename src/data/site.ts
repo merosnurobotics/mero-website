@@ -146,6 +146,8 @@ export const ui = {
       en: "From workshops to competition prep, check out this semester's key dates.",
       ko: "워크숍부터 대회 준비까지, 이번 학기 주요 일정을 확인하세요.",
     },
+    upcoming: { en: "Upcoming", ko: "다가오는 일정" },
+    noUpcoming: { en: "No upcoming events", ko: "예정된 일정이 없습니다" },
   },
   support: {
     eyebrow: { en: "Contact", ko: "연락처" },
@@ -534,14 +536,19 @@ export const events = [
 
 // ------------------------------------------------------------
 //  Schedule — upcoming activities
-//  date is shared; title/tag translated.
+//  date is shared (format "YYYY-MM-DD"); title/tag translated.
+//  The calendar is built automatically from this data — add, edit, or remove a
+//  line and it appears in the right month. The Schedule page has year buttons
+//  to switch between years (e.g. 2026, 2027), and clicking a month opens a page
+//  listing every event in that month.
 // ------------------------------------------------------------
 export const schedule = [
-  { date: "03.14", title: { en: "New Member Orientation", ko: "신입 부원 오리엔테이션" }, tag: { en: "Recruiting", ko: "모집" } },
-  { date: "03.28", title: { en: "Arduino Basics Workshop", ko: "아두이노 기초 워크숍" }, tag: { en: "Seminar", ko: "세미나" } },
-  { date: "04.12", title: { en: "Project Team Building Day", ko: "프로젝트 팀 빌딩 데이" }, tag: { en: "Project", ko: "프로젝트" } },
-  { date: "05.09", title: { en: "Midterm Showcase & Demo", ko: "중간 발표 & 시연회" }, tag: { en: "Showcase", ko: "발표" } },
-  { date: "06.20", title: { en: "Summer Competition Bootcamp", ko: "여름 대회 준비 부트캠프" }, tag: { en: "Competition", ko: "대회" } },
+  { date: "2026-03-14", title: { en: "New Member Orientation", ko: "신입 부원 오리엔테이션" }, tag: { en: "Recruiting", ko: "모집" } },
+  { date: "2026-03-28", title: { en: "Arduino Basics Workshop", ko: "아두이노 기초 워크숍" }, tag: { en: "Seminar", ko: "세미나" } },
+  { date: "2026-04-12", title: { en: "Project Team Building Day", ko: "프로젝트 팀 빌딩 데이" }, tag: { en: "Project", ko: "프로젝트" } },
+  { date: "2026-05-09", title: { en: "Midterm Showcase & Demo", ko: "중간 발표 & 시연회" }, tag: { en: "Showcase", ko: "발표" } },
+  { date: "2026-06-20", title: { en: "Summer Competition Bootcamp", ko: "여름 대회 준비 부트캠프" }, tag: { en: "Competition", ko: "대회" } },
+  { date: "2027-01-09", title: { en: "New Year Kickoff", ko: "새해 킥오프" }, tag: { en: "Meeting", ko: "모임" } },
 ];
 
 // ------------------------------------------------------------
