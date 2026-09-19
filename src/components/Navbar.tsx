@@ -4,11 +4,43 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/data/site";
+import { useLang } from "@/components/LanguageProvider";
+
+function LangToggle({ className = "" }: { className?: string }) {
+  const { lang, setLang } = useLang();
+  return (
+    <div
+      className={`inline-flex items-center rounded-full border border-white/15 p-0.5 text-xs font-semibold ${className}`}
+      role="group"
+      aria-label="Language"
+    >
+      <button
+        onClick={() => setLang("en")}
+        aria-pressed={lang === "en"}
+        className={`rounded-full px-2.5 py-1 transition-colors ${
+          lang === "en" ? "bg-white text-black" : "text-white/60 hover:text-white"
+        }`}
+      >
+        EN
+      </button>
+      <button
+        onClick={() => setLang("ko")}
+        aria-pressed={lang === "ko"}
+        className={`rounded-full px-2.5 py-1 transition-colors ${
+          lang === "ko" ? "bg-white text-black" : "text-white/60 hover:text-white"
+        }`}
+      >
+        한국어
+      </button>
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLang();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -53,7 +85,7 @@ export default function Navbar() {
                     active ? "text-white" : "text-white/70 hover:text-white"
                   }`}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               </li>
             );
@@ -69,8 +101,10 @@ export default function Navbar() {
           <span className="text-xl">{open ? "✕" : "☰"}</span>
         </button>
 
-        {/* Right spacer — balances the logo so the menu/toggle stays centered */}
-        <div className="flex-1" />
+        {/* Right side — language toggle (desktop), balances the logo to keep the menu centered */}
+        <div className="flex flex-1 justify-end">
+          <LangToggle className="hidden md:inline-flex" />
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -84,10 +118,13 @@ export default function Navbar() {
                   onClick={closeMenu}
                   className="block text-white/80 hover:text-white"
                 >
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               </li>
             ))}
+            <li className="mt-2">
+              <LangToggle />
+            </li>
           </ul>
         </div>
       )}

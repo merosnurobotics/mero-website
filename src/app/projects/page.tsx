@@ -1,13 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { projects } from "@/data/site";
+import { projects, ui } from "@/data/site";
+import { useLang } from "@/components/LanguageProvider";
 
 export default function ProjectsPage() {
+  const { t } = useLang();
   return (
     <PageShell
-      eyebrow="Projects"
-      title="What we're building now"
-      description="Every semester we form teams and turn ideas into working results."
+      eyebrow={t(ui.projects.eyebrow)}
+      title={t(ui.projects.title)}
+      description={t(ui.projects.description)}
     >
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((p) => (
@@ -20,7 +24,7 @@ export default function ProjectsPage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={p.image}
-                alt={p.title}
+                alt={t(p.title)}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
@@ -28,26 +32,28 @@ export default function ProjectsPage() {
               <div className="flex items-center justify-between gap-4">
                 <span
                   className={`rounded-full px-3 py-1 text-xs font-medium ${
-                    p.status === "In progress"
+                    p.status === "in-progress"
                       ? "bg-accent-2/15 text-accent-2"
                       : "bg-white/10 text-white/60"
                   }`}
                 >
-                  {p.status}
+                  {p.status === "in-progress"
+                    ? t(ui.projects.inProgress)
+                    : t(ui.projects.completed)}
                 </span>
-                <span className="text-xs text-white/40">{p.period}</span>
+                <span className="text-xs text-white/40">{t(p.period)}</span>
               </div>
-              <h3 className="mt-4 text-xl font-bold">{p.title}</h3>
+              <h3 className="mt-4 text-xl font-bold">{t(p.title)}</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/60">
-                {p.desc}
+                {t(p.desc)}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
+                {p.tags.map((tag) => (
                   <span
-                    key={t}
+                    key={tag}
                     className="rounded-md border border-white/10 px-2.5 py-1 font-mono text-[11px] text-white/60"
                   >
-                    {t}
+                    {tag}
                   </span>
                 ))}
               </div>

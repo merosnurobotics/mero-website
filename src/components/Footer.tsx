@@ -1,6 +1,10 @@
-import { site } from "@/data/site";
+"use client";
+
+import { site, ui } from "@/data/site";
+import { useLang } from "@/components/LanguageProvider";
 
 export default function Footer() {
+  const { t } = useLang();
   return (
     <footer className="border-t border-white/10">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-white/50 sm:flex-row">
@@ -11,7 +15,7 @@ export default function Footer() {
           <span className="text-gradient">{site.name}</span>
         </div>
         <p>
-          © {new Date().getFullYear()} {site.name}. Build, experiment, together.
+          © {new Date().getFullYear()} {site.name}. {t(ui.footer.tagline)}
         </p>
       </div>
     </footer>

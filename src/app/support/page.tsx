@@ -1,19 +1,25 @@
+"use client";
+
 import PageShell from "@/components/PageShell";
 import { MailIcon, MapPinIcon } from "@/components/Icons";
-import { contact } from "@/data/site";
+import { contact, ui } from "@/data/site";
+import { useLang } from "@/components/LanguageProvider";
 
 export default function SupportPage() {
+  const { t } = useLang();
   return (
     <PageShell
-      eyebrow="Support club"
-      title="Support the club"
-      description="Whether you want to join, mentor, sponsor, or just cheer us on, we'd love to hear from you."
+      eyebrow={t(ui.support.eyebrow)}
+      title={t(ui.support.title)}
+      description={t(ui.support.description)}
     >
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-accent/10 via-transparent to-accent-2/10 p-10 text-center sm:p-16">
         <div className="pointer-events-none absolute -bottom-20 left-1/2 h-64 w-96 -translate-x-1/2 rounded-full bg-accent/20 blur-[100px]" />
         <div className="relative">
           <h2 className="text-2xl font-black sm:text-3xl">
-            Get in <span className="text-gradient">touch</span> below
+            {t(ui.support.getInTouchA)}{" "}
+            <span className="text-gradient">{t(ui.support.getInTouchHighlight)}</span>{" "}
+            {t(ui.support.getInTouchB)}
           </h2>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -26,7 +32,7 @@ export default function SupportPage() {
             </a>
             <span className="inline-flex items-center gap-2 text-sm text-white/60">
               <MapPinIcon className="h-4 w-4 text-accent-2" />
-              {contact.location}
+              {t(contact.location)}
             </span>
           </div>
 

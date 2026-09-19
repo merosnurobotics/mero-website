@@ -1,14 +1,25 @@
+"use client";
+
 import PageShell from "@/components/PageShell";
-import { people } from "@/data/site";
+import { people, ui, type LocalizedText } from "@/data/site";
+import { useLang } from "@/components/LanguageProvider";
 
 type Person = {
   name: string;
-  role: string;
-  year: string;
+  role: LocalizedText;
+  year: LocalizedText;
   image: string;
 };
 
-function PersonCard({ person }: { person: Person }) {
+function PersonCard({
+  person,
+  role,
+  year,
+}: {
+  person: Person;
+  role: string;
+  year: string;
+}) {
   return (
     <div className="card flex flex-col items-center rounded-2xl p-6 text-center">
       <div className="h-24 w-24 overflow-hidden rounded-full border border-white/10">
@@ -20,34 +31,41 @@ function PersonCard({ person }: { person: Person }) {
         />
       </div>
       <h3 className="mt-4 font-bold">{person.name}</h3>
-      <p className="mt-1 text-sm text-accent-2">{person.role}</p>
-      <p className="mt-1 font-mono text-xs text-white/40">{person.year}</p>
+      <p className="mt-1 text-sm text-accent-2">{role}</p>
+      <p className="mt-1 font-mono text-xs text-white/40">{year}</p>
     </div>
   );
 }
 
 function PeopleGrid({ members }: { members: Person[] }) {
+  const { t } = useLang();
   return (
     <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
       {members.map((person) => (
-        <PersonCard key={person.name} person={person} />
+        <PersonCard
+          key={person.name}
+          person={person}
+          role={t(person.role)}
+          year={t(person.year)}
+        />
       ))}
     </div>
   );
 }
 
 export default function PeoplePage() {
+  const { t } = useLang();
   return (
     <PageShell
-      eyebrow="People"
-      title="The people behind MERO"
-      description="Meet the members building today and the alumni who shaped the club along the way."
+      eyebrow={t(ui.people.eyebrow)}
+      title={t(ui.people.title)}
+      description={t(ui.people.description)}
     >
       {/* Advisors */}
       <section className="mb-16">
         <div className="mb-6 flex items-center gap-3">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-accent-2">
-            Advisors
+            {t(ui.people.advisors)}
           </h2>
           <span className="rounded-full bg-white/5 px-2.5 py-0.5 font-mono text-xs text-white/50">
             {people.advisors.length}
@@ -60,7 +78,7 @@ export default function PeoplePage() {
       <section>
         <div className="mb-6 flex items-center gap-3">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-accent-2">
-            Current members
+            {t(ui.people.current)}
           </h2>
           <span className="rounded-full bg-white/5 px-2.5 py-0.5 font-mono text-xs text-white/50">
             {people.current.length}
@@ -73,7 +91,7 @@ export default function PeoplePage() {
       <section className="mt-16">
         <div className="mb-6 flex items-center gap-3">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-accent-2">
-            Alumni
+            {t(ui.people.alumni)}
           </h2>
           <span className="rounded-full bg-white/5 px-2.5 py-0.5 font-mono text-xs text-white/50">
             {people.alumni.length}
