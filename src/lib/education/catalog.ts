@@ -7,7 +7,6 @@ export const lessonChapters = [
   { id: "retarget", label: "Microban 리타기팅" },
   { id: "learning", label: "PPO 학습" },
   { id: "validation", label: "정책 검증" },
-  { id: "comparison", label: "외란 학습 전·후 비교" },
 ];
 
 export const objectRecognitionPath = "/education/object-recognition";

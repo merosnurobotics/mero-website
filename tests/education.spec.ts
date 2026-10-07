@@ -17,7 +17,7 @@ test("education navigation, expandable catalog and lesson interactions", async (
   await expect(page).toHaveURL(`${baseURL}/education/reinforcement-learning`);
   await page.getByRole("link", { name: "자료 읽기" }).click();
   await expect(page).toHaveURL(`${baseURL}${lessonPath}`);
-  await expect(page.locator(".education-lesson .chapter")).toHaveCount(7);
+  await expect(page.locator(".education-lesson .chapter")).toHaveCount(6);
   const assets = await page.locator(".education-lesson [src], .education-lesson [poster], .education-lesson a[href^='/education-assets/']").evaluateAll(elements => [...new Set(elements.flatMap(element => [element.getAttribute("src"), element.getAttribute("poster"), element.getAttribute("href")]).filter((url): url is string => Boolean(url?.startsWith("/education-assets/"))))]);
   for (const url of assets) expect((await page.request.get(`${baseURL}${url}`)).status(), url).toBe(200);
   await page.locator(".education-sidebar a[href$='#kimodo']").click();
@@ -27,13 +27,6 @@ test("education navigation, expandable catalog and lesson interactions", async (
   await expect.poll(() => page.locator("#reference-video").evaluate(element => (element as HTMLVideoElement).currentTime)).toBeCloseTo(3, 1);
   await page.locator("#query").getByRole("button", { name: "문장 Copy" }).click();
   await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain("A humanoid robot");
-  await page.locator("#play-compare").click();
-  await expect(page.locator("#play-compare")).toHaveText("두 영상 일시정지");
-  await expect.poll(() => page.locator("#after-video").evaluate(element => (element as HTMLVideoElement).currentTime)).toBeGreaterThan(.1);
-  await page.locator("#compare-rate").selectOption(".5");
-  expect(await page.locator("#before-video").evaluate(element => (element as HTMLVideoElement).playbackRate)).toBe(.5);
-  await page.locator("#reset-compare").click();
-  expect(await page.locator("#after-video").evaluate(element => (element as HTMLVideoElement).paused)).toBe(true);
   await page.evaluate(() => { window.print = () => { document.body.dataset.printCalled = "true"; }; });
   await page.locator("#print").click();
   await expect(page.locator("body")).toHaveAttribute("data-print-called", "true");
@@ -42,8 +35,6 @@ test("education navigation, expandable catalog and lesson interactions", async (
   expect((await downloadEvent).suggestedFilename()).toBe("microban-imitation-rl-lesson.zip");
   await page.getByRole("navigation", { name: "주 메뉴" }).getByRole("link", { name: "교육", exact: true }).click();
   await page.locator(".education-sidebar a[href$='/kimodo-mjwarp']").click();
-  await page.locator("#play-compare").click();
-  await expect(page.locator("#play-compare")).toHaveText("두 영상 일시정지");
   expect(errors).toEqual([]);
 });
 

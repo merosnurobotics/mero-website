@@ -1,3 +1,12 @@
+
+### 최종 반영 상태 · 2026-10-08
+
+- 최신 강화학습 원본을 다시 이식: 6개 장, 영상 3개. 외란 비교 장·영상·강건성 설명 제거. GPU PPO400회/819200 transitions 및 기본 양발→왼발 검증 사례만 유지.
+- meroedu-rl 로컬 첫 회차도 rest-zero CSV/lift-scale2.8, 미학습 초기화→외력 없는 GPU400회→GPU/Native 평가로 갱신. 초기 정책 생성·새 참조·CPU1회 PPO 검증 통과.
+- GitHub 최초 공개 저장소 생성/업로드 성공 후 후속 Git push가 Internal Server Error로 반복 실패. REST blob 업로드도 HTTP500으로 실패. 사이트 변경과 RL 최종 변경은 로컬 커밋 상태이며 공개 사이트는 아직 미반영.
+- 운영 사이트 로컬 체크아웃: /home/user/MEROsite/.local/site-publish. 교육 저장소: /home/user/MERO-education/meroedu-rl, /home/user/MERO-education/meroedu-detection.
+- 인증은 merosnurobotics 활성, HTTPS Git 연결. 원래 YenCho 로그인은 유지. 연결된 GitHub 앱은 mero14robotics-ui로 확인되어 요청한 계정과 달라 쓰기 대체 경로로 사용하지 않음.
+
 ## 2026-10-08 · 교육 시리즈와 공개 콘텐츠 정리
 
 - /home/user/ddonggae의 origin을 fetch해 원격 main이 로컬보다 9커밋 앞선 상태를 확인. 교육용 원본은 d85758c752e6cd3244e16d9ea4a3d2831da225b4로 고정했고 원본 작업 트리는 변경하지 않음.

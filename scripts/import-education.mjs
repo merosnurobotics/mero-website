@@ -1,11 +1,12 @@
 // Import the supplied, authored lesson. No remote HTML or user input is rendered.
-import { readFile, writeFile, mkdir, copyFile } from "node:fs/promises";
+import { readFile, writeFile, mkdir, copyFile, rm } from "node:fs/promises";
 import { resolve } from "node:path";
 import { execFileSync } from "node:child_process";
 import postcss from "postcss";
 
 const source = resolve(process.argv[2] || "/home/user/microbanRL/education");
 const assets = "public/education-assets/kimodo-mjwarp";
+await rm(assets, { recursive: true, force: true });
 await mkdir(assets, { recursive: true });
 // The original curated offline package includes the media, evidence and licenses.
 execFileSync("python3", ["-c", `import zipfile,sys,pathlib
@@ -38,5 +39,5 @@ css.walkRules(rule => {
 css.walkDecls(decl => {
   decl.value = decl.value.replaceAll("LessonSans", "var(--font-pretendard), var(--font-pretendard-fallback)");
 });
-await writeFile("src/app/education/lesson.css", `/* Imported lesson styles, scoped to preserve the MERO shell and theme. */\n${css.toString()}\n`);
-console.log("Imported 7 lesson chapters, scoped styles and curated offline assets.");
+await writeFile("src/app/education/lesson.css", `/* Imported lesson styles, scoped to preserve the MERO shell and theme. */\n${css.toString().trim()}\n`);
+console.log("Imported authored lesson, scoped styles and current curated offline assets.");

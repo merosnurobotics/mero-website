@@ -5,69 +5,9 @@
     "sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787"
   },
   {
-    "file": "evidence/one_leg_text_policy_summary.json",
-    "original": "runs/one_leg_text_final_report/summary.json",
-    "sha256": "08c350169576826e8d01fe90eb04fbcc2fb9ffb5515042494efeb30f416078ff"
-  },
-  {
-    "file": "evidence/one_leg_text_policy_learning_audit.json",
-    "original": "runs/one_leg_text_final_report/learning_audit.json",
-    "sha256": "c5ec00646e36f086b65bb2e4c4dd4bdc564e2a9a8e396c72fe80296575e275bd"
-  },
-  {
-    "file": "evidence/one_leg_text_policy_training.json",
-    "original": "runs/one_leg_text_robust_ppo_v3/manifest.json",
-    "sha256": "0015db821cc04235aeeaa65e797577f3e535641e2207d08ed5b4fa61568ce71b"
-  },
-  {
-    "file": "evidence/one_leg_text_warp_summary.json",
-    "original": "runs/one_leg_text_warp_final_report/summary.json",
-    "sha256": "6a12e9d95761357a0e65ef5dde1f66f170bbc3e5d085748b42cf18e2629e58d3"
-  },
-  {
-    "file": "evidence/one_leg_text_warp_training.json",
-    "original": "runs/one_leg_text_warp_ppo_v1/manifest.json",
-    "sha256": "7b4431dfe0e6dcffb5f55a4ca8110f6e87566a227f0875753601b86df6476b0b"
-  },
-  {
-    "file": "evidence/one_leg_text_warp_learning.json",
-    "original": "runs/one_leg_text_warp_ppo_v1/learning_provenance.json",
-    "sha256": "5d9b83e9cc3739591372a4c43e58dff85e60a34b85c1809d7d6baf7b3b1e0892"
-  },
-  {
-    "file": "evidence/one_leg_text_warp_random64.json",
-    "original": "runs/one_leg_text_warp_final_random64/evaluation.json",
-    "sha256": "4e46a96d58b96d664d56ecaa0f0e1c873a3f6ac4cc41b53de3758d469dfee829"
-  },
-  {
-    "file": "evidence/one_leg_text_warp_native64.json",
-    "original": "runs/one_leg_text_warp_native_random64/evaluation.json",
-    "sha256": "e1b5d92c53ec377c0710faac5e9053d43c6b171a1a5acedc8c3b2cba03995665"
-  },
-  {
-    "file": "evidence/one_leg_text_warp_video_audit.json",
-    "original": "runs/audit_one_leg_warp/final_video.json",
-    "sha256": "813a883271176c07175577ddac252bf56708529c4418f2827fa883579bbad7c5"
-  },
-  {
-    "file": "evidence/one_leg_text_warp_contract.json",
-    "original": "runs/audit_one_leg_warp/contract.json",
-    "sha256": "384439ff544534c953e2bf2ee05b0bc82eb6328c03c170f6a68140ab15e5c8fc"
-  },
-  {
-    "file": "evidence/one_leg_text_protocol_requests.json",
-    "original": "data/kimodo_text_oneleg/protocol_requests.json",
-    "sha256": "30eed21505755b9e9da48660637c94ca2a7c1b367b03510ed6f2e607ac2a7044"
-  },
-  {
     "file": "evidence/one_leg_text_request.json",
     "original": "data/kimodo_text_oneleg/request.json",
     "sha256": "522956fb5de69efc06d1944365d77943196118702b0dad056e53dba7124544c7"
-  },
-  {
-    "file": "evidence/one_leg_text_preview_fk_audit.json",
-    "original": "data/kimodo_text_oneleg/preview_fk_audit.json",
-    "sha256": "dd9391aeedbd27491913e32b499fc5ff84d360394719fb096795937072ec9ca4"
   },
   {
     "file": "evidence/one_leg_text_effective_request.json",
@@ -75,14 +15,29 @@
     "sha256": "ae8c149ab180f72499d37db9a285675c02c29f75c362cac627eef4cde2b1d742"
   },
   {
-    "file": "evidence/one_leg_text_00.csv",
-    "original": "data/kimodo_text_oneleg/oneleg_text_00.csv",
-    "sha256": "56621d12162f6055aef4151e5642fd996d5d29d295c56733f2387970e526411f"
+    "file": "evidence/one_leg_text_protocol_requests.json",
+    "original": "data/kimodo_text_oneleg/protocol_requests.json",
+    "sha256": "30eed21505755b9e9da48660637c94ca2a7c1b367b03510ed6f2e607ac2a7044"
+  },
+  {
+    "file": "evidence/one_leg_text_preview_fk_audit.json",
+    "original": "data/kimodo_text_oneleg/preview_fk_audit.json",
+    "sha256": "dd9391aeedbd27491913e32b499fc5ff84d360394719fb096795937072ec9ca4"
   },
   {
     "file": "evidence/one_leg_text_coordinate_conversion.json",
     "original": "data/kimodo_text_oneleg/coordinate_conversion.json",
     "sha256": "015f8b7fa45fe8680f031f782481d21f06e5e5b14c161952aff6965ebea8104e"
+  },
+  {
+    "file": "evidence/one_leg_text_csv_columns.json",
+    "original": "data/kimodo_text_oneleg/csv_columns.json",
+    "sha256": "6b8f4ee3a127fb9ebe5e66b9db29faa2c4c44db0edc3b2cd6a359daa91ddeb21"
+  },
+  {
+    "file": "evidence/one_leg_text_00.csv",
+    "original": "data/kimodo_text_oneleg/oneleg_text_00.csv",
+    "sha256": "56621d12162f6055aef4151e5642fd996d5d29d295c56733f2387970e526411f"
   },
   {
     "file": "evidence/one_leg_text_00.npz",
@@ -95,33 +50,32 @@
     "sha256": "5dea6a4065399846b18a890fd77483e09d98e7fb152d14039d9e2f18b6f846a7"
   },
   {
-    "file": "evidence/one_leg_text_csv_columns.json",
-    "original": "data/kimodo_text_oneleg/csv_columns.json",
-    "sha256": "6b8f4ee3a127fb9ebe5e66b9db29faa2c4c44db0edc3b2cd6a359daa91ddeb21"
+    "file": "evidence/one_leg_text_training.json",
+    "sha256": "e9f3b464ffdb827a64abad418cd9ca9df56ae97e9ca3de97a5e1709489b6475a",
+    "transform": "Final single-task fields extracted from immutable execution records; original source hashes retained"
+  },
+  {
+    "file": "evidence/one_leg_text_learning.json",
+    "sha256": "0c48dd8dcb98c835808123ba558e8abf1c838b09a7265a874cc568cf6d9a8293",
+    "transform": "Final single-task fields extracted from immutable execution records; original source hashes retained"
+  },
+  {
+    "file": "evidence/one_leg_text_quiet_gpu64.json",
+    "sha256": "819da718339126da69343ebf121c58b75a883c0981c05252aea53a4eb073471a",
+    "transform": "Final single-task fields extracted from immutable execution records; original source hashes retained"
+  },
+  {
+    "file": "evidence/one_leg_text_quiet_native64.json",
+    "sha256": "c51469a47118d04af165d85f50135f6460823f819459a7a84d57b63891bae3e4",
+    "transform": "Final single-task fields extracted from immutable execution records; original source hashes retained"
+  },
+  {
+    "file": "evidence/one_leg_text_quiet_video_audit.json",
+    "sha256": "93d81762b6cb308d7886e2bccdd2a1ce169ab962b399ae33fdeef62cb10ce640",
+    "transform": "Final single-task fields extracted from immutable execution records; original source hashes retained"
   },
   {
     "file": "evidence/one_leg_text_response_summary.json",
-    "original": "data/kimodo_text_oneleg/attempt_metadata.json + official_service_events.json",
     "sha256": "05a9a3998c343dfb4d4c7f29e07a0e2046b7b5fea1eebf5e5c0aec404ab7de1e"
-  },
-  {
-    "file": "data/paired_random_video_audit.json",
-    "original": "education/data/paired_random_video_audit.json",
-    "sha256": "81a04919bdd5c2f4b351dd7d6ad8aafbe7ae7e15ba27c7797ce03df11d6f7827",
-    "role": "Earlier numeric-reference native policies; matched state/forces and motor/support audit, separate from sentence GPU policy"
-  },
-  {
-    "file": "evidence/oneleg_comparison_before_training.json",
-    "original": "runs/one_leg_transition_ppo_v1/manifest.json",
-    "original_sha256": "4da398677c0993effe3cf3757545e18486fc8fc8e106c1e2e9256546d3e22176",
-    "sha256": "d88ebe0d982b5a9c26f6b656bdf6c7b525a3629cecf104e303b50c7e28d5df54",
-    "transform": "Training manifest plus minimal comparison provenance; no numeric motion or keyframes"
-  },
-  {
-    "file": "evidence/oneleg_comparison_after_training.json",
-    "original": "runs/one_leg_robust_centered_ppo_v2/manifest.json",
-    "original_sha256": "2055565fcc0f0dbd0d1ec9abae5d140c8ed2853c7e777ba240d42748a93c6b91",
-    "sha256": "2ed681e13d60ff92847233468611e52561abdfa99c8c2357541164cc8aa03e0a",
-    "transform": "Training manifest plus minimal comparison provenance; no numeric motion or keyframes"
   }
 ]

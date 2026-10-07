@@ -1,0 +1,13 @@
+{
+  "actual_gpu_ppo_updates": 400,
+  "actual_gpu_rollout_transitions": 819200,
+  "parameter_L2_changes": {
+    "balance": 0.0,
+    "residual": 1.392371416091919,
+    "critic": 10.732726097106934,
+    "logstd": 0.08647467195987701
+  },
+  "checkpoint_sha256": "db0635be7c73a96f47ec6ef4d5a0e4f6976dda4603c6965407ffc82a1a02e794",
+  "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+  "source_learning_record_sha256": "1ed018b3ab9d53cf38d879d5069ddc2d1d737e48f1041633799022a54d8bb229"
+}

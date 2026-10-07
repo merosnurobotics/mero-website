@@ -1,0 +1,16 @@
+{
+  "checkpoint_sha256": "db0635be7c73a96f47ec6ef4d5a0e4f6976dda4603c6965407ffc82a1a02e794",
+  "video_sha256": "84e40a58449203049bdca9341f2019b58e2c9292884ba27507b660f403a9c089",
+  "frames": 900,
+  "duration_s": 18.0,
+  "fps": 50,
+  "continuous_single_support_s": 16.02,
+  "first_failure_time_s": null,
+  "success": true,
+  "last_frame_single_support": true,
+  "maximum_tilt_deg": 8.376744634910507,
+  "minimum_right_clearance_after3s_m": 0.01896519586443901,
+  "peak_motor_torque_Nm": 0.3384491801261902,
+  "support_decisions_checked": 900,
+  "source_metadata_sha256": "85983b61bd26516cb73cf6310da04b68b4222601c8013af29fa17521f88fd4c1"
+}
