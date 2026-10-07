@@ -7,7 +7,7 @@ import { useTheme } from "./theme-provider";
 import { api } from "@/lib/client-api";
 import type { Member } from "@/lib/types";
 
-const navigation = [{ href: "/about", label: "동아리 소개" }, { href: "/activities", label: "활동" }, { href: "/robots", label: "로봇 안내" }];
+const navigation = [{ href: "/about", label: "동아리 소개" }, { href: "/activities", label: "활동" }, { href: "/education", label: "교육" }, { href: "/robots", label: "로봇 안내" }];
 export function Header({ member }: { member: Member | null }) {
   const path = usePathname(); const router = useRouter(); const { theme, toggle } = useTheme();
   const [open, setOpen] = useState(false); const [busy, setBusy] = useState(false); const [error, setError] = useState("");

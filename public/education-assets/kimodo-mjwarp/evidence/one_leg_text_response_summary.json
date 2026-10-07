@@ -1,0 +1,83 @@
+{
+  "started_utc": "2026-10-07T12:39:50.831715+00:00",
+  "official_promotional_site": "https://research.nvidia.com/labs/sil/projects/kimodo/",
+  "official_demo": "https://huggingface.co/spaces/nvidia/Kimodo",
+  "space_commit": "032e9f86e8ab21aca62e72564aac6dbbb20cfe5b",
+  "space_runtime": {
+    "stage": "RUNNING",
+    "hardware": {
+      "current": "l40sx1",
+      "requested": "l40sx1"
+    },
+    "gcTimeout": 3600,
+    "replicas": {
+      "current": 1,
+      "requested": 1
+    },
+    "devMode": false,
+    "domains": [
+      {
+        "domain": "nvidia-kimodo.hf.space",
+        "stage": "READY"
+      }
+    ],
+    "sha": "032e9f86e8ab21aca62e72564aac6dbbb20cfe5b",
+    "pySpacesVersion": "0.48.2"
+  },
+  "model_name_requested": "nvidia/Kimodo-G1-RP-v1",
+  "public_model_revision_at_request": "3020ad8c419c244e0429d360163730c63c4ed011",
+  "remote_checkpoint_exact_file_hash": null,
+  "remote_revision_caveat": "Space requirements install Git main and do not expose runtime model file hashes; public model revision is a registry observation, not proof of server cache revision.",
+  "prompt": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg.",
+  "text_guidance": 2.0,
+  "constraint_guidance": 0.0,
+  "seed": 14,
+  "denoising_steps": 100,
+  "duration_s": 6.0,
+  "frames": 180,
+  "num_samples": 1,
+  "constraints": [],
+  "real_robot_rotations": true,
+  "post_processing": false,
+  "local_hf_token_configured": false,
+  "local_llama_config_request_http_status": 401,
+  "transport": "public official Viser WebSocket message API, protocolviser-v1.0.16",
+  "no_authentication_bypass": true,
+  "no_alternate_text_encoder": true,
+  "new_text_clip_is_not_existing_validated_policy_reference": true,
+  "client_source_sha256": "65127f689f5856700407d403f3f14b4ae8c46c9ef945ee0794c23a55b906b03a",
+  "generation_success_confirmed_by_server": true,
+  "status": "official_text_conditioned_motion_generated_and_exported",
+  "downloads": [
+    {
+      "filename": "oneleg_text_00.npz",
+      "bytes": 518278,
+      "sha256": "bc1e122c51def218582de89ff3edd5b7e46dd01fc1b55d9c388febe8d5e2e3b7"
+    },
+    {
+      "filename": "oneleg_text_00.csv",
+      "bytes": 164535,
+      "sha256": "56621d12162f6055aef4151e5642fd996d5d29d295c56733f2387970e526411f"
+    }
+  ],
+  "elapsed_session_s": 23.32552387800024,
+  "finished_utc": "2026-10-07T12:40:14.836597+00:00",
+  "successful_notifications_exact_extract": [
+    {
+      "elapsed_s": 14.156585214999723,
+      "mode": "update",
+      "uuid": "24db8153-36a7-446d-9265-8f8ff8c211ff",
+      "props": {
+        "title": "Motion generation finished!",
+        "body": "Motions have been generated successfully for the given prompt.",
+        "loading": false,
+        "with_close_button": true,
+        "auto_close_seconds": 5.0,
+        "color": "green"
+      },
+      "type": "NotificationMessage"
+    }
+  ],
+  "original_attempt_sha256": "fb6c49197dd50b3e234836beeeb6cef6899f02e7aeb79ca289852689876ea213",
+  "original_events_sha256": "1aae51d06bb7932f8d27f5ff9d048aef28a92f4e46969ffe9181173a02c5923b"
+}

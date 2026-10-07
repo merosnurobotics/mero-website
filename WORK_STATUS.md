@@ -1,3 +1,14 @@
+## 2026-10-08 · 교육 시리즈와 공개 콘텐츠 정리
+
+- /home/user/ddonggae의 origin을 fetch해 원격 main이 로컬보다 9커밋 앞선 상태를 확인. 교육용 원본은 d85758c752e6cd3244e16d9ea4a3d2831da225b4로 고정했고 원본 작업 트리는 변경하지 않음.
+- 교육 → 객체인식에 입문용 10개 장 추가. 이미지/정답, 합성 데이터, 도메인 랜덤화, 두 모델 구성, CPU 120장 실습, 분리/내보내기/학습/평가를 설명. 당시 COCO 배경과 최신 공개 경기장 레시피를 구분.
+- educationTopics[].lessons 기반으로 시리즈에 여러 회차를 추가할 수 있게 구성.
+- merosnurobotics/meroedu-rl 및 meroedu-detection 공개 저장소 생성. 각 lessons/01-...에 필요한 환경/코드/최소 입력만 배치. 영상·데이터셋·모델 가중치·과거 실험 제외.
+- RL 참조 재생성과 CPU 2환경/1회 PPO 실행 통과. detection은 소스/셸 검사, 런처 인자 전달, 120개 fixture의 결정적 96/12/12 분할과 불완전 세트 거부 검증. 전체 데이터 렌더/장시간 학습을 새로 수행하지 않음.
+- 웹 타입 검사/프로덕션 빌드와 교육 브라우저 테스트 3개 통과. 모바일/데스크톱 및 밝은/어두운 테마, 목차, 영상, 복사/다운로드 검증.
+- TRI-RESPONSE 공개 목록/상세/프로젝트 문구/이미지/단일 HTML에서 제거. 원본은 로컬 .local/private에 보관하며 배포하지 않음.
+- 운영 merosnurobotics/mero-website 별도 체크아웃에 콘텐츠 변경만 이식. 운영 Neon PostgreSQL/회원 기능 유지. main 업데이트로 기존 Vercel 자동 배포 사용.
+
 # 2026-10-07 Neon PostgreSQL 연결 코드 반영
 
 - 사용자 확인: Vercel Storage에서 DB 연결 완료.

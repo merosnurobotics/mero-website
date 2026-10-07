@@ -1,0 +1,173 @@
+[
+  {
+    "elapsed_s": 3.839999408228323e-06,
+    "type": "ViewerCameraMessage",
+    "wxyz": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "position": [
+      0.0,
+      1.0,
+      3.0
+    ],
+    "fov": 1.0,
+    "near": 0.01,
+    "far": 1000.0,
+    "image_height": 800,
+    "image_width": 1000,
+    "look_at": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "up_direction": [
+      0.0,
+      1.0,
+      0.0
+    ]
+  },
+  {
+    "elapsed_s": 3.0005948990001343,
+    "type": "GuiUpdateMessage",
+    "uuid": "14099e16-d4b5-4ab7-9c56-0099b9bcfa23",
+    "updates": {
+      "value": true
+    }
+  },
+  {
+    "elapsed_s": 3.3022174180005095,
+    "type": "GuiUpdateMessage",
+    "uuid": "8a0b2070-ee9e-450c-b2f9-3825821b6091",
+    "updates": {
+      "value": "Unitree G1 Humanoid Robot"
+    }
+  },
+  {
+    "elapsed_s": 3.602624126000592,
+    "type": "GuiUpdateMessage",
+    "uuid": "1abc4b78-39d4-4c89-987a-0d3c13203c55",
+    "updates": {
+      "value": true
+    }
+  },
+  {
+    "elapsed_s": 8.907679164000001,
+    "type": "GuiUpdateMessage",
+    "uuid": "12f4e893-3130-4f25-ad78-ea7b7a17c115",
+    "updates": {
+      "value": true
+    }
+  },
+  {
+    "elapsed_s": 9.208481501000279,
+    "type": "TimelinePromptUpdateMessage",
+    "prompt_id": "259b105f-0094-4789-9d2b-897bd504ee41",
+    "new_text": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg."
+  },
+  {
+    "elapsed_s": 9.208609082999828,
+    "type": "TimelinePromptResizeMessage",
+    "prompt_id": "259b105f-0094-4789-9d2b-897bd504ee41",
+    "new_start_frame": 0,
+    "new_end_frame": 179
+  },
+  {
+    "elapsed_s": 9.709336936999534,
+    "type": "GuiUpdateMessage",
+    "uuid": "4a4681e1-0341-4b17-b241-af339fe390c7",
+    "updates": {
+      "value": 14
+    }
+  },
+  {
+    "elapsed_s": 10.010017852999226,
+    "type": "GuiUpdateMessage",
+    "uuid": "6c049b23-b455-4fa4-b029-89f942253a49",
+    "updates": {
+      "value": 100
+    }
+  },
+  {
+    "elapsed_s": 10.310690337999404,
+    "type": "GuiUpdateMessage",
+    "uuid": "0d78c5de-829b-4a06-91f1-6bb3714c0515",
+    "updates": {
+      "value": 2.0
+    }
+  },
+  {
+    "elapsed_s": 10.611341322999579,
+    "type": "GuiUpdateMessage",
+    "uuid": "c18a748f-a0be-4558-b82c-580cfa458716",
+    "updates": {
+      "value": 0.0
+    }
+  },
+  {
+    "elapsed_s": 10.911978898000598,
+    "type": "GuiUpdateMessage",
+    "uuid": "dcef25eb-4f9b-4bda-b070-c31407f865a5",
+    "updates": {
+      "value": true
+    }
+  },
+  {
+    "elapsed_s": 11.212521261000802,
+    "type": "GuiUpdateMessage",
+    "uuid": "585deb34-988a-482e-bde9-b9182131ea3b",
+    "updates": {
+      "value": true
+    }
+  },
+  {
+    "elapsed_s": 15.517196422999405,
+    "type": "GuiUpdateMessage",
+    "uuid": "c670541f-c277-4741-bf6e-a18c447851ad",
+    "updates": {
+      "value": "oneleg_text_00"
+    }
+  },
+  {
+    "elapsed_s": 15.817819910000253,
+    "type": "GuiUpdateMessage",
+    "uuid": "163dd9e6-86ca-4c73-8dd6-109964480043",
+    "updates": {
+      "value": "NPZ"
+    }
+  },
+  {
+    "elapsed_s": 16.118133141000726,
+    "type": "GuiUpdateMessage",
+    "uuid": "f0df949b-6db2-41d9-b4f5-1d2d48a85332",
+    "updates": {
+      "value": true
+    }
+  },
+  {
+    "elapsed_s": 19.422003481000502,
+    "type": "GuiUpdateMessage",
+    "uuid": "c670541f-c277-4741-bf6e-a18c447851ad",
+    "updates": {
+      "value": "oneleg_text_00"
+    }
+  },
+  {
+    "elapsed_s": 19.722614209000312,
+    "type": "GuiUpdateMessage",
+    "uuid": "163dd9e6-86ca-4c73-8dd6-109964480043",
+    "updates": {
+      "value": "CSV"
+    }
+  },
+  {
+    "elapsed_s": 20.02377828600038,
+    "type": "GuiUpdateMessage",
+    "uuid": "f0df949b-6db2-41d9-b4f5-1d2d48a85332",
+    "updates": {
+      "value": true
+    }
+  }
+]

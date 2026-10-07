@@ -1,0 +1,117 @@
+{
+  "actual_typed_inputs_reconstructed_from_sent_protocol_messages": {
+    "Model": "Unitree G1 Humanoid Robot",
+    "Seed": 14,
+    "Denoising Steps": 100,
+    "Text Weight": 2.0,
+    "Constraint Weight": 0.0,
+    "Real robot rotations": true,
+    "Name": "oneleg_text_00",
+    "Format": "CSV"
+  },
+  "expected_settings_checked": true,
+  "prompt": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg.",
+  "timeline": {
+    "enabled": true,
+    "fps": 30.0,
+    "start_frame": 0,
+    "end_frame": 1000,
+    "current_frame": 0,
+    "prompts": [
+      {
+        "uuid": "259b105f-0094-4789-9d2b-897bd504ee41",
+        "text": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg.",
+        "start_frame": 0,
+        "end_frame": 179,
+        "color": [
+          82,
+          133,
+          166
+        ]
+      }
+    ],
+    "tracks": [
+      {
+        "uuid": "54aff6b8-4f7a-4b6b-9c3b-72747ef57c26",
+        "name": "Full-Body",
+        "track_type": "keyframe",
+        "color": [
+          219,
+          148,
+          86
+        ],
+        "height_scale": 0.5
+      },
+      {
+        "uuid": "4eadab52-2f1a-44c6-9246-5d9c11782ea2",
+        "name": "2D Root",
+        "track_type": "keyframe",
+        "color": [
+          150,
+          100,
+          200
+        ],
+        "height_scale": 0.5
+      },
+      {
+        "uuid": "355e5484-0a80-40a1-9aeb-1571130d6994",
+        "name": "Left Hand",
+        "track_type": "keyframe",
+        "color": [
+          100,
+          200,
+          150
+        ],
+        "height_scale": 0.5
+      },
+      {
+        "uuid": "19482f93-6814-4fbf-bb57-ae77aeca1fc5",
+        "name": "Right Hand",
+        "track_type": "keyframe",
+        "color": [
+          200,
+          100,
+          150
+        ],
+        "height_scale": 0.5
+      },
+      {
+        "uuid": "7012162c-a4c2-432f-afc7-666a65ad2bfb",
+        "name": "Left Foot",
+        "track_type": "keyframe",
+        "color": [
+          219,
+          148,
+          86
+        ],
+        "height_scale": 0.5
+      },
+      {
+        "uuid": "1a8842a7-6390-4ac0-8c21-02bc24678c52",
+        "name": "Right Foot",
+        "track_type": "keyframe",
+        "color": [
+          150,
+          100,
+          200
+        ],
+        "height_scale": 0.5
+      }
+    ],
+    "keyframes": [],
+    "intervals": [],
+    "mode": "splittext",
+    "constraints_enabled": true,
+    "default_text": "A person walks forward.",
+    "default_duration": 179,
+    "min_prompt_duration": 59,
+    "max_prompt_duration": 299,
+    "default_num_frames_zoom": 330,
+    "max_frames_zoom": 1000,
+    "type": "TimelineMessage"
+  },
+  "server_success_confirmation": true,
+  "client_source_archive": "data/kimodo_text_oneleg/client.executed.py",
+  "client_source_sha256": "65127f689f5856700407d403f3f14b4ae8c46c9ef945ee0794c23a55b906b03a",
+  "control_snapshot_caveat": "Viser excludes sender from value echoes. GUI creation snapshot may retain initial values such as seed42; actual sent requests set seed14 and other values above. Server generation success is recorded separately. No fabricated value ACK."
+}

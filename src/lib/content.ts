@@ -17,12 +17,10 @@ export const projects: Project[] = [
     goals: [
       { title: "직접 만드는 구동계", text: "저감속 구동기의 특성을 살려 관절과 링크를 설계하고, 조립 가능한 로봇 플랫폼을 만듭니다." },
       { title: "지형을 보고 움직이기", text: "경사, 단차와 간격을 인지하고, 로봇이 실행할 수 있는 보행 전략을 선택하는 것을 목표로 합니다." },
-      { title: "Microban과의 협업", text: "TRI-RESPONSE 자체대회에서 작은 휴머노이드를 운반하고 임무를 넘겨주는 시나리오를 준비합니다." },
     ],
     milestones: [
       { title: "설계와 제작", text: "구동기, 링크, 전장과 컴퓨팅 구성 검토" },
       { title: "보행과 인지", text: "기본 보행 검증, 지형 관측과 동적 제어 실험" },
-      { title: "프로젝트 연계", text: "Microban 운반과 임무 인계 구조 검토" },
     ], links: [{ title: "MIT Mini Cheetah 원형 플랫폼", url: "https://news.mit.edu/2019/mit-mini-cheetah-first-four-legged-robot-to-backflip-0304" }],
   },
   {

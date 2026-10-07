@@ -1,0 +1,140 @@
+{
+  "device": "cuda:0",
+  "backend": "actual MuJoCo-Warp",
+  "seed": 74101,
+  "n_env": 64,
+  "steps": 32,
+  "additional_iterations": 120,
+  "resume_checkpoint": "/home/user/microbanRL/runs/one_leg_text_robust_ppo_v3/policy_final.pt",
+  "resume_checkpoint_sha256": "f2ff9a507792e4a1e9f21b44c5fe897303612bce50bcba22ace322fca0cf3ad4",
+  "frozen_initialized_balance_weights": true,
+  "learning_rate": 3e-05,
+  "push_magnitude_N": 1.0,
+  "push_mode": "random",
+  "push_jitter_s": 0.7,
+  "contract": {
+    "backend": "MuJoCo-Warp CUDA float32",
+    "mujoco_version": "3.8.1",
+    "warp_version": "1.12.0",
+    "model_path": "/home/user/microbanRL/assets/one_leg/scene.xml",
+    "model_sha256": "f17429f96f9720acada05cddd12c6660bd8330f1f89b639d52298bc993db594d",
+    "reference_path": "/home/user/microbanRL/runs/one_leg_text_reference_v3/reference.json",
+    "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+    "position_gain_kp": [
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277
+    ],
+    "actuator_force_range_Nm": [
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ]
+    ],
+    "physics_timestep_s": 0.002,
+    "policy_timestep_s": 0.02,
+    "solver_iterations": 50,
+    "observation_dimensions": 70,
+    "action_dimensions": 19,
+    "contact_load_source": "official mujoco_warp.contact_force, actual normal ground load",
+    "root_assignments": "reset only; no root pose writes in step",
+    "external_force": "disclosed horizontal trunk push only; zero vertical force and added torque",
+    "control_limits": "unchanged original actuator_ctrlrange clamp",
+    "native_helper": "offline reference and RNG-identical cold resets only, never rollout integration",
+    "precision_difference": "GPU float32 and solver order can diverge from native float64; independent native heldout required",
+    "cuda_graph": true,
+    "nconmax_per_world": 128,
+    "njmax_per_world": 512
+  },
+  "native_cross_validation_required": true,
+  "native_iterations_before_port": 460,
+  "native_transitions_before_port": 706560
+}

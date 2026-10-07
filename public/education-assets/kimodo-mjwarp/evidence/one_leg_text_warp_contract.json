@@ -1,0 +1,387 @@
+{
+  "scope": "native float64 vs actual CUDA float32 cold reset and first200ms zero residual, same XML/reference/servo commands; not bit-identical solver claim",
+  "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+  "model_sha256": "f17429f96f9720acada05cddd12c6660bd8330f1f89b639d52298bc993db594d",
+  "native_source_sha256": "b9b2f95adae88fea16dcf9f9c46cb70c221dd23fae6231e1e577030d3a87fe9e",
+  "warp_source_sha256": "238f7c8393a45f3b88f15b4a6d9da1adf06e952caadbf9b28f8606ef74c9e144",
+  "reset_qpos_float32_roundoff_max": 2.5853399865383153e-08,
+  "reset_qvel_float32_roundoff_max": 6.825123417819601e-10,
+  "reset_observation_max_error": 1.1920928955078125e-07,
+  "push_schedule_exact_same": true,
+  "no_root_writes_after_reset": true,
+  "unchanged_xml": true,
+  "contract": {
+    "backend": "MuJoCo-Warp CUDA float32",
+    "mujoco_version": "3.8.1",
+    "warp_version": "1.12.0",
+    "model_path": "/home/user/microbanRL/assets/one_leg/scene.xml",
+    "model_sha256": "f17429f96f9720acada05cddd12c6660bd8330f1f89b639d52298bc993db594d",
+    "reference_path": "/home/user/microbanRL/runs/one_leg_text_reference_v3/reference.json",
+    "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+    "position_gain_kp": [
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277,
+      0.277
+    ],
+    "actuator_force_range_Nm": [
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ],
+      [
+        -0.77,
+        0.77
+      ]
+    ],
+    "physics_timestep_s": 0.002,
+    "policy_timestep_s": 0.02,
+    "solver_iterations": 50,
+    "observation_dimensions": 70,
+    "action_dimensions": 19,
+    "contact_load_source": "official mujoco_warp.contact_force, actual normal ground load",
+    "root_assignments": "reset only; no root pose writes in step",
+    "external_force": "disclosed horizontal trunk push only; zero vertical force and added torque",
+    "control_limits": "unchanged original actuator_ctrlrange clamp",
+    "native_helper": "offline reference and RNG-identical cold resets only, never rollout integration",
+    "precision_difference": "GPU float32 and solver order can diverge from native float64; independent native heldout required",
+    "cuda_graph": true,
+    "nconmax_per_world": 128,
+    "njmax_per_world": 512
+  },
+  "rows": [
+    {
+      "time_s": 0.02,
+      "qpos_max_abs_native_gpu": 7.790637046589666e-08,
+      "qvel_max_abs_native_gpu": 1.0413709914391944e-06,
+      "observation_max_abs_native_gpu": 5.885958671569824e-07,
+      "reward_abs_native_gpu": 8.463859558105469e-06,
+      "native_loads_N": [
+        2.281904595014746,
+        6.500154535535546,
+        0.0
+      ],
+      "gpu_loads_N": [
+        2.2819087505340576,
+        6.5001726150512695,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        2.2819087728857994,
+        6.500172149389982,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 4.6566128730773926e-07,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.0695248395204544,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    },
+    {
+      "time_s": 0.04,
+      "qpos_max_abs_native_gpu": 1.7827111491782593e-07,
+      "qvel_max_abs_native_gpu": 7.832523482631526e-06,
+      "observation_max_abs_native_gpu": 1.1809170246124268e-06,
+      "reward_abs_native_gpu": 1.5497207641601562e-06,
+      "native_loads_N": [
+        4.669143924910127,
+        3.9131224806404914,
+        0.0
+      ],
+      "gpu_loads_N": [
+        4.669198989868164,
+        3.9130561351776123,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        4.669198766234331,
+        3.9130560234189034,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 2.2363383322954178e-07,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.06856154650449753,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    },
+    {
+      "time_s": 0.06,
+      "qpos_max_abs_native_gpu": 1.9722370159062919e-07,
+      "qvel_max_abs_native_gpu": 1.5224959310222719e-06,
+      "observation_max_abs_native_gpu": 1.4728866517543793e-06,
+      "reward_abs_native_gpu": 1.049041748046875e-05,
+      "native_loads_N": [
+        4.479815986800048,
+        3.6520152358959295,
+        0.0
+      ],
+      "gpu_loads_N": [
+        4.479987144470215,
+        3.6518754959106445,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        4.47998708859086,
+        3.6518755853176117,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 8.940696716308594e-08,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.06850718706846237,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    },
+    {
+      "time_s": 0.08,
+      "qpos_max_abs_native_gpu": 1.3571357282415875e-07,
+      "qvel_max_abs_native_gpu": 5.490684238121379e-06,
+      "observation_max_abs_native_gpu": 3.3574178814888e-06,
+      "reward_abs_native_gpu": 3.933906555175781e-06,
+      "native_loads_N": [
+        4.20345292728989,
+        3.807039548845402,
+        0.0
+      ],
+      "gpu_loads_N": [
+        4.203606605529785,
+        3.806884765625,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        4.203605953603983,
+        3.8068847246468067,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 6.51925802230835e-07,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.06842702627182007,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    },
+    {
+      "time_s": 0.1,
+      "qpos_max_abs_native_gpu": 3.030376605206442e-07,
+      "qvel_max_abs_native_gpu": 3.95907609708826e-06,
+      "observation_max_abs_native_gpu": 1.5883706510066986e-06,
+      "reward_abs_native_gpu": 5.960464477539062e-07,
+      "native_loads_N": [
+        4.009739200479219,
+        4.000957845410742,
+        0.0
+      ],
+      "gpu_loads_N": [
+        4.009891510009766,
+        4.0007829666137695,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        4.009891143999994,
+        4.000782706774771,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 3.6600977182388306e-07,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.06830751895904541,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    },
+    {
+      "time_s": 0.12,
+      "qpos_max_abs_native_gpu": 6.536931429490522e-07,
+      "qvel_max_abs_native_gpu": 9.436791695354926e-07,
+      "observation_max_abs_native_gpu": 6.633345037698746e-07,
+      "reward_abs_native_gpu": 5.245208740234375e-06,
+      "native_loads_N": [
+        4.0103466128423495,
+        4.005133399927251,
+        0.0
+      ],
+      "gpu_loads_N": [
+        4.010457515716553,
+        4.005029678344727,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        4.010457446798682,
+        4.005029617808759,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 6.891787052154541e-08,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.06815623492002487,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    },
+    {
+      "time_s": 0.14,
+      "qpos_max_abs_native_gpu": 1.1006271531943668e-06,
+      "qvel_max_abs_native_gpu": 9.437074475360935e-07,
+      "observation_max_abs_native_gpu": 2.1602027118206024e-06,
+      "reward_abs_native_gpu": 5.841255187988281e-06,
+      "native_loads_N": [
+        4.021281248060608,
+        4.001378311344542,
+        0.0
+      ],
+      "gpu_loads_N": [
+        4.021198749542236,
+        4.001429557800293,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        4.021198133006692,
+        4.001429200172424,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 6.165355443954468e-07,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.06796956062316895,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    },
+    {
+      "time_s": 0.16,
+      "qpos_max_abs_native_gpu": 1.6449650863670229e-06,
+      "qvel_max_abs_native_gpu": 1.2513778319695607e-06,
+      "observation_max_abs_native_gpu": 1.6451813280582428e-06,
+      "reward_abs_native_gpu": 6.318092346191406e-06,
+      "native_loads_N": [
+        4.033214355744524,
+        3.99459966237356,
+        0.0
+      ],
+      "gpu_loads_N": [
+        4.033198833465576,
+        3.994637966156006,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        4.0331985633820295,
+        3.994637480005622,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 4.861503839492798e-07,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.06774943321943283,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    },
+    {
+      "time_s": 0.18,
+      "qpos_max_abs_native_gpu": 1.0847679448033887e-06,
+      "qvel_max_abs_native_gpu": 1.7482067386994401e-06,
+      "observation_max_abs_native_gpu": 1.7452985048294067e-06,
+      "reward_abs_native_gpu": 8.344650268554688e-07,
+      "native_loads_N": [
+        4.043868882006967,
+        3.986737930451274,
+        0.0
+      ],
+      "gpu_loads_N": [
+        4.043972492218018,
+        3.9866161346435547,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        4.043972838670015,
+        3.9866161979734898,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 3.46451997756958e-07,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.06749577820301056,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    },
+    {
+      "time_s": 0.2,
+      "qpos_max_abs_native_gpu": 6.003646442209742e-07,
+      "qvel_max_abs_native_gpu": 7.326063079825425e-06,
+      "observation_max_abs_native_gpu": 7.327384082600474e-06,
+      "reward_abs_native_gpu": 6.318092346191406e-06,
+      "native_loads_N": [
+        4.053368157866585,
+        3.9786620961412376,
+        0.0
+      ],
+      "gpu_loads_N": [
+        4.053455352783203,
+        3.978605270385742,
+        0.0
+      ],
+      "independent_GPU_contact_snapshot_loads_N": [
+        4.053455166518688,
+        3.97860517911613,
+        0.0
+      ],
+      "contact_load_reconstruction_max_error_N": 1.862645149230957e-07,
+      "gpu_peak_motor_torque_every_2ms_Nm": 0.06720856577157974,
+      "actuator_target_max_abs_error": 2.0991383964386046e-08
+    }
+  ]
+}

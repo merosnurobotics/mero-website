@@ -1,0 +1,702 @@
+{
+  "schema_version": 2,
+  "created_utc": "2026-10-07T13:30:01.030979+00:00",
+  "scope": "Only genuine sentence-generated one-leg case; no old numeric-reference case, charts or other movements",
+  "generation": {
+    "scope": "Only the successful sentence-conditioned one-leg case",
+    "prompt": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg.",
+    "model": "nvidia/Kimodo-G1-RP-v1",
+    "seed": 14,
+    "num_denoising_steps": 100,
+    "frames": 180,
+    "fps": 30,
+    "duration_s": 6,
+    "num_samples": 1,
+    "text_guidance": 2,
+    "constraint_guidance": 0,
+    "numeric_constraints": [],
+    "real_robot_rotations": true,
+    "post_processing": false,
+    "official_service": "https://huggingface.co/spaces/nvidia/Kimodo",
+    "actual_effective_protocol_inputs": {
+      "actual_typed_inputs_reconstructed_from_sent_protocol_messages": {
+        "Model": "Unitree G1 Humanoid Robot",
+        "Seed": 14,
+        "Denoising Steps": 100,
+        "Text Weight": 2.0,
+        "Constraint Weight": 0.0,
+        "Real robot rotations": true,
+        "Name": "oneleg_text_00",
+        "Format": "CSV"
+      },
+      "expected_settings_checked": true,
+      "prompt": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg.",
+      "timeline": {
+        "enabled": true,
+        "fps": 30.0,
+        "start_frame": 0,
+        "end_frame": 1000,
+        "current_frame": 0,
+        "prompts": [
+          {
+            "uuid": "259b105f-0094-4789-9d2b-897bd504ee41",
+            "text": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg.",
+            "start_frame": 0,
+            "end_frame": 179,
+            "color": [
+              82,
+              133,
+              166
+            ]
+          }
+        ],
+        "tracks": [
+          {
+            "uuid": "54aff6b8-4f7a-4b6b-9c3b-72747ef57c26",
+            "name": "Full-Body",
+            "track_type": "keyframe",
+            "color": [
+              219,
+              148,
+              86
+            ],
+            "height_scale": 0.5
+          },
+          {
+            "uuid": "4eadab52-2f1a-44c6-9246-5d9c11782ea2",
+            "name": "2D Root",
+            "track_type": "keyframe",
+            "color": [
+              150,
+              100,
+              200
+            ],
+            "height_scale": 0.5
+          },
+          {
+            "uuid": "355e5484-0a80-40a1-9aeb-1571130d6994",
+            "name": "Left Hand",
+            "track_type": "keyframe",
+            "color": [
+              100,
+              200,
+              150
+            ],
+            "height_scale": 0.5
+          },
+          {
+            "uuid": "19482f93-6814-4fbf-bb57-ae77aeca1fc5",
+            "name": "Right Hand",
+            "track_type": "keyframe",
+            "color": [
+              200,
+              100,
+              150
+            ],
+            "height_scale": 0.5
+          },
+          {
+            "uuid": "7012162c-a4c2-432f-afc7-666a65ad2bfb",
+            "name": "Left Foot",
+            "track_type": "keyframe",
+            "color": [
+              219,
+              148,
+              86
+            ],
+            "height_scale": 0.5
+          },
+          {
+            "uuid": "1a8842a7-6390-4ac0-8c21-02bc24678c52",
+            "name": "Right Foot",
+            "track_type": "keyframe",
+            "color": [
+              150,
+              100,
+              200
+            ],
+            "height_scale": 0.5
+          }
+        ],
+        "keyframes": [],
+        "intervals": [],
+        "mode": "splittext",
+        "constraints_enabled": true,
+        "default_text": "A person walks forward.",
+        "default_duration": 179,
+        "min_prompt_duration": 59,
+        "max_prompt_duration": 299,
+        "default_num_frames_zoom": 330,
+        "max_frames_zoom": 1000,
+        "type": "TimelineMessage"
+      },
+      "server_success_confirmation": true,
+      "client_source_archive": "data/kimodo_text_oneleg/client.executed.py",
+      "client_source_sha256": "65127f689f5856700407d403f3f14b4ae8c46c9ef945ee0794c23a55b906b03a",
+      "control_snapshot_caveat": "Viser excludes sender from value echoes. GUI creation snapshot may retain initial values such as seed42; actual sent requests set seed14 and other values above. Server generation success is recorded separately. No fabricated value ACK."
+    },
+    "request_file": "data/kimodo_text_oneleg/request.json",
+    "server_response_file": "data/kimodo_text_oneleg/attempt_metadata.json"
+  },
+  "official_response_status": "official_text_conditioned_motion_generated_and_exported",
+  "remote_checkpoint_hash_unknown": true,
+  "native_warmstart": {
+    "status": "validated_native_simulation",
+    "checkpoint": "runs/one_leg_text_robust_ppo_v3/policy_final.pt",
+    "checkpoint_sha256": "f2ff9a507792e4a1e9f21b44c5fe897303612bce50bcba22ace322fca0cf3ad4",
+    "reference": "runs/one_leg_text_reference_v3/reference.json",
+    "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+    "reference_conditioning": "genuine sentence from NVIDIA official public Kimodo Space",
+    "prompt": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg.",
+    "training_backend": "native MuJoCo CPU",
+    "gpu_training": false,
+    "learning": "analytic feedback initializer plus genuinely PPO-trained residual; fresh neural weights, no older numeric-policy learned weights",
+    "policy_updates": 460,
+    "policy_transitions": 706560,
+    "physical_actuator_contract": "ideal .277kp positionactuator cap±.77Nm, joint damping.041 frictionloss.013; not BAM electrical model",
+    "evaluations": [
+      {
+        "case": "random64",
+        "path": "runs/one_leg_text_final_random64/evaluation.json",
+        "passed": 64,
+        "n": 64,
+        "seed": 73301,
+        "force_N": 1.0,
+        "max_tilt_deg": 12.513405697989585,
+        "min_single_support_s": 15.979999999999748,
+        "min_clearance_m": 0.015075674085417226
+      },
+      {
+        "case": "cardinal64",
+        "path": "runs/one_leg_text_final_cardinal64/evaluation.json",
+        "passed": 64,
+        "n": 64,
+        "seed": 73303,
+        "force_N": 1.0,
+        "max_tilt_deg": 13.015657305694667,
+        "min_single_support_s": 15.959999999999749,
+        "min_clearance_m": 0.015310033656895247
+      },
+      {
+        "case": "nopush16",
+        "path": "runs/one_leg_text_final_nopush16/evaluation.json",
+        "passed": 16,
+        "n": 16,
+        "seed": 73305,
+        "force_N": 0.0,
+        "max_tilt_deg": 8.612957600488679,
+        "min_single_support_s": 15.999999999999748,
+        "min_clearance_m": 0.01917518065152668
+      }
+    ],
+    "video_pending": false,
+    "video": "runs/one_leg_text_final_video/seed73301_push1/one_leg.mp4",
+    "video_sha256": "681055219b528f48d30502f32a54ffac6f0e0cbf3d3c39504677e5ca3f015a3a",
+    "video_matches_evaluation": {
+      "reference_evaluation": "runs/one_leg_text_final_random64/evaluation.json",
+      "reference_evaluation_sha256": "847d0e90ffba4f81dd748185fe4f499115aad07e5048980a877c212a2a856d10",
+      "qpos_samples_count": 36,
+      "maximum_qpos_difference_from_64env_episode0": 0.0,
+      "same_pushes": true,
+      "actor_batch_shape": [
+        64,
+        70
+      ],
+      "actor_batch_explanation": "duplicate the1-env observation to64 independent rows to match original float32 inference kernel shape"
+    },
+    "physical_substep_audit": {
+      "physics_substeps": 9000,
+      "maximum_actuator_torque_Nm": 0.33902866334441306,
+      "torque_cap_violations": 0,
+      "vertical_external_force_peak_N": 0.0,
+      "external_torque_peak_Nm": 0.0,
+      "nontrunk_external_force_peak_N": 0.0,
+      "qfrc_applied_peak": 0.0
+    }
+  },
+  "actual_GPU_learning": {
+    "parameter_L2_changes": {
+      "balance": 0.0,
+      "residual": 0.17680376768112183,
+      "critic": 0.9045453071594238,
+      "logstd": 0.01001604925841093
+    },
+    "actual_gpu_rollout_transitions": 245760,
+    "actual_gpu_ppo_updates": 120,
+    "checkpoint_sha256": "2ba2955ab51633f90b5cb77f6932f5ba9f9c6eae2e8ef1f359d0107e578858b2",
+    "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787"
+  },
+  "GPU_validation": {
+    "passed": 64,
+    "n": 64,
+    "seed": 74201,
+    "path": "runs/one_leg_text_warp_final_random64/evaluation.json"
+  },
+  "native_cross_validation": {
+    "passed": 64,
+    "n": 64,
+    "seed": 74201,
+    "path": "runs/one_leg_text_warp_native_random64/evaluation.json"
+  },
+  "learning_interpretation": "Fresh text-reference native PPO460 with physical feedback initialization, then GPU PPO120 warmstart; frozen linear balance plus genuinely learned neural residual",
+  "robot_contract": "Unchanged ideal position kp.277, torque cap±.77Nm; free root, reset only; disclosed horizontal pushes only",
+  "hardware_validated": false,
+  "artifacts": [
+    {
+      "path": "data/kimodo_text_oneleg/attempt_metadata.json",
+      "sha256": "fb6c49197dd50b3e234836beeeb6cef6899f02e7aeb79ca289852689876ea213",
+      "bytes": 48833,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/client.executed.py",
+      "sha256": "65127f689f5856700407d403f3f14b4ae8c46c9ef945ee0794c23a55b906b03a",
+      "bytes": 9825,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/coordinate_conversion.json",
+      "sha256": "015f8b7fa45fe8680f031f782481d21f06e5e5b14c161952aff6965ebea8104e",
+      "bytes": 1398,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/csv_columns.json",
+      "sha256": "6b8f4ee3a127fb9ebe5e66b9db29faa2c4c44db0edc3b2cd6a359daa91ddeb21",
+      "bytes": 1165,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/effective_request.json",
+      "sha256": "ae8c149ab180f72499d37db9a285675c02c29f75c362cac627eef4cde2b1d742",
+      "bytes": 3258,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/official_service_events.json",
+      "sha256": "1aae51d06bb7932f8d27f5ff9d048aef28a92f4e46969ffe9181173a02c5923b",
+      "bytes": 75512,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/oneleg_text_00.csv",
+      "sha256": "56621d12162f6055aef4151e5642fd996d5d29d295c56733f2387970e526411f",
+      "bytes": 164535,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/oneleg_text_00.npz",
+      "sha256": "bc1e122c51def218582de89ff3edd5b7e46dd01fc1b55d9c388febe8d5e2e3b7",
+      "bytes": 518278,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/oneleg_text_00_G1_kinematic_preview.mp4",
+      "sha256": "8b407c1f0936c3fec9507f78123be0842abf77f66f80a3a096bd47d0c4ff1917",
+      "bytes": 792496,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/oneleg_text_00_mujoco_rest_zero.csv",
+      "sha256": "5dea6a4065399846b18a890fd77483e09d98e7fb152d14039d9e2f18b6f846a7",
+      "bytes": 164369,
+      "kind": "sentence_generation",
+      "role": "Explicit neutral joint-rest adaptation; faithful G1 preview uses original raw CSV"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/oneleg_text_00_mujoco_rest_zero_G1_kinematic_preview.mp4",
+      "sha256": "2e09200df5334bc386c6c97df629bdca413a00256eab1719ba097de339eb597d",
+      "bytes": 744130,
+      "kind": "sentence_generation",
+      "role": "Explicit neutral joint-rest adaptation; faithful G1 preview uses original raw CSV"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/oneleg_text_00_mujoco_rest_zero_preview.json",
+      "sha256": "3b10abe3f022f976d14626ae018ec3491010fe0f48319b011d5f1ad50b220d60",
+      "bytes": 667,
+      "kind": "sentence_generation",
+      "role": "Explicit neutral joint-rest adaptation; faithful G1 preview uses original raw CSV"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/oneleg_text_00_preview.json",
+      "sha256": "22067ce7d843660ab5142f9cc40e40415fa1eaccbdb528ac7ce4faff5614d83c",
+      "bytes": 650,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/preview_fk_audit.json",
+      "sha256": "dd9391aeedbd27491913e32b499fc5ff84d360394719fb096795937072ec9ca4",
+      "bytes": 6025,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/protocol_requests.json",
+      "sha256": "30eed21505755b9e9da48660637c94ca2a7c1b367b03510ed6f2e607ac2a7044",
+      "bytes": 3735,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "data/kimodo_text_oneleg/request.json",
+      "sha256": "522956fb5de69efc06d1944365d77943196118702b0dad056e53dba7124544c7",
+      "bytes": 1881,
+      "kind": "sentence_generation",
+      "role": "Actual official text generation input/output"
+    },
+    {
+      "path": "education/kimodo_official_demo_oneleg.py",
+      "sha256": "94559081563a63a817e30ccb8a2f8f784aa70b72670be712e33b9cd8429f21e0",
+      "bytes": 10427,
+      "kind": "official_demo_client",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "scripts/generate_kimodo_preview.py",
+      "sha256": "0a002c916ee4e226ebd4ee8add70cafa8371e670a9e0e684eb1e219c90af2ceb",
+      "bytes": 4180,
+      "kind": "kinematic_preview_source",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "scripts/one_leg_text_reference.py",
+      "sha256": "55226407004b7acb1590277012d244803b3c532768d3aab0008a353ff4edc548",
+      "bytes": 7621,
+      "kind": "retarget_source",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "src/microban_rl/one_leg.py",
+      "sha256": "b9b2f95adae88fea16dcf9f9c46cb70c221dd23fae6231e1e577030d3a87fe9e",
+      "bytes": 25521,
+      "kind": "native_environment_actor_PPO",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "src/microban_rl/one_leg_warp.py",
+      "sha256": "238f7c8393a45f3b88f15b4a6d9da1adf06e952caadbf9b28f8606ef74c9e144",
+      "bytes": 22547,
+      "kind": "GPU_environment_PPO",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "scripts/one_leg_warp_run.py",
+      "sha256": "7194b77320cb238951926174adab26d6e16c8a551c464f4ee6f5d6a6f6e690eb",
+      "bytes": 1417,
+      "kind": "GPU_runner",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "scripts/audit_one_leg_warp.py",
+      "sha256": "144581cb89f5733a35c84705a37142c43e30328e71278b356a8e5e64f2ef4db6",
+      "bytes": 4308,
+      "kind": "independent_CPU_GPU_contract_test",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "scripts/audit_one_leg_warp_video.py",
+      "sha256": "7c835defd8728b38d2bce95539ffb3faf37d2f49a752304e830b90630d46d894",
+      "bytes": 5185,
+      "kind": "independent_saved_GPU_video_and_learning_audit",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "scripts/render_one_leg_warp.py",
+      "sha256": "98059feceff29b31b5d0455505f7c13d96154dde9b167cf8d67a3a7f7d2c7543",
+      "bytes": 6215,
+      "kind": "actual_GPU_video_renderer",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "scripts/one_leg_run.py",
+      "sha256": "58572117075a35ae9b6c9645ea3b1296a4d0616f6504836f995d5ebe9d6dae43",
+      "bytes": 1366,
+      "kind": "native_runner",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "scripts/render_one_leg_text_policy.py",
+      "sha256": "57cb071449c9a234f361c19355e352b2ade067843ac233f30f94cbe1486e6d94",
+      "bytes": 9051,
+      "kind": "native_policy_renderer",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "assets/one_leg/scene.xml",
+      "sha256": "f17429f96f9720acada05cddd12c6660bd8330f1f89b639d52298bc993db594d",
+      "bytes": 744,
+      "kind": "unchanged_ideal_motor_robot_model",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_reference_v3/reference.json",
+      "sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+      "bytes": 6842,
+      "kind": "adapted_text_reference",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_final_report/summary.json",
+      "sha256": "08c350169576826e8d01fe90eb04fbcc2fb9ffb5515042494efeb30f416078ff",
+      "bytes": 3006,
+      "kind": "native_warmstart_report",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_final_report/learning_audit.json",
+      "sha256": "c5ec00646e36f086b65bb2e4c4dd4bdc564e2a9a8e396c72fe80296575e275bd",
+      "bytes": 1247,
+      "kind": "native_actual_learning_audit",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_robust_ppo_v3/policy_final.pt",
+      "sha256": "f2ff9a507792e4a1e9f21b44c5fe897303612bce50bcba22ace322fca0cf3ad4",
+      "bytes": 87455,
+      "kind": "native_warmstart_checkpoint",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_robust_ppo_v3/manifest.json",
+      "sha256": "0015db821cc04235aeeaa65e797577f3e535641e2207d08ed5b4fa61568ce71b",
+      "bytes": 1551,
+      "kind": "native_training_config",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_robust_ppo_v3/training.jsonl",
+      "sha256": "d7382f0c9f764bf506f5190bed736322849a9d83fb325a53e2b3877f4c6c630f",
+      "bytes": 42979,
+      "kind": "native_training_log",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_warp_ppo_v1/policy_final.pt",
+      "sha256": "2ba2955ab51633f90b5cb77f6932f5ba9f9c6eae2e8ef1f359d0107e578858b2",
+      "bytes": 88991,
+      "kind": "GPU_final_checkpoint",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_warp_ppo_v1/manifest.json",
+      "sha256": "7b4431dfe0e6dcffb5f55a4ca8110f6e87566a227f0875753601b86df6476b0b",
+      "bytes": 3046,
+      "kind": "GPU_training_config",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_warp_ppo_v1/training.jsonl",
+      "sha256": "17070d6e6959363e1c38cd44e1ee02d4ddd115c8040bedf3b18041f68dbb62f7",
+      "bytes": 53065,
+      "kind": "GPU_training_log",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_warp_ppo_v1/learning_provenance.json",
+      "sha256": "5d9b83e9cc3739591372a4c43e58dff85e60a34b85c1809d7d6baf7b3b1e0892",
+      "bytes": 419,
+      "kind": "GPU_actual_learning_audit",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/audit_one_leg_warp/contract.json",
+      "sha256": "384439ff544534c953e2bf2ee05b0bc82eb6328c03c170f6a68140ab15e5c8fc",
+      "bytes": 11165,
+      "kind": "independent_short_CPU_GPU_contract_audit",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_warp_final_random64/evaluation.json",
+      "sha256": "4e46a96d58b96d664d56ecaa0f0e1c873a3f6ac4cc41b53de3758d469dfee829",
+      "bytes": 111211,
+      "kind": "GPU_fresh_random64",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_warp_native_random64/evaluation.json",
+      "sha256": "e1b5d92c53ec377c0710faac5e9053d43c6b171a1a5acedc8c3b2cba03995665",
+      "bytes": 135488,
+      "kind": "native_cross_validation_same_checkpoint64",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_final_random64/evaluation.json",
+      "sha256": "847d0e90ffba4f81dd748185fe4f499115aad07e5048980a877c212a2a856d10",
+      "bytes": 133401,
+      "kind": "native_warmstart_random64",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_final_cardinal64/evaluation.json",
+      "sha256": "bb3eb4354d4f4bdccd3f43d1e1b74d85a84672f352b0b3085027f287bbf5f3de",
+      "bytes": 130284,
+      "kind": "native_warmstart_cardinal64",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_final_nopush16/evaluation.json",
+      "sha256": "efa8fe32ee05fe8ef1a4b9bc4018756d72a9d229f2c98cedecc4190e06284806",
+      "bytes": 81669,
+      "kind": "native_warmstart_nopush16",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_final_video/seed73301_push1/one_leg.mp4",
+      "sha256": "681055219b528f48d30502f32a54ffac6f0e0cbf3d3c39504677e5ca3f015a3a",
+      "bytes": 2030855,
+      "kind": "native_warmstart_actual_video",
+      "role": "Only the sentence-based one-leg training pipeline"
+    },
+    {
+      "path": "runs/one_leg_text_warp_video/seed74201_push1/one_leg.mp4",
+      "sha256": "fcb2e8881b42a78db9df8b5974458635a34716c5c62bf397607c20980119777b",
+      "bytes": 1765857,
+      "kind": "actual_GPU_policy_video",
+      "role": "New text-reference GPU final only"
+    },
+    {
+      "path": "runs/one_leg_text_warp_video/seed74201_push1/video.json",
+      "sha256": "c18d6b5f93a83e52f3cf341b2065f1626303c781c3289adc1bb7d108975c3dce",
+      "bytes": 2308192,
+      "kind": "actual_GPU_policy_video_trace",
+      "role": "New text-reference GPU final only"
+    },
+    {
+      "path": "runs/one_leg_text_warp_final_report/summary.json",
+      "sha256": "6a12e9d95761357a0e65ef5dde1f66f170bbc3e5d085748b42cf18e2629e58d3",
+      "bytes": 3498,
+      "kind": "GPU_final_pipeline_report",
+      "role": "New text-reference GPU final only"
+    },
+    {
+      "path": "runs/audit_one_leg_warp/final_video.json",
+      "sha256": "813a883271176c07175577ddac252bf56708529c4418f2827fa883579bbad7c5",
+      "bytes": 2157,
+      "kind": "independent_recorded_GPU_video_audit",
+      "role": "New text-reference GPU final only"
+    }
+  ],
+  "generated_education_artifacts": [
+    {
+      "path": "education/data/generation_inputs.json",
+      "sha256": "6bfbe58d2eafbc9d3b603ca52383f129bbab9d449e2ed47bb7bd2181c7139300",
+      "bytes": 4247,
+      "kind": "actual_sentence_input",
+      "role": "Only text-conditioned query"
+    }
+  ],
+  "primary_sources": [
+    {
+      "title": "NVIDIA Kimodo introduction",
+      "url": "https://research.nvidia.com/labs/sil/projects/kimodo/"
+    },
+    {
+      "title": "Official NVIDIA Kimodo demo",
+      "url": "https://huggingface.co/spaces/nvidia/Kimodo"
+    },
+    {
+      "title": "Official Kimodo code/models",
+      "url": "https://github.com/nv-tlabs/kimodo"
+    },
+    {
+      "title": "Official Kimodo configuration",
+      "url": "https://research.nvidia.com/labs/sil/projects/kimodo/docs/user_guide/configuration.html"
+    },
+    {
+      "title": "MuJoCo-Warp documentation",
+      "url": "https://mujoco.readthedocs.io/en/stable/mjwarp/index.html"
+    },
+    {
+      "title": "PPO paper",
+      "url": "https://arxiv.org/abs/1707.06347"
+    }
+  ],
+  "reproduction": ".venv/bin/python education/build_evidence_manifest.py; saved-record processing only",
+  "actual_GPU_final_report": {
+    "status": "validated_actual_text_generation_GPU_PPO_and_native_cross_validation",
+    "prompt": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg.",
+    "generation_model": "nvidia/Kimodo-G1-RP-v1",
+    "generation_service": "https://huggingface.co/spaces/nvidia/Kimodo",
+    "generation_npz": "data/kimodo_text_oneleg/oneleg_text_00.npz",
+    "generation_npz_sha256": "bc1e122c51def218582de89ff3edd5b7e46dd01fc1b55d9c388febe8d5e2e3b7",
+    "reference": "runs/one_leg_text_reference_v3/reference.json",
+    "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+    "checkpoint": "runs/one_leg_text_warp_ppo_v1/policy_final.pt",
+    "checkpoint_sha256": "2ba2955ab51633f90b5cb77f6932f5ba9f9c6eae2e8ef1f359d0107e578858b2",
+    "architecture": "linear_feedback_plus_64x64_residual_v1",
+    "learning": "physical initialized linear balance feedback frozen plus actual PPO learned neural residual; native text policy warmstart, not from scratch GPU",
+    "native_PPO_updates_before_GPU": 460,
+    "native_transitions_before_GPU": 706560,
+    "additional_actual_GPU_PPO_updates": 120,
+    "additional_actual_GPU_transitions": 245760,
+    "total_PPO_updates": 580,
+    "total_transitions": 952320,
+    "GPU_training_elapsed_s": 56.29422191199956,
+    "GPU_learning_independent_audit": "runs/audit_one_leg_warp/final_video.json",
+    "GPU_parameter_L2_changes": {
+      "balance.": 0.0,
+      "residual.": 0.17680375261897563,
+      "critic.": 0.9045453095144624,
+      "logstd": 0.010016048558624152
+    },
+    "validation": [
+      {
+        "backend": "actual_MuJoCo-Warp_GPU",
+        "path": "runs/one_leg_text_warp_final_random64/evaluation.json",
+        "seed": 74201,
+        "passed": 64,
+        "n": 64,
+        "min_continuous_single_support_s": 15.960175514221191,
+        "min_clearance_after3s_m": 0.015035825781524181,
+        "max_tilt_deg": 12.482315849718166,
+        "push_magnitude_N": 1,
+        "push_duration_s": 0.1,
+        "pushes_per_episode": 3,
+        "push_mode": "random",
+        "push_jitter_s": 0.7
+      },
+      {
+        "backend": "native_MuJoCo_cross_validation",
+        "path": "runs/one_leg_text_warp_native_random64/evaluation.json",
+        "seed": 74201,
+        "passed": 64,
+        "n": 64,
+        "min_continuous_single_support_s": 15.979999999999748,
+        "min_clearance_after3s_m": 0.015084918144823352,
+        "max_tilt_deg": 13.151121179053252,
+        "push_magnitude_N": 1,
+        "push_duration_s": 0.1,
+        "pushes_per_episode": 3,
+        "push_mode": "random",
+        "push_jitter_s": 0.7
+      }
+    ],
+    "GPU_video": "runs/one_leg_text_warp_video/seed74201_push1/one_leg.mp4",
+    "GPU_video_sha256": "fcb2e8881b42a78db9df8b5974458635a34716c5c62bf397607c20980119777b",
+    "GPU_video_trace": "runs/one_leg_text_warp_video/seed74201_push1/video.json",
+    "GPU_video_independent_audit": "runs/audit_one_leg_warp/final_video.json",
+    "GPU_video_duration_s": 18,
+    "GPU_video_single_support_s": 16.080000000000002,
+    "GPU_video_physical_replay_not_bit_identical_evaluation_trace": true,
+    "GPU_video_same_initial_qpos_qvel_and_pushes": true,
+    "GPU_video_max_qpos_sample_difference_from_evaluation": 0.02831876277923584,
+    "GPU_video_no_fall": true,
+    "GPU_video_torque_max_all_2ms_Nm": 0.3390393853187561,
+    "GPU_video_external_vertical_force_N": 0,
+    "GPU_video_external_torque_Nm": 0,
+    "robot_geometry_modified_for_GPU": false,
+    "ideal_actuator_kp": 0.277,
+    "ideal_torque_cap_Nm": 0.77,
+    "hardware_validated": false
+  }
+}

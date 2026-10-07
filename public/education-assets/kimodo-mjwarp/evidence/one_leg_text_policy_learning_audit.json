@@ -1,0 +1,31 @@
+{
+  "scope": "independent checkpoint arithmetic comparison for actual new text-reference PPO continuation",
+  "initial_checkpoint": "runs/one_leg_text_v2_feedback_screen/coef_minus2_0.pt",
+  "final_checkpoint": "runs/one_leg_text_robust_ppo_v3/policy_final.pt",
+  "groups": {
+    "balance.": {
+      "parameter_count": 1349,
+      "L2_parameter_change": 0.0
+    },
+    "residual.": {
+      "parameter_count": 9939,
+      "L2_parameter_change": 0.4825950856495231
+    },
+    "critic.": {
+      "parameter_count": 8769,
+      "L2_parameter_change": 1.9936430926146835
+    },
+    "logstd": {
+      "parameter_count": 19,
+      "L2_parameter_change": 0.047397898283626894
+    }
+  },
+  "resume_ref_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+  "final_ref_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+  "reference_identical": true,
+  "initial_iterations": 340,
+  "final_iterations": 460,
+  "additional_transitions": 184320,
+  "manual_feedback_initialization": "centeringheightcoefficient\u22122 set BEFORE this120updatePPO run; not claimed as learned",
+  "first_policy_origin": "fresh randomNN+analyticfeedback initializedforactualtextreference, NO old numeric-reference learnedweights"
+}

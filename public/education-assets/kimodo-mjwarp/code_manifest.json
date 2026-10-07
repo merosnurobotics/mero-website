@@ -1,0 +1,32 @@
+[
+  {
+    "file": "code/kimodo_text_client.executed.py",
+    "original": "data/kimodo_text_oneleg/client.executed.py",
+    "sha256": "65127f689f5856700407d403f3f14b4ae8c46c9ef945ee0794c23a55b906b03a",
+    "role": "Read in the full project context; not a standalone robot deployment"
+  },
+  {
+    "file": "code/retarget_text_reference.py",
+    "original": "scripts/one_leg_text_reference.py",
+    "sha256": "55226407004b7acb1590277012d244803b3c532768d3aab0008a353ff4edc548",
+    "role": "Read in the full project context; not a standalone robot deployment"
+  },
+  {
+    "file": "code/one_leg_native.py",
+    "original": "src/microban_rl/one_leg.py",
+    "sha256": "b9b2f95adae88fea16dcf9f9c46cb70c221dd23fae6231e1e577030d3a87fe9e",
+    "role": "Read in the full project context; not a standalone robot deployment"
+  },
+  {
+    "file": "code/one_leg_warp_training.executed.py",
+    "original": "runs/one_leg_text_warp_ppo_v1/one_leg_warp_training_source.py",
+    "sha256": "238f7c8393a45f3b88f15b4a6d9da1adf06e952caadbf9b28f8606ef74c9e144",
+    "role": "Read in the full project context; not a standalone robot deployment"
+  },
+  {
+    "file": "code/render_one_leg_warp.executed.py",
+    "original": "runs/one_leg_text_warp_video/seed74201_push1/renderer.executed.py",
+    "sha256": "98059feceff29b31b5d0455505f7c13d96154dde9b167cf8d67a3a7f7d2c7543",
+    "role": "Read in the full project context; not a standalone robot deployment"
+  }
+]

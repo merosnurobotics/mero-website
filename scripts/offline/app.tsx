@@ -28,7 +28,7 @@ import { connectionConfigured, setupScript, sshConfig } from "../../src/lib/ssh"
 const views = [
   ["/", "홈"], ["/about", "동아리 소개"], ["/activities", "활동"], ["/projects", "전체 프로젝트"],
   ...projects.map(project => [`/projects/${project.id}`, project.title]),
-  ["/activities/ai-robot-challenge", "AI 로봇챌린지"], ["/activities/ri-opening", "RI 개소식"], ["/activities/tri-response", "TRI-RESPONSE 자체대회"],
+  ["/activities/ai-robot-challenge", "AI 로봇챌린지"], ["/activities/ri-opening", "RI 개소식"],
   ["/robots", "로봇 안내"], ...getRobots().map(robot => [`/robots/${robot.id}`, `${robot.name} 안내`]),
   ["/signup", "회원가입"], ["/login", "로그인"], ["/account", "내 계정"], ["/admin", "동아리 관리"], ["/privacy", "개인정보 안내"],
 ];
@@ -57,7 +57,7 @@ function RouteContent({ path, query }: { path: string; query: Record<string,stri
   if (["/activities","/history"].includes(path)) return <Activities/>;
   if (path === "/projects") return <Projects/>;
   if (path.startsWith("/projects/") && projects.some(project => project.id === path.split("/")[2])) return <Project params={ready({slug:path.split("/")[2]})}/>;
-  if (path.startsWith("/activities/") && ["ai-robot-challenge","ri-opening","tri-response"].includes(path.split("/")[2])) return <Activity params={ready({slug:path.split("/")[2]})}/>;
+  if (path.startsWith("/activities/") && ["ai-robot-challenge","ri-opening"].includes(path.split("/")[2])) return <Activity params={ready({slug:path.split("/")[2]})}/>;
   if (path === "/robots") return <Robots/>;
   if (path.startsWith("/robots/") && getRobot(path.split("/")[2])) return <Robot params={ready({slug:path.split("/")[2]})}/>;
   if (path === "/login") return member ? <Account/> : <><DemoAuthHelp next={query.next}/><Login searchParams={ready(query)}/></>;

@@ -1,0 +1,297 @@
+[
+  {
+    "file": "media/oneleg_gpu_policy.mp4",
+    "original": "runs/one_leg_text_warp_video/seed74201_push1/one_leg.mp4",
+    "original_sha256": "fcb2e8881b42a78db9df8b5974458635a34716c5c62bf397607c20980119777b",
+    "packaged_sha256": "d0af07ab3e8c8428423aeed82a81126f2842fdda03fc7de52dd8a8c082cda8f2",
+    "role": "Actual MuJoCo-Warp GPU rollout of sentence-reference PPO580; seed74201, 18 seconds, 1N horizontal pushes",
+    "transform": "CPU H264 encode, max960px width, timing/framecount preserved",
+    "metadata": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 800,
+          "height": 608,
+          "r_frame_rate": "50/1",
+          "nb_frames": "900"
+        }
+      ],
+      "format": {
+        "duration": "18.000000"
+      }
+    },
+    "timing_integrity": {
+      "source_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 800,
+            "height": 608,
+            "r_frame_rate": "50/1",
+            "nb_frames": "900"
+          }
+        ],
+        "format": {
+          "duration": "18.000000"
+        }
+      },
+      "frame_rate_preserved": true,
+      "frame_count_preserved": true,
+      "duration_preserved": true
+    }
+  },
+  {
+    "file": "media/kimodo_text_oneleg.mp4",
+    "original": "data/kimodo_text_oneleg/oneleg_text_00_G1_kinematic_preview.mp4",
+    "original_sha256": "8b407c1f0936c3fec9507f78123be0842abf77f66f80a3a096bd47d0c4ff1917",
+    "packaged_sha256": "8f93c2d8dbcb15deb422dead8efee1cc1bd8d7c0bc64c38cf5b9f8270998b228",
+    "role": "Actual sentence-conditioned Kimodo G1 reference, original CSV, kinematic visualization",
+    "transform": "CPU H264 encode, max960px width, timing/framecount preserved",
+    "metadata": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 640,
+          "height": 480,
+          "r_frame_rate": "30/1",
+          "nb_frames": "180"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      }
+    },
+    "timing_integrity": {
+      "source_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "r_frame_rate": "30/1",
+            "nb_frames": "180"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "frame_rate_preserved": true,
+      "frame_count_preserved": true,
+      "duration_preserved": true
+    }
+  },
+  {
+    "file": "media/oneleg_random_before.mp4",
+    "original": "education/source_runs/oneleg_random_before/one_leg.mp4",
+    "original_sha256": "0b0c8ed6513b7e7fdc2b0ea71863b3d55e32dc7b02514c80f301a8ee465b8608",
+    "packaged_sha256": "64bfaed51096c82513651aeebe5ed63ae9687572de4ba2031f66e30de61c6aed",
+    "role": "Separate earlier numeric-reference native policy: trained without external pushes; matched seed46007 random-angle 1N test, falls at 8.66s",
+    "transform": "CPU H264 encode, max960px width, timing/framecount preserved",
+    "metadata": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 800,
+          "height": 608,
+          "r_frame_rate": "50/1",
+          "nb_frames": "900"
+        }
+      ],
+      "format": {
+        "duration": "18.000000"
+      }
+    },
+    "timing_integrity": {
+      "source_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 800,
+            "height": 608,
+            "r_frame_rate": "50/1",
+            "nb_frames": "900"
+          }
+        ],
+        "format": {
+          "duration": "18.000000"
+        }
+      },
+      "frame_rate_preserved": true,
+      "frame_count_preserved": true,
+      "duration_preserved": true
+    },
+    "independent_dynamics_audit": "data/paired_random_video_audit.json",
+    "checkpoint_sha256": "fab7acb3396ab36f421c7edaec6e13af2fd984fe19920bc94099fe4090e1f746",
+    "same_initial_state_and_forces": true,
+    "distinct_from_sentence_gpu_case": true,
+    "compression_integrity": {
+      "method": "CPU ffmpeg frame-aligned SSIM across all 900 frames",
+      "all_ssim": 0.994629,
+      "pixel_bit_exact": false,
+      "note": "H264 compression changes pixels; original frame content and timing retained."
+    }
+  },
+  {
+    "file": "media/oneleg_random_after.mp4",
+    "original": "education/source_runs/oneleg_random_after/one_leg.mp4",
+    "original_sha256": "e725f23ab0788aef13e5911995bf9462b45311e875c7dcfd73ce32716b1facdc",
+    "packaged_sha256": "89d137cec9cf5283b3088b949fe11d0df70ef02df27405cc42588d599c69c5f3",
+    "role": "Separate earlier numeric-reference native policy: disturbance training plus balance correction (-2 coefficient); same initial state/pushes, completes 18s",
+    "transform": "CPU H264 encode, max960px width, timing/framecount preserved",
+    "metadata": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 800,
+          "height": 608,
+          "r_frame_rate": "50/1",
+          "nb_frames": "900"
+        }
+      ],
+      "format": {
+        "duration": "18.000000"
+      }
+    },
+    "timing_integrity": {
+      "source_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 800,
+            "height": 608,
+            "r_frame_rate": "50/1",
+            "nb_frames": "900"
+          }
+        ],
+        "format": {
+          "duration": "18.000000"
+        }
+      },
+      "frame_rate_preserved": true,
+      "frame_count_preserved": true,
+      "duration_preserved": true
+    },
+    "independent_dynamics_audit": "data/paired_random_video_audit.json",
+    "checkpoint_sha256": "7422009c0e1557c8b9193d1230b91d0f9ba5fc3f3dab950794c1bacdd09d3c54",
+    "same_initial_state_and_forces": true,
+    "distinct_from_sentence_gpu_case": true,
+    "compression_integrity": {
+      "method": "CPU ffmpeg frame-aligned SSIM across all 900 frames",
+      "all_ssim": 0.994293,
+      "pixel_bit_exact": false,
+      "note": "H264 compression changes pixels; original frame content and timing retained."
+    }
+  },
+  {
+    "file": "media/nvidia_kimodo_teaser.mp4",
+    "original": "https://research.nvidia.com/labs/sil/projects/kimodo/assets/videos/teaser.mp4",
+    "original_sha256": "013ee9519676e0f98e4310609c4d52c09dbbaeac8ffe0d9834826a4aa2b6b887",
+    "packaged_sha256": "013ee9519676e0f98e4310609c4d52c09dbbaeac8ffe0d9834826a4aa2b6b887",
+    "role": "User-selected NVIDIA official promotional teaser",
+    "credit": "NVIDIA Kimodo project",
+    "transform": "No modification",
+    "metadata": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2560,
+          "height": 1312,
+          "r_frame_rate": "30/1",
+          "nb_frames": "943"
+        }
+      ],
+      "format": {
+        "duration": "31.434000"
+      }
+    }
+  },
+  {
+    "file": "media/oneleg_gpu_policy.webp",
+    "original": "runs/one_leg_text_warp_video/seed74201_push1/frame_0450.png",
+    "original_sha256": "4d9d7eb6f637c5cbf3b58b1d86ea85a5c9488b12416892678721448aaf5ba7b5",
+    "packaged_sha256": "8836df816bd6bebe85131df2271afc9ea79f0ff23d2b9b6948e9eb5f1cadf2cf",
+    "transform": "WebP compression/resize only; actual render retained",
+    "dimensions": [
+      800,
+      608
+    ]
+  },
+  {
+    "file": "media/oneleg_gpu_initial.webp",
+    "original": "runs/one_leg_text_warp_video/seed74201_push1/frame_0000.png",
+    "original_sha256": "b59254eba1214869c15544d2823cdde2ec3d48c4206f659b14a567d9ee3b4740",
+    "packaged_sha256": "0c5a6da50377877be2b6bffdc76a71ad6ec29f3e915eb7bd67773cf9bb0e3005",
+    "transform": "WebP compression/resize only; actual render retained",
+    "dimensions": [
+      800,
+      608
+    ]
+  },
+  {
+    "file": "media/oneleg_gpu_stand.webp",
+    "original": "runs/one_leg_text_warp_video/seed74201_push1/frame_0225.png",
+    "original_sha256": "b2805feb29b81e46f170729b5071ac062e9271465dc609103ae0c8d8bb0d527b",
+    "packaged_sha256": "2c85cb45ed88a3cd04be80aa617f48ddb52e89f831b21b1cbd060c1566c28e5e",
+    "transform": "WebP compression/resize only; actual render retained",
+    "dimensions": [
+      800,
+      608
+    ]
+  },
+  {
+    "file": "media/oneleg_gpu_recover.webp",
+    "original": "runs/one_leg_text_warp_video/seed74201_push1/frame_0675.png",
+    "original_sha256": "5886aa08cc1d6ffc62b1c862f6239458a134224d71cc60047d627d5a5a1f0357",
+    "packaged_sha256": "8f73ca8df70e808ebf5dae59cebe8d2ef97c62971399aeb78acd89b973f062c7",
+    "transform": "WebP compression/resize only; actual render retained",
+    "dimensions": [
+      800,
+      608
+    ]
+  },
+  {
+    "file": "media/nvidia_kimodo_teaser.webp",
+    "original": "education/source_runs/nvidia_teaser_poster.png",
+    "original_sha256": "809b96295dc35c3a910b515295be1d14d2aa14fd1c7307de024bb60410d2495e",
+    "packaged_sha256": "46138785725cb9962d4f6d128fe19b4ba44b70bf1f0d688d6a9fb0c01f64c237",
+    "transform": "WebP compression/resize only; actual render retained",
+    "dimensions": [
+      1440,
+      738
+    ]
+  },
+  {
+    "file": "media/kimodo_text_oneleg.webp",
+    "original": "education/source_runs/kimodo_text_poster.png",
+    "original_sha256": "287683c91103a6940bb54289587457e8b900103bc98f1fc04de251acfa99c71b",
+    "packaged_sha256": "858fb9577f80f124acb80c24bf951090b26b8761b1a62bba703e2764eace102a",
+    "transform": "WebP compression/resize only; actual render retained",
+    "dimensions": [
+      640,
+      480
+    ]
+  },
+  {
+    "file": "media/oneleg_random_before.webp",
+    "original": "education/source_runs/oneleg_random_before/frame_0450.png",
+    "original_sha256": "1bc9abdd0a15fd40579fdd4b65ad8e6d0a178c09c377f717df1b26d1e8b38783",
+    "packaged_sha256": "110eb1dff8b2b841079313f54ccc687186ba844c0f840a8870ca5e8958ccce71",
+    "transform": "WebP compression/resize only; actual render retained",
+    "dimensions": [
+      800,
+      600
+    ]
+  },
+  {
+    "file": "media/oneleg_random_after.webp",
+    "original": "education/source_runs/oneleg_random_after/frame_0450.png",
+    "original_sha256": "c3e8c1f52cdf091056395b87fc1a744acc8f81cd156012c554b87aa915fe039e",
+    "packaged_sha256": "cb25af4286d6c5adce8f32e30abc7879a20ad955d2d937d48bc21a6012b9fc84",
+    "transform": "WebP compression/resize only; actual render retained",
+    "dimensions": [
+      800,
+      600
+    ]
+  }
+]

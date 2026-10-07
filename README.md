@@ -122,3 +122,19 @@ npm run admin:create -- --email admin@mero.local --name 'MERO 운영진'
 사이트의 고정 문구는 같은 글꼴에서 추출한 약 100KB의 `MeroSiteSans.woff2`로 먼저 표시합니다. 포함되지 않은 회원 이름·편집 문구는 원본 Pretendard를 필요할 때 불러옵니다. 파생 글꼴은 OFL의 예약 이름 규칙에 따라 내부 이름을 변경했습니다. 고정 문구가 크게 바뀌면 `fonttools[woff]`가 설치된 환경에서 `python3 scripts/build-font-subset.py`로 다시 생성할 수 있습니다. 공유 HTML은 원본 글꼴을 포함합니다.
 
 작업 기록과 남은 준비 사항은 [WORK_STATUS.md](WORK_STATUS.md)에 기록했습니다.
+
+
+
+`/education` → `/education/reinforcement-learning` → `/education/reinforcement-learning/kimodo-mjwarp` 순서로 교육 목록, 강화학습 시리즈, 첫 번째 강의에 접근합니다. 왼쪽 자료 목록은 주제와 강의별로 펼칠 수 있으며 모바일에서는 상단 버튼으로 목록 전체를 여닫습니다.
+
+첫 강의는 `/home/user/microbanRL/education/index.html`의 7개 장을 이식했습니다. HTML 스냅샷은 `src/lib/education/kimodo-lesson.ts`, 목차는 `src/lib/education/catalog.ts`, MERO 테마는 `src/app/education/education.css`에 있습니다. 원본의 큐레이션된 오프라인 ZIP에서 영상·코드·근거 자료·라이선스를 `public/education-assets/kimodo-mjwarp`로 가져왔고 ZIP 다운로드도 제공합니다. 회원 로그인 없이 읽을 수 있습니다.
+
+원본 갱신 시 `node scripts/import-education.mjs /path/to/education`을 실행하면 강의 HTML, 범위를 제한한 원본 CSS, 공개 자료를 다시 가져옵니다. MERO 테마 CSS와 상호작용 컴포넌트는 유지됩니다. 가져오는 HTML은 직접 작성한 신뢰할 수 있는 원본이어야 합니다.
+
+검증: 실행 중인 서버에 `MERO_EDUCATION_TEST_URL=http://localhost:3100 npx playwright test tests/education.spec.ts`를 실행합니다. 탐색·자료 목록·프레임 이동·코드 복사·동시 재생·속도 변경·인쇄·ZIP 다운로드와 320/390/1440px의 밝은/어두운 테마를 확인합니다.
+
+객체인식 시리즈는 `/education/object-recognition`, 첫 회차는 `/education/object-recognition/synthetic-data`입니다. `src/lib/education/catalog.ts`의 `educationTopics[].lessons`에 회차를 추가하면 시리즈 소개와 왼쪽 교육 목록에 반영됩니다. 각 회차의 페이지·장 목록은 별도로 만듭니다.
+
+실습 저장소는 [meroedu-rl](https://github.com/merosnurobotics/meroedu-rl), [meroedu-detection](https://github.com/merosnurobotics/meroedu-detection)입니다. 루트는 시리즈 목차, `lessons/01-.../`은 독립된 환경·실행 코드·최소 입력입니다. 영상과 과거 실험 결과는 교육 사이트에 남깁니다.
+
+객체인식 원본은 YenCho/ddonggae의 `d85758c`입니다. `scripts/import-perception-education.py`로 이 버전의 문서·그림·실습 명령을 스냅샷합니다. 전체 렌더링이나 학습을 자동 실행하지 않습니다.

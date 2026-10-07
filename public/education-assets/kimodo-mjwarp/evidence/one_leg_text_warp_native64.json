@@ -1,0 +1,5074 @@
+{
+  "task": "one_leg_stand",
+  "backend": "native MuJoCo",
+  "checkpoint": "/home/user/microbanRL/runs/one_leg_text_warp_ppo_v1/policy_final.pt",
+  "checkpoint_sha256": "2ba2955ab51633f90b5cb77f6932f5ba9f9c6eae2e8ef1f359d0107e578858b2",
+  "reference": "runs/one_leg_text_reference_v3/reference.json",
+  "seed": 74201,
+  "n": 64,
+  "perturb_std_joint_rad_and_root_rotation_rad": 0.006,
+  "horizon_s": 18.0,
+  "transition_from_bilateral": true,
+  "push_magnitude_N": 1.0,
+  "push_direction_mode": "random",
+  "push_jitter_s": 0.7,
+  "push_impulse_Ns_each": 0.1,
+  "criterion": "left foot normal ground load>30%mg, right and all other ground loads<.02N, other foot minimum box-collider clearance >1cm, root height>.135m, trunk tilt<20deg; sustained >=10sec and no fall; each push followed by1sec continuous single support within3sec",
+  "passed": 64,
+  "rows": [
+    {
+      "index": 0,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015883768870789326,
+      "maximum_tilt_deg": 12.358426937167842,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.583048826669596,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.07671790028295927,
+            -0.9970528390091339
+          ]
+        },
+        {
+          "time_s": 7.731555544784846,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.9360914571938053,
+            0.3517567110500923
+          ]
+        },
+        {
+          "time_s": 12.66678451359372,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.0001524478774979946,
+            0.9999999883798223
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "sustained_single_support_s": 15.979999999999748,
+      "total_single_support_s": 15.979999999999748,
+      "minimum_right_clearance_after_3s_m": 0.015584597602476744,
+      "maximum_tilt_deg": 12.075839236576254,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.575917823722388,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.948663646987845,
+            0.31628671310018913
+          ]
+        },
+        {
+          "time_s": 7.336472595599474,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.9994649423419042,
+            -0.032708241002751465
+          ]
+        },
+        {
+          "time_s": 12.179843396794386,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.15584050537721295,
+            -0.9877822315084306
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015534747620824062,
+      "maximum_tilt_deg": 12.17775785160004,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.3261191520995825,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.5650310197482035,
+            0.8250696617391197
+          ]
+        },
+        {
+          "time_s": 8.02944916888935,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.13174050034011994,
+            -0.9912842380317236
+          ]
+        },
+        {
+          "time_s": 12.362347802095664,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.9534646334231917,
+            -0.3015048802443814
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "sustained_single_support_s": 16.019999999999747,
+      "total_single_support_s": 16.019999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015084918144823352,
+      "maximum_tilt_deg": 11.61590823642701,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.682435941567681,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.5807432044471363,
+            -0.8140868077106223
+          ]
+        },
+        {
+          "time_s": 8.486052138749095,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.42237142263925787,
+            0.9064228490818672
+          ]
+        },
+        {
+          "time_s": 12.183515235273578,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.3915242303661148,
+            -0.9201677983043209
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "sustained_single_support_s": 15.979999999999748,
+      "total_single_support_s": 15.979999999999748,
+      "minimum_right_clearance_after_3s_m": 0.015637458982141986,
+      "maximum_tilt_deg": 9.322453705046826,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.9972468330050828,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.32830182176125905,
+            0.9445728737520671
+          ]
+        },
+        {
+          "time_s": 7.848180539041241,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.9999609268653519,
+            -0.008839951503621525
+          ]
+        },
+        {
+          "time_s": 11.626832131662406,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.16135153151671966,
+            0.9868969972987095
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01570239354778833,
+      "maximum_tilt_deg": 9.589475365390639,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.376152496087542,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.9381814750556917,
+            -0.34614378495406567
+          ]
+        },
+        {
+          "time_s": 8.208284174258226,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.99998022773512,
+            0.006288413060356091
+          ]
+        },
+        {
+          "time_s": 11.44266425416082,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.335539446230412,
+            0.9420261567617899
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015768671173628526,
+      "maximum_tilt_deg": 12.49128090736027,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.313770937726904,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.02313639039950413,
+            -0.9997323178927856
+          ]
+        },
+        {
+          "time_s": 8.273594320556631,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.991489041962306,
+            0.13019016732713906
+          ]
+        },
+        {
+          "time_s": 11.396741112397695,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.8705286537250064,
+            -0.4921177329092378
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015567244884730064,
+      "maximum_tilt_deg": 9.47895214444018,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.48760795411912,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.40901487542291,
+            0.9125277155696595
+          ]
+        },
+        {
+          "time_s": 7.43226977928234,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.9836719310934041,
+            -0.17997091981476668
+          ]
+        },
+        {
+          "time_s": 11.567730082778288,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.9481881264321682,
+            -0.3177094221030511
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01522594486367507,
+      "maximum_tilt_deg": 11.053664775318456,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.558945900167798,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.40408129279347127,
+            0.9147230776657802
+          ]
+        },
+        {
+          "time_s": 7.606305563836688,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.5392418583081352,
+            -0.8421509474247411
+          ]
+        },
+        {
+          "time_s": 12.615853254316196,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.5471053161318361,
+            -0.8370637807600348
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015827463286304664,
+      "maximum_tilt_deg": 9.735728688466297,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.1110069007242025,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.29511626502262717,
+            0.9554613493590908
+          ]
+        },
+        {
+          "time_s": 7.878527498580409,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.8677398547898758,
+            0.49701865599718204
+          ]
+        },
+        {
+          "time_s": 11.841057336759015,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.8876510874393603,
+            -0.4605166087859603
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "sustained_single_support_s": 15.999999999999748,
+      "total_single_support_s": 15.999999999999748,
+      "minimum_right_clearance_after_3s_m": 0.015585457132575534,
+      "maximum_tilt_deg": 9.642128816467782,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.930143570784848,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.03955567545229766,
+            0.9992173680133429
+          ]
+        },
+        {
+          "time_s": 8.141682692494587,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.9350194633425384,
+            -0.35459639475131666
+          ]
+        },
+        {
+          "time_s": 12.260474787581925,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.17678019224195385,
+            0.984250356175144
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015182428333231707,
+      "maximum_tilt_deg": 10.70756949437648,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.573227729436713,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.6668591106066707,
+            -0.7451838206784149
+          ]
+        },
+        {
+          "time_s": 8.506642909711458,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.5566053339703307,
+            0.8307770472249318
+          ]
+        },
+        {
+          "time_s": 12.400622557023569,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.8902274362269286,
+            0.4555163134167972
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "sustained_single_support_s": 16.019999999999747,
+      "total_single_support_s": 16.019999999999747,
+      "minimum_right_clearance_after_3s_m": 0.01543097392606219,
+      "maximum_tilt_deg": 10.192204230574117,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.409710851635875,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.7220895647616242,
+            0.6917995811377512
+          ]
+        },
+        {
+          "time_s": 7.557554789530609,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.8366203738440088,
+            -0.5477831232058094
+          ]
+        },
+        {
+          "time_s": 11.583453478933174,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.7500152873848788,
+            -0.6614204930972261
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015571221719543843,
+      "maximum_tilt_deg": 12.076296923064788,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.4921398447718754,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.2616267531683846,
+            -0.9651691261258667
+          ]
+        },
+        {
+          "time_s": 8.201369356953967,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.9889717593141428,
+            -0.14810421762761877
+          ]
+        },
+        {
+          "time_s": 12.594942132167132,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.926108588162223,
+            0.37725705153406225
+          ]
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "sustained_single_support_s": 16.019999999999747,
+      "total_single_support_s": 16.019999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015394351196786983,
+      "maximum_tilt_deg": 10.00883450062235,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.192226857290792,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.8382960654392997,
+            -0.5452152846986128
+          ]
+        },
+        {
+          "time_s": 8.434015002521779,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.9992544217072986,
+            -0.038608298310237855
+          ]
+        },
+        {
+          "time_s": 12.602114076283986,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.7246319120813103,
+            0.6891361200759862
+          ]
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.017179313550537874,
+      "maximum_tilt_deg": 10.63538556523548,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.3425295518192364,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.8962010406814995,
+            0.4436481654209754
+          ]
+        },
+        {
+          "time_s": 7.542819831039185,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.6154609826459858,
+            -0.7881673545893902
+          ]
+        },
+        {
+          "time_s": 12.381556557835946,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.462086372468892,
+            0.8868349251007994
+          ]
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015758407101386443,
+      "maximum_tilt_deg": 9.654106352288874,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.175430039688627,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.005243214022263414,
+            0.9999862542588857
+          ]
+        },
+        {
+          "time_s": 8.219426550763579,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.5089379896178857,
+            0.8608031846616885
+          ]
+        },
+        {
+          "time_s": 11.31927545695626,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.9046467214405847,
+            -0.42616230404248717
+          ]
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "sustained_single_support_s": 16.099999999999746,
+      "total_single_support_s": 16.099999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01626231999409297,
+      "maximum_tilt_deg": 9.24505875614596,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.643098854138213,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.30379844428060565,
+            0.952736325145989
+          ]
+        },
+        {
+          "time_s": 8.475489533422182,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.6037657540777391,
+            0.7971617867176894
+          ]
+        },
+        {
+          "time_s": 11.857691795222419,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.9857468384177484,
+            0.16823546162867523
+          ]
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "sustained_single_support_s": 16.019999999999747,
+      "total_single_support_s": 16.019999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015574847465659788,
+      "maximum_tilt_deg": 9.862140338706624,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.400671237233734,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.8325340235477692,
+            -0.5539739160243581
+          ]
+        },
+        {
+          "time_s": 8.536942613731812,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.007017580315012301,
+            0.9999753764801023
+          ]
+        },
+        {
+          "time_s": 11.735373937812685,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.9260275237262304,
+            -0.3774559912115129
+          ]
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015538000106967955,
+      "maximum_tilt_deg": 10.337003338054151,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.5053393690233507,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.9154204322988079,
+            0.4024989840109707
+          ]
+        },
+        {
+          "time_s": 8.445648622583676,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.6542727819313252,
+            -0.7562586375201572
+          ]
+        },
+        {
+          "time_s": 11.87524996330333,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.986943862124362,
+            -0.16106462372305172
+          ]
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "sustained_single_support_s": 15.999999999999748,
+      "total_single_support_s": 15.999999999999748,
+      "minimum_right_clearance_after_3s_m": 0.016278659183603675,
+      "maximum_tilt_deg": 11.964005538759247,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.6315960911358482,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.027724579519659787,
+            0.999615599963535
+          ]
+        },
+        {
+          "time_s": 8.493940508484114,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.1503263931733136,
+            -0.9886364223087789
+          ]
+        },
+        {
+          "time_s": 12.429417803847695,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.22803781033096546,
+            -0.9736522772835581
+          ]
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015678080783060037,
+      "maximum_tilt_deg": 12.54753674818514,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.043200275899757,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.016207738506279257,
+            -0.9998686459793167
+          ]
+        },
+        {
+          "time_s": 8.30740646024484,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.9578551961125455,
+            0.28725149830801033
+          ]
+        },
+        {
+          "time_s": 12.073554422820449,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.7920073432974376,
+            0.6105115626775097
+          ]
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "sustained_single_support_s": 16.019999999999747,
+      "total_single_support_s": 16.019999999999747,
+      "minimum_right_clearance_after_3s_m": 0.016089337769768335,
+      "maximum_tilt_deg": 9.793735421333528,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.830224739912843,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.5018804487943547,
+            0.864937000664197
+          ]
+        },
+        {
+          "time_s": 7.759545795887486,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.49454191297305483,
+            0.8691537817400046
+          ]
+        },
+        {
+          "time_s": 12.556097727600298,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.8382319454796779,
+            -0.5453138596967386
+          ]
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "sustained_single_support_s": 16.099999999999746,
+      "total_single_support_s": 16.099999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015835308517634476,
+      "maximum_tilt_deg": 12.465421298760962,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.259737328857657,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.03874396274746841,
+            -0.99924917080307
+          ]
+        },
+        {
+          "time_s": 8.453457068029007,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.46960731432209696,
+            0.8828753990995486
+          ]
+        },
+        {
+          "time_s": 11.848256735737785,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.8180177223469522,
+            -0.5751930162356845
+          ]
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "sustained_single_support_s": 15.999999999999748,
+      "total_single_support_s": 15.999999999999748,
+      "minimum_right_clearance_after_3s_m": 0.01784188314154405,
+      "maximum_tilt_deg": 9.516709388112675,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.643479604038178,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.7385883974814115,
+            0.6741566428552347
+          ]
+        },
+        {
+          "time_s": 8.249271067245703,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.06368273688347655,
+            0.9979701944562422
+          ]
+        },
+        {
+          "time_s": 11.662713543236572,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.06325513696525721,
+            0.9979973885975386
+          ]
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "sustained_single_support_s": 16.019999999999747,
+      "total_single_support_s": 16.019999999999747,
+      "minimum_right_clearance_after_3s_m": 0.016472900118654214,
+      "maximum_tilt_deg": 8.977885390695768,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.3939430204430328,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.939926528534212,
+            0.34137680202032644
+          ]
+        },
+        {
+          "time_s": 7.539288048633942,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.9063376181442557,
+            0.42255428282836904
+          ]
+        },
+        {
+          "time_s": 12.516351375129661,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.953123611733875,
+            0.3025811969626886
+          ]
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "sustained_single_support_s": 16.179999999999744,
+      "total_single_support_s": 16.179999999999744,
+      "minimum_right_clearance_after_3s_m": 0.01568606532526158,
+      "maximum_tilt_deg": 9.275970195652949,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.508392780001492,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.6582004640181477,
+            0.7528427121027972
+          ]
+        },
+        {
+          "time_s": 7.514841843360191,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.032914546779346555,
+            0.9994581695150179
+          ]
+        },
+        {
+          "time_s": 11.60450231339805,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.998258620791889,
+            0.058989202526187084
+          ]
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01581856633901021,
+      "maximum_tilt_deg": 12.190440449946294,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.5106703888219077,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.9803248662266165,
+            -0.19739087278232087
+          ]
+        },
+        {
+          "time_s": 8.312063813869088,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.4489877969428722,
+            -0.8935378885063499
+          ]
+        },
+        {
+          "time_s": 11.906311363059762,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.0165080422905635,
+            -0.9998637329855169
+          ]
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "sustained_single_support_s": 16.099999999999746,
+      "total_single_support_s": 16.099999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01570873950000276,
+      "maximum_tilt_deg": 12.576868490124129,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.099808228748501,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.018884364692144186,
+            -0.9998216744850924
+          ]
+        },
+        {
+          "time_s": 7.966478971105004,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.7065549253947548,
+            0.7076582066226692
+          ]
+        },
+        {
+          "time_s": 12.031072154956211,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.8568773646812804,
+            -0.5155203021189989
+          ]
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015752180313421238,
+      "maximum_tilt_deg": 9.524244061759882,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.370539822940171,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.9753930640353784,
+            -0.2204730610112632
+          ]
+        },
+        {
+          "time_s": 7.624369244431928,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.946183737756706,
+            0.3236299343459271
+          ]
+        },
+        {
+          "time_s": 11.814100158438391,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.6678245340101839,
+            0.7443187433983378
+          ]
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01592609350517554,
+      "maximum_tilt_deg": 9.481095527774883,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.9065850571414695,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.9969925273156839,
+            -0.0774977449780652
+          ]
+        },
+        {
+          "time_s": 7.5040018861914435,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.929091117168707,
+            0.3698509105007097
+          ]
+        },
+        {
+          "time_s": 11.770146406749587,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.27350932883711104,
+            0.9618693502961164
+          ]
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "sustained_single_support_s": 16.099999999999746,
+      "total_single_support_s": 16.099999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015495048580753151,
+      "maximum_tilt_deg": 9.556396271612183,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.4584711386994087,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.9114172592557881,
+            0.41148338913091936
+          ]
+        },
+        {
+          "time_s": 7.37498247005434,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.9618041275405896,
+            -0.27373859838518416
+          ]
+        },
+        {
+          "time_s": 12.518877515239472,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.9104293714587015,
+            0.41366454958736026
+          ]
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.01566396119320219,
+      "maximum_tilt_deg": 12.305191573253666,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.136654197104101,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.22290381855021185,
+            -0.9748404421625799
+          ]
+        },
+        {
+          "time_s": 7.529521001515405,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.99838534517614,
+            0.056804071487172626
+          ]
+        },
+        {
+          "time_s": 11.38151155906821,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.7537696861653811,
+            0.6571386917676838
+          ]
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015596085092591173,
+      "maximum_tilt_deg": 9.586096813143474,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.221500408185375,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.9349157624358837,
+            0.35486971855729
+          ]
+        },
+        {
+          "time_s": 7.4575903069812775,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.8570379669952872,
+            0.5152532611527898
+          ]
+        },
+        {
+          "time_s": 12.624988088775872,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.8988546176046561,
+            -0.4382469354265781
+          ]
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "sustained_single_support_s": 16.099999999999746,
+      "total_single_support_s": 16.099999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01567693917057729,
+      "maximum_tilt_deg": 10.593414399927239,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.4427859176013507,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.8809351028978272,
+            0.4732370911946723
+          ]
+        },
+        {
+          "time_s": 7.320059570488082,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.9990746624401092,
+            0.04300952069230396
+          ]
+        },
+        {
+          "time_s": 12.244041796847398,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.6180781588040848,
+            -0.7861166514006382
+          ]
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015637431572020688,
+      "maximum_tilt_deg": 9.464511035977235,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.5273718948631165,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.2735691699052285,
+            0.9618523323657141
+          ]
+        },
+        {
+          "time_s": 7.952448963108234,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.9994972278242493,
+            -0.031706333304887986
+          ]
+        },
+        {
+          "time_s": 12.56158792365884,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.9259043739554197,
+            0.3777579784600482
+          ]
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015571604347528894,
+      "maximum_tilt_deg": 9.647424903950258,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.284368000866348,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.9947469173895109,
+            -0.10236488823842647
+          ]
+        },
+        {
+          "time_s": 7.830535561786365,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.9326963167402512,
+            -0.360662696628261
+          ]
+        },
+        {
+          "time_s": 12.617672435204772,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.9150718918312908,
+            -0.4032907546427297
+          ]
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.016288272702589455,
+      "maximum_tilt_deg": 10.045905564683869,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.276688779076318,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.7954837299906602,
+            -0.6059749461158823
+          ]
+        },
+        {
+          "time_s": 8.125614041249902,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.5838752591765436,
+            0.8118433849712172
+          ]
+        },
+        {
+          "time_s": 11.998039625863713,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.9828645004089458,
+            0.1843295251333149
+          ]
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015890763408420862,
+      "maximum_tilt_deg": 11.486707358177092,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.4310455966460225,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.7094472472523722,
+            0.7047585425988333
+          ]
+        },
+        {
+          "time_s": 7.941270507629784,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.9001169749166001,
+            -0.4356482887226675
+          ]
+        },
+        {
+          "time_s": 11.900094799352642,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.3754607968389882,
+            -0.9268382760962303
+          ]
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.016356917676863387,
+      "maximum_tilt_deg": 9.320338080906245,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.7832980583090032,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.9904182526603628,
+            0.1381002708078224
+          ]
+        },
+        {
+          "time_s": 7.916173570926441,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.30780207539142074,
+            0.9514504098400158
+          ]
+        },
+        {
+          "time_s": 11.950996617112782,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.3288440177751505,
+            0.9443842501722995
+          ]
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015527142847496535,
+      "maximum_tilt_deg": 9.61543810155337,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.51582096143009,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.9293701773647256,
+            -0.36914912085098955
+          ]
+        },
+        {
+          "time_s": 8.5274941290998,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.1867744580334132,
+            0.9824028205508801
+          ]
+        },
+        {
+          "time_s": 11.60451129759759,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.8732593714001521,
+            0.48725565185209624
+          ]
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "sustained_single_support_s": 15.999999999999748,
+      "total_single_support_s": 15.999999999999748,
+      "minimum_right_clearance_after_3s_m": 0.01556696625523541,
+      "maximum_tilt_deg": 11.401304940559092,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.4102711225902826,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.4139833293263826,
+            -0.910284462703744
+          ]
+        },
+        {
+          "time_s": 8.56524148571873,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.9877464722141461,
+            -0.15606699403944754
+          ]
+        },
+        {
+          "time_s": 12.032553781308046,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.9233306211453425,
+            0.38400594273442706
+          ]
+        }
+      ]
+    },
+    {
+      "index": 42,
+      "sustained_single_support_s": 16.159999999999744,
+      "total_single_support_s": 16.159999999999744,
+      "minimum_right_clearance_after_3s_m": 0.015124310070156395,
+      "maximum_tilt_deg": 13.151121179053252,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.4307764627474766,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.22286151665199594,
+            -0.9748501138101037
+          ]
+        },
+        {
+          "time_s": 7.682880773232876,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.7937944296867576,
+            0.6081861585059916
+          ]
+        },
+        {
+          "time_s": 11.804825593290314,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.2958741814395815,
+            0.9552269200339035
+          ]
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015389265644077076,
+      "maximum_tilt_deg": 9.700114893451223,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.5037551132958447,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.9235849421813512,
+            -0.38339386350836396
+          ]
+        },
+        {
+          "time_s": 7.573723256531188,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.174352947656597,
+            0.9846832229927835
+          ]
+        },
+        {
+          "time_s": 11.990032608786862,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.9953684565510953,
+            0.09613342656480227
+          ]
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.01537528113109983,
+      "maximum_tilt_deg": 9.881694631469147,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.860247022648165,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.8715312745368432,
+            -0.49033992036564344
+          ]
+        },
+        {
+          "time_s": 7.866845491529194,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.7444056297572583,
+            0.6677276828061719
+          ]
+        },
+        {
+          "time_s": 12.303888250214717,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.8085916068394374,
+            0.5883703029120493
+          ]
+        }
+      ]
+    },
+    {
+      "index": 45,
+      "sustained_single_support_s": 15.999999999999748,
+      "total_single_support_s": 15.999999999999748,
+      "minimum_right_clearance_after_3s_m": 0.015253049907812522,
+      "maximum_tilt_deg": 11.83814291183309,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.5752392250795952,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.40756980474284543,
+            -0.9131740547463439
+          ]
+        },
+        {
+          "time_s": 7.673932606379347,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.9976820470256385,
+            0.0680480201235256
+          ]
+        },
+        {
+          "time_s": 11.948527584126799,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.7530138519309904,
+            0.6580046647251466
+          ]
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015379807089116368,
+      "maximum_tilt_deg": 11.570486539293206,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.639103036218048,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.04605332745384351,
+            0.9989389826362914
+          ]
+        },
+        {
+          "time_s": 8.367994332001338,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.04042996941749832,
+            0.9991823745307461
+          ]
+        },
+        {
+          "time_s": 11.705791858964243,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.40093244835137826,
+            -0.9161076202384573
+          ]
+        }
+      ]
+    },
+    {
+      "index": 47,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015538833651703929,
+      "maximum_tilt_deg": 11.864109446868616,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.9559306993906524,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.3375798507849433,
+            -0.9412968948976808
+          ]
+        },
+        {
+          "time_s": 7.678113640873651,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.9255901492537992,
+            -0.3785272455244532
+          ]
+        },
+        {
+          "time_s": 11.952277364704887,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.05644553160312229,
+            0.9984056800529737
+          ]
+        }
+      ]
+    },
+    {
+      "index": 48,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015505716156781514,
+      "maximum_tilt_deg": 11.09066234185185,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.17974208489249,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.5150539945753679,
+            -0.8571577350009488
+          ]
+        },
+        {
+          "time_s": 8.694424897613093,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.5830926669271624,
+            0.8124056509994063
+          ]
+        },
+        {
+          "time_s": 11.893208488593181,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.9784830448066056,
+            -0.2063272425686784
+          ]
+        }
+      ]
+    },
+    {
+      "index": 49,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01677832501027955,
+      "maximum_tilt_deg": 10.482905685728754,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.232282108899266,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.6322147701539396,
+            0.7747931881471347
+          ]
+        },
+        {
+          "time_s": 8.294876437878557,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.6976641919214316,
+            -0.7164249265000596
+          ]
+        },
+        {
+          "time_s": 11.456351770657895,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.6620606414679848,
+            -0.749450269877195
+          ]
+        }
+      ]
+    },
+    {
+      "index": 50,
+      "sustained_single_support_s": 15.999999999999748,
+      "total_single_support_s": 15.999999999999748,
+      "minimum_right_clearance_after_3s_m": 0.015100138118087567,
+      "maximum_tilt_deg": 11.36608971098212,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.5579916406088135,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.5200474933336854,
+            -0.854137345324129
+          ]
+        },
+        {
+          "time_s": 8.05309775945969,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.5241980984085636,
+            -0.8515963560424891
+          ]
+        },
+        {
+          "time_s": 12.070713330954241,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.9852947704641997,
+            -0.1708631478578695
+          ]
+        }
+      ]
+    },
+    {
+      "index": 51,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015796624328461368,
+      "maximum_tilt_deg": 12.248858229215292,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.596900187418729,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.2073841643935857,
+            -0.978259581276245
+          ]
+        },
+        {
+          "time_s": 7.4210530779025845,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.6231103947547517,
+            0.7821338989895384
+          ]
+        },
+        {
+          "time_s": 11.929916343501306,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.4126125424589626,
+            0.9109066306738308
+          ]
+        }
+      ]
+    },
+    {
+      "index": 52,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01626214573084985,
+      "maximum_tilt_deg": 12.124170195707134,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.068887446518532,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.8651456206493539,
+            0.5015207424137553
+          ]
+        },
+        {
+          "time_s": 8.45769120794974,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.11617799624873869,
+            -0.993228409374011
+          ]
+        },
+        {
+          "time_s": 11.566525871421849,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.28853104100428734,
+            0.9574705417802588
+          ]
+        }
+      ]
+    },
+    {
+      "index": 53,
+      "sustained_single_support_s": 16.159999999999744,
+      "total_single_support_s": 16.159999999999744,
+      "minimum_right_clearance_after_3s_m": 0.015259719307974321,
+      "maximum_tilt_deg": 11.554107759081527,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.91634638123386,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.9186519946391426,
+            -0.39506773184547056
+          ]
+        },
+        {
+          "time_s": 8.36828647937583,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.3944072898599075,
+            -0.9189357375275831
+          ]
+        },
+        {
+          "time_s": 11.778699425232137,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.9990014051880989,
+            -0.0446787693676074
+          ]
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015237608030639949,
+      "maximum_tilt_deg": 11.235231656503787,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.521931195350856,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.9514458758382766,
+            0.30781609014204364
+          ]
+        },
+        {
+          "time_s": 7.367410199988004,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.5097898013323233,
+            -0.8602989936397405
+          ]
+        },
+        {
+          "time_s": 12.056192826912934,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.9340478726881684,
+            0.3571478286742161
+          ]
+        }
+      ]
+    },
+    {
+      "index": 55,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.017203019055891576,
+      "maximum_tilt_deg": 11.015694678463907,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.958448066075511,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.7045123250958217,
+            0.7096917526560945
+          ]
+        },
+        {
+          "time_s": 7.665057132391398,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.21508590084572043,
+            0.9765951337465208
+          ]
+        },
+        {
+          "time_s": 11.899978218852448,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.4800024790184415,
+            -0.877267131571764
+          ]
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.016398842532315456,
+      "maximum_tilt_deg": 11.06227237914243,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.2319190782189455,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.7659441115514639,
+            -0.6429071612446376
+          ]
+        },
+        {
+          "time_s": 8.014102552277695,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.5056523414928323,
+            0.8627373351969972
+          ]
+        },
+        {
+          "time_s": 11.399179642945601,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.4918367222414749,
+            -0.8706874517614012
+          ]
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015884461360390907,
+      "maximum_tilt_deg": 11.426688075488835,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.4004040779840663,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.3458538377887782,
+            0.9382884006992591
+          ]
+        },
+        {
+          "time_s": 7.918892189919947,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.3883286804746814,
+            -0.9215209362357389
+          ]
+        },
+        {
+          "time_s": 12.460934966740977,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.9877730893570174,
+            0.1558984411150214
+          ]
+        }
+      ]
+    },
+    {
+      "index": 58,
+      "sustained_single_support_s": 16.039999999999747,
+      "total_single_support_s": 16.039999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015739475116141023,
+      "maximum_tilt_deg": 9.655033723596507,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.519762097961766,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.9095498332765417,
+            -0.41559487579446314
+          ]
+        },
+        {
+          "time_s": 8.365245725324675,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.08941415464200182,
+            0.9959945325902427
+          ]
+        },
+        {
+          "time_s": 11.804158976136783,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.9433863723902501,
+            0.33169587333635053
+          ]
+        }
+      ]
+    },
+    {
+      "index": 59,
+      "sustained_single_support_s": 16.099999999999746,
+      "total_single_support_s": 16.099999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01586840758948978,
+      "maximum_tilt_deg": 9.509789801249331,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.626715093409226,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            -0.9965555366251929,
+            -0.08292805569693416
+          ]
+        },
+        {
+          "time_s": 7.554315004314423,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            0.17941854159811296,
+            0.9837728329908314
+          ]
+        },
+        {
+          "time_s": 11.740340473989699,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.25561177305569655,
+            0.9667795102686667
+          ]
+        }
+      ]
+    },
+    {
+      "index": 60,
+      "sustained_single_support_s": 16.079999999999746,
+      "total_single_support_s": 16.079999999999746,
+      "minimum_right_clearance_after_3s_m": 0.01584871908684607,
+      "maximum_tilt_deg": 9.510671423474832,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.071393577712817,
+          "duration_s": 0.1,
+          "direction": 2,
+          "direction_world_xy": [
+            -0.9999291711958525,
+            -0.01190178942746016
+          ]
+        },
+        {
+          "time_s": 7.866566239581446,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.9403217544155716,
+            0.34028664119066054
+          ]
+        },
+        {
+          "time_s": 11.324567980549777,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.70620960770494,
+            0.7080028177805755
+          ]
+        }
+      ]
+    },
+    {
+      "index": 61,
+      "sustained_single_support_s": 16.059999999999746,
+      "total_single_support_s": 16.059999999999746,
+      "minimum_right_clearance_after_3s_m": 0.015334456293470146,
+      "maximum_tilt_deg": 11.496635891990234,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.515312473237595,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.4762765562159713,
+            -0.8792955373474011
+          ]
+        },
+        {
+          "time_s": 8.128905559734957,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.7134528036963907,
+            -0.7007032873461914
+          ]
+        },
+        {
+          "time_s": 11.305416862716864,
+          "duration_s": 0.1,
+          "direction": 3,
+          "direction_world_xy": [
+            0.9631591526969371,
+            -0.2689320482503308
+          ]
+        }
+      ]
+    },
+    {
+      "index": 62,
+      "sustained_single_support_s": 16.019999999999747,
+      "total_single_support_s": 16.019999999999747,
+      "minimum_right_clearance_after_3s_m": 0.018863332181448058,
+      "maximum_tilt_deg": 9.046306735061997,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 3.8568509750229625,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.8330896061241385,
+            0.5531380552519667
+          ]
+        },
+        {
+          "time_s": 7.965108682993167,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.3098463101919144,
+            0.9507866553861891
+          ]
+        },
+        {
+          "time_s": 12.576813550990446,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            0.7676945357991993,
+            0.6408159639897028
+          ]
+        }
+      ]
+    },
+    {
+      "index": 63,
+      "sustained_single_support_s": 16.019999999999747,
+      "total_single_support_s": 16.019999999999747,
+      "minimum_right_clearance_after_3s_m": 0.015559108069867034,
+      "maximum_tilt_deg": 11.407353183991424,
+      "fall": false,
+      "post_push_recovery_delay_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "success": true,
+      "pushes": [
+        {
+          "time_s": 4.1189049566235445,
+          "duration_s": 0.1,
+          "direction": 0,
+          "direction_world_xy": [
+            -0.8625171390221862,
+            -0.5060278499183446
+          ]
+        },
+        {
+          "time_s": 7.597943476882023,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            0.3562296520464428,
+            -0.9343984348247113
+          ]
+        },
+        {
+          "time_s": 11.605763033379203,
+          "duration_s": 0.1,
+          "direction": 1,
+          "direction_world_xy": [
+            -0.9958123656324622,
+            -0.09142063472476777
+          ]
+        }
+      ]
+    }
+  ],
+  "trace_seed0": [
+    {
+      "time_s": 0.020000000000000004,
+      "qpos": [
+        5.2161578820669825e-05,
+        0.00033248423645357484,
+        0.1673842839483627,
+        0.9999821223396103,
+        0.0005441458709460139,
+        -0.0013648673587712814,
+        -0.0057962094106615925,
+        0.009053398876806477,
+        -0.14639715233523146,
+        -0.24758308001026927,
+        -1.0105664369189542,
+        0.006087556096217601,
+        0.0074804334157673475,
+        -0.001461386772356095,
+        0.0038093617603530906,
+        0.002670063994134341,
+        -0.006605894417315113,
+        0.10666922564966605,
+        0.2537028534997861,
+        -0.9319828688277453,
+        0.004563297781115567,
+        0.002014895284674583,
+        0.004709697915797981,
+        0.0006173798322956553,
+        -0.00906754340315765,
+        -0.0026791652048646186
+      ],
+      "qvel": [
+        0.003976636572315571,
+        0.020498591568338664,
+        -0.022615634660434213,
+        -0.2939103091292728,
+        -0.03584538885405022,
+        0.07085802650369073,
+        -0.005824926188988981,
+        -0.003050367322596546,
+        -0.002860405032603599,
+        -0.0027020464978760018,
+        -0.008015564879739232,
+        0.22901591155090115,
+        0.03350723495788205,
+        0.08625847927133243,
+        0.07562665740336302,
+        -0.14609816002967208,
+        -0.0019258637876364607,
+        -0.0020991867918782386,
+        0.003617213155921398,
+        -0.004304774393422284,
+        0.09879169125281785,
+        -0.0842705384400015,
+        -0.16671224985872599,
+        0.22674007373753083,
+        0.03167062624339117
+      ],
+      "right_clearance_m": -0.0003124587650579565,
+      "single_support": false
+    },
+    {
+      "time_s": 0.5200000000000004,
+      "qpos": [
+        0.0010242837663999845,
+        0.0040814296707116894,
+        0.16715899639122117,
+        0.9999737855746824,
+        -0.003301267145612013,
+        -0.0032326056535916846,
+        -0.005574949269828298,
+        0.005799112581399523,
+        -0.14830231387887405,
+        -0.24844825457603803,
+        -1.011258349727714,
+        0.005231464408797158,
+        -0.012311504512499499,
+        0.00997354238922808,
+        0.006002819111793559,
+        -0.009739008064692797,
+        0.01678750274805311,
+        0.1061622911964733,
+        0.25295157933535006,
+        -0.9310227439898655,
+        0.0038601842907416027,
+        -0.021063223067694384,
+        -0.017030865327634676,
+        0.06350482133208876,
+        -0.04050582930882685,
+        0.0290514954192718
+      ],
+      "qvel": [
+        0.004821685994111319,
+        0.018341374101404368,
+        -0.0007075019431139013,
+        -0.032929309461532275,
+        0.022619638061863016,
+        -0.00634227074242114,
+        -0.0051883760308928245,
+        -0.0031806216347800348,
+        -0.0014259248688119027,
+        -0.001124366964069913,
+        -0.0003855914244988635,
+        -0.09837127510286489,
+        0.006964803033488139,
+        0.002672564715431471,
+        -0.032626267621002666,
+        0.09988703172133886,
+        -0.0007897207942361291,
+        -0.0012876281789560337,
+        0.001478339536801542,
+        0.003215939510217911,
+        -0.11705036942383261,
+        -0.08587224728893711,
+        0.20332428029009145,
+        -0.14149819872436406,
+        0.15678077803172732
+      ],
+      "right_clearance_m": -6.9197774481258e-05,
+      "single_support": false
+    },
+    {
+      "time_s": 1.0200000000000007,
+      "qpos": [
+        0.0035605690023114245,
+        0.019892523103659084,
+        0.16752818399692276,
+        0.9989029801654813,
+        -0.04354724642246502,
+        -0.003851507198122191,
+        -0.016782116607961833,
+        0.0036259312429369737,
+        -0.14953745646292085,
+        -0.2488871689978779,
+        -1.0116768276968777,
+        0.011472007865631295,
+        0.00032711157854211606,
+        0.018525859868104056,
+        0.01343060208030401,
+        -0.023719345370875267,
+        -0.1169949369609437,
+        0.10582311086091749,
+        0.25256225764112283,
+        -0.9304036714404633,
+        0.0013511655366857485,
+        -0.06043563995998792,
+        -0.05021865682998122,
+        0.19422928778624132,
+        -0.13674818759202562,
+        0.1262921164414683
+      ],
+      "qvel": [
+        0.003946242882235883,
+        0.04328938826060369,
+        -0.0008991231309708691,
+        -0.16444615176321228,
+        -0.02483378922714835,
+        -0.05768217298128838,
+        -0.00362303834488907,
+        -0.001977145302128388,
+        -0.00028981944558611474,
+        -0.0006214754145151527,
+        0.010475766278326061,
+        -0.04654116001187872,
+        0.013641761320011391,
+        0.03472730835201446,
+        -0.020267034071537668,
+        -0.2617680414106812,
+        -0.0005246330895032962,
+        -0.00021970866331350635,
+        0.001119498801627818,
+        -0.0013626087178750755,
+        -0.15332320534866864,
+        -0.04221257297341003,
+        0.25218476782574256,
+        -0.1752717602299188,
+        0.13777722497004033
+      ],
+      "right_clearance_m": -0.00018208404993473766,
+      "single_support": false
+    },
+    {
+      "time_s": 1.5200000000000011,
+      "qpos": [
+        0.0026752563242466642,
+        0.037188134628897807,
+        0.15899420730323888,
+        0.9984265954149897,
+        -0.031583782525667535,
+        -0.02186469835965107,
+        -0.04085013115090551,
+        0.002121641331755325,
+        -0.1503080306471695,
+        -0.2489877206677205,
+        -1.0119632304912864,
+        0.004196862393359821,
+        -0.09679669852394603,
+        -0.25371750599218124,
+        0.447672820126016,
+        -0.1510372570722896,
+        0.06838047497884558,
+        0.10562308749340178,
+        0.25258443576884415,
+        -0.9298340081942965,
+        0.038178285852923814,
+        -0.2517031580991316,
+        -0.07159844428970855,
+        0.3300967476632879,
+        -0.2130385123213206,
+        0.3153306425659989
+      ],
+      "qvel": [
+        0.03319238030727988,
+        0.07297047337444879,
+        -0.0498168123130685,
+        0.4057917199166372,
+        -0.13507344560486587,
+        0.17036528863854264,
+        -0.0024458296006133287,
+        -0.000537857258212228,
+        -0.001057128093472299,
+        -0.0005182262870205941,
+        0.02242958699046887,
+        -0.012279173029341055,
+        -1.4031012420036904,
+        1.313798976756515,
+        -0.0005029791917466366,
+        1.4982763108348345,
+        6.159149397083365e-05,
+        -0.0005690238413459323,
+        0.0010655078396528215,
+        -0.09789929094952703,
+        -1.1709071765694918,
+        0.28060570817214603,
+        0.1943651411225735,
+        -0.302134360898294,
+        0.7650887759016234
+      ],
+      "right_clearance_m": 1.3361305853946265e-05,
+      "single_support": false
+    },
+    {
+      "time_s": 2.019999999999999,
+      "qpos": [
+        0.010526390949788722,
+        0.044043574785702,
+        0.15252024109683457,
+        0.9994087299469899,
+        0.02136731570724205,
+        -0.00400716949764575,
+        -0.02663777238864923,
+        0.0010109462087424584,
+        -0.15078701883285395,
+        -0.24931009500890944,
+        -1.0121078322992743,
+        0.005559708777754282,
+        -0.1224891930018412,
+        -0.8770483681398238,
+        1.2277809335241894,
+        -0.34120532690174654,
+        0.24588318548621704,
+        0.10536497074804402,
+        0.2524199294116716,
+        -0.929408223808394,
+        6.755896405877715e-05,
+        -0.44082217944502555,
+        -0.04643621679047025,
+        0.2949907687091499,
+        -0.24115451083122486,
+        0.39743308910351977
+      ],
+      "qvel": [
+        0.0008929457378561088,
+        0.013961524949340469,
+        -0.013377631132831387,
+        0.16090764014386102,
+        -0.0054132481475089545,
+        0.006417697249305337,
+        -0.0019181316003983896,
+        -0.0007993989255182669,
+        -0.0009385852036922992,
+        -0.0001638291101315333,
+        -0.003492945327948451,
+        -0.11036406007320415,
+        -1.1242427719466752,
+        1.51862141419723,
+        -0.46567832951892396,
+        0.18639308389522877,
+        -0.000639575884161672,
+        -0.0006299366590740021,
+        0.0007436248823308039,
+        -0.002395465715468546,
+        -0.31588074017695206,
+        0.00035850706153138333,
+        0.012024709719909151,
+        -0.005758410046281155,
+        0.14318844272366169
+      ],
+      "right_clearance_m": 0.01302928719494097,
+      "single_support": true
+    },
+    {
+      "time_s": 2.519999999999944,
+      "qpos": [
+        0.011080086114684461,
+        0.04907429418759362,
+        0.1455697009447187,
+        0.9973487303963263,
+        0.06778391120961347,
+        -0.00733099407571104,
+        -0.02543831527096964,
+        0.0001877760699865916,
+        -0.15112954964890374,
+        -0.25002311194497906,
+        -1.012168194507932,
+        0.0022026158396556044,
+        -0.20411212309800744,
+        -1.2012237784203215,
+        1.6508495701302541,
+        -0.4927623649856142,
+        0.3963239686008335,
+        0.10506791754511097,
+        0.2519005865156365,
+        -0.9291213894869419,
+        0.0011350630678008335,
+        -0.5973599123624752,
+        -0.04515073316112174,
+        0.307392471157676,
+        -0.24962434037637704,
+        0.46042078036726175
+      ],
+      "qvel": [
+        0.0008720710890195591,
+        -0.002207976807741644,
+        -0.004372969193807492,
+        0.11644003869718032,
+        0.009876393908075208,
+        -0.01211166158876864,
+        -0.0014268593724657405,
+        -0.0005257573149872942,
+        -0.001581803237411349,
+        -5.583204154577209e-05,
+        -0.02440534583800893,
+        -0.21078594987842852,
+        -0.013462686660874064,
+        0.0037650722037222274,
+        -0.05468262052560541,
+        0.4692885828192314,
+        -0.0005694322740737512,
+        -0.0011736939596560777,
+        0.0004411082789977379,
+        0.005511730308183809,
+        -0.1153886912808029,
+        -0.0021047005821459657,
+        0.00032384341946801895,
+        -0.010031483310979208,
+        0.005993458125605885
+      ],
+      "right_clearance_m": 0.01983709088321892,
+      "single_support": true
+    },
+    {
+      "time_s": 3.019999999999889,
+      "qpos": [
+        0.011427881947920352,
+        0.04870933627899581,
+        0.1453389066055915,
+        0.9969877204926152,
+        0.07242059388920002,
+        -0.005640684010688254,
+        -0.02718318324930097,
+        -0.000406950990545214,
+        -0.151323722838594,
+        -0.2506992892812968,
+        -1.0121762747376704,
+        -0.0029246350531584794,
+        -0.2120642672057974,
+        -1.2060012714455435,
+        1.6580475528092176,
+        -0.49424948824910186,
+        0.4014210189475514,
+        0.10480785722414146,
+        0.2513836840113203,
+        -0.9289745393877803,
+        0.00262941130510534,
+        -0.6046802860590526,
+        -0.045424298982734854,
+        0.3070093776401265,
+        -0.25302173627490154,
+        0.4588137053355677
+      ],
+      "qvel": [
+        0.0004833853684725127,
+        -0.000489905936491794,
+        -1.7378631426484614e-05,
+        0.006647042387244153,
+        0.005284614526572923,
+        -0.006176770523718938,
+        -0.0009656507024514125,
+        -0.0003440708964016773,
+        -0.0011287931534016992,
+        -1.7967852562076153e-05,
+        -0.004485345662606598,
+        0.00041000377094959234,
+        -0.0035484325307723647,
+        0.003540285490805059,
+        -0.0004868698024818425,
+        -0.002431943802335032,
+        -0.0004421473199760193,
+        -0.0008674733939940233,
+        0.00023059207045250202,
+        0.002508787677340722,
+        -0.003095385847025704,
+        -0.0007133280855632646,
+        -0.0010565524319445972,
+        -0.00463415594201806,
+        -0.0034789383066571597
+      ],
+      "right_clearance_m": 0.019533039336980296,
+      "single_support": true
+    },
+    {
+      "time_s": 3.519999999999834,
+      "qpos": [
+        0.011626219451036169,
+        0.04857135238639809,
+        0.14531370105955133,
+        0.996866741754388,
+        0.07370294900122486,
+        -0.004487440348935976,
+        -0.028362605162925165,
+        -0.0007997049685786009,
+        -0.15147706016663703,
+        -0.25117353288602845,
+        -1.0121863266689246,
+        -0.004833501129811357,
+        -0.21209344451068138,
+        -1.2075268346763284,
+        1.659297761236749,
+        -0.49420614712981603,
+        0.40091528636535007,
+        0.1046217166768607,
+        0.2510158595077578,
+        -0.9288833429656436,
+        0.0036496412898349784,
+        -0.6062688877609127,
+        -0.045741722230077365,
+        0.30649572527759655,
+        -0.2548492711976296,
+        0.4579274493369249
+      ],
+      "qvel": [
+        0.0003223905102501336,
+        -0.0001043196533325167,
+        -7.630564680447337e-05,
+        0.0036574594875246258,
+        0.003624425133414315,
+        -0.004132982427664744,
+        -0.000633943437244824,
+        -0.00027124459358929644,
+        -0.000791676886489358,
+        -2.084018991761468e-05,
+        -0.0032290291588944805,
+        -0.0003949941217586487,
+        -0.00261637756279194,
+        0.0016933224679708124,
+        0.0005265711233891133,
+        5.966195165105993e-06,
+        -0.0003123115592704935,
+        -0.0006196219414271915,
+        0.00014255220349421809,
+        0.0016317337922372457,
+        -0.0032203109896865893,
+        -0.0005628688560971296,
+        -0.0009933601353780798,
+        -0.002827068349915076,
+        -0.000423152751767577
+      ],
+      "right_clearance_m": 0.01943368822726541,
+      "single_support": true
+    },
+    {
+      "time_s": 4.019999999999779,
+      "qpos": [
+        0.011522292219132904,
+        0.041555682471352724,
+        0.1456960877159313,
+        0.9941131557472267,
+        0.10405900034784425,
+        -0.0038905567590406145,
+        -0.0299269374477845,
+        -0.0009029205715427529,
+        -0.15179284344439273,
+        -0.25173351511615055,
+        -1.0122994448860045,
+        -0.007250705239365917,
+        -0.2220993132977407,
+        -1.2084067701812111,
+        1.6515765459554999,
+        -0.4947851017365603,
+        0.44170267124410023,
+        0.10462411755625962,
+        0.25048142288181013,
+        -0.9289284484420902,
+        0.005646568798085626,
+        -0.6113051903275981,
+        -0.04591046856949082,
+        0.3069888778446171,
+        -0.2581669892465111,
+        0.4034977342579997
+      ],
+      "qvel": [
+        0.0007748684876118607,
+        0.010813838427571052,
+        -0.0006590398955607614,
+        -0.08875444540098805,
+        0.00014560699391868547,
+        -0.0036638404815997807,
+        -0.00020467676334224075,
+        -0.00042376329451376127,
+        -0.0011023876414833938,
+        -0.00013360911069468224,
+        -0.004941898454760464,
+        -0.003941471720141291,
+        -0.0024007945375594192,
+        -0.0045343504996881055,
+        -0.0032648818806334193,
+        0.023743542611739665,
+        -3.317087692142156e-05,
+        -0.0010773430121320496,
+        -0.00018640616617291155,
+        0.00361315308115793,
+        0.00013403538995449552,
+        0.000914711731600051,
+        0.002152695610428471,
+        -0.003648286719990051,
+        0.08767679414491049
+      ],
+      "right_clearance_m": 0.016022291004748748,
+      "single_support": true
+    },
+    {
+      "time_s": 4.519999999999724,
+      "qpos": [
+        0.011980704006310763,
+        0.04803654684936864,
+        0.14516764457103665,
+        0.9965251421782167,
+        0.07767418468735054,
+        -0.003215990023145137,
+        -0.029900157993109577,
+        -0.00109410586614801,
+        -0.1518452661943224,
+        -0.2519821828562841,
+        -1.0122881989651307,
+        -0.00825705761485561,
+        -0.21168277373523464,
+        -1.2107351801287347,
+        1.6642623588164962,
+        -0.4941308143638953,
+        0.3957414902478408,
+        0.10451180824644171,
+        0.250277595684876,
+        -0.9289104363267382,
+        0.005504696145757437,
+        -0.6110094061067969,
+        -0.04499950913252914,
+        0.3066790357363502,
+        -0.2587606643607937,
+        0.4548224497086899
+      ],
+      "qvel": [
+        0.00018108128971492188,
+        0.0015268241493871684,
+        -0.00013237808634078896,
+        -0.012068039311127843,
+        0.002350167077934112,
+        -0.002687440449914682,
+        -0.00036243669337477773,
+        -6.616376521337496e-05,
+        -0.0002419481778302361,
+        3.669598892366306e-05,
+        -0.0013597473696202352,
+        -0.00421636542370302,
+        -0.0005535432532873449,
+        -0.007286953646761153,
+        -0.00016983305146776062,
+        0.021965874834751663,
+        -0.00023491998719697067,
+        -0.0001383192070286508,
+        0.00013629271974650872,
+        0.0010300304968222439,
+        -0.0003658747468270868,
+        -0.0012248835528454627,
+        -0.0010695006467525648,
+        -0.0006234942009011469,
+        0.012755265602083626
+      ],
+      "right_clearance_m": 0.01923673194688174,
+      "single_support": true
+    },
+    {
+      "time_s": 5.019999999999669,
+      "qpos": [
+        0.01202616932594416,
+        0.04843176451987646,
+        0.14514660411709168,
+        0.9966369061129392,
+        0.07612134885908198,
+        -0.0027374282582317538,
+        -0.03021463400462833,
+        -0.001245016643872093,
+        -0.15187137364077555,
+        -0.25207890671671085,
+        -1.0122715863930658,
+        -0.00866140040305943,
+        -0.21264939407400607,
+        -1.2110206719703593,
+        1.6624111070703442,
+        -0.493571991983112,
+        0.3997100999877118,
+        0.10441145695024823,
+        0.2502245152396323,
+        -0.9288546715487312,
+        0.005616375799573466,
+        -0.611025783443346,
+        -0.04545026280827437,
+        0.30605142323300755,
+        -0.25868921797028516,
+        0.4579634638631997
+      ],
+      "qvel": [
+        5.429925949610046e-05,
+        0.000560428757673742,
+        -1.85202648856414e-05,
+        -0.004447135220716153,
+        0.0012552003762692245,
+        -0.000783785512752856,
+        -0.0002519954853221939,
+        -3.763173700924445e-05,
+        -0.0001466950521007642,
+        3.12126713466852e-05,
+        -0.0005353062848692327,
+        -0.001037696691635263,
+        -0.0005214837456650187,
+        -0.0023127376923374435,
+        0.0014877257053960645,
+        0.004360730530478963,
+        -0.00017345861641659442,
+        -7.338028069371022e-05,
+        9.322839948449573e-05,
+        -0.00010245071190618733,
+        2.3908463402624174e-05,
+        -0.0007515941803781436,
+        -0.0012546358403186823,
+        0.0004509734243200764,
+        0.0043326377401401465
+      ],
+      "right_clearance_m": 0.01921578871586651,
+      "single_support": true
+    },
+    {
+      "time_s": 5.519999999999614,
+      "qpos": [
+        0.01204352316591827,
+        0.04864020050439671,
+        0.14514291801507595,
+        0.9966955630562712,
+        0.07531244841173747,
+        -0.0024437662617235985,
+        -0.030331793626997696,
+        -0.0013505573102554178,
+        -0.15188534903573966,
+        -0.2521353582159775,
+        -1.0122574143855025,
+        -0.00886665538062334,
+        -0.21303266283172984,
+        -1.211249840951786,
+        1.6615206160526488,
+        -0.4928496010926255,
+        0.4011513784052416,
+        0.1043366038644333,
+        0.2501989726213001,
+        -0.9288153373170561,
+        0.005519928186706514,
+        -0.6110166865188615,
+        -0.04578153698778232,
+        0.30547660353641515,
+        -0.2584253406004003,
+        0.45955754419531875
+      ],
+      "qvel": [
+        1.9087502215967257e-05,
+        0.00030108072937153844,
+        1.1097533698745938e-06,
+        -0.002340782049370723,
+        0.0008563549441875287,
+        -0.00035569072115479244,
+        -0.00017548418327575666,
+        -2.060068802162088e-05,
+        -8.56944990606989e-05,
+        2.5335199480674533e-05,
+        -0.000311691504803026,
+        -0.0005590768052739178,
+        -0.0003991431306515696,
+        -0.0013592169044736944,
+        0.0013704991659399912,
+        0.0017663547140856861,
+        -0.00012838197516384958,
+        -3.387795971635181e-05,
+        6.596392850347924e-05,
+        -0.000249583671578678,
+        1.226392346521243e-05,
+        -0.0005865246136276801,
+        -0.0010439238889066614,
+        0.0005720355862144118,
+        0.002279228931689569
+      ],
+      "right_clearance_m": 0.019238393644662333,
+      "single_support": true
+    },
+    {
+      "time_s": 6.019999999999559,
+      "qpos": [
+        0.012047802404495529,
+        0.04875124145743265,
+        0.14514595711399886,
+        0.9967261336886513,
+        0.07489349373657228,
+        -0.002247860197233116,
+        -0.030379699513590073,
+        -0.0014237285172520899,
+        -0.1518933117165559,
+        -0.252168619555122,
+        -1.0122463278642406,
+        -0.008988666863598406,
+        -0.21324564728729392,
+        -1.211422136699876,
+        1.6609872894768132,
+        -0.49221965754171043,
+        0.40169331744726283,
+        0.1042816441206412,
+        0.2501875131578909,
+        -0.9287875793530206,
+        0.00538803938109768,
+        -0.6110119957185797,
+        -0.046043622169461805,
+        0.30500903746880637,
+        -0.25813757089696776,
+        0.4603849757089808
+      ],
+      "qvel": [
+        1.931520546624877e-07,
+        0.00015872234893205784,
+        9.611313754092502e-06,
+        -0.0011949834855321717,
+        0.0005966890230745086,
+        -0.00015618094925997188,
+        -0.00012111641348477952,
+        -1.2380311448816535e-05,
+        -5.1044773893770276e-05,
+        1.9180371969811766e-05,
+        -0.00018994558969102996,
+        -0.0003229044300773492,
+        -0.0002949015571821476,
+        -0.000830809224093896,
+        0.0011451369137873723,
+        0.0005813706305752054,
+        -9.354721500638172e-05,
+        -1.4572676953239057e-05,
+        4.641981291046942e-05,
+        -0.0002651717977402926,
+        6.1962358967358716e-06,
+        -0.00046958476150835957,
+        -0.0008323947747993816,
+        0.0005665495007610725,
+        0.0011623566394862784
+      ],
+      "right_clearance_m": 0.01926113551439986,
+      "single_support": true
+    },
+    {
+      "time_s": 6.519999999999504,
+      "qpos": [
+        0.012045142836662078,
+        0.04880923121701642,
+        0.14515157786191196,
+        0.9967415923648483,
+        0.07468440421596714,
+        -0.002114467918055201,
+        -0.030396822898391455,
+        -0.0014740517315301029,
+        -0.1518983587558913,
+        -0.2521886462246904,
+        -1.012238123941442,
+        -0.009064851151495967,
+        -0.21337394077382532,
+        -1.2115476208572755,
+        1.66065526197122,
+        -0.49170741896390574,
+        0.40183919284868314,
+        0.10424182418547778,
+        0.25018280608553206,
+        -0.928768094687202,
+        0.005263351502885914,
+        -0.6110096720227066,
+        -0.04625499319212438,
+        0.30464166486881916,
+        -0.2578674453210304,
+        0.46079945125761096
+      ],
+      "qvel": [
+        -9.631688072342651e-06,
+        8.189364669717657e-05,
+        1.217406549033373e-05,
+        -0.000584812781546729,
+        0.00041939272085966844,
+        -6.575548125955773e-05,
+        -8.299828364312972e-05,
+        -8.33873353102008e-06,
+        -3.114145435561336e-05,
+        1.3892974168864662e-05,
+        -0.00012215029939045846,
+        -0.00020522954661623618,
+        -0.00021156796741470815,
+        -0.0005284765880507183,
+        0.000909381203369882,
+        8.673136564283232e-05,
+        -6.740795070046136e-05,
+        -5.557933221072576e-06,
+        3.249891796494141e-05,
+        -0.00022994910715581812,
+        2.950765613082242e-06,
+        -0.0003810697248818991,
+        -0.0006449506845723239,
+        0.0005103402633318014,
+        0.0005679287252560122
+      ],
+      "right_clearance_m": 0.019280246942871795,
+      "single_support": true
+    },
+    {
+      "time_s": 7.019999999999449,
+      "qpos": [
+        0.012038983116370635,
+        0.04883881675095303,
+        0.14515765774079475,
+        0.9967490477557013,
+        0.07458559156623859,
+        -0.002022738760114465,
+        -0.030401214724508747,
+        -0.0015084408056294852,
+        -0.15190193150563047,
+        -0.2522010164753969,
+        -1.0122322729391748,
+        -0.00911517606611121,
+        -0.2134597701421073,
+        -1.2116364339208772,
+        1.6604401070629584,
+        -0.49130719198548856,
+        0.4018297754845148,
+        0.10421324953790634,
+        0.2501811677542637,
+        -0.9287544830882045,
+        0.005160764978214202,
+        -0.611008595334136,
+        -0.04642709838003156,
+        0.30436013035388176,
+        -0.25763028825176826,
+        0.4609965782174375
+      ],
+      "qvel": [
+        -1.434528077002911e-05,
+        4.116381038001772e-05,
+        1.1855274370580525e-05,
+        -0.000268011902886606,
+        0.00029435880791458754,
+        -2.6508303452801516e-05,
+        -5.655770815763052e-05,
+        -6.1967746523844035e-06,
+        -1.9519249923230068e-05,
+        9.76044357977878e-06,
+        -8.316332815078605e-05,
+        -0.000145371539087829,
+        -0.00014750368075942707,
+        -0.0003495349699088614,
+        0.0007000597194498118,
+        -8.727544587355996e-05,
+        -4.817716953677108e-05,
+        -1.6200775827188336e-06,
+        2.2652497510890465e-05,
+        -0.00018073609384526294,
+        1.2811352103329807e-06,
+        -0.00031107611586381396,
+        -0.0004889120029010441,
+        0.0004386844181454998,
+        0.0002595411687821888
+      ],
+      "right_clearance_m": 0.019295078326779024,
+      "single_support": true
+    },
+    {
+      "time_s": 7.519999999999394,
+      "qpos": [
+        0.012031266621799786,
+        0.04885347544494579,
+        0.14516322473583856,
+        0.9967523649329212,
+        0.07454302497599388,
+        -0.001959685190558976,
+        -0.03040098784599542,
+        -0.0015318238884577022,
+        -0.15190467379818953,
+        -0.2522088730945539,
+        -1.0122282080812288,
+        -0.00915031082065072,
+        -0.21352343425846265,
+        -1.2116974527728432,
+        1.6602954812600468,
+        -0.4910023849161715,
+        0.40177355417105515,
+        0.10419289064431815,
+        0.25018081346080223,
+        -0.9287450123753296,
+        0.005082680771236924,
+        -0.6110081498026168,
+        -0.046567721059576406,
+        0.3041486328741963,
+        -0.2574292394430361,
+        0.46108252673366895
+      ],
+      "qvel": [
+        -1.6162552435593685e-05,
+        1.999693138923355e-05,
+        1.033253349718764e-05,
+        -0.00010881445877294504,
+        0.00020441886914121537,
+        -1.0373517319887093e-05,
+        -3.837323506564629e-05,
+        -4.886916417346828e-06,
+        -1.2584960104476076e-05,
+        6.705983891106291e-06,
+        -5.9610708000571304e-05,
+        -0.00011278171513253094,
+        -9.961603337333977e-05,
+        -0.00023893032150740145,
+        0.0005277296994149801,
+        -0.0001231775852293428,
+        -3.42198658731123e-05,
+        -8.159512141474011e-08,
+        1.573369582788892e-05,
+        -0.00013338856432822927,
+        4.597464673244798e-07,
+        -0.0002542719378815476,
+        -0.00036387484000044245,
+        0.00036751726952478306,
+        0.00010476917311232017
+      ],
+      "right_clearance_m": 0.0193061196337218,
+      "single_support": true
+    },
+    {
+      "time_s": 8.019999999999348,
+      "qpos": [
+        0.0159103437910233,
+        0.04994337355618046,
+        0.14589305025228597,
+        0.9968241182246035,
+        0.07187695504938481,
+        0.017755591200904614,
+        -0.029327796365843192,
+        -0.0015454415192456036,
+        -0.15200075368733776,
+        -0.25219324869772414,
+        -1.0122298300568762,
+        -0.008764898220280188,
+        -0.21190833922739463,
+        -1.21833070456111,
+        1.6521192041121286,
+        -0.48003154087761546,
+        0.3853050778742569,
+        0.1040615179535063,
+        0.25020028579134584,
+        -0.9287533821183239,
+        -0.02209298474384597,
+        -0.6110543965016771,
+        -0.05517578032335861,
+        0.2726712960875897,
+        -0.2652020957920842,
+        0.4676359654877815
+      ],
+      "qvel": [
+        -0.008954333573537431,
+        -0.004617789109315153,
+        -0.00882203820400832,
+        3.6154220411514825e-05,
+        -0.22768077118086769,
+        0.1331911885741369,
+        -2.6896821425618966e-05,
+        -0.00046412959589430485,
+        0.00010937664352342832,
+        -5.151126176378681e-05,
+        0.0014776836234161835,
+        0.016461716853830632,
+        0.0005677167273399523,
+        0.4631436324116535,
+        -0.805091073224546,
+        0.08287601690164488,
+        -0.0002693430239841031,
+        0.00012461790847235126,
+        5.7715885886365505e-05,
+        0.025651020730883028,
+        -9.712874992031202e-05,
+        0.004187146719240493,
+        0.42517597290286924,
+        -0.1534769056562064,
+        -0.004559941652124891
+      ],
+      "right_clearance_m": 0.020048442386825183,
+      "single_support": true
+    },
+    {
+      "time_s": 8.519999999999515,
+      "qpos": [
+        0.013598910397938344,
+        0.04934064952874823,
+        0.14544003874779865,
+        0.9968581649404874,
+        0.07322356098898296,
+        0.005986435456086645,
+        -0.029601886732196128,
+        -0.0015507972690732743,
+        -0.15206820284405562,
+        -0.2521833536982595,
+        -1.0122344524165954,
+        -0.008770486931872885,
+        -0.2120663719272279,
+        -1.2174251837095333,
+        1.659392639202224,
+        -0.4884227453978506,
+        0.39319585858956346,
+        0.10402248946004007,
+        0.2502052917949894,
+        -0.9287432365096814,
+        -0.0067954472148252475,
+        -0.6110143359118163,
+        -0.05195246834239184,
+        0.29436274406531077,
+        -0.2616530391972814,
+        0.4641416649722648
+      ],
+      "qvel": [
+        -0.0010336526466537465,
+        -0.0005963987834782266,
+        -1.715846076307365e-05,
+        0.004858749489762332,
+        -0.008237263141781612,
+        0.00020237050648545736,
+        -1.016824806205731e-05,
+        -6.113080951839465e-05,
+        4.446530986267164e-06,
+        -1.720021541241418e-06,
+        -0.00031916259899158876,
+        -0.0017371034176117345,
+        0.002190791618626455,
+        -0.0026220197024621823,
+        0.005971836349753312,
+        0.0031348340036972872,
+        -5.541115521462602e-05,
+        3.205248181025285e-06,
+        8.516283763414665e-06,
+        0.005646943415029574,
+        2.0333653192290533e-05,
+        0.002090935437516587,
+        0.00222808282168248,
+        0.005732402763253925,
+        -0.004835097719570293
+      ],
+      "right_clearance_m": 0.01967569717970339,
+      "single_support": true
+    },
+    {
+      "time_s": 9.019999999999682,
+      "qpos": [
+        0.013156660979894548,
+        0.04912192668033455,
+        0.1454207788801143,
+        0.9968026062110501,
+        0.07405164526153347,
+        0.004146666867893759,
+        -0.029727482887155276,
+        -0.0015547423157070582,
+        -0.1520852579340793,
+        -0.25218639428891915,
+        -1.012235240063168,
+        -0.008923138255881476,
+        -0.21282020961012513,
+        -1.2164011440627258,
+        1.658437618237496,
+        -0.4863869179710844,
+        0.39492335575862725,
+        0.10400864233098364,
+        0.2502024822958878,
+        -0.9287399560892531,
+        -0.004250896555598036,
+        -0.6110158413286338,
+        -0.05101823183982788,
+        0.29555267801895896,
+        -0.25934545888121324,
+        0.4623939999578971
+      ],
+      "qvel": [
+        -0.000752604994991412,
+        -0.0003108621349525608,
+        -5.3158428081213084e-05,
+        0.002475591860963212,
+        -0.006399552310879553,
+        -6.313127666284228e-05,
+        -6.448634262852664e-06,
+        -1.166722550905835e-05,
+        -1.3101816642541343e-05,
+        -1.0610349661085997e-06,
+        -0.0002875794931912567,
+        -0.0012889689660393153,
+        0.0019081435271631605,
+        -0.0013114150847948795,
+        0.002541499068185944,
+        0.003543453100927428,
+        -5.965470321178735e-06,
+        -1.125753072187154e-05,
+        5.184712842361846e-06,
+        0.004571114822997858,
+        -3.853230327792528e-06,
+        0.0016695290345828421,
+        0.00246174473193871,
+        0.003666030310744775,
+        -0.002444832109450257
+      ],
+      "right_clearance_m": 0.019600451270924336,
+      "single_support": true
+    },
+    {
+      "time_s": 9.519999999999849,
+      "qpos": [
+        0.012835561843415288,
+        0.04900856040389585,
+        0.14539080718504405,
+        0.996773710540919,
+        0.07444948551962081,
+        0.0027332336387137827,
+        -0.029865925638240802,
+        -0.0015577037977148808,
+        -0.15208296949672845,
+        -0.25219431695720523,
+        -1.0122353508298867,
+        -0.00905443562562404,
+        -0.21336095656430093,
+        -1.215519625301174,
+        1.658013351021241,
+        -0.4856517234150619,
+        0.3966086061802925,
+        0.10401271223082954,
+        0.25019597237632446,
+        -0.9287377523918251,
+        -0.0022078118498018813,
+        -0.6110165135463012,
+        -0.050270653805866046,
+        0.2967745607505994,
+        -0.25788732995578617,
+        0.461524880992001
+      ],
+      "qvel": [
+        -0.0005453407224824515,
+        -0.00016010025719143735,
+        -6.397017157637447e-05,
+        0.0012049465146909066,
+        -0.004938372418774947,
+        -0.0001775255460688221,
+        -5.646408612770005e-06,
+        1.7620862466207387e-05,
+        -1.712314530085356e-05,
+        6.290065564773797e-07,
+        -0.0002377588588640481,
+        -0.0008915171210123983,
+        0.001624721458608771,
+        -0.0004610869768365471,
+        0.0006248570523243002,
+        0.003129844719849844,
+        1.8890967507070926e-05,
+        -1.3550765803391093e-05,
+        3.895167357892288e-06,
+        0.0036424005284825737,
+        6.292288800958079e-07,
+        0.001339256461757009,
+        0.002392598401897122,
+        0.0022823935586663287,
+        -0.001187198877425655
+      ],
+      "right_clearance_m": 0.019540104942998744,
+      "single_support": true
+    },
+    {
+      "time_s": 10.020000000000016,
+      "qpos": [
+        0.012603341593264173,
+        0.04895038030537359,
+        0.1453587469611851,
+        0.9967589447975699,
+        0.07462588974558546,
+        0.0016511950586054138,
+        -0.02999760158068087,
+        -0.0015605103268987465,
+        -0.15206983580806224,
+        -0.2522026434329086,
+        -1.0122346474945314,
+        -0.009160145732117587,
+        -0.21372366597690698,
+        -1.2147753692086822,
+        1.657925257262991,
+        -0.485624186616908,
+        0.3980141805862014,
+        0.10402531652865162,
+        0.2501896580717613,
+        -0.9287359455148444,
+        -0.0005886727202868136,
+        -0.6110156794176126,
+        -0.04967040164906627,
+        0.29791898659119603,
+        -0.2569949715408052,
+        0.46111366421676225
+      ],
+      "qvel": [
+        -0.0003935368945094661,
+        -8.193054642335814e-05,
+        -6.30743165057277e-05,
+        0.0005521693960557344,
+        -0.003790197602175791,
+        -0.0002184427951710228,
+        -5.60692106486735e-06,
+        3.2825988709759055e-05,
+        -1.5689443237355878e-05,
+        2.087400802160276e-06,
+        -0.00018686100542530736,
+        -0.0005778330736750908,
+        0.0013609388023378987,
+        5.574795978480228e-05,
+        -0.00038172254076332754,
+        0.0024905873552091783,
+        2.9691236127275106e-05,
+        -1.136485973646909e-05,
+        3.4369557119421817e-06,
+        0.002872138275767629,
+        2.265125953967406e-06,
+        0.0010758220243177593,
+        0.0021731369300838316,
+        0.0013656816037586797,
+        -0.0005407385964283773
+      ],
+      "right_clearance_m": 0.019493900354837196,
+      "single_support": true
+    },
+    {
+      "time_s": 10.520000000000183,
+      "qpos": [
+        0.012436111082927716,
+        0.048920578317196116,
+        0.1453286573849308,
+        0.9967514072719882,
+        0.07469279636374172,
+        0.0008261512736343149,
+        -0.030115373926760117,
+        -0.0015633072117328967,
+        -0.15205160838038073,
+        -0.25220972554961213,
+        -1.0122333540695307,
+        -0.00924177583049012,
+        -0.21395122589914117,
+        -1.21415584564314,
+        1.6580325695595777,
+        -0.4859520971800835,
+        0.399098990126937,
+        0.10404114027760317,
+        0.25018478937848043,
+        -0.928734286604521,
+        0.0006833996133665189,
+        -0.6110143993765957,
+        -0.049188464597674536,
+        0.2989355309047952,
+        -0.2564750634550232,
+        0.4609345633005864
+      ],
+      "qvel": [
+        -0.0002827513897553671,
+        -4.213902197516784e-05,
+        -5.690328533078254e-05,
+        0.00022738383044836885,
+        -0.0028941311576210715,
+        -0.00022465461175792296,
+        -5.542066895823193e-06,
+        3.8822340881441925e-05,
+        -1.257027947855854e-05,
+        2.981723422431296e-06,
+        -0.0001418709206007607,
+        -0.0003482758677611201,
+        0.0011260941946993998,
+        0.00033874312589218233,
+        -0.0008535297232637031,
+        0.0018707776985785775,
+        3.2661484048403835e-05,
+        -8.129986109677331e-06,
+        3.231865240969227e-06,
+        0.002248764880134673,
+        2.538280250362806e-06,
+        0.0008630724055415476,
+        0.001892898534972169,
+        0.0007671204432402248,
+        -0.0002191322214541143
+      ],
+      "right_clearance_m": 0.01945929368475492,
+      "single_support": true
+    },
+    {
+      "time_s": 11.02000000000035,
+      "qpos": [
+        0.012315980403040511,
+        0.04890515791563335,
+        0.14530232066351592,
+        0.9967473801361472,
+        0.07470848401941042,
+        0.00020137759298781356,
+        -0.03022022591434373,
+        -0.0015660156082807895,
+        -0.1520319388574774,
+        -0.25221518824052425,
+        -1.0122317534614313,
+        -0.00930236358092393,
+        -0.21408521547485185,
+        -1.2136426041569455,
+        1.6582394380335497,
+        -0.4864319110029983,
+        0.39989704641159046,
+        0.10405728394369407,
+        0.25018149143800733,
+        -0.9287327191321293,
+        0.001680301381647802,
+        -0.6110130195693181,
+        -0.048806481918949436,
+        0.29980684163096044,
+        -0.25619468089693936,
+        0.46086862690659264
+      ],
+      "qvel": [
+        -0.00020415472299151384,
+        -2.192127444510123e-05,
+        -4.8049729170422244e-05,
+        7.006025297313478e-05,
+        -0.00217941269067147,
+        -0.00025372767311070696,
+        -5.251346190493675e-06,
+        3.9145318059639605e-05,
+        -9.370953342677994e-06,
+        3.3410335818016087e-06,
+        -0.00010110351243296733,
+        -0.00021404822412917179,
+        0.0009451052243872475,
+        0.0004694581054328959,
+        -0.0010253394433459642,
+        0.0013430594851118224,
+        3.1460737429548497e-05,
+        -5.195644808356493e-06,
+        3.047343513969882e-06,
+        0.0017771394891838673,
+        6.527257214592751e-06,
+        0.0006610854922305857,
+        0.0015957048826940145,
+        0.0003959445126065175,
+        -6.789473246295583e-05
+      ],
+      "right_clearance_m": 0.019433748028128695,
+      "single_support": true
+    },
+    {
+      "time_s": 11.520000000000516,
+      "qpos": [
+        0.012227918971602527,
+        0.04889692124722958,
+        0.14528065796579515,
+        0.9967445786469674,
+        0.07470337659452052,
+        -0.000263405427945396,
+        -0.030324595312017644,
+        -0.001568530311483274,
+        -0.15201302833366342,
+        -0.2522191700932333,
+        -1.0122300825688602,
+        -0.009342992761993883,
+        -0.21417809675642804,
+        -1.2132038217109862,
+        1.65848776729148,
+        -0.4869505332906148,
+        0.4004585031973321,
+        0.1040722019282913,
+        0.250179498292206,
+        -0.9287312437009194,
+        0.0024776424820775723,
+        -0.6110108431756985,
+        -0.048527588437841676,
+        0.3005319226949437,
+        -0.25605185699202515,
+        0.460852198137012
+      ],
+      "qvel": [
+        -0.00015190448662438525,
+        -1.2426875852202362e-05,
+        -4.011866113536106e-05,
+        1.1391141862832553e-05,
+        -0.001672023102857055,
+        -0.00023368690112764718,
+        -4.786699706218273e-06,
+        3.625379213229368e-05,
+        -6.70843655298505e-06,
+        3.29968427560463e-06,
+        -5.992854198477909e-05,
+        -0.0001418266554837377,
+        0.0007854011497775352,
+        0.00048412098452532215,
+        -0.0010455139869512912,
+        0.0009350291778255254,
+        2.8125967926175424e-05,
+        -2.935297821394912e-06,
+        2.8493010812483323e-06,
+        0.001402033020044393,
+        8.524874492467207e-07,
+        0.0005018530606513989,
+        0.0013360395231537966,
+        0.0001970784206285582,
+        -4.9234906320564e-06
+      ],
+      "right_clearance_m": 0.019416097401516882,
+      "single_support": true
+    },
+    {
+      "time_s": 12.020000000000683,
+      "qpos": [
+        0.01216233977237216,
+        0.048892134075612256,
+        0.14526217011112322,
+        0.9967431565952172,
+        0.07469020707390521,
+        -0.0006315995596979992,
+        -0.030398253730377293,
+        -0.0015707841088403345,
+        -0.1519958796867546,
+        -0.2522219841201106,
+        -1.0122284852835939,
+        -0.009363148126925196,
+        -0.21422363766764782,
+        -1.2128557307122387,
+        1.6587241578078262,
+        -0.48746195412036686,
+        0.4008522194941126,
+        0.10408533614534946,
+        0.25017845064167255,
+        -0.9287298835548506,
+        0.003090591019644204,
+        -0.6110104072881872,
+        -0.048297863268213115,
+        0.30114494013642784,
+        -0.25598707741689414,
+        0.460858921850908
+      ],
+      "qvel": [
+        -0.00011271090915965295,
+        -7.260413883992465e-06,
+        -3.401352934791962e-05,
+        -2.1884849686313275e-05,
+        -0.0013284683403681798,
+        -0.00014141788034385716,
+        -4.221530160384261e-06,
+        3.2306592506986744e-05,
+        -4.66424614929155e-06,
+        3.073952323042095e-06,
+        -2.3729916087756766e-05,
+        -4.740682704951351e-05,
+        0.0006155613896428754,
+        0.0004583007669851423,
+        -0.0009900446007484376,
+        0.0006586312392413154,
+        2.4471776552579605e-05,
+        -1.375798768831455e-06,
+        2.5930201444548963e-06,
+        0.001069626309168264,
+        8.25507477294426e-07,
+        0.00042105493394993976,
+        0.0011230016109940392,
+        7.285958778706955e-05,
+        2.7071589696538123e-05
+      ],
+      "right_clearance_m": 0.019401156768478603,
+      "single_support": true
+    },
+    {
+      "time_s": 12.52000000000085,
+      "qpos": [
+        0.012113953437026289,
+        0.048889320703387605,
+        0.14524661338474854,
+        0.9967426583118356,
+        0.07467366451954449,
+        -0.0009235786445597861,
+        -0.030447724564668426,
+        -0.001572743823166337,
+        -0.15198080831715363,
+        -0.2522239119269145,
+        -1.0122270265234004,
+        -0.009368854796718687,
+        -0.21423070352039508,
+        -1.2125837903478016,
+        1.6589423891553943,
+        -0.48793402394920243,
+        0.4011278584558077,
+        0.10409664828136066,
+        0.25017803849934506,
+        -0.9287286613257228,
+        0.003558103782805614,
+        -0.6110100093923794,
+        -0.0481051219207044,
+        0.30165682720212766,
+        -0.25597316728264435,
+        0.4608764974879281
+      ],
+      "qvel": [
+        -8.263550291820652e-05,
+        -4.291675365390135e-06,
+        -2.8416379088343297e-05,
+        -3.66172240594891e-05,
+        -0.0010478862013048288,
+        -8.343035151077862e-05,
+        -3.621723721838022e-06,
+        2.803222332441577e-05,
+        -3.141738458989241e-06,
+        2.7571873200892555e-06,
+        -1.1736038240290466e-06,
+        1.391300429968583e-05,
+        0.00047926275296887523,
+        0.0004135787833436963,
+        -0.0008940942073002458,
+        0.00045800239277514915,
+        2.0874966191558598e-05,
+        -3.603413546633268e-07,
+        2.299991805730443e-06,
+        0.0008155924468563105,
+        7.283569669053559e-07,
+        0.0003532032698865025,
+        0.000931719142114396,
+        -9.422951458683337e-06,
+        4.073554700543037e-05
+      ],
+      "right_clearance_m": 0.019388787306707657,
+      "single_support": true
+    },
+    {
+      "time_s": 13.020000000001017,
+      "qpos": [
+        0.012069713499081171,
+        0.050520998853705076,
+        0.1449660240361384,
+        0.9971370840649961,
+        0.06918340140196357,
+        -0.0009735092045099192,
+        -0.030501554593844942,
+        -0.001617003877353821,
+        -0.15192969061789433,
+        -0.25213425831814856,
+        -1.0122015036155139,
+        -0.009835564031176143,
+        -0.21409012806599012,
+        -1.2139062269145346,
+        1.6540907631740318,
+        -0.48965007249763826,
+        0.4116994917708553,
+        0.10406285182585095,
+        0.2502905691444207,
+        -0.9286833534397896,
+        0.0028215136388307686,
+        -0.6122162764772,
+        -0.0492901687145213,
+        0.30209532534689687,
+        -0.2549119375061449,
+        0.478055405732149
+      ],
+      "qvel": [
+        -0.000449882423813112,
+        0.0010334551334142265,
+        -0.0035597642221082836,
+        0.12348387022331173,
+        -0.008084355813999838,
+        0.004883633699347836,
+        9.408333531752075e-05,
+        -1.3030544142750317e-05,
+        -0.0004258392298731984,
+        4.680809035450547e-05,
+        0.00048282104049281605,
+        -0.24290940911828818,
+        0.003328888933715375,
+        -0.020651465934603028,
+        -0.0008486036110645599,
+        0.5560971413220556,
+        0.00016503497160273275,
+        -0.0005453550931715256,
+        -6.784930138938057e-05,
+        0.0018735535704669606,
+        -0.134435178623916,
+        0.0025230291312688703,
+        0.008463397959712413,
+        -0.0008210903841974562,
+        -0.09453856108795669
+      ],
+      "right_clearance_m": 0.01915110655352417,
+      "single_support": true
+    },
+    {
+      "time_s": 13.520000000001184,
+      "qpos": [
+        0.012024963557449624,
+        0.04968789772275556,
+        0.14516628613039487,
+        0.9969119979878963,
+        0.07244059984411882,
+        -0.001513967847560198,
+        -0.030274340015293687,
+        -0.0016135422318405267,
+        -0.1519154459043242,
+        -0.2521377434508966,
+        -1.012200229584505,
+        -0.009469108703726293,
+        -0.2128114035513791,
+        -1.2135524871003947,
+        1.6588567270735082,
+        -0.48941486807356954,
+        0.39962376652243875,
+        0.10407910295999671,
+        0.250282678032347,
+        -0.9286887939597184,
+        0.0029502416093009497,
+        -0.6109869039977842,
+        -0.04835417927167006,
+        0.3024580566981345,
+        -0.25515252381384984,
+        0.4652078409249434
+      ],
+      "qvel": [
+        -2.195400623112727e-05,
+        -0.0007218527760020416,
+        6.692517457388208e-05,
+        0.005820370446965913,
+        -0.0002788625354852525,
+        -0.0007655941954857479,
+        5.636681517253943e-06,
+        1.7394823012571105e-05,
+        -2.1976567650786484e-05,
+        -2.2296084946298028e-06,
+        0.00035376867950407927,
+        0.00010347226883075747,
+        0.0009688891276222232,
+        0.001427692193250041,
+        -4.572973209352082e-05,
+        -0.0020534537075247734,
+        2.54213121529717e-05,
+        -2.5002416244204454e-05,
+        -9.058339962794202e-06,
+        0.0009810829626761132,
+        -1.3171767424475826e-05,
+        0.000618170625098492,
+        0.00041156297266172826,
+        -0.000664033561073778,
+        -0.0056877858266752785
+      ],
+      "right_clearance_m": 0.01947408941941481,
+      "single_support": true
+    },
+    {
+      "time_s": 14.020000000001351,
+      "qpos": [
+        0.012017662323288802,
+        0.04942339619238087,
+        0.14518821294087333,
+        0.996828619965908,
+        0.07350028769772089,
+        -0.0015968691017341744,
+        -0.030460796678497687,
+        -0.0016085915716876572,
+        -0.15191140017951332,
+        -0.25215247971201626,
+        -1.012202943767839,
+        -0.009351103759092433,
+        -0.21287038277870945,
+        -1.2131219556276112,
+        1.6593476158570861,
+        -0.48949316020486694,
+        0.39922335287561167,
+        0.10409218676334397,
+        0.2502658876558315,
+        -0.9286943626183317,
+        0.0034157273446815853,
+        -0.6109978532025069,
+        -0.048087618133187536,
+        0.3026710561984471,
+        -0.2554656541758391,
+        0.4631342401714887
+      ],
+      "qvel": [
+        -9.278993812125298e-06,
+        -0.0003757588051828332,
+        2.6616480063098087e-05,
+        0.0030108831062805796,
+        -0.00024175761150782614,
+        -0.000684014964964826,
+        1.2413709782829089e-05,
+        1.6620537585882656e-06,
+        -3.3563881926490025e-05,
+        -7.375779053973999e-06,
+        0.0001487107782765148,
+        -0.0002622683954839063,
+        0.0007614357266757542,
+        0.0006532084495660781,
+        -0.00022332447979919008,
+        7.967650382344375e-05,
+        2.583408865273721e-05,
+        -3.830613387496341e-05,
+        -1.2271218550243212e-05,
+        0.0008641014398080239,
+        -1.6301555717274368e-05,
+        0.00046168709215837697,
+        0.0004246667980190275,
+        -0.0005769127808982689,
+        -0.0029360294514763183
+      ],
+      "right_clearance_m": 0.019429736878518636,
+      "single_support": true
+    },
+    {
+      "time_s": 14.520000000001518,
+      "qpos": [
+        0.012014505000825428,
+        0.04928652476493742,
+        0.1451961831231172,
+        0.9967836619152906,
+        0.0740421011910877,
+        -0.001659611828627662,
+        -0.0306160787582198,
+        -0.001602156301723729,
+        -0.15191207232662612,
+        -0.2521692581859678,
+        -1.0122068608391939,
+        -0.009302846007048894,
+        -0.21303109491749286,
+        -1.2127866729813497,
+        1.6595758394844644,
+        -0.48961477232959755,
+        0.3994842944617964,
+        0.10410428921477533,
+        0.25024670634564333,
+        -0.9287005076654486,
+        0.003805088377563114,
+        -0.6110039133997461,
+        -0.047885484323724414,
+        0.30287306178382944,
+        -0.25572399211838964,
+        0.46207355989567794
+      ],
+      "qvel": [
+        -4.165813933583865e-06,
+        -0.00019286579933528274,
+        7.834748906827413e-06,
+        0.001523580545932459,
+        -0.0002201120111970881,
+        -0.0005348928651682146,
+        1.267798589018954e-05,
+        -3.161787740235901e-06,
+        -3.234458061104848e-05,
+        -7.82804611063635e-06,
+        5.777720888779516e-05,
+        -0.0003527686399746851,
+        0.0005881902592489809,
+        0.00030939429700502127,
+        -0.00024938760640909606,
+        0.0007995754592435084,
+        2.2311901340228193e-05,
+        -3.7040216998036454e-05,
+        -1.1918143561451193e-05,
+        0.0006945911824566851,
+        -7.849563273086296e-06,
+        0.0003548519926321326,
+        0.00037963956863650813,
+        -0.0004580885883094882,
+        -0.0014849961460970573
+      ],
+      "right_clearance_m": 0.019396853162580635,
+      "single_support": true
+    },
+    {
+      "time_s": 15.020000000001685,
+      "qpos": [
+        0.01201302469070028,
+        0.049216734757299166,
+        0.1451976761392949,
+        0.9967597830119157,
+        0.07431290162634813,
+        -0.0017114594431941281,
+        -0.03073432166951544,
+        -0.0015962921018135207,
+        -0.15191385546662525,
+        -0.25218409846420514,
+        -1.0122104967296237,
+        -0.00928505909417834,
+        -0.2132053579913975,
+        -1.2125291320444813,
+        1.6596874112312254,
+        -0.4897343289870765,
+        0.39992782093547136,
+        0.10411432725756473,
+        0.25022968706699594,
+        -0.9287060527644102,
+        0.0041105896382298895,
+        -0.6110067743697472,
+        -0.047728799823808746,
+        0.3030474327099624,
+        -0.25592483824849843,
+        0.46154250515864526
+      ],
+      "qvel": [
+        -2.0837334098885295e-06,
+        -9.756648485908876e-05,
+        -5.981237824320505e-07,
+        0.0007535780202466031,
+        -0.00019782796002206787,
+        -0.0003923157136752441,
+        1.0620338915910695e-05,
+        -3.5571701956321593e-06,
+        -2.6775822176795853e-05,
+        -6.599276730472282e-06,
+        1.9621045570315778e-05,
+        -0.00033428857651422625,
+        0.0004494661832276614,
+        0.00015966894488501132,
+        -0.00022503960440451397,
+        0.0009108423024777858,
+        1.7902601479639748e-05,
+        -3.07526847492205e-05,
+        -1.015200058051374e-05,
+        0.0005335979185051698,
+        -3.589210127025499e-06,
+        0.00027708879406977205,
+        0.00031831317384768237,
+        -0.0003499901550615056,
+        -0.0007338567689246801
+      ],
+      "right_clearance_m": 0.0193742379514945,
+      "single_support": true
+    },
+    {
+      "time_s": 15.520000000001852,
+      "qpos": [
+        0.012012247045625504,
+        0.049181634791722356,
+        0.14519640075649912,
+        0.9967472194462053,
+        0.07444471629996799,
+        -0.0017554964996252633,
+        -0.030820171532899163,
+        -0.0015916220352979794,
+        -0.1519153908227421,
+        -0.25219589661280256,
+        -1.0122133942767941,
+        -0.009279461335603303,
+        -0.21335895004366565,
+        -1.2123330465506346,
+        1.6597491510574494,
+        -0.48983760241223273,
+        0.4003590551330537,
+        0.10412221592368182,
+        0.2502161214654634,
+        -0.9287105998346719,
+        0.004342148516780912,
+        -0.6110080404262065,
+        -0.04760593648989808,
+        0.30319091364496914,
+        -0.2560768985596602,
+        0.46128315755217414
+      ],
+      "qvel": [
+        -1.1542133425270006e-06,
+        -4.874685435979693e-05,
+        -3.90504727495273e-06,
+        0.0003629274834352995,
+        -0.00017257233135544115,
+        -0.00027748789184863794,
+        8.100435325885512e-06,
+        -2.503553993219274e-06,
+        -2.055759795589533e-05,
+        -5.014080053958607e-06,
+        5.503439553803509e-06,
+        -0.0002781805002467594,
+        0.00034105973793328794,
+        9.717884653337465e-05,
+        -0.00018801574106056264,
+        0.0007957720521609834,
+        1.3821338287771576e-05,
+        -2.3663973227952967e-05,
+        -8.055913849519545e-06,
+        0.00039963119087152763,
+        -1.4996333728817896e-06,
+        0.00021799992595778237,
+        0.0002576547448660077,
+        -0.00026312198531167183,
+        -0.00035289407819771065
+      ],
+      "right_clearance_m": 0.01935936595602053,
+      "single_support": true
+    },
+    {
+      "time_s": 16.020000000002,
+      "qpos": [
+        0.012011813675378857,
+        0.04916416614868652,
+        0.14519416684619785,
+        0.99674063463487,
+        0.07450682419248969,
+        -0.001792732851895924,
+        -0.03088084398697032,
+        -0.0015881608613589689,
+        -0.15191632029808783,
+        -0.2522047496060574,
+        -1.012215528082461,
+        -0.009277973057746495,
+        -0.21348227418453297,
+        -1.212184608372416,
+        1.6597902762056616,
+        -0.4899223914365529,
+        0.40071383947634814,
+        0.10412823797298497,
+        0.2502059233894144,
+        -0.9287141251316692,
+        0.004514265889644467,
+        -0.611008536876049,
+        -0.04750912560220342,
+        0.3033057801012764,
+        -0.2561909466507068,
+        0.46116020401326796
+      ],
+      "qvel": [
+        -6.307012869184917e-07,
+        -2.417654466326892e-05,
+        -4.769263378331461e-06,
+        0.00016930515689663324,
+        -0.0001459633275902241,
+        -0.00019226748316339586,
+        5.847604209739756e-06,
+        -1.2567122733062491e-06,
+        -1.5107511439016705e-05,
+        -3.587788302172115e-06,
+        1.535856283952766e-06,
+        -0.00021649154799279721,
+        0.00025760871659330714,
+        7.1317903918264e-05,
+        -0.00015226868716393898,
+        0.0006236031107135286,
+        1.0448822613630795e-05,
+        -1.7414664192881877e-05,
+        -6.11497403485403e-06,
+        0.0002950575058681352,
+        -5.174988320142371e-07,
+        0.0001719361328499635,
+        0.00020422715973210333,
+        -0.00019715961609252736,
+        -0.00016417687663113182
+      ],
+      "right_clearance_m": 0.01934987878077446,
+      "single_support": true
+    },
+    {
+      "time_s": 16.520000000001723,
+      "qpos": [
+        0.012011599845653321,
+        0.04915550058633184,
+        0.14519181207749904,
+        0.9967371703125173,
+        0.07453488496476797,
+        -0.0018236940704976622,
+        -0.030923104317383796,
+        -0.0015857081632686617,
+        -0.1519166812831007,
+        -0.25221116372248054,
+        -1.0122170245282578,
+        -0.009277349638992499,
+        -0.21357627259912124,
+        -1.2120726708339522,
+        1.659822578295587,
+        -0.4899906005750525,
+        0.4009834920079957,
+        0.10413276334207298,
+        0.2501985274207689,
+        -0.9287167599742054,
+        0.004640828240065749,
+        -0.611008680665375,
+        -0.04743276620416465,
+        0.303396204053039,
+        -0.2562765384013231,
+        0.4611039994166216
+      ],
+      "qvel": [
+        -2.505524632141379e-07,
+        -1.2027468351520695e-05,
+        -4.554583070299115e-06,
+        7.594200497296323e-05,
+        -0.00012013240878264565,
+        -0.00013183906972770334,
+        4.0707982607276226e-06,
+        -2.591506866761929e-07,
+        -1.080093704712125e-05,
+        -2.4676216612217604e-06,
+        1.316861659854431e-06,
+        -0.00016187958489453038,
+        0.0001939636153842973,
+        5.936301530514649e-05,
+        -0.00012186736837160418,
+        0.0004614911067775391,
+        7.812167229570319e-06,
+        -1.2457122271540048e-05,
+        -4.504309609069034e-06,
+        0.00021620060638928825,
+        -8.673386911479922e-08,
+        0.00013557310976337436,
+        0.0001597465731391159,
+        -0.0001483509079706784,
+        -7.326908540197566e-05
+      ],
+      "right_clearance_m": 0.019343950726889457,
+      "single_support": true
+    },
+    {
+      "time_s": 17.020000000001446,
+      "qpos": [
+        0.012011556837739077,
+        0.04915115552062122,
+        0.14518968529661153,
+        0.996735321129216,
+        0.07454684879833512,
+        -0.0018489331234764698,
+        -0.03095235684048641,
+        -0.001584022527054116,
+        -0.15191663001625821,
+        -0.25221570753364475,
+        -1.0122180393147358,
+        -0.009276512576666944,
+        -0.21364562997772296,
+        -1.211988487161466,
+        1.6598502631849748,
+        -0.49004507233544525,
+        0.4011795871446999,
+        0.10413613688587138,
+        0.2501932877394827,
+        -0.9287186799256745,
+        0.004733384475376481,
+        -0.611008676413245,
+        -0.047372594386604065,
+        0.3034666116210623,
+        -0.2563411814586187,
+        0.46107947653020837
+      ],
+      "qvel": [
+        5.98760450394095e-08,
+        -6.118017050234505e-06,
+        -3.934783204007411e-06,
+        3.242583154260856e-05,
+        -9.662085726300152e-05,
+        -9.011403200858967e-05,
+        2.762482560765767e-06,
+        3.9882963986904627e-07,
+        -7.585070359904508e-06,
+        -1.6497871153977269e-06,
+        2.0991407983767733e-06,
+        -0.00011794016712810478,
+        0.00014570305334867155,
+        5.187899057771772e-05,
+        -9.71660562187366e-05,
+        0.0003303482067680198,
+        5.810193025872373e-06,
+        -8.744247752789151e-06,
+        -3.2483507585128378e-06,
+        0.0001578600507502402,
+        8.074089877055913e-08,
+        0.0001067417744504742,
+        0.00012384201419052903,
+        -0.00011253865782408375,
+        -3.09845085060745e-05
+      ],
+      "right_clearance_m": 0.019340294337555547,
+      "single_support": true
+    },
+    {
+      "time_s": 17.52000000000117,
+      "qpos": [
+        0.012011654007443359,
+        0.04914890075343079,
+        0.1451878985142759,
+        0.9967343054818644,
+        0.07455151854567926,
+        -0.0018691175114547254,
+        -0.030972596885744455,
+        -0.0015828894038345663,
+        -0.1519163272870246,
+        -0.25221887943578386,
+        -1.0122187105579743,
+        -0.009275270008507775,
+        -0.2136957069748645,
+        -1.2119253089547415,
+        1.6598745465891651,
+        -0.4900884739894979,
+        0.4013185060296375,
+        0.10413864320301845,
+        0.25018963333410404,
+        -0.9287200537577603,
+        0.0048009166716367025,
+        -0.6110086203494618,
+        -0.047325260811159384,
+        0.3035210154192033,
+        -0.25639044725558113,
+        0.4610694224727877
+      ],
+      "qvel": [
+        3.1225958789084335e-07,
+        -3.2741934059524204e-06,
+        -3.2273475641408465e-06,
+        1.298742957726108e-05,
+        -7.622514051647652e-05,
+        -6.172405627562646e-05,
+        1.8395992650006494e-06,
+        7.636876192142066e-07,
+        -5.264917829110648e-06,
+        -1.079214808950885e-06,
+        2.8435015871134346e-06,
+        -8.440567476671471e-05,
+        0.00010924077602247342,
+        4.545034378286761e-05,
+        -7.737163254323494e-05,
+        0.00023182224851991698,
+        4.313516639038529e-06,
+        -6.060873216276408e-06,
+        -2.306606850619728e-06,
+        0.00011512627807433833,
+        1.2713200161752784e-07,
+        8.388249020973185e-05,
+        9.538060989999224e-05,
+        -8.620218010808391e-05,
+        -1.2159798565001746e-05
+      ],
+      "right_clearance_m": 0.01933805207478783,
+      "single_support": true
+    }
+  ],
+  "manifest": {
+    "device": "cuda:0",
+    "backend": "actual MuJoCo-Warp",
+    "seed": 74101,
+    "n_env": 64,
+    "steps": 32,
+    "additional_iterations": 120,
+    "resume_checkpoint": "/home/user/microbanRL/runs/one_leg_text_robust_ppo_v3/policy_final.pt",
+    "resume_checkpoint_sha256": "f2ff9a507792e4a1e9f21b44c5fe897303612bce50bcba22ace322fca0cf3ad4",
+    "frozen_initialized_balance_weights": true,
+    "learning_rate": 3e-05,
+    "push_magnitude_N": 1.0,
+    "push_mode": "random",
+    "push_jitter_s": 0.7,
+    "contract": {
+      "backend": "MuJoCo-Warp CUDA float32",
+      "mujoco_version": "3.8.1",
+      "warp_version": "1.12.0",
+      "model_path": "/home/user/microbanRL/assets/one_leg/scene.xml",
+      "model_sha256": "f17429f96f9720acada05cddd12c6660bd8330f1f89b639d52298bc993db594d",
+      "reference_path": "/home/user/microbanRL/runs/one_leg_text_reference_v3/reference.json",
+      "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+      "position_gain_kp": [
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277,
+        0.277
+      ],
+      "actuator_force_range_Nm": [
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ],
+        [
+          -0.77,
+          0.77
+        ]
+      ],
+      "physics_timestep_s": 0.002,
+      "policy_timestep_s": 0.02,
+      "solver_iterations": 50,
+      "observation_dimensions": 70,
+      "action_dimensions": 19,
+      "contact_load_source": "official mujoco_warp.contact_force, actual normal ground load",
+      "root_assignments": "reset only; no root pose writes in step",
+      "external_force": "disclosed horizontal trunk push only; zero vertical force and added torque",
+      "control_limits": "unchanged original actuator_ctrlrange clamp",
+      "native_helper": "offline reference and RNG-identical cold resets only, never rollout integration",
+      "precision_difference": "GPU float32 and solver order can diverge from native float64; independent native heldout required",
+      "cuda_graph": true,
+      "nconmax_per_world": 128,
+      "njmax_per_world": 512
+    },
+    "native_cross_validation_required": true,
+    "native_iterations_before_port": 460,
+    "native_transitions_before_port": 706560
+  }
+}

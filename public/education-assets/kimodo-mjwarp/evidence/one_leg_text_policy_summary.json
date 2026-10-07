@@ -1,0 +1,74 @@
+{
+  "status": "validated_native_simulation",
+  "checkpoint": "runs/one_leg_text_robust_ppo_v3/policy_final.pt",
+  "checkpoint_sha256": "f2ff9a507792e4a1e9f21b44c5fe897303612bce50bcba22ace322fca0cf3ad4",
+  "reference": "runs/one_leg_text_reference_v3/reference.json",
+  "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+  "reference_conditioning": "genuine sentence from NVIDIA official public Kimodo Space",
+  "prompt": "A humanoid robot stands on both feet, slowly shifts weight onto its left foot, raises the right foot, and balances steadily on the left leg.",
+  "training_backend": "native MuJoCo CPU",
+  "gpu_training": false,
+  "learning": "analytic feedback initializer plus genuinely PPO-trained residual; fresh neural weights, no older numeric-policy learned weights",
+  "policy_updates": 460,
+  "policy_transitions": 706560,
+  "physical_actuator_contract": "ideal .277kp positionactuator cap±.77Nm, joint damping.041 frictionloss.013; not BAM electrical model",
+  "evaluations": [
+    {
+      "case": "random64",
+      "path": "runs/one_leg_text_final_random64/evaluation.json",
+      "passed": 64,
+      "n": 64,
+      "seed": 73301,
+      "force_N": 1.0,
+      "max_tilt_deg": 12.513405697989585,
+      "min_single_support_s": 15.979999999999748,
+      "min_clearance_m": 0.015075674085417226
+    },
+    {
+      "case": "cardinal64",
+      "path": "runs/one_leg_text_final_cardinal64/evaluation.json",
+      "passed": 64,
+      "n": 64,
+      "seed": 73303,
+      "force_N": 1.0,
+      "max_tilt_deg": 13.015657305694667,
+      "min_single_support_s": 15.959999999999749,
+      "min_clearance_m": 0.015310033656895247
+    },
+    {
+      "case": "nopush16",
+      "path": "runs/one_leg_text_final_nopush16/evaluation.json",
+      "passed": 16,
+      "n": 16,
+      "seed": 73305,
+      "force_N": 0.0,
+      "max_tilt_deg": 8.612957600488679,
+      "min_single_support_s": 15.999999999999748,
+      "min_clearance_m": 0.01917518065152668
+    }
+  ],
+  "video_pending": false,
+  "video": "runs/one_leg_text_final_video/seed73301_push1/one_leg.mp4",
+  "video_sha256": "681055219b528f48d30502f32a54ffac6f0e0cbf3d3c39504677e5ca3f015a3a",
+  "video_matches_evaluation": {
+    "reference_evaluation": "runs/one_leg_text_final_random64/evaluation.json",
+    "reference_evaluation_sha256": "847d0e90ffba4f81dd748185fe4f499115aad07e5048980a877c212a2a856d10",
+    "qpos_samples_count": 36,
+    "maximum_qpos_difference_from_64env_episode0": 0.0,
+    "same_pushes": true,
+    "actor_batch_shape": [
+      64,
+      70
+    ],
+    "actor_batch_explanation": "duplicate the1-env observation to64 independent rows to match original float32 inference kernel shape"
+  },
+  "physical_substep_audit": {
+    "physics_substeps": 9000,
+    "maximum_actuator_torque_Nm": 0.33902866334441306,
+    "torque_cap_violations": 0,
+    "vertical_external_force_peak_N": 0.0,
+    "external_torque_peak_Nm": 0.0,
+    "nontrunk_external_force_peak_N": 0.0,
+    "qfrc_applied_peak": 0.0
+  }
+}
