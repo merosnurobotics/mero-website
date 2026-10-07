@@ -21,7 +21,7 @@ export const perceptionChapters = [
   { id: "split", label: "데이터 분리와 내보내기" },
   { id: "train", label: "첫 모델 학습하기" },
   { id: "evaluate", label: "평가와 실제 사진 추론" },
-  { id: "improve", label: "실패를 보고 개선하기" },
+  { id: "improve", label: "실습 확장하기" },
 ];
 export const educationTopics = [
   {

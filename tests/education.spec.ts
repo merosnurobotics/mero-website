@@ -64,6 +64,15 @@ test("object recognition course, chapter catalog, code and private activity", as
   await page.locator('.education-series-row').filter({ hasText: '객체인식' }).click();
   await page.getByRole('link', { name: '자료 읽기' }).click();
   await expect(page.locator('.perception-chapter')).toHaveCount(10);
+  await expect(page.locator('#improve h2')).toHaveText('10. 실습 확장하기');
+  await expect(page.locator('.perception-lesson')).not.toContainText('장수를 늘리기 전에 실패 원인을');
+  await expect(page.locator('#first-look table')).toContainText('classification');
+  await expect(page.locator('#first-look table')).toContainText('instance segmentation');
+  await expect(page.locator('.education-prediction-grid img')).toHaveCount(4);
+  await page.locator('.education-prediction-grid').scrollIntoViewIfNeeded();
+  await expect.poll(() => page.locator('.education-prediction-grid img').evaluateAll(images => images.every(image => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0))).toBe(true);
+  const inferenceRecord = await page.request.get(`${baseURL}/education-assets/object-recognition/inference-examples.json`);
+  expect((await inferenceRecord.json()).examples).toHaveLength(4);
   await page.locator('.education-sidebar a[href$="#labels"]').click();
   await expect(page.locator('.education-sidebar a[aria-current="location"]')).toContainText('사진과 정답지');
   await page.getByRole('button', { name: '라벨 형식 예시 복사' }).click();

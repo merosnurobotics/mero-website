@@ -8,5 +8,11 @@
     "1 epoch, batch 4, workers 0",
     "shared smoke120 dataset naming"
   ],
-  "executed": false
+  "executed": false,
+  "inference_examples": {
+    "record": "inference-examples.json",
+    "executed": true,
+    "weights_sha256": "3d2d4dba14c6bf709b49e5654f537cbad05db931a6b3a454eb0c71e534734927",
+    "count": 4
+  }
 }

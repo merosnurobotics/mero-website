@@ -140,3 +140,9 @@
 .education-repo-link span { color: var(--muted); font-size: 12px; }
 .education-course-number { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
 .education-course + .education-course { margin-top: 48px; }
+
+.education-prediction-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-block: 28px; }
+.education-prediction-grid figure { margin: 0; }
+@media (max-width: 767px) {
+  .education-prediction-grid { grid-template-columns: 1fr; }
+}
