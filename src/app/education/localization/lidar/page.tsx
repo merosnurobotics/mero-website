@@ -1,15 +1,15 @@
+import { FlowDiagram, LidarDiagram } from "@/components/education/native-diagrams";
 import type { Metadata } from "next";
-import { Lesson, Chapter, Figure, Check } from "@/components/education/lesson-primitives";
+import { Lesson, Chapter, Check } from "@/components/education/lesson-primitives";
 import { CodeExample } from "@/components/education/code-example";
 export const metadata: Metadata = {title:"LiDAR로 시작하는 localization"};
 const a="/education-assets/localization";
 const source="https://github.com/YenCho/ddonggae/blob/d85758c752e6cd3244e16d9ea4a3d2831da225b4";
 export default function LidarLesson() { return <Lesson topic="Localization" topicPath="/education/localization" path="/education/localization/lidar" title="LiDAR로 시작하는 localization" intro="로봇이 지금 어디에 있는지 어떻게 알아낼까요? LiDAR가 보내는 거리와 각도를 이해하고, 이미 알고 있는 사각형 벽과 비교해 위치를 찾습니다. 센서가 없어도 작은 Python 실습부터 시작할 수 있습니다." repo="meroedu-localization">
-  <Figure src={`${a}/robot-overview.webp`} width={727} height={698} alt="ddonggae 로봇의 메카넘 바퀴와 위쪽 LiDAR가 보이는 CAD 렌더" caption="ddonggae의 센서와 구동부. LiDAR는 주변 벽을 보고, 바퀴는 로봇을 움직입니다. 이번 자료는 위치를 알아내는 부분에 집중합니다." credit={<a href={`${source}/hardware/README.md`}>Team 14 · ddonggae</a>}/>
   <Chapter id="sensor" title="1. LiDAR는 사진 대신 거리를 보낸다">
     <p>LiDAR는 빛을 쏘아 주변 물체까지의 거리를 측정하는 센서입니다. 여기서는 수평면을 한 바퀴 훑는 2D LiDAR를 다룹니다. 카메라처럼 색상을 보내는 대신, 방향마다 얼마나 멀리서 반사되었는지 알려줍니다. 사람이나 벽을 만나는 가장 가까운 표면의 거리이지, 그 뒤에 숨은 벽의 거리는 아닙니다.</p>
     <p>한 번의 scan은 여러 쌍의 <code>(angle, range)</code>입니다. 정면 0°에서 1.5 m, 왼쪽 90°에서 2 m처럼 생각하면 됩니다. 센서의 정면이 로봇의 정면과 일치하는지는 장착 방향을 보고 확인해야 합니다. ROS의 LaserScan은 시작 각도, 각도 간격, 거리 배열과 유효 거리 범위를 함께 보냅니다.</p>
-    <Figure src={`${a}/scan-and-pose.png`} alt="사각 방의 로봇에서 벽으로 뻗은 LiDAR 광선과 잘못된 위치에서 벽을 벗어난 점들" caption="왼쪽: 방향별 거리 측정. 오른쪽: 같은 거리를 잘못된 로봇 위치에서 좌표로 바꾸면 벽과 맞지 않습니다. 설명용 합성 scan입니다."/>
+    <LidarDiagram kind="scan"/>
     <Check><p>한 방향에서 0.8 m가 나왔다고 로봇의 위치를 바로 알 수 있을까요? 아닙니다. 어느 벽을 보고 있는지와 로봇의 방향을 함께 알아야 합니다.</p></Check>
   </Chapter>
   <Chapter id="coordinates" title="2. 센서 좌표와 지도 좌표를 구분한다">
@@ -20,11 +20,11 @@ export default function LidarLesson() { return <Lesson topic="Localization" topi
   </Chapter>
   <Chapter id="matching" title="3. 이 위치라면 벽까지 몇 m일까?">
     <p>ddonggae의 아이디어는 단순합니다. 방의 벽 위치를 알고 있으니, 로봇이 후보 위치에 있다고 가정했을 때 각 광선이 벽에 닿는 거리를 계산합니다. 그리고 실제 측정 거리와 비교합니다. 잘 맞는 후보가 현재 위치의 추정값입니다. 지도를 새로 만드는 SLAM과 달리, 이미 주어진 지도를 이용하는 localization입니다.</p>
-    <Figure src={`${a}/pipeline.svg`} alt="LiDAR scan과 후보 위치의 예상 벽 거리를 비교하고 가장 낮은 오차의 위치를 찾는 흐름" caption="scan → 후보별 예상 거리 → 오차 점수 → 위치 추정. 첫 실습에서는 초기 방향 yaw를 알고 있다고 가정하고 x, y만 찾습니다."/>
+    <FlowDiagram title="LiDAR scan으로 위치 찾기" steps={[{title:"LiDAR scan",lines:["각도와 거리", "측정값"]},{title:"후보 위치",lines:["알려진 사각 벽", "예상 거리"]},{title:"거리 비교",lines:["오차 점수", "가장 잘 맞는 x, y"]}]} note="첫 실습: 방향 yaw를 알고 있다고 가정하고 x, y만 찾습니다." caption="scan → 후보별 예상 거리 → 오차 점수 → 위치 추정. 센서가 없어도 합성 scan으로 시작할 수 있습니다."/>
     <p>예를 들어 로봇이 (0.5, 0)에 있고 동쪽을 바라보면 동쪽 벽 x=2까지 1.5 m입니다. 대각선 광선은 x 벽 또는 y 벽 중 먼저 닿는 것을 선택합니다. 구현에서는 각 축의 교차 거리 중 양수인 최소값을 구합니다.</p>
     <CodeExample label="동쪽 벽까지 예상 거리" code={`# cos(theta) > 0인 광선\ndistance_to_east_wall = (xmax - x) / math.cos(theta)\n# 실제 코드는 동/서/남/북 중 광선이 먼저 만나는 벽을 선택합니다.`}/>
     <p>측정과 예상의 차이를 절댓값으로 계산하고, 너무 큰 값은 0.35 m로 제한합니다. 큰 오차 상위 30%를 제외한 평균으로 점수를 매깁니다. 잘못된 측정 몇 개가 전체를 압도하지 않게 하는 방법입니다. 사용할 수 있는 측정이 8개보다 적으면 위치를 갱신하지 않습니다. 이 숫자들은 실습을 위한 시작값이며 센서와 방에 맞게 확인해야 합니다.</p>
-    <Figure src={`${a}/search-score.png`} alt="방 안의 후보 x y 좌표에 대한 거리 오차 점수를 색으로 표시한 히트맵" caption="방향을 고정하고 후보 위치를 비교한 점수 지도입니다. 낮은 오차 영역을 찾은 뒤 주변을 더 촘촘하게 탐색합니다. 합성 데이터의 설명 그림입니다."/>
+    <LidarDiagram kind="score"/>
   </Chapter>
   <Chapter id="practice" title="4. 센서 없이 경량 코드부터 실행한다">
     <p>원본의 ROS node, 지도 파일, 경기 로그를 통째로 복사하지 않았습니다. 벽 거리 계산·오차 점수·x/y 탐색을 작은 Python 파일로 정리했습니다. 표준 라이브러리만 사용하므로 LiDAR, ROS, GPU가 없어도 실행됩니다. Python 3.10 이상과 Git을 준비하세요.</p>
@@ -38,12 +38,10 @@ export default function LidarLesson() { return <Lesson topic="Localization" topi
     <p>실제로는 합성 scan을 만드는 부분을 드라이버의 LaserScan 입력으로 바꾸면 됩니다. ddonggae는 RPLIDAR A2M12의 scan을 받아 일부 광선만 골라 처리했습니다. 먼저 센서 드라이버만 실행해 scan이 나오는지 확인한 다음 위치 계산을 붙이세요.</p>
     <CodeExample label="LaserScan에서 교육 코드 입력 만들기" code={`beams = []\nfor i, distance in enumerate(msg.ranges):\n    if math.isfinite(distance) and msg.range_min < distance < msg.range_max:\n        angle = msg.angle_min + i * msg.angle_increment\n        beams.append((angle, distance))\n# 센서가 고정되고 초기 방향을 알고 있는 상태에서\npose, score_m = grid_search(beams, known_initial_yaw)`}/>
     <p>벽이 가려지지 않는 사각형 환경에서 먼저 확인합니다. 실습 matcher는 짧게 돌아온 광선을 정상적인 가림으로 무시하지 않고 오차로 계산합니다. 사람이나 높은 물체가 scan 높이를 가로막는 일반 환경에는 그대로 적용할 수 없습니다. 지도 형태가 복잡해지면 occupancy map 기반 scan matching 같은 다른 방법이 필요합니다.</p>
-    <Figure src={`${a}/arena-control-ui.png`} width={1500} height={940} alt="ddonggae 제어 UI의 지도와 위치 및 localization 점수" caption="원본 프로젝트의 제어 화면 예시입니다. 표시 위치는 localization의 추정값이며 독립적으로 측정한 ground truth가 아닙니다." credit={<a href={`${source}/media/runs/README.md`}>ddonggae · 제어 UI 화면의 출처</a>}/>
-    <Figure src={`${a}/robot-closeup.jpg`} width={750} height={720} alt="실제 ddonggae 로봇의 상부 센서와 케이블 및 메카넘 바퀴 사진" caption="실제 로봇 사진입니다. 센서의 위치와 정면이 코드의 좌표 가정과 일치하는지 확인하는 작업이 필요합니다." credit={<a href={`${source}/media/robot/README.md`}>Team 14 · 제작 로봇 사진</a>}/>
     <p>scan이 늦으면 과거 위치를 계속 사용하는 문제가 생깁니다. 가장 최근 scan을 우선 처리하고, 일정 시간 입력이 없으면 이동을 멈추는 구성이 필요합니다. 이 교육 실습은 위치 계산을 이해하는 단계이며 로봇을 자동으로 구동하는 코드는 포함하지 않습니다.</p>
   </Chapter>
   <Chapter id="discussion" title="6. 심화 discussion: 방향은 어떻게 알 수 있을까?">
-    <Figure src={`${a}/square-symmetry.png`} alt="정사각형 방에서 90도씩 회전된 네 위치와 방향이 같은 벽 거리 측정을 만들 수 있는 도식" caption="정사각형의 대칭 때문에 같은 scan을 설명하는 위치·방향 조합이 여러 개 생깁니다. 벽 거리만 잘 맞는다고 항상 올바른 방향인 것은 아닙니다."/>
+    <LidarDiagram kind="symmetry"/>
     <p>첫 실습은 로봇이 처음 정해둔 방향을 유지한다고 가정합니다. 로봇을 회전시키려면 이 가정을 확장해야 합니다. 시작 방향을 정한 뒤 wheel odometry 또는 IMU로 방향의 변화량을 추정하고, LiDAR의 위치 비교에 그 방향을 넣는 방법을 생각할 수 있습니다.</p>
     <p>IMU의 gyro는 회전 속도를 측정합니다. 짧은 시간 동안의 회전 속도 × 시간 간격을 더하면 방향의 변화량을 얻습니다. 누적 오차가 생기므로 신뢰할 수 있는 지도 관측이나 다른 센서로 주기적으로 보완하는 접근이 필요합니다. 여기서는 결합의 역할만 설명하고 센서 장착·축 보정·필터 구현은 다루지 않습니다.</p>
     <Check><p>토론: 시작 방향을 잘못 입력했다면 어떤 결과가 나올까요? 벽을 하나 다른 모양으로 만들거나 비대칭 landmark를 추가하면 방향의 모호함을 줄일 수 있을까요?</p></Check>

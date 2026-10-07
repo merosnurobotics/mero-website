@@ -1,3 +1,4 @@
+import { FlowDiagram } from "@/components/education/native-diagrams";
 import type { Metadata } from "next";
 import { Lesson, Chapter, Figure, Check } from "@/components/education/lesson-primitives";
 import { CodeExample } from "@/components/education/code-example";
@@ -6,7 +7,7 @@ const a="/education-assets/setup";
 export default function RemoteWorkLesson() { return <Lesson topic="개발 환경 셋업" topicPath="/education/development-setup" path="/education/development-setup/remote-work" title="원격 작업하기: ssh jetson부터 GUI까지" intro="내 노트북의 터미널에서 Jetson의 코드를 실행하는 환경을 만듭니다. SSH 서버, Tailscale 로그인, SSH 키 등록과 접속 별칭을 순서대로 설정하고, 화면이 필요한 작업에는 RustDesk를 사용합니다." repo="meroedu-setup">
   <Chapter id="roles" title="1. 명령을 입력하는 컴퓨터와 실행하는 컴퓨터">
     <p>로컬 컴퓨터는 지금 키보드를 누르고 있는 노트북입니다. Jetson은 로봇에 달린 별도의 Linux 컴퓨터입니다. SSH로 접속하면 터미널 창은 노트북에 있지만 그 안의 명령은 Jetson에서 실행됩니다. 예를 들어 접속 후 <code>python3 train.py</code>를 실행하면 Jetson의 Python, 파일, CPU/GPU를 사용합니다.</p>
-    <Figure src={`${a}/remote-network.svg`} alt="로컬 컴퓨터와 Jetson 사이의 Tailscale 네트워크, SSH 명령 실행과 RustDesk 화면 접속 관계" caption="SSH는 원격 명령과 파일 작업을, Tailscale은 장치 사이의 연결을, RustDesk는 원격 화면 조작을 담당합니다. 서로 역할이 다릅니다."/>
+    <FlowDiagram title="로컬 컴퓨터에서 Jetson 원격 작업" steps={[{title:"로컬 컴퓨터",lines:["키보드와 터미널", "SSH 개인키"]},{title:"Tailscale",lines:["같은 tailnet", "장치 사이 연결"]},{title:"Jetson / Ubuntu",lines:["SSH server", "코드는 여기서 실행"]}]} note="SSH는 명령과 파일을, RustDesk는 화면과 입력을 주고받습니다." caption="SSH: 원격 작업. Tailscale: 장치 연결. RustDesk: 원격 desktop 조작. 각 도구의 역할을 구분합니다."/>
     <p>이번 실습의 원격 장치는 Ubuntu 기반 Jetson입니다. 로컬 명령은 Linux·macOS 터미널 기준으로 적고 Windows PowerShell 방법도 함께 안내합니다. Jetson에 처음 설정할 때는 모니터·키보드 또는 이미 가능한 접속 수단이 있어야 합니다. 이 자료는 본인에게 접속 권한이 있는 장치를 설정하는 과정입니다.</p>
     <div className="education-table-wrap"><table><thead><tr><th>어디서?</th><th>무엇을 설정?</th></tr></thead><tbody><tr><td>Jetson</td><td>SSH server, Tailscale, 공개키 등록, 필요하면 RustDesk</td></tr><tr><td>로컬 컴퓨터</td><td>SSH client, Tailscale, 개인키 생성, ~/.ssh/config 별칭</td></tr><tr><td>브라우저</td><td>Tailscale 로그인 및 같은 tailnet의 장치 확인</td></tr></tbody></table></div>
   </Chapter>
@@ -25,7 +26,7 @@ export default function RemoteWorkLesson() { return <Lesson topic="개발 환경
     <p>이 자료는 <strong>일반 OpenSSH를 Tailscale 네트워크 위에서 사용하는 구성</strong>입니다. 별도 기능인 Tailscale SSH를 켜는 <code>tailscale up --ssh</code>는 사용하지 않습니다. Tailscale 로그인으로 네트워크를 연결한 다음 SSH 키로 Linux 계정에 로그인합니다.</p>
   </Chapter>
   <Chapter id="keys" title="4. 개인키는 로컬에, 공개키는 Jetson에">
-    <Figure src={`${a}/ssh-keys.svg`} alt="로컬의 SSH 개인키와 Jetson authorized_keys에 복사한 공개키의 관계" caption="개인키는 로컬 컴퓨터에 남깁니다. Jetson에는 .pub 공개키만 등록합니다. Tailscale 로그인은 이 키 등록을 대신하지 않습니다."/>
+    <FlowDiagram title="개인키는 로컬에, 공개키는 Jetson에" steps={[{title:"로컬 개인키",lines:["id_ed25519_jetson", "로컬에 보관"]},{title:"공개키만 복사",lines:["id_ed25519_jetson.pub"]},{title:"Jetson 공개키 목록",lines:["~/.ssh/authorized_keys", "로그인 허용"]}]} note="Host key는 서버 신원 확인용입니다. 로그인 key pair와 역할이 다릅니다." caption="개인키는 보내지 않습니다. Tailscale 로그인과 SSH 키 인증도 서로 다른 단계입니다."/>
     <CodeExample label="로컬 Linux·macOS · SSH 키 생성" code={`mkdir -p ~/.ssh\nchmod 700 ~/.ssh\nssh-keygen -t ed25519 -a 64 -f ~/.ssh/id_ed25519_jetson -C "mero-jetson"\n# 새 키를 보호할 passphrase 입력\n# 같은 파일이 이미 있다면 덮어쓰지 말고 기존 키를 확인\nls ~/.ssh/id_ed25519_jetson*`}/>
     <p>Passphrase는 개인키 파일을 보호합니다. SSH 계정 비밀번호와는 다릅니다. <code>id_ed25519_jetson</code>이 개인키이고, <code>id_ed25519_jetson.pub</code>이 공개키입니다. 개인키를 Git 저장소나 Jetson에 복사하지 않습니다.</p>
     <p>처음 Jetson에 접속할 때는 host key fingerprint를 확인합니다. Jetson의 로컬 터미널에서 아래 명령으로 표시한 SHA256 값을, 노트북이 접속할 때 보여주는 값과 비교하세요. Host key는 접속할 서버가 맞는지 확인하는 키이며 개인의 로그인 키와 역할이 다릅니다.</p>
@@ -39,7 +40,7 @@ export default function RemoteWorkLesson() { return <Lesson topic="개발 환경
     <p>로컬의 <code>~/.ssh/config</code>에 아래 내용을 <strong>추가</strong>합니다. 기존 파일을 통째로 덮어쓰지 않습니다. Host는 내가 붙이는 별칭이고, HostName은 실제 접속 주소입니다. User는 Jetson 계정, IdentityFile은 로컬의 개인키 경로입니다.</p>
     <CodeExample label="로컬 ~/.ssh/config · Jetson 별칭" code={`Host jetson\n    HostName 100.101.102.103\n    User robot\n    IdentityFile ~/.ssh/id_ed25519_jetson\n    IdentitiesOnly yes\n    ServerAliveInterval 30\n    ServerAliveCountMax 3`}/>
     <p>Linux·macOS는 <code>chmod 600 ~/.ssh/config</code>를 실행합니다. Windows는 <code>$HOME/.ssh/config</code>에 확장자 없이 저장합니다. 메모장이 <code>config.txt</code>로 저장하지 않았는지 확인하세요.</p>
-    <Figure src={`${a}/ssh-alias.svg`} alt="ssh jetson 명령이 로컬 config의 주소 사용자 개인키 설정을 읽고 Jetson shell에 접속하는 도식" caption="긴 접속 명령이 별칭 하나로 정리됩니다. 설정 파일은 Jetson이 아니라 접속을 시작하는 로컬 컴퓨터에 둡니다."/>
+    <FlowDiagram title="ssh jetson → 저장된 접속 설정" steps={[{title:"로컬 터미널",lines:["ssh jetson"]},{title:"~/.ssh/config",lines:["HostName: 실제 주소", "User: Jetson 계정", "IdentityFile: 로컬 키"]},{title:"Jetson shell",lines:["hostname / whoami", "Jetson에서 명령 실행"]}]} caption="별칭 파일은 Jetson이 아니라 접속을 시작하는 로컬 컴퓨터에 둡니다."/>
     <CodeExample label="로컬 · 별칭 확인과 접속" code={`ssh -G jetson\n# hostname, user, identityfile이 의도한 값인지 확인\nssh jetson\n# 접속 후 아래 명령은 Jetson에서 실행됩니다.\nhostname\nwhoami\npwd\nexit`}/>
     <p>IP 대신 MagicDNS 이름을 HostName으로 넣는 것도 가능합니다. 먼저 그 이름으로 연결되는지 확인하세요. <code>jetson</code>이라는 별칭 자체는 DNS 이름이 아니므로, config가 없으면 이 자료의 방식으로 동작하지 않습니다.</p>
   </Chapter>
@@ -52,7 +53,7 @@ export default function RemoteWorkLesson() { return <Lesson topic="개발 환경
     <CodeExample label="로컬 · 설정 예제 확인" code={`git clone https://github.com/merosnurobotics/meroedu-setup.git\ncd meroedu-setup/lessons/01-remote-work\npython3 check_config.py ssh_config.example\n# 이후 예제의 IP와 User를 본인 값으로 수정해 ~/.ssh/config에 추가`}/>
   </Chapter>
   <Chapter id="gui" title="7. GUI가 필요한 작업에는 RustDesk">
-    <Figure src={`${a}/remote-workflow.svg`} alt="로컬에서 SSH로 원격 터미널 작업을 하고 RustDesk로 Jetson GUI를 조작하는 두 경로" caption="명령과 파일은 SSH, 카메라 설정이나 RViz처럼 화면이 필요한 작업은 RustDesk로 나눠 생각하면 됩니다."/>
+    <FlowDiagram title="작업에 맞는 원격 접속 방법" steps={[{title:"터미널 작업",lines:["SSH → Jetson shell", "git clone · Python · 로그"]},{title:"화면 작업",lines:["RustDesk → Jetson desktop", "카메라 도구 · RViz · 설정"]}]} note="두 방법 모두 Jetson에서 실행되는 작업을 조작합니다." caption="원격 화면이 필요한 작업에서는 RustDesk를 사용할 수 있습니다."/>
     <p>RustDesk는 원격 컴퓨터의 화면을 보고 마우스·키보드로 조작하는 프로그램입니다. 두 컴퓨터에 호환되는 앱을 설치하고 Jetson 화면에 표시된 ID로 접속한 뒤 연결 승인을 받거나 설정한 비밀번호로 인증합니다.</p>
     <Figure src={`${a}/rustdesk-client.png`} width={874} height={632} alt="RustDesk 공식 안내 화면의 내 ID와 일회용 비밀번호 및 상대 컴퓨터 ID 입력 영역" caption="공식 문서의 예시 화면입니다. 내 장치 ID와 접속할 상대 장치의 입력 칸을 구분하세요. 화면의 값은 우리 동아리 장치의 접속 정보가 아닙니다." credit={<><a href="https://rustdesk.com/docs/en/client/">RustDesk 공식 client 문서</a> · <a href={`${a}/RUSTDESK-LICENSE.txt`}>문서 저장소 MIT license</a></>}/>
     <p>Jetson은 보통 ARM64입니다. <code>uname -m</code>으로 확인하고, <a href="https://github.com/rustdesk/rustdesk/releases">공식 release</a>에서 현재 OS와 아키텍처에 맞는 배포본을 선택합니다. x86_64 노트북용 파일을 Jetson에 그대로 설치하면 안 됩니다. 그래픽 desktop이 실행되어야 하고, Linux의 Wayland·로그인 화면 제약은 <a href="https://rustdesk.com/docs/en/client/linux/">공식 Linux 안내</a>를 확인하세요.</p>

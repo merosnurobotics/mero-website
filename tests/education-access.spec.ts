@@ -1,9 +1,10 @@
 import { test, expect } from "@playwright/test";
 const baseURL = process.env.MERO_EDUCATION_TEST_URL;
 test.skip(!baseURL,"Set MERO_EDUCATION_TEST_URL.");
+const membersOnly = process.env.MERO_EDUCATION_TEST_MEMBERS_ONLY === "true";
 const courses=[
   ["/education/localization/lidar","LiDAR로 시작하는 localization",6],
-  ["/education/control-theory/pid-control","그림으로 이해하는 PID control",6],
+  ["/education/control-theory/pid-control","그림으로 이해하는 PID control",5],
   ["/education/development-setup/remote-work","원격 작업하기: ssh jetson부터 GUI까지",8],
 ] as const;
 async function login(context: import("@playwright/test").BrowserContext) {
@@ -13,6 +14,7 @@ async function login(context: import("@playwright/test").BrowserContext) {
 }
 
 test("guests and invalid sessions cannot read education pages, files or optimized copies",async({page,context})=>{
+  test.skip(!membersOnly,"Private-mode regression test.");
   for(const path of ["/education",...courses.map(c=>c[0]),"/education/object-recognition/synthetic-data","/education/reinforcement-learning/kimodo-mjwarp"]) {
     const response=await context.request.get(`${baseURL}${path}`,{maxRedirects:0});
     expect(response.status(),path).toBe(307);
@@ -21,7 +23,7 @@ test("guests and invalid sessions cannot read education pages, files or optimize
     const rsc=await context.request.get(`${baseURL}${path}?_rsc=guest`,{headers:{RSC:'1'},maxRedirects:0});
     expect(rsc.status()).toBe(307);
   }
-  for(const asset of ['localization/scan-and-pose.png','control/PID_en.svg','setup/ssh-alias.svg','kimodo-mjwarp/media/oneleg_gpu_policy.mp4','kimodo-mjwarp/microban-imitation-rl-lesson.zip','object-recognition/inference-examples.json']) {
+  for(const asset of ['localization/NOTICE.md','control/PID_en.svg','setup/NOTICE.md','kimodo-mjwarp/media/oneleg_gpu_policy.mp4','kimodo-mjwarp/microban-imitation-rl-lesson.zip','object-recognition/inference-examples.json']) {
     const response=await context.request.get(`${baseURL}/education-assets/${asset}`);
     expect(response.status()).toBe(401);expect(response.headers()['cache-control']).toContain('no-store');
   }
@@ -41,9 +43,9 @@ test("members can read all new courses and play authenticated media ranges",asyn
     await page.goto(`${baseURL}${path}`);
     await expect(page.locator('h1')).toHaveText(title);
     await expect(page.locator('.perception-chapter')).toHaveCount(count);
-    await expect(page.locator('meta[name=robots]')).toHaveAttribute('content',/noindex/);
+    await expect(page.locator('meta[name=robots]')).toHaveAttribute('content',membersOnly ? /noindex/ : /^index, follow$/);
     const images=await page.locator('.perception-lesson img').evaluateAll(els=>els.map(e=>e.getAttribute('src')!));
-    expect(images.length).toBeGreaterThanOrEqual(5);
+    await expect(page.locator(".education-native-figure")).toHaveCount(path.includes("pid-control") ? 2 : 4);
     for(const image of images) {
       const r=await context.request.get(`${baseURL}${image}`);
       expect(r.status(),image).toBe(200);expect(r.headers()['cache-control']).toContain('private');
@@ -52,11 +54,14 @@ test("members can read all new courses and play authenticated media ranges",asyn
     await expect(page.locator('[role=status]').first()).toContainText('복사했습니다.');
   }
   await page.goto(`${baseURL}/education/localization/lidar`);
+  await expect(page.locator(".perception-lesson img")).toHaveCount(0);
   await expect(page.locator('#practice')).toContainText('초기 yaw=0.35');
   await expect(page.locator('#discussion')).toContainText('심화 discussion');
   await page.goto(`${baseURL}/education/control-theory/pid-control`);
-  await expect(page.locator('#line')).toContainText('P 중심');
-  await expect(page.locator('#encoder')).toContainText('실제로는 PI');
+  await expect(page.locator('#applications')).toContainText('P 중심');
+  await expect(page.locator('#applications')).toContainText('PI');
+  await expect(page.locator('.perception-lesson')).not.toContainText('시뮬레이션');
+  await expect(page.locator('img[src*="motor-response"]')).toHaveCount(0);
   const media=`${baseURL}/education-assets/kimodo-mjwarp/media/oneleg_gpu_policy.mp4`;
   const range=await context.request.get(media,{headers:{Range:'bytes=0-99'}});
   expect(range.status()).toBe(206);expect((await range.body()).length).toBe(100);
@@ -65,7 +70,7 @@ test("members can read all new courses and play authenticated media ranges",asyn
   expect(invalid.status()).toBe(416);
   expect(errors).toEqual([]);
   expect((await context.request.post(`${baseURL}/api/auth/logout`,{data:{},headers:{Origin:baseURL!}})).status()).toBe(200);
-  expect((await context.request.get(media)).status()).toBe(401);
+  expect((await context.request.get(media)).status()).toBe(membersOnly ? 401 : 200);
 });
 
 test("new education lessons fit narrow screens and both themes",async({page,context})=>{
@@ -82,4 +87,20 @@ test("new education lessons fit narrow screens and both themes",async({page,cont
       if(width!==320) await page.screenshot({path:`.local/qa/education/${path.split('/').pop()}-${width}-${theme}.png`,fullPage:true});
     }
   }
+});
+
+test("public mode opens lessons and files without a member account",async({page,context})=>{
+  test.skip(membersOnly,"Public-mode regression test.");
+  for(const [path,title] of courses) {
+    await page.goto(`${baseURL}${path}`);
+    await expect(page.locator('h1')).toHaveText(title);
+    await expect(page.locator('meta[name=robots]')).toHaveAttribute('content','index, follow');
+  }
+  await page.goto(`${baseURL}/education`);
+  await expect(page.locator('.education-series-row')).toHaveCount(5);
+  for(const asset of ['localization/NOTICE.md','control/PID_en.svg','setup/NOTICE.md','object-recognition/inference-examples.json','kimodo-mjwarp/microban-imitation-rl-lesson.zip']) {
+    expect((await context.request.get(`${baseURL}/education-assets/${asset}`)).status()).toBe(200);
+  }
+  const response=await context.request.get(`${baseURL}/education-assets/kimodo-mjwarp/media/oneleg_gpu_policy.mp4`,{headers:{Range:'bytes=0-99'}});
+  expect(response.status()).toBe(206);expect((await response.body()).length).toBe(100);
 });

@@ -2,6 +2,7 @@ import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
 import { Readable } from "node:stream";
+import { educationMembersOnly } from "@/lib/education/settings";
 import { currentMember } from "@/lib/auth";
 
 export const runtime = "nodejs";
@@ -9,7 +10,7 @@ const types: Record<string,string> = { ".svg":"image/svg+xml", ".png":"image/png
 type Context = { params: Promise<{path:string[]}> };
 async function serve(request: Request, context: Context, head: boolean) {
   const headers = new Headers({"Cache-Control":"private, no-store", "X-Content-Type-Options":"nosniff", "Vary":"Cookie"});
-  if (!await currentMember()) return new Response(null,{status:401,headers});
+  if (educationMembersOnly() && !await currentMember()) return new Response(null,{status:401,headers});
   const {path} = await context.params;
   const root = resolve(process.cwd(),"private/education-assets");
   if (path.some(p=>!p || p === "." || p === ".." || /[\\/\0]/.test(p))) return new Response(null,{status:404,headers});

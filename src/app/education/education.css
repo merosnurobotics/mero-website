@@ -149,3 +149,32 @@
 .education-image-credit { display: block; margin-top: 7px; font-size: 12px; }
 .perception-lesson figure:has(img[src$="PID_en.svg"]), .perception-lesson figure:has(img[src$="PID_varyingP.jpg"]), .perception-lesson figure:has(img[src$="PID_Compensation_Animated.gif"]) { max-width: 760px; }
 .perception-lesson img[src$="PID_Compensation_Animated.gif"] { max-width: 600px; }
+/* Instructional diagrams inherit the site's colors and reflow on mobile. */
+.education-native-figure { border: 1px solid var(--line); background: var(--surface); border-radius: var(--control-radius); padding: 26px; }
+.education-native-heading { font-size: 17px; font-weight: 650; margin-bottom: 24px; color: var(--text); }
+.perception-lesson .education-native-flow { display: grid; grid-template-columns: repeat(auto-fit,minmax(145px,1fr)); gap: 28px; padding: 0; margin: 0; list-style: none; }
+.education-native-flow li { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 16px; border: 1px solid var(--line); background: var(--bg); margin: 0; font-size: 13px; line-height: 1.7; }
+.education-native-flow li:not(:last-child)::after { content: "→"; position: absolute; right: -23px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 19px; }
+.education-native-flow strong { font-size: 14px; font-weight: 650; }
+.education-native-flow .education-native-step { color: var(--accent); font-size: 11px; font-variant-numeric: tabular-nums; }
+.education-native-flow li > span:not(.education-native-step) { color: var(--muted); }
+.perception-chapter .education-native-feedback, .perception-chapter .education-native-note { font-size: 13px; color: var(--muted); margin: 18px 0 0; }
+.education-native-feedback { border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+.education-native-plots { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.education-native-plots > div > p { font-size: 14px; font-weight: 600; margin: 0 0 10px; }
+.education-native-figure svg { display: block; width: 100%; height: auto; overflow: visible; }
+.education-native-room { max-width: 440px; margin-inline: auto; }
+.native-axis { font-size: 15px; font-family: inherit; fill: var(--muted); }
+.native-label { font-size: 18px; font-family: inherit; fill: var(--text); }
+.perception-lesson .education-native-legend { display: flex; gap: 12px 18px; flex-wrap: wrap; margin: 8px 0 0; padding: 0; list-style: none; font-size: 12px; }
+.education-native-legend li { display: flex; align-items: center; gap: 7px; margin: 0; color: var(--muted); }
+.native-swatch { display: inline-block; width: 20px; border-top: 2px solid currentColor; }
+.native-swatch-dashed { border-top-style: dashed; }
+.native-swatch-dotted { border-top-style: dotted; }
+@media (max-width: 767px) {
+  .education-native-figure { padding: 20px 16px; }
+  .perception-lesson .education-native-flow { grid-template-columns: 1fr; gap: 28px; }
+  .education-native-flow li:not(:last-child)::after { content: "↓"; right: auto; top: auto; left: 50%; bottom: -29px; transform: translateX(-50%); }
+  .education-native-plots { grid-template-columns: 1fr; gap: 28px; }
+}
+.perception-lesson img[src$="PID_en.svg"] { background: white; padding: 12px; }

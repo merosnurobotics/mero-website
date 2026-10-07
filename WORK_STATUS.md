@@ -1,3 +1,18 @@
+최종 검증: canonical production build 통과. 공개 모드 Playwright 6개 통과(비공개 전용 검사 1개 제외), 회원 전용 옵션 regression 2개 통과. Native 도식의 mobile/dark 화면 직접 확인. PID unit test 5개와 LiDAR unit test 4개 통과. 배포 후 공개 접근 확인 대기.
+
+# 2026-10-08 최종 교육 구성
+
+- 교육 전체 공개가 기본. EDUCATION_MEMBERS_ONLY=true로 페이지·미디어를 회원 전용으로 전환 가능. docs/education-access.md 운영 안내.
+- LiDAR: 초기 방향 가정의 경량 known-wall x/y 실습. IMU는 심화 discussion의 방법론만. 요청한 robot-overview, arena-control-ui, robot-closeup 사진·캡션·파일 삭제.
+- 직접 만든 도식은 HTML/CSS 및 theme-aware inline SVG. 생성한 이미지 파일 대신 반응형 원본 DOM으로 표시. Commons PID 그림/애니메이션 및 RustDesk 공식 screenshot만 외부 이미지로 유지.
+- PID: 'PID 활용 예시' 아래 encoder motor/line tracking을 목표·측정·오차·출력 관점으로 정성적으로 설명. 모터/line simulation 그래프·결과·demo 삭제. meroedu-control c1c8d1c.
+- 새 공개 repo: meroedu-localization 441a1bb, meroedu-control c1c8d1c, meroedu-setup b7099c6. 시리즈별 lessons/01-*와 후속 강의 확장 규칙.
+- 실제 Jetson의 설정·Tailscale login·RustDesk 연결은 새로 수행하지 않음. SSH config 예제 해석과 경량 Python 계산을 검증.
+
+# 2026-10-08 최종 변경: 교육 전체 공개
+
+사용자가 회원 전용 요청을 철회하고 전체 공개를 요청했습니다. 기본 공개 상태이며 `EDUCATION_MEMBERS_ONLY=true`를 설정하고 재배포하면 회원 전용으로 바꿀 수 있습니다. 동일 옵션이 페이지와 자료 파일에 적용됩니다. docs/education-access.md에 운영 방법을 기록했습니다. 앞선 회원 전용 기록은 작업 이력입니다.
+
 # 2026-10-08 추가 교육 자료와 회원 접근 제한
 
 - Localization / LiDAR: ddonggae의 known-wall range matching을 경량 Python 코드로 재구성. 초기 yaw를 알고 있다고 가정하고 x/y 탐색. IMU는 심화 discussion의 방법론만 설명.

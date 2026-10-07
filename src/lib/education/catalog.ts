@@ -41,9 +41,8 @@ export const pidChapters = [
   { id: "feedback", label: "목표·측정·오차" },
   { id: "terms", label: "P, I, D를 그림으로 보기" },
   { id: "digital", label: "컴퓨터에서 계산하기" },
-  { id: "encoder", label: "Encoder motor에 적용하기" },
-  { id: "line", label: "정해진 line 따라가기" },
-  { id: "practice", label: "실습과 튜닝 순서" },
+  { id: "applications", label: "PID 활용 예시" },
+  { id: "tuning", label: "적용과 튜닝의 관점" },
 ];
 export const remoteWorkChapters = [
   { id: "roles", label: "로컬 컴퓨터와 Jetson" },
@@ -74,7 +73,7 @@ export const educationTopics = [
   {
     title: "Control theory", path: controlTheoryPath,
     description: "목표와 측정값의 차이를 줄여 로봇이 원하는 움직임을 만들도록 합니다.",
-    lessons: [{ path: pidLessonPath, shortTitle: "PID control", label: "Encoder motor와 line tracking", title: "그림으로 이해하는 PID control", description: "P·I·D의 역할을 보고 encoder motor 속도 제어와 정해진 line을 따라가는 제어로 연결합니다.", chapters: pidChapters }],
+    lessons: [{ path: pidLessonPath, shortTitle: "PID control", label: "Encoder motor와 line tracking", title: "그림으로 이해하는 PID control", description: "P·I·D의 역할을 그림으로 이해하고, encoder motor와 line tracking에 어떻게 적용할 수 있는지 살펴봅니다.", chapters: pidChapters }],
   },
   {
     title: "개발 환경 셋업", path: developmentSetupPath,

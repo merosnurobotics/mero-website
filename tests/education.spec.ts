@@ -3,6 +3,7 @@ import { test, expect } from "@playwright/test";
 const baseURL = process.env.MERO_EDUCATION_TEST_URL;
 test.skip(!baseURL, "Set MERO_EDUCATION_TEST_URL to a running MERO server.");
 test.beforeEach(async ({ context }) => {
+  if (process.env.MERO_EDUCATION_TEST_MEMBERS_ONLY !== "true") return;
   const email=process.env.MERO_EDUCATION_TEST_EMAIL;
   const password=process.env.MERO_EDUCATION_TEST_PASSWORD;
   test.skip(!email || !password,"Member credentials are required for protected lessons.");

@@ -1,3 +1,4 @@
+import { FlowDiagram } from "@/components/education/native-diagrams";
 import type { Metadata } from "next";
 import { Lesson, Chapter, Figure, Check } from "@/components/education/lesson-primitives";
 import { CodeExample } from "@/components/education/code-example";
@@ -5,7 +6,7 @@ export const metadata: Metadata = {title:"그림으로 이해하는 PID control"
 const a="/education-assets/control";
 const source="https://github.com/YenCho/ddonggae/blob/d85758c752e6cd3244e16d9ea4a3d2831da225b4";
 const commons=(name:string)=>`https://commons.wikimedia.org/wiki/File:${name}`;
-export default function PIDLesson() { return <Lesson topic="Control theory" topicPath="/education/control-theory" path="/education/control-theory/pid-control" title="그림으로 이해하는 PID control" intro="목표 속도로 바퀴를 돌리고, 정해진 경로로 로봇을 움직여봅니다. 목표와 측정값을 비교하는 feedback부터 P·I·D의 역할을 그림으로 이해하고, ddonggae의 encoder motor와 경로 추종 구조를 작은 실습으로 연결합니다." repo="meroedu-control">
+export default function PIDLesson() { return <Lesson topic="Control theory" topicPath="/education/control-theory" path="/education/control-theory/pid-control" title="그림으로 이해하는 PID control" intro="목표 속도로 바퀴를 돌리고, 정해진 경로로 로봇을 움직여봅니다. 목표와 측정값을 비교하는 feedback부터 P·I·D의 역할을 그림으로 이해하고, ddonggae의 encoder motor와 경로 추종을 통해 PID를 적용할 수 있는 흐름을 살펴봅니다." repo="meroedu-control">
   <Chapter id="feedback" title="1. 목표대로 움직이려면 결과를 다시 본다">
     <p>모터에 PWM 80을 준다고 항상 같은 속도가 나오지는 않습니다. 배터리 상태, 바닥 마찰, 실린 물체에 따라 달라집니다. Open-loop는 명령만 보내고 끝냅니다. Closed-loop는 encoder로 실제 속도를 재고 목표와 비교해 다음 명령을 바꿉니다. 이 되먹임을 feedback이라고 부릅니다.</p>
     <p>Setpoint는 원하는 값, measurement는 실제로 측정한 값입니다. <code>error = setpoint − measurement</code>로 정합니다. 목표가 5 rad/s인데 3 rad/s로 돌면 오차는 +2 rad/s입니다. 이때 회전을 더 빠르게 하는 방향으로 출력을 늘립니다. Encoder 부호가 반대라면 보정이 오차를 키우므로 게인보다 부호를 먼저 확인해야 합니다.</p>
@@ -26,29 +27,25 @@ export default function PIDLesson() { return <Lesson topic="Control theory" topi
     <p>실습의 <code>PID</code> 클래스는 여기에 출력 제한, 적분값 제한, 포화 방향으로 계속 쌓이는 적분을 억제하는 처리를 넣었습니다. 첫 호출의 D는 0으로 시작합니다. 모터를 정지할 때는 적분값을 초기화해야 다음 시작에 이전 보정이 남지 않습니다.</p>
     <p>목표값을 갑자기 바꾸면 error의 D도 순간적으로 커질 수 있습니다. 실물에서 이 문제가 보이면 목표를 천천히 바꾸는 ramp, 측정값 기준 derivative, 저역통과 필터를 검토합니다. 한 번에 모두 넣기보다 측정 그래프를 보고 필요한 것을 추가하세요.</p>
   </Chapter>
-  <Chapter id="encoder" title="4. Encoder motor: tick을 속도로 바꿔 PWM을 보정한다">
-    <Figure src={`${a}/motor-loop.svg`} alt="목표 바퀴 속도와 encoder 측정 속도의 차이로 PID PWM을 만들고 모터를 돌리는 폐루프" caption="안쪽 루프는 바퀴 자체의 속도를 맞춥니다. 로봇 전체가 어디에 있는지는 이 루프의 입력이 아닙니다."/>
-    <p>Encoder tick은 회전량입니다. dt 동안 늘어난 tick을 바퀴 한 바퀴당 count 수 CPR로 나누면 회전수가 되고, 2π를 곱하면 rad가 됩니다. 여기에 dt를 나누면 rad/s입니다. CPR은 encoder 사양의 pulse 수와 다를 수 있습니다. A/B decoding 방식과 기어비를 포함한 <strong>바퀴 한 바퀴의 실제 count</strong>로 보정하세요.</p>
-    <CodeExample label="Encoder tick → rad/s" code={`omega = delta_ticks * (2 * math.pi) / counts_per_wheel_rev / dt\n# 예: 20 ms에 21 ticks, 보정한 CPR=1320\n# omega ≈ 5.00 rad/s\n# RPM으로 보려면 omega * 60 / (2 * math.pi)`}/>
-    <p>ddonggae의 Arduino firmware는 20 ms 주기로 wheel velocity를 계산합니다. 기본 게인은 Kp=10, Ki=8, Kd=0으로, 실제로는 PI입니다. 목표 속도에 대한 feedforward를 먼저 주고 PI가 부족한 부분을 보정합니다. 이 값은 그 로봇의 모터·드라이버·부하에서 정한 값이며 다른 모터의 시작값으로 보장되지 않습니다.</p>
-    <CodeExample label="원본에서 추린 motor 제어의 핵심" code={`error = target - measured\nintegral = clamp(integral + error * dt, integral_limit)\nfeedforward = sign(target) * (min_pwm + ff_slope * abs(target))\npwm = clamp(feedforward + kp*error + ki*integral + kd*derivative, max_pwm)\n# target≈0: PWM=0, integral과 previous_error 초기화`}/>
-    <Figure src={`${a}/motor-response.png`} alt="간단한 모터 시뮬레이션의 P PI PID 속도 응답과 PI PWM 그래프" caption="교육 코드로 실행한 모터 모델입니다. 1 s에 목표를 주고 6 s에 부하를 늘렸습니다. 왼쪽의 속도와 오른쪽의 PWM을 함께 보세요. 실제 모터 측정 그래프가 아닙니다."/>
-    <p>모터를 실제로 연결할 때는 driver의 DIR/PWM 규약, encoder 부호, 전압과 전류 한계부터 확인합니다. 바퀴를 띄운 상태에서 작은 출력으로 방향을 보고, 그다음 작은 목표 속도로 시작합니다. 즉시 정지할 방법을 준비한 뒤 바닥 부하를 더해 측정하세요. 예제 프로그램은 실제 PWM 핀이나 serial port에 명령을 보내지 않습니다.</p>
+  <Chapter id="applications" title="4. PID 활용 예시">
+    <p>PID를 적용하려면 먼저 네 가지를 정합니다. 무엇을 원하는가, 무엇을 측정하는가, 둘의 차이는 무엇인가, 어떤 명령을 바꿀 수 있는가. 같은 PID라도 바퀴 속도를 제어할 때와 로봇의 경로를 제어할 때는 이 값들이 달라집니다.</p>
+    <h3>예시 1 · Encoder motor의 속도 맞추기</h3>
+    <p>목표는 바퀴가 원하는 속도로 도는 것입니다. Encoder는 바퀴의 회전량을 알려주므로, 일정 시간 동안 늘어난 count를 이용해 실제 회전 속도를 얻습니다. 목표 속도에서 측정 속도를 빼면 속도 오차가 됩니다. 제어기가 바꾸는 값은 motor driver에 보내는 PWM입니다.</p>
+    <FlowDiagram title="Encoder motor: 속도를 보고 출력을 보정" steps={[{title:"원하는 바퀴 속도",lines:["얼마나 빠르게 돌릴까?"]},{title:"Encoder 측정",lines:["실제 회전 속도", "목표와 비교"]},{title:"PID → PWM",lines:["속도 오차에 따라", "모터 출력 보정"]}]} feedback="바뀐 속도를 다시 측정하고 같은 과정을 반복합니다." caption="목표: 회전 속도 · 측정: encoder 속도 · 오차: 목표 − 측정 · 출력: PWM"/>
+    <p>로봇에 물체를 싣거나 바닥 마찰이 커져 속도가 떨어지면 P는 현재의 부족한 속도만큼 출력을 보탭니다. 작은 속도 부족이 계속 남으면 I가 그 오차를 누적해 추가 출력을 만듭니다. 속도 응답이 너무 빠르게 변하거나 진동한다면 D를 검토할 수 있지만, encoder 측정의 잡음도 함께 커질 수 있습니다.</p>
+    <p>ddonggae도 각 바퀴의 encoder 속도를 확인해 PWM을 보정했습니다. 원본의 기본 속도 제어는 D를 0으로 둔 <strong>PI</strong>이고, 목표 속도에서 예상되는 출력을 feedforward로 먼저 주었습니다. PID의 세 항을 반드시 모두 켜야 하는 것은 아닙니다. 측정과 부하를 보고 필요한 항을 선택한다는 사례입니다.</p>
+    <h3>예시 2 · 정해진 line을 따라 움직이기</h3>
+    <p>이번 목표는 바퀴의 속도 자체가 아니라 로봇이 정해진 경로를 따라가는 것입니다. ddonggae의 line은 지도에 정한 통로입니다. LiDAR localization으로 현재 위치를 얻고, 기준 경로에서 옆으로 얼마나 벗어났는지를 측정합니다. 바닥의 검은 테이프를 따라가는 로봇이라면 이 오차를 광센서나 카메라로 얻을 수 있습니다.</p>
+    <FlowDiagram title="Line tracking: 경로 이탈을 보고 움직임 보정" steps={[{title:"기준 line",lines:["어디로 가야 할까?"]},{title:"위치·선 측정",lines:["경로에서 벗어난 정도", "횡방향 오차"]},{title:"PID → 이동 명령",lines:["옆으로 복귀하거나", "회전 방향 보정"]}]} feedback="로봇의 새 위치를 다시 기준 line과 비교합니다." caption="목표: 경로 유지 · 측정: 위치 또는 선의 위치 · 오차: 경로 이탈 · 출력: 이동·회전 명령"/>
+    <p>선에서 멀리 벗어나면 P가 더 크게 복귀하도록 보정합니다. 한쪽 바퀴의 특성이나 지속적인 미끄러짐 때문에 같은 방향으로 계속 치우친다면 I를 검토할 수 있습니다. 선을 지나 좌우로 흔들린다면 D로 변화 속도를 고려하는 방법을 생각할 수 있습니다. 다만 위치 측정이 드문드문 갱신되거나 잡음이 크면 D가 불필요한 출력을 만들 수 있습니다.</p>
+    <p>원본 ddonggae의 경로 추종은 <strong>P 중심 보정</strong>에 작은 오차의 deadband, 보정 속도 제한, 크게 벗어났을 때 진행 감속을 더했습니다. 메카넘 바퀴는 옆으로 이동할 수 있어 횡방향 속도로 복귀하지만, 차동 구동 로봇은 회전 명령으로 진행 방향을 바꾸어야 합니다. 제어기가 보내는 출력은 로봇이 실제로 할 수 있는 움직임이어야 합니다.</p>
+    <div className="education-note"><p><strong>두 예시가 연결되는 방식</strong></p><p>경로 루프가 로봇의 이동 속도를 정하면, 각 바퀴의 속도 루프가 그 명령을 실제 회전으로 만듭니다. 바깥 루프는 경로 오차를, 안쪽 루프는 바퀴 속도 오차를 줄입니다. 서로 다른 목표와 측정값을 가진 feedback입니다.</p></div>
+    <Check><p>카메라로 검은 테이프를 따라가는 로봇이라면 목표·측정값·오차·출력은 무엇일까요? 예를 들어 화면 중앙과 선의 중심 사이의 차이를 오차로 삼고 회전 명령을 바꿀 수 있습니다.</p></Check>
   </Chapter>
-  <Chapter id="line" title="5. 정해진 line 따라가기: 바퀴 속도 위에 경로 루프를 둔다">
-    <p>여기서 line은 바닥의 검은 테이프가 아니라 <strong>지도 좌표에 정해진 경로</strong>입니다. ddonggae는 LiDAR localization으로 현재 위치를 얻고, 경기장의 통로를 따라 이동했습니다. 광센서로 테이프를 보는 line follower라면 오차를 얻는 센서 부분이 달라집니다.</p>
-    <Figure src={`${a}/qualifier1-route.png`} width={1275} height={1134} alt="실제 qualifier 1 경기에서 기록된 localization 추정 경로" caption="원본 경기의 경로 기록입니다. 위치 추정값을 시각화한 것이며 ground truth 궤적은 아닙니다. 교육용 PID 실습의 결과와 구분해서 보세요." credit={<a href={`${source}/media/runs/README.md`}>ddonggae · Qualifier 1 pose log와 필터링 설명</a>}/>
-    <p>수평 경로 y=0을 따라갈 때 횡오차는 <code>e_cross = 0 − current_y</code>입니다. 로봇이 선의 위쪽 y=+0.1 m로 벗어나면 e_cross=−0.1 m입니다. 메카넘 로봇에서는 음의 지도 y 속도를 주어 선으로 돌아오게 할 수 있습니다. 진행 방향 속도와 선으로 돌아오는 속도를 따로 계산합니다.</p>
-    <Figure src={`${a}/line-loop.svg`} alt="경로와 localization의 오차가 body velocity를 만들고 encoder PID가 각 바퀴 속도를 맞추는 계층 구조" caption="바깥 루프: 경로 오차 → 이동 속도. 안쪽 루프: 목표 바퀴 속도 → PWM. 서로 다른 값을 제어하는 두 루프입니다."/>
-    <p>원본 <code>navigation/street_nav.py</code>는 횡오차에 P 보정, 작은 오차의 deadband, 속도 상한, 큰 이탈 시 진행 감속을 사용합니다. I·D를 모두 쓰는 경로 PID라고 설명하면 원본과 다릅니다. 실습은 이 P 중심 구조를 먼저 만들고, 같은 PID 클래스에서 Ki 또는 Kd를 켜보는 확장으로 구성했습니다.</p>
-    <CodeExample label="수평 line의 횡방향 보정" code={`cross_error = reference_y - measured_y\nvy_map = lateral_pid.step(cross_error, 0.0, dt)\nvx_map = forward_speed * slowdown_from_cross_error\n# 지도 속도를 현재 로봇의 body frame으로 회전\nvx_body = cos(yaw)*vx_map + sin(yaw)*vy_map\nvy_body = -sin(yaw)*vx_map + cos(yaw)*vy_map`}/>
-    <Figure src={`${a}/line-response.png`} alt="메카넘 모형이 수평 기준선으로 복귀하는 경로와 시간별 횡오차 그래프" caption="교육 시뮬레이션에서 18 cm 이탈 상태로 시작했습니다. 4 s부터 일정한 측방 교란을 추가합니다. P만 사용하면 교란에 대응하는 만큼 작은 잔여 오차가 남습니다. Ki를 추가해 그 차이를 비교해보세요."/>
-    <p>차동 구동 로봇은 옆으로 움직일 수 없으므로 이 vy 명령을 그대로 실행할 수 없습니다. 횡오차로 목표 방향이나 회전 속도를 만들도록 바꿔야 합니다. 또 localization 갱신 주기가 느리거나 같은 측정값이 반복되면 D가 튈 수 있습니다. 센서의 새 timestamp와 실제 dt를 사용하고 noise를 확인하세요.</p>
+  <Chapter id="tuning" title="5. 적용할 때는 필요한 항부터 선택한다">
+    <p>먼저 측정 단위와 부호를 확인합니다. 출력을 올렸을 때 측정값이 목표에 가까워져야 합니다. 그다음 P만으로 시작해 반응을 보고, 계속 남는 오차에는 I, 빠른 변화와 진동에는 D가 도움이 되는지 판단합니다. 한 번에 여러 값을 바꾸면 어떤 변화가 영향을 주었는지 알기 어렵습니다.</p>
+    <p>출력에는 모터 전류·PWM·이동 속도의 한계가 있습니다. 최대 출력에 도달했다고 오차가 바로 없어지지는 않습니다. 적분이 계속 쌓이지 않게 제한하고, 측정값이 오래 갱신되지 않으면 명령을 유지해도 되는지 따로 판단해야 합니다.</p>
+    <p>필요한 함수만 정리한 <a href="https://github.com/merosnurobotics/meroedu-control/tree/main/lessons/01-pid">교육용 코드</a>에서 encoder 속도 변환과 PID 계산을 확인할 수 있습니다. 원본의 하드웨어 설정을 그대로 복사하기보다, 내 로봇의 목표·측정·출력을 먼저 정해 연결하세요.</p>
   </Chapter>
-  <Chapter id="practice" title="6. 그래프를 보고 하나씩 튜닝한다">
-    <CodeExample label="PID 첫 실습 · 로컬 컴퓨터" code={`git clone https://github.com/merosnurobotics/meroedu-control.git\ncd meroedu-control/lessons/01-pid\npython3 demo.py --output output\n# motor-p.csv, motor-pi.csv, motor-pid.csv, line.csv 생성\npython3 -m unittest discover -s tests`}/>
-    <ol className="education-process"><li><strong>단위와 부호</strong><span>Encoder count, dt, 목표와 측정의 단위를 맞추고 작은 출력에 측정이 같은 방향으로 변하는지 확인합니다.</span></li><li><strong>P부터</strong><span>I=D=0에서 Kp를 작게 시작해 반응 속도와 overshoot를 봅니다.</span></li><li><strong>I는 남는 오차에</strong><span>부하를 바꿔 정상 상태 오차가 남을 때 추가합니다. 출력 포화와 적분값을 함께 기록합니다.</span></li><li><strong>D는 필요한 경우에</strong><span>진동을 줄일 여지가 있는지 보고 작은 값부터 확인합니다. 잡음 때문에 나빠지면 필터와 측정 주기를 먼저 봅니다.</span></li></ol>
-    <Check><p>실습: line controller의 Ki를 0에서 작은 값으로 바꿔 같은 교란을 반복하세요. 오차가 줄어드는 대신 복귀 과정이 흔들리지는 않나요? 속도 상한에 오래 걸리면 적분값은 어떻게 되나요?</p></Check>
-  </Chapter>
-  <footer className="education-sources"><h2>참고 자료와 코드의 출처</h2><p><a href="https://en.wikipedia.org/wiki/PID_controller">Wikipedia · PID controller</a> · <a href={`${source}/hardware/firmware/arduino_mecanum/mecanum_encoder_control.ino`}>ddonggae encoder firmware</a> · <a href={`${source}/navigation/street_nav.py`}>원본 경로 제어</a></p><p>그림과 개념을 설명한 글은 교육용으로 작성했습니다. 원본 PI·P 구현과 교육용 PID 확장을 구분했고, 시뮬레이션 결과를 실제 측정으로 표시하지 않았습니다. <a href={`${a}/NOTICE.md`}>이미지 출처·라이선스</a></p></footer>
+  <footer className="education-sources"><h2>참고 자료와 코드의 출처</h2><p><a href="https://en.wikipedia.org/wiki/PID_controller">Wikipedia · PID controller</a> · <a href={`${source}/hardware/firmware/arduino_mecanum/mecanum_encoder_control.ino`}>ddonggae encoder firmware</a> · <a href={`${source}/navigation/street_nav.py`}>원본 경로 제어</a></p><p>원본 motor PI와 경로 P를 구분해 설명했습니다. 활용 예시는 적용할 값과 feedback 구조를 이해하는 데 집중합니다. <a href={`${a}/NOTICE.md`}>이미지 출처·라이선스</a></p></footer>
 </Lesson>; }
