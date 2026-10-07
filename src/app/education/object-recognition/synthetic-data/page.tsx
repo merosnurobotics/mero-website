@@ -1,3 +1,4 @@
+import { LessonAuthor } from "@/components/education/lesson-author";
 import { requireEducationMember } from "@/lib/education/access";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -22,7 +23,7 @@ export default async function PerceptionLessonPage() {
   return <>
     <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: "객체인식", href: objectRecognitionPath }, { label: "합성 데이터로 시작하기" }]}/>
     <article className="perception-lesson">
-      <header className="perception-hero"><h1>합성 데이터로 시작하는<br/>객체인식</h1><p>사진 속 정다면체와 과일을 찾는 모델을 직접 만들어봅니다. 사진과 정답지가 무엇인지부터, 120장짜리 첫 실습과 실제 카메라 검증까지 차근차근 따라갑니다.</p><a className="button" href={repo}>실습 저장소 열기</a></header>
+      <header className="perception-hero"><h1>합성 데이터로 시작하는<br/>객체인식</h1><p>사진 속 정다면체와 과일을 찾는 모델을 직접 만들어봅니다. 사진과 정답지가 무엇인지부터, 120장짜리 첫 실습과 실제 카메라 검증까지 차근차근 따라갑니다.</p><LessonAuthor path="/education/object-recognition/synthetic-data"/><a className="button" href={repo}>실습 저장소 열기</a></header>
       <Figure name="synthetic-samples.jpg" alt="다양한 사진 배경 위의 정다면체와 과일 큐브, 물체 경계 정답이 표시된 합성 학습 이미지"><strong>이 선은 모델의 예측이 아니라 렌더러가 만든 정답입니다.</strong> 마지막처럼 찾을 물체가 없는 장면도 학습에 포함합니다. 원본: 똥개 프로젝트.</Figure>
 
       <Chapter id="first-look" title="1. 객체인식은 무엇을 알아내는 걸까?">

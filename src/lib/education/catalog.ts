@@ -1,3 +1,6 @@
+export type EducationAuthor = { name: string; email: string };
+const yeonwooCho: EducationAuthor = { name: "조연우", email: "yencho929@snu.ac.kr" };
+
 export const reinforcementLearningPath = "/education/reinforcement-learning";
 export const kimodoLessonPath = `${reinforcementLearningPath}/kimodo-mjwarp`;
 export const lessonChapters = [
@@ -58,26 +61,26 @@ export const educationTopics = [
   {
     title: "강화학습", path: reinforcementLearningPath,
     description: "시뮬레이션 안에서 행동을 시도하고, 보상을 통해 로봇의 제어 정책을 배우는 과정을 살펴봅니다.",
-    lessons: [{ path: kimodoLessonPath, shortTitle: "모방 강화학습", label: "Kimodo + MuJoCo Warp", title: "NVIDIA Kimodo + MuJoCo Warp로 모방 강화학습 만들기", description: "한 발 서기를 사례로, 문장으로 생성한 모션을 Microban의 자세로 옮기고 PPO로 균형 잡는 정책을 학습합니다. 실제 입력, 코드, 검증 영상과 함께 따라가세요.", chapters: lessonChapters }],
+    lessons: [{ author: yeonwooCho, path: kimodoLessonPath, shortTitle: "모방 강화학습", label: "Kimodo + MuJoCo Warp", title: "NVIDIA Kimodo + MuJoCo Warp로 모방 강화학습 만들기", description: "한 발 서기를 사례로, 문장으로 생성한 모션을 Microban의 자세로 옮기고 PPO로 균형 잡는 정책을 학습합니다. 실제 입력, 코드, 검증 영상과 함께 따라가세요.", chapters: lessonChapters }],
   },
   {
     title: "객체인식", path: objectRecognitionPath,
     description: "사진 속 물체가 무엇이고 어디에 있는지 알아내는 방법을 배웁니다. 처음 공부하는 사람도 사진과 정답지부터 시작할 수 있습니다.",
-    lessons: [{ path: perceptionLessonPath, shortTitle: "합성 데이터로 시작하기", label: "사진에서 형태와 과일 찾기", title: "합성 데이터로 시작하는 객체인식", description: "똥개 로봇의 정다면체와 과일 인식을 사례로 살펴봅니다. Blender로 학습 사진과 정답지를 함께 만들고, YOLO 모델을 학습한 뒤 실제 사진에서 확인합니다.", chapters: perceptionChapters }],
+    lessons: [{ author: yeonwooCho, path: perceptionLessonPath, shortTitle: "합성 데이터로 시작하기", label: "사진에서 형태와 과일 찾기", title: "합성 데이터로 시작하는 객체인식", description: "똥개 로봇의 정다면체와 과일 인식을 사례로 살펴봅니다. Blender로 학습 사진과 정답지를 함께 만들고, YOLO 모델을 학습한 뒤 실제 사진에서 확인합니다.", chapters: perceptionChapters }],
   },
   {
     title: "Localization", path: localizationPath,
     description: "센서로 측정한 주변 모습과 지도를 비교해 로봇의 위치를 알아냅니다.",
-    lessons: [{ path: lidarLessonPath, shortTitle: "LiDAR 사용", label: "알려진 벽으로 위치 찾기", title: "LiDAR로 시작하는 localization", description: "거리와 각도부터 이해하고, ddonggae의 벽 거리 비교 방식을 경량 Python 코드로 실습합니다.", chapters: lidarChapters }],
+    lessons: [{ author: yeonwooCho, path: lidarLessonPath, shortTitle: "LiDAR 사용", label: "알려진 벽으로 위치 찾기", title: "LiDAR로 시작하는 localization", description: "거리와 각도부터 이해하고, ddonggae의 벽 거리 비교 방식을 경량 Python 코드로 실습합니다.", chapters: lidarChapters }],
   },
   {
     title: "Control theory", path: controlTheoryPath,
     description: "목표와 측정값의 차이를 줄여 로봇이 원하는 움직임을 만들도록 합니다.",
-    lessons: [{ path: pidLessonPath, shortTitle: "PID control", label: "Encoder motor와 line tracking", title: "그림으로 이해하는 PID control", description: "P·I·D의 역할을 그림으로 이해하고, encoder motor와 line tracking에 어떻게 적용할 수 있는지 살펴봅니다.", chapters: pidChapters }],
+    lessons: [{ author: yeonwooCho, path: pidLessonPath, shortTitle: "PID control", label: "Encoder motor와 line tracking", title: "그림으로 이해하는 PID control", description: "P·I·D의 역할을 그림으로 이해하고, encoder motor와 line tracking에 어떻게 적용할 수 있는지 살펴봅니다.", chapters: pidChapters }],
   },
   {
     title: "개발 환경 셋업", path: developmentSetupPath,
     description: "내 컴퓨터에서 로봇의 컴퓨터에 접속하고, 코드를 옮기고 실행하는 환경을 준비합니다.",
-    lessons: [{ path: remoteWorkLessonPath, shortTitle: "원격 작업하기", label: "SSH · Tailscale · RustDesk", title: "원격 작업하기: ssh jetson부터 GUI까지", description: "SSH 키 생성, Tailscale 로그인, 접속 별칭 설정을 따라 하고 GUI 작업에는 RustDesk를 사용합니다.", chapters: remoteWorkChapters }],
+    lessons: [{ author: yeonwooCho, path: remoteWorkLessonPath, shortTitle: "원격 작업하기", label: "SSH · Tailscale · RustDesk", title: "원격 작업하기: ssh jetson부터 GUI까지", description: "SSH 키 생성, Tailscale 로그인, 접속 별칭 설정을 따라 하고 GUI 작업에는 RustDesk를 사용합니다.", chapters: remoteWorkChapters }],
   },
 ];

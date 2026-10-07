@@ -178,3 +178,7 @@
   .education-native-plots { grid-template-columns: 1fr; gap: 28px; }
 }
 .perception-lesson img[src$="PID_en.svg"] { background: white; padding: 12px; }
+
+.education-author { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-block: 16px 24px; font-size: 14px; line-height: 1.7; color: var(--muted); }
+.education-author strong { color: var(--text); font-weight: 600; }
+.education-author a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }

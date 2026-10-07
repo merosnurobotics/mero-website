@@ -1,3 +1,4 @@
+import { LessonAuthor } from "@/components/education/lesson-author";
 import { requireEducationMember } from "@/lib/education/access";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/shared";
@@ -13,6 +14,7 @@ export default async function KimodoLessonPage() {
   await requireEducationMember("/education/reinforcement-learning/kimodo-mjwarp");
   return <>
     <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: "강화학습", href: reinforcementLearningPath }, { label: "모방 강화학습" }]}/>
+    <LessonAuthor path="/education/reinforcement-learning/kimodo-mjwarp"/>
     <p className="education-repo-link"><a href="https://github.com/merosnurobotics/meroedu-rl">실습 저장소 · meroedu-rl</a><span>첫 회차 실행 안내와 코드</span></p>
     <article id="kimodo-lesson" className="education-lesson" dangerouslySetInnerHTML={{ __html: kimodoLessonHtml }}/>
     <LessonInteractions/>
