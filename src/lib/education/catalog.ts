@@ -28,6 +28,24 @@ export const perceptionChapters = [
 ];
 export const localizationPath = "/education/localization";
 export const lidarLessonPath = `${localizationPath}/lidar`;
+export const ros2TopicsLessonPath = `${localizationPath}/ros2-topics`;
+export const objectLocalizationLessonPath = `${localizationPath}/object-localization`;
+export const ros2TopicsChapters = [
+  { id: "nodes", label: "Node와 topic으로 나누기" },
+  { id: "messages", label: "위치 메시지의 약속" },
+  { id: "environment", label: "ROS 2 환경 준비" },
+  { id: "run", label: "세 터미널로 확인하기" },
+  { id: "real-scan", label: "실제 LiDAR 입력으로 바꾸기" },
+  { id: "checks", label: "QoS·시각·좌표 확인" },
+];
+export const objectLocalizationChapters = [
+  { id: "task", label: "로봇 위치와 객체 위치" },
+  { id: "mask-depth", label: "Mask와 depth를 같은 픽셀에" },
+  { id: "projection", label: "픽셀에서 카메라 좌표로" },
+  { id: "transform", label: "로봇 좌표에서 지도 좌표로" },
+  { id: "practice", label: "경량 코드로 object map 만들기" },
+  { id: "real-data", label: "실제 입력을 연결하는 순서" },
+];
 export const controlTheoryPath = "/education/control-theory";
 export const pidLessonPath = `${controlTheoryPath}/pid-control`;
 export const developmentSetupPath = "/education/development-setup";
@@ -71,7 +89,10 @@ export const educationTopics = [
   {
     title: "Localization", path: localizationPath,
     description: "센서로 측정한 주변 모습과 지도를 비교해 로봇의 위치를 알아냅니다.",
-    lessons: [{ author: yeonwooCho, path: lidarLessonPath, shortTitle: "LiDAR 사용", label: "알려진 벽으로 위치 찾기", title: "LiDAR로 시작하는 localization", description: "거리와 각도부터 이해하고, ddonggae의 벽 거리 비교 방식을 경량 Python 코드로 실습합니다.", chapters: lidarChapters }],
+    lessons: [{ author: yeonwooCho, path: lidarLessonPath, shortTitle: "LiDAR 사용", label: "알려진 벽으로 위치 찾기", title: "LiDAR로 시작하는 localization", description: "거리와 각도부터 이해하고, ddonggae의 벽 거리 비교 방식을 경량 Python 코드로 실습합니다.", chapters: lidarChapters },
+      { author: yeonwooCho, path: ros2TopicsLessonPath, shortTitle: "ROS 2 토픽으로 내보내기", label: "위치 계산을 node로 연결하기", title: "Localization 결과를 ROS 2 토픽으로 내보내기", description: "LiDAR 입력을 구독하고 추정 위치를 PoseStamped로 발행합니다. 세 터미널에서 메시지·좌표·시각을 확인합니다.", chapters: ros2TopicsChapters },
+      { author: yeonwooCho, path: objectLocalizationLessonPath, shortTitle: "객체 localization", label: "Segmentation + depth → object map", title: "Segmentation과 depth로 객체 localization 하기", description: "객체의 mask와 depth로 카메라 기준 관측점을 구하고, 촬영 당시 로봇 위치를 이용해 지도 좌표로 옮깁니다.", chapters: objectLocalizationChapters },
+    ],
   },
   {
     title: "Control theory", path: controlTheoryPath,

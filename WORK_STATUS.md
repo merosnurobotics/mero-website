@@ -1,3 +1,12 @@
+# 2026-10-08 작성자 표시와 Localization 02/03
+
+- 모든 교육자료에 작성자 조연우 / yencho929@snu.ac.kr. catalog의 자료별 author + 공통 mailto 표시. d026f57 Vercel 배포 및 기존 5편 live 확인 완료.
+- Localization 시리즈: 01 LiDAR, 02 ROS 2 토픽으로 내보내기, 03 객체 localization. 새 2편에도 동일 작성자.
+- 02: ddonggae arena_control_node의 scan 구독/최신 입력/발행 구조 참고. 경량 ROS node + 합성 LaserScan; PoseStamped/Float64로 출력. Humble 실제 송수신·stale scan 차단 integration 확인.
+- 03: ddonggae match_runner의 mask 하단 픽셀/depth median/좌표변환을 재구성. mask 밖 depth 제외, ROS 축 통일, 카메라→로봇→map; stdlib geometry와 JSON 입력, 합성 demo. geometry 6개 및 기존 LiDAR 4개 테스트 통과. 실제 camera/model/depth 정확도 새 검증은 하지 않음.
+- 원본 데이터/가중치/장착 calibration/IMU/경기 제어 코드 복사 없음. native mask/depth와 map 도식 사용.
+- Production build/typecheck 통과. 로컬 browser에서 3편 순서, 새 2편 chapter/author/390·1440 px light/dark 및 오류·overflow 검사 통과. repo/site 새 변경 배포 확인 대기.
+
 최종 검증: canonical production build 통과. 공개 모드 Playwright 6개 통과(비공개 전용 검사 1개 제외), 회원 전용 옵션 regression 2개 통과. Native 도식의 mobile/dark 화면 직접 확인. PID unit test 5개와 LiDAR unit test 4개 통과. 배포 후 공개 접근 확인 대기.
 
 # 2026-10-08 최종 교육 구성

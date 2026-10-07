@@ -1,4 +1,5 @@
 import { FlowDiagram, LidarDiagram } from "@/components/education/native-diagrams";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Lesson, Chapter, Check } from "@/components/education/lesson-primitives";
 import { CodeExample } from "@/components/education/code-example";
@@ -46,5 +47,6 @@ export default function LidarLesson() { return <Lesson topic="Localization" topi
     <p>IMU의 gyro는 회전 속도를 측정합니다. 짧은 시간 동안의 회전 속도 × 시간 간격을 더하면 방향의 변화량을 얻습니다. 누적 오차가 생기므로 신뢰할 수 있는 지도 관측이나 다른 센서로 주기적으로 보완하는 접근이 필요합니다. 여기서는 결합의 역할만 설명하고 센서 장착·축 보정·필터 구현은 다루지 않습니다.</p>
     <Check><p>토론: 시작 방향을 잘못 입력했다면 어떤 결과가 나올까요? 벽을 하나 다른 모양으로 만들거나 비대칭 landmark를 추가하면 방향의 모호함을 줄일 수 있을까요?</p></Check>
   </Chapter>
+  <p>다음 자료: <Link href="/education/localization/ros2-topics">ROS 2 토픽으로 내보내기</Link>에서 이 위치 계산을 node로 연결합니다.</p>
   <footer className="education-sources"><h2>원본과 실습 범위</h2><p><a href={`${source}/navigation/docs/localization.md`}>ddonggae localization 설명</a> · <a href={`${source}/navigation/ros2/arena_lightweight_control/arena_lightweight_control/map_localization.py`}>원본 matcher</a> · <a href="https://docs.ros.org/en/rolling/p/sensor_msgs/msg/LaserScan.html">ROS LaserScan 정의</a></p><p>교육 코드는 MIT 원본의 핵심을 재구성했습니다. 합성 실습은 실행 확인했으며 실제 LiDAR 연결은 이 자료 작성 과정에서 새로 검증하지 않았습니다. 이미지 출처와 라이선스는 <a href={`${a}/NOTICE.md`}>자료 출처</a>에 정리했습니다.</p></footer>
 </Lesson>; }
