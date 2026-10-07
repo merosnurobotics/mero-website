@@ -4,7 +4,7 @@ test.skip(!baseURL,"Set MERO_EDUCATION_TEST_URL.");
 const membersOnly = process.env.MERO_EDUCATION_TEST_MEMBERS_ONLY === "true";
 const courses=[
   ["/education/localization/lidar","LiDAR로 시작하는 localization",6],
-  ["/education/control-theory/pid-control","그림으로 이해하는 PID control",5],
+  ["/education/control/pid-control","그림으로 이해하는 PID control",5],
   ["/education/development-setup/remote-work","원격 작업하기: ssh jetson부터 GUI까지",8],
 ] as const;
 async function login(context: import("@playwright/test").BrowserContext) {
@@ -38,7 +38,7 @@ test("guests and invalid sessions cannot read education pages, files or optimize
 test("members can read all new courses and play authenticated media ranges",async({page,context})=>{
   await login(context); await context.grantPermissions(["clipboard-read","clipboard-write"]);
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(`${baseURL}/education`);await expect(page.locator('.education-series-row')).toHaveCount(5);
+  await page.goto(`${baseURL}/education`);await expect(page.locator('.education-series-row')).toHaveCount(6);
   for(const [path,title,count] of courses) {
     await page.goto(`${baseURL}${path}`);
     await expect(page.locator('h1')).toHaveText(title);
@@ -57,7 +57,7 @@ test("members can read all new courses and play authenticated media ranges",asyn
   await expect(page.locator(".perception-lesson img")).toHaveCount(0);
   await expect(page.locator('#practice')).toContainText('초기 yaw=0.35');
   await expect(page.locator('#discussion')).toContainText('심화 discussion');
-  await page.goto(`${baseURL}/education/control-theory/pid-control`);
+  await page.goto(`${baseURL}/education/control/pid-control`);
   await expect(page.locator('#applications')).toContainText('P 중심');
   await expect(page.locator('#applications')).toContainText('PI');
   await expect(page.locator('.perception-lesson')).not.toContainText('시뮬레이션');
@@ -97,7 +97,7 @@ test("public mode opens lessons and files without a member account",async({page,
     await expect(page.locator('meta[name=robots]')).toHaveAttribute('content','index, follow');
   }
   await page.goto(`${baseURL}/education`);
-  await expect(page.locator('.education-series-row')).toHaveCount(5);
+  await expect(page.locator('.education-series-row')).toHaveCount(6);
   for(const asset of ['localization/NOTICE.md','control/PID_en.svg','setup/NOTICE.md','object-recognition/inference-examples.json','kimodo-mjwarp/microban-imitation-rl-lesson.zip']) {
     expect((await context.request.get(`${baseURL}/education-assets/${asset}`)).status()).toBe(200);
   }

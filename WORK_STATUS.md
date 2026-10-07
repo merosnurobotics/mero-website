@@ -1,3 +1,13 @@
+# 2026-10-08 · ROS / Control 시리즈와 독립 하드웨어 자료
+
+- 분류 Control theory → Control. ROS를 별도 분류로 추가하고 기본 / Python pub-sub / rosbag·RViz / localization topic / Arduino encoder motor / DYNAMIXEL topic의 6편을 배치. 기존 경로는 permanent redirect. Control에는 PID와 OpenRB 기본 사용.
+- 제공된 ROS PDF 43쪽을 시각 확인하고 OS·ROS·node/package/topic·class·publisher/subscriber·bag 내용을 Humble 환경으로 재구성. 원본 PDF/슬라이드 그림은 공개하지 않고 HTML/SVG 도식 사용. 공식 ROS 설치 demo_nodes_cpp, turtlesim, rclpy examples와 bag tutorial 참고 및 링크.
+- 새 meroedu-ros 공개 repo c1734e2: 최소 ament_python package, pose publisher, RViz config, 단계별 README. Control repo 191df84: UNO/MDD10A 메카넘 velocity pipeline, OpenRB XC330 기본 console/firmware, 별도 ROS bridge, Jetson 사전 셋업. Localization 4498ad5: ROS 분류 링크.
+- 원본 source 고정 commit의 사용 환경 OrinNano8GB/JetPack6/Ubuntu22.04/Humble/Python3.10 유지. 고유 집게 각도·리프트 stroke·원본 데이터는 제외. 자료는 교육 저장소만으로 실행; 출처와 MIT/Apache notice는 별도로 보존.
+- 검증: UNO AVR compile, OpenRB SAMD 0.2.1 + Dynamixel2Arduino0.8.2 compile, 5개 protocol test, 2개 실제 ROS+pseudo-terminal 통신 test, colcon build, 실제 talker/listener, pose31개 bag record→replay→echo. 실제 Jetson/Arduino/OpenRB upload·motor 동작 및 GUI desktop RViz/turtlesim 시험은 수행하지 않음.
+- Site: canonical typecheck/build, 새7편 light/dark desktop/mobile overflow·작성자·HTML도식·redirect 확인, 기존 Playwright3개 + 공개모드 test 통과. 공개 유지 및 향후 members-only env 옵션에서 새8경로 guest307 확인.
+- 모든 새 post: 조연우 / yencho929@snu.ac.kr. 사이트 배포 및 live 확인 대기.
+
 # 2026-10-08 교육자료를 독립적인 안내로 정리
 
 - 사용자 요청: 강의에 프로젝트 이름을 직접 언급하지 않고 자료 자체로 따라갈 수 있게 구성.

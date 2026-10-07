@@ -29,7 +29,7 @@ export function EducationSidebar() {
             {topic.lessons.map((lesson, lessonIndex) => {
               const inLesson = path === lesson.path;
               return <details open className="education-lesson-tree" key={lesson.path}>
-                <summary>{String(lessonIndex + 1).padStart(2, "0")}. {lesson.shortTitle}</summary>
+                <summary>{String("number" in lesson ? lesson.number : lessonIndex + 1).padStart(2, "0")}. {lesson.shortTitle}</summary>
                 <Link href={lesson.path} onClick={() => setHash("")} aria-current={inLesson && !hash ? "page" : undefined}>{lesson.label}</Link>
                 <ol>{lesson.chapters.map((chapter, index) => <li key={chapter.id}><Link href={`${lesson.path}#${chapter.id}`} onClick={() => setHash(`#${chapter.id}`)} aria-current={inLesson && hash === `#${chapter.id}` ? "location" : undefined}><span>{String(index + 1).padStart(2, "0")}</span>{chapter.label}</Link></li>)}</ol>
               </details>;

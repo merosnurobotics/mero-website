@@ -46,6 +46,6 @@ export default function LidarLesson() { return <Lesson topic="Localization" topi
     <p>IMU의 gyro는 회전 속도를 측정합니다. 짧은 시간 동안의 회전 속도 × 시간 간격을 더하면 방향의 변화량을 얻습니다. 누적 오차가 생기므로 신뢰할 수 있는 지도 관측이나 다른 센서로 주기적으로 보완하는 접근이 필요합니다. 여기서는 결합의 역할만 설명하고 센서 장착·축 보정·필터 구현은 다루지 않습니다.</p>
     <Check><p>토론: 시작 방향을 잘못 입력했다면 어떤 결과가 나올까요? 벽을 하나 다른 모양으로 만들거나 비대칭 landmark를 추가하면 방향의 모호함을 줄일 수 있을까요?</p></Check>
   </Chapter>
-  <p>다음 자료: <Link href="/education/localization/ros2-topics">ROS 2 토픽으로 내보내기</Link>에서 이 위치 계산을 node로 연결합니다.</p>
+  <p>다음 자료: <Link href="/education/ros/localization-topics">ROS 2 토픽으로 내보내기</Link>에서 이 위치 계산을 node로 연결합니다.</p>
   <footer className="education-sources"><h2>참고 자료와 실행 확인</h2><p><a href="https://docs.ros.org/en/rolling/p/sensor_msgs/msg/LaserScan.html">ROS LaserScan 정의</a> · <a href="https://github.com/merosnurobotics/meroedu-localization/tree/main/lessons/01-lidar">실습 코드와 실행 안내</a></p><p>합성 실습은 실행 확인했으며 실제 LiDAR 연결은 이 자료 작성 과정에서 새로 검증하지 않았습니다. 코드 출처와 사용 조건은 <a href={`${a}/NOTICE.md`}>출처·라이선스 기록</a>에 정리했습니다.</p></footer>
 </Lesson>; }

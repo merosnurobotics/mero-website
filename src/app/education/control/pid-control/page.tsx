@@ -5,7 +5,7 @@ import { CodeExample } from "@/components/education/code-example";
 export const metadata: Metadata = {title:"그림으로 이해하는 PID control"};
 const a="/education-assets/control";
 const commons=(name:string)=>`https://commons.wikimedia.org/wiki/File:${name}`;
-export default function PIDLesson() { return <Lesson topic="Control theory" topicPath="/education/control-theory" path="/education/control-theory/pid-control" title="그림으로 이해하는 PID control" intro="목표 속도로 바퀴를 돌리고, 정해진 경로로 로봇을 움직여봅니다. 목표와 측정값을 비교하는 feedback부터 P·I·D의 역할을 그림으로 이해하고, encoder motor와 경로 추종 예시를 통해 PID를 적용할 수 있는 흐름을 살펴봅니다." repo="meroedu-control">
+export default function PIDLesson() { return <Lesson topic="Control" topicPath="/education/control" path="/education/control/pid-control" title="그림으로 이해하는 PID control" intro="목표 속도로 바퀴를 돌리고, 정해진 경로로 로봇을 움직여봅니다. 목표와 측정값을 비교하는 feedback부터 P·I·D의 역할을 그림으로 이해하고, encoder motor와 경로 추종 예시를 통해 PID를 적용할 수 있는 흐름을 살펴봅니다." repo="meroedu-control">
   <Chapter id="feedback" title="1. 목표대로 움직이려면 결과를 다시 본다">
     <p>모터에 PWM 80을 준다고 항상 같은 속도가 나오지는 않습니다. 배터리 상태, 바닥 마찰, 실린 물체에 따라 달라집니다. Open-loop는 명령만 보내고 끝냅니다. Closed-loop는 encoder로 실제 속도를 재고 목표와 비교해 다음 명령을 바꿉니다. 이 되먹임을 feedback이라고 부릅니다.</p>
     <p>Setpoint는 원하는 값, measurement는 실제로 측정한 값입니다. <code>error = setpoint − measurement</code>로 정합니다. 목표가 5 rad/s인데 3 rad/s로 돌면 오차는 +2 rad/s입니다. 이때 회전을 더 빠르게 하는 방향으로 출력을 늘립니다. Encoder 부호가 반대라면 보정이 오차를 키우므로 게인보다 부호를 먼저 확인해야 합니다.</p>

@@ -4,7 +4,7 @@ import { Lesson, Chapter, Check } from "@/components/education/lesson-primitives
 import { FlowDiagram } from "@/components/education/native-diagrams";
 import { CodeExample } from "@/components/education/code-example";
 export const metadata: Metadata = { title: "ROS 2 토픽으로 내보내기" };
-export default function Ros2TopicsLesson() { return <Lesson topic="Localization" topicPath="/education/localization" path="/education/localization/ros2-topics" title="Localization 결과를 ROS 2 토픽으로 내보내기" intro="앞에서 계산한 위치를 다른 프로그램이 받아 쓰도록 연결합니다. ROS 2의 node와 topic을 이해하고, LiDAR scan을 받아 지도 기준 위치를 발행한 뒤 터미널에서 직접 확인합니다." repo="meroedu-localization">
+export default function Ros2TopicsLesson() { return <Lesson topic="ROS" topicPath="/education/ros" path="/education/ros/localization-topics" title="Localization 결과를 ROS 2 토픽으로 내보내기" intro="앞에서 계산한 위치를 다른 프로그램이 받아 쓰도록 연결합니다. ROS 2의 node와 topic을 이해하고, LiDAR scan을 받아 지도 기준 위치를 발행한 뒤 터미널에서 직접 확인합니다." repo="meroedu-localization">
   <Chapter id="nodes" title="1. 계산 결과를 다른 프로그램에 전달한다">
     <p><Link href="/education/localization/lidar">첫 번째 LiDAR 자료</Link>에서는 Python 함수가 위치를 반환했습니다. 이제 센서를 읽는 프로그램, 위치를 계산하는 프로그램, 위치를 표시하는 프로그램을 나눕니다. ROS 2에서는 이런 실행 단위를 <strong>node</strong>, 메시지가 흐르는 이름 있는 통로를 <strong>topic</strong>이라고 부릅니다.</p>
     <FlowDiagram title="센서 → 위치 계산 → 결과 확인" steps={[{title:"Scan publisher",lines:["/meroedu/scan", "LaserScan"]},{title:"Localization node",lines:["scan 구독", "벽 거리 비교"]},{title:"Pose subscriber",lines:["/meroedu/pose", "터미널 · RViz"]}]} caption="Publisher는 보내고 subscriber는 받습니다. 위치 계산 node는 scan의 subscriber이면서 pose의 publisher입니다."/>
