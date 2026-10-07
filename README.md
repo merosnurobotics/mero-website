@@ -1,324 +1,103 @@
-# MERO 동아리 홈페이지
+# MERO
 
-로보틱스·메이커 동아리 **MERO**의 공식 홈페이지입니다. (Next.js + Tailwind CSS)
+서울대학교 로봇 동아리 MERO 소개 및 회원·로봇 관리 사이트. Next.js App Router, React, TypeScript, Radix Themes, Node SQLite로 구성했습니다.
 
-이 문서는 **개발을 몰라도** 홈페이지 내용(부원, 프로젝트, 일정 등)을 직접 고치는 방법을 설명합니다.
-이 사이트는 **한국어/영어 2개 언어**를 지원합니다.
+## GitHub / Vercel 이식
 
----
+기존 `merosnurobotics/mero-website`의 가상 콘텐츠를 제거하고 실제 MERO 사이트를 이식했습니다. 기존 GitHub–Vercel 프로젝트 연결을 그대로 사용합니다. `vercel.json`은 Next.js 빌드와 출력 경로를 명시하고 Node.js는 `24.x`로 고정합니다. 운영 브랜치는 변경하지 않았습니다.
 
-## 1. 핵심 요약: 딱 한 파일만 고치면 됩니다
+새 브랜치의 Preview 배포에서는 공개 페이지, 로봇 제작 정보와 QR 다운로드를 사용할 수 있습니다. Vercel에는 영구 로컬 파일시스템이 없으므로 SQLite 회원·관리자 기능은 활성화하지 않습니다. 가입·로그인·관리자 API는 `503`과 준비 안내를 반환하며 회원 데이터를 임시 디스크에 저장하지 않습니다. 외부 DB 연동은 별도 후속 작업입니다. `DATABASE_PATH`를 `/tmp`로 설정해도 이 제한을 해제하지 않습니다.
 
-홈페이지에 보이는 거의 모든 글자와 목록은 아래 **한 파일**에 들어 있습니다.
+회원·관리자 기능은 영구 저장소가 있는 Node.js 서버에서 기존과 동일하게 동작합니다. 실제 운영 회원 DB, 계정 정보, `.env.local`, `.local` 자료는 이식하지 않았습니다.
 
-```
-src/data/site.ts
-```
+Vercel Preview에서 `NEXT_PUBLIC_SITE_URL`은 비워 두면 배포 주소를 사용합니다. 운영 주소 확정 후 HTTPS 주소로 설정하고 `COOKIE_SECURE=true`를 사용하세요. 운영 배포 전에는 외부 DB 연동, 관리자 생성, 실제 장비 접속 정보 등록이 필요합니다.
 
-이 파일만 수정해서 GitHub에 저장(커밋)하면, 연결된 Vercel이 자동으로 홈페이지를 다시 배포합니다.
-사진을 바꾸려면 `public/` 폴더의 이미지 파일을 교체하면 됩니다.
+Vercel 프로젝트 설정에 별도의 Root Directory / Build Command / Ignored Build Step이 지정되어 있다면 대시보드에서 확인해야 합니다. 저장소에는 별도 프로젝트 ID나 `.vercel` 연결 파일이 없고, 기존 성공 배포 기록으로 연동을 확인했습니다.
 
----
+## HTML 파일로 초안 공유
 
-## 2. ⭐ 가장 중요: 한국어 / 영어 두 언어 함께 쓰기
+`output/MERO-preview.html` 하나만 전달하면 됩니다. 사진·로고·글꼴·스타일·브라우저 코드가 모두 들어 있어 서버 없이 브라우저에서 열 수 있습니다. 홈부터 프로젝트·활동 상세, 회원·관리자 화면까지 19개 화면을 담았습니다. 상단의 페이지 선택과 방문자·회원·관리자 체험 버튼으로 이동할 수 있습니다.
 
-이 사이트의 **모든 글자는 한국어와 영어 두 버전**을 함께 적습니다.
-글자 값은 아래처럼 `{ en: "영어", ko: "한국어" }` 형태입니다.
+가입·회원 승인·로봇 편집은 메모리에서만 동작하는 데모이며 파일을 새로 열면 초기화됩니다. 실제 회원 데이터나 관리자 로그인 정보는 포함하지 않았습니다. 외부 YouTube 영상과 기사·자료 링크는 인터넷 연결이 필요합니다.
 
-```ts
-title: { en: "Projects", ko: "프로젝트" }
+```sh
+npm run preview:build
+npm run test:e2e -- tests/offline-preview.spec.ts
 ```
 
-- `en` = 영어로 보일 때의 글자
-- `ko` = 한국어로 보일 때의 글자
-- **두 개를 모두 채워야 합니다.** 하나를 비우면 그 언어에서 빈칸으로 보입니다.
+다시 생성할 때 현재 페이지 컴포넌트와 공개 자산을 사용하며 운영 데이터베이스는 읽지 않습니다. 로컬 웹 미리보기 주소는 http://localhost:3000/MERO-preview.html 입니다.
 
-> 📌 글자가 아닌 값(사진 경로 `image`, 수량 `qty`, 날짜 `date`, 주소 `slug`, 기술 태그 `tags`, 링크 `href`)은
-> 언어와 상관없이 **한 번만** 적습니다. (예: `image: "/projects/robot.svg"`)
+## 실행
 
-### 언어는 어떻게 정해지나요?
+Node.js 24 이상과 영구 저장이 가능한 파일시스템이 필요합니다.
 
-- 방문자가 **한국에 있거나 브라우저 언어가 한국어**면 → 자동으로 **한국어**로 열립니다.
-- 그 외에는 → **영어**로 열립니다.
-- 화면 오른쪽 위 **`EN` / `한국어` 버튼**으로 누구나 직접 바꿀 수 있고, 선택은 기억됩니다.
-
-> 문법 규칙(공통):
-> - 각 항목은 `{ ... }` 중괄호로 감싸고, 항목 사이는 쉼표 `,` 로 구분합니다.
-> - 글자 값은 반드시 큰따옴표 `"..."` 로 감쌉니다.
-> - 따옴표 안에서 큰따옴표를 쓰려면 `\"` 처럼 앞에 백슬래시를 붙입니다.
-
----
-
-## 3. 부원(People) 추가·수정하기
-
-`src/data/site.ts` 안의 `export const people` 부분을 찾으세요. 세 목록으로 나뉩니다.
-
-- `advisors` : 지도교수 / 자문
-- `current` : 현재 활동 부원
-- `alumni` : 졸업생
-
-각 사람은 아래 형식의 한 줄입니다.
-
-```ts
-{ name: "Jiwon Park", role: { en: "President", ko: "회장" }, year: { en: "2023", ko: "23학번" }, image: "/people/jiwon-park.svg" },
-```
-
-| 항목 | 설명 |
-| --- | --- |
-| `name` | 이름 (한 번만, 언어 공통) |
-| `role` | 역할. `{ en, ko }` 형태로 영어·한국어 함께 |
-| `year` | 기수/연도. `{ en, ko }` 형태. 졸업생은 기간(`"2019–2022"`), 지도교수는 소속으로 |
-| `image` | 프로필 사진 경로. `/people/` 폴더 안의 파일 |
-
-**졸업 처리** — `current`에서 해당 줄을 잘라 `alumni`로 옮기고 `year`를 기간으로 바꿉니다.
-
----
-
-## 4. 프로젝트(Projects) 추가·수정하기
-
-`export const projects` 부분입니다. 각 프로젝트는 아래 형식입니다.
-
-```ts
-{
-  slug: "autonomous-delivery-robot",
-  status: "in-progress",
-  period: { en: "Spring 2025", ko: "2025 봄" },
-  image: "/projects/autonomous-delivery-robot.svg",
-  tags: ["ROS2", "LiDAR", "Computer Vision"],
-  title: { en: "Autonomous Delivery Robot", ko: "자율주행 배송 로봇" },
-  desc: { en: "Short summary.", ko: "짧은 요약 (목록 카드에 보임)." },
-  detail: { en: "Long description.", ko: "상세 페이지에 보이는 긴 설명." },
-  highlights: [
-    { en: "Point 1", ko: "핵심 포인트 1" },
-    { en: "Point 2", ko: "핵심 포인트 2" },
-  ],
-  team: { en: "Robotics team · 6 members", ko: "로보틱스 팀 · 6명" },
-},
-```
-
-| 항목 | 설명 |
-| --- | --- |
-| `slug` | 상세 페이지 주소 → `/projects/<slug>`. **영문 소문자·하이픈(-)만**, 중복 금지 |
-| `status` | 진행 상태. **`"in-progress"`** (진행 중, 강조색 배지) 또는 **`"completed"`** (완료, 회색 배지). 이 값은 영어 그대로 쓰고, 화면 표시 글자는 자동 번역됩니다 |
-| `period` | 진행 시기 `{ en, ko }` |
-| `image` | 대표 사진 경로 (`/projects/` 폴더) |
-| `tags` | 기술 태그 (언어 공통, 한 번만) |
-| `title` / `desc` / `detail` | 제목 / 짧은 설명 / 긴 설명, 각각 `{ en, ko }` |
-| `highlights` | 핵심 포인트 목록. 각 항목이 `{ en, ko }` |
-| `team` | 참여 팀/인원 `{ en, ko }` |
-
-> 💡 메인 페이지 **주요 프로젝트(Featured Projects)** 영역에는 이 목록의 **처음 3개**가 자동 표시됩니다.
-
----
-
-## 5. 일정(Schedule) 추가·수정하기
-
-일정 페이지에는 **한 달을 보여주는 달력**이 있습니다.
-
-- 처음 열면 **이번 달**이 보입니다.
-- 위쪽 **‹ ›** 버튼으로 이전/다음 달로 넘길 수 있습니다.
-- **오늘 날짜**는 강조 표시됩니다.
-- 달력 아래에는 **다가오는 일정 3개**가 자동으로 표시됩니다. (오늘 이후 가까운 순)
-
-달력은 아래 데이터에서 **자동으로 만들어집니다** — 줄을 추가·수정·삭제하면 해당 날짜에 바로 반영됩니다.
-
-`export const schedule` 부분입니다. 각 일정은 한 줄입니다.
-
-```ts
-{ date: "2026-03-14", title: { en: "New Member Orientation", ko: "신입 부원 오리엔테이션" }, tag: { en: "Recruiting", ko: "모집" } },
-```
-
-| 항목 | 설명 |
-| --- | --- |
-| `date` | **`"연도-월-일"` 형식** (예: `"2026-03-14"` = 2026년 3월 14일). 월·일은 두 자리(`03`, `14`). 언어 공통 |
-| `title` | 일정 이름 `{ en, ko }` |
-| `tag` | 분류 라벨 `{ en, ko }` |
-
-**추가 예시:**
-
-```ts
-export const schedule = [
-  { date: "2026-03-14", title: { en: "Orientation", ko: "오리엔테이션" }, tag: { en: "Recruiting", ko: "모집" } },
-  { date: "2027-01-09", title: { en: "New Year Kickoff", ko: "새해 킥오프" }, tag: { en: "Meeting", ko: "모임" } },
-];
-```
-
-> 💡 같은 날에 여러 일정을 넣으면 그 날 칸에 차례로 쌓입니다.
-> 어느 연도·월이든 자유롭게 넣을 수 있고, 방문자가 달력을 넘겨서 그 달을 볼 수 있습니다.
-
----
-
-## 6. 장비(Equipment) 추가·수정하기
-
-`export const equipment` 부분입니다.
-
-```ts
-{
-  slug: "3d-printers",
-  qty: 4,
-  tag: { en: "Fabrication", ko: "제작" },
-  image: "/equipment/3d-printers.svg",
-  name: { en: "3D Printers", ko: "3D 프린터" },
-  model: { en: "Bambu Lab X1C", ko: "Bambu Lab X1C" },
-  detail: { en: "Long description.", ko: "긴 설명." },
-  specs: [
-    { label: { en: "Build volume", ko: "출력 크기" }, value: { en: "256 mm", ko: "256 mm" } },
-  ],
-},
-```
-
-| 항목 | 설명 |
-| --- | --- |
-| `slug` | 상세 페이지 주소 → `/equipment/<slug>`. 영문 소문자·하이픈, 중복 금지 |
-| `qty` | 수량 (숫자, 따옴표 없이). 언어 공통 |
-| `tag` / `name` / `model` / `detail` | 각각 `{ en, ko }` |
-| `image` | 사진 경로 (`/equipment/` 폴더) |
-| `specs` | 사양 표. 각 줄이 `label`(항목)과 `value`(값), 둘 다 `{ en, ko }` |
-
----
-
-## 7. 행사(Events) 추가·수정하기
-
-`export const events` 부분입니다.
-
-```ts
-{
-  slug: "campus-hackathon",
-  year: "2025",
-  image: "/events/campus-hackathon.svg",
-  name: { en: "Campus Hackathon", ko: "교내 해커톤" },
-  result: { en: "Grand Prize", ko: "대상" },
-  place: { en: "Engineering Hall", ko: "공학관" },
-  detail: { en: "Recap.", ko: "후기." },
-  gallery: [
-    "/events/campus-hackathon.svg",
-    "/events/campus-hackathon-2.svg",
-  ],
-},
-```
-
-| 항목 | 설명 |
-| --- | --- |
-| `slug` | 상세 페이지 주소 → `/events/<slug>`. 영문 소문자·하이픈, 중복 금지 |
-| `year` | 연도 (언어 공통) |
-| `name` / `result` / `place` / `detail` | 각각 `{ en, ko }` |
-| `image` | 대표 사진 경로 (`/events/` 폴더) |
-| `gallery` | 상세 페이지 사진 목록 (여러 장, 언어 공통) |
-
----
-
-## 7-1. 후원·협력사(Sponsors) 추가·수정하기
-
-동아리를 후원하는 기업·기관 로고를 **연락처(Contact) 페이지 아래쪽**에 보여줍니다.
-`export const sponsors` 부분을 찾으세요. 각 후원사는 한 줄입니다.
-
-```ts
-{ name: "Robotis", logo: "/sponsors/robotis.svg", href: "https://example.com" },
-```
-
-| 항목 | 설명 |
-| --- | --- |
-| `name` | 회사·기관 이름 (로고 대체 텍스트로도 쓰임). 언어 공통 |
-| `logo` | 로고 이미지 경로. `/sponsors/` 폴더 안의 파일 |
-| `href` | (선택) 후원사 홈페이지 주소. 링크가 없으면 `""` (빈 값)으로 두면 됩니다 |
-
-**추가 예시** — 목록 안에 한 줄 추가:
-
-```ts
-export const sponsors = [
-  { name: "Robotis", logo: "/sponsors/robotis.svg", href: "https://example.com" },
-  { name: "새 후원사", logo: "/sponsors/new-company.svg", href: "" }, // ← 이 줄 추가
-];
-```
-
-> 📌 로고 이미지는 `public/sponsors/` 폴더에 넣습니다. (경로는 `public`을 빼고 `/sponsors/...` 부터)
-> 카드 배경이 어두우므로 **배경이 투명하거나 밝은 색 로고**가 잘 보입니다.
-> `href` 를 채우면 로고를 누를 때 새 탭으로 해당 사이트가 열립니다.
-
----
-
-## 8. 사진 넣기
-
-사진은 모두 `public/` 폴더 안에 종류별로 있습니다.
-
-```
-public/
-├─ people/       ← 부원 사진
-├─ projects/     ← 프로젝트 사진
-├─ equipment/    ← 장비 사진
-├─ events/       ← 행사 사진
-└─ sponsors/     ← 후원사 로고
-```
-
-**사진 바꾸는 방법 (둘 중 하나):**
-
-1. **기존 파일 교체** — 같은 이름으로 새 사진을 덮어씁니다.
-2. **새 파일 추가** — 새 사진을 폴더에 올리고, `site.ts`의 `image` 값을 그 경로로 바꿉니다.
-   예: `public/projects/new-robot.jpg` → `image: "/projects/new-robot.jpg"`
-
-> 📌 경로는 `public`을 빼고 `/` 부터 씁니다. 형식은 `.jpg`, `.png`, `.svg`, `.webp` 모두 가능.
-> 부원 사진은 **정사각형**, 프로젝트·행사 사진은 **가로가 긴(16:9)** 사진이 잘 어울립니다.
-> 사진에는 글자가 없으므로 언어와 상관없이 한 번만 넣으면 됩니다.
-
----
-
-## 9. 메뉴 이름·기본 정보 바꾸기
-
-`site.ts` 맨 위 `export const site` 부분입니다.
-
-- `name` : 동아리 이름 (언어 공통)
-- `tagline` / `description` : 대문 소개 문구 `{ en, ko }`
-- `nav` : 상단 메뉴. 각 줄의 `label`이 `{ en, ko }`, `href`가 이동 주소(공통)
-- `stats` : 대문 숫자 4개. `value`(숫자, 공통), `label`(`{ en, ko }`)
-
-버튼·페이지 제목 같은 UI 문구는 `export const ui` 부분에 모여 있습니다. 여기도 모두 `{ en, ko }` 형식입니다.
-
-연락처는 `export const contact` 에서 이메일·위치·SNS를 바꿉니다. (위치 `location`만 `{ en, ko }`)
-
----
-
-## 10. 언어 자동 감지는 어떻게 동작하나요? (참고)
-
-- `src/proxy.ts` 가 방문자의 **국가(한국인지)** 와 **브라우저 언어**를 보고 첫 언어를 정합니다.
-  - 한국(또는 한국어 브라우저) → 한국어, 그 외 → 영어
-- 한 번 정해지면 `lang` 쿠키에 저장되어 다음 방문에도 유지됩니다.
-- 방문자가 오른쪽 위 `EN` / `한국어` 버튼을 누르면 그 선택이 우선합니다.
-
-> 국가 감지는 **Vercel에 배포됐을 때** 정확히 동작합니다. 내 컴퓨터(`npm run dev`)에서는
-> 브라우저 언어로 판단합니다. 언어를 직접 확인하려면 오른쪽 위 버튼으로 바꿔 보세요.
-
----
-
-## 11. 바뀐 내용 확인하고 배포하기
-
-### 내 컴퓨터에서 미리 보기
-
-```bash
-npm install   # 최초 1회만
+```sh
+npm install
+cp .env.example .env.local
 npm run dev
 ```
 
-브라우저에서 [http://localhost:3000](http://localhost:3000) 을 열면 실시간으로 확인됩니다.
+미리보기: http://localhost:3000
 
-### 실제 홈페이지에 반영하기
-
-`src/data/site.ts` (또는 `public/` 사진)를 고친 뒤 GitHub에 커밋·푸시하면,
-Vercel이 자동으로 다시 배포합니다. 보통 1~2분 안에 반영됩니다.
-
-> ⚠️ 저장 전에 쉼표·따옴표·`{ en, ko }` 짝을 실수로 빠뜨리면 배포가 실패할 수 있습니다.
-> 가능하면 `npm run dev` 로 먼저 확인하거나, `npm run build` 를 돌려 에러가 없는지 보세요.
-
----
-
-## 폴더 구조 참고
-
-```
-src/
-├─ data/site.ts        ← ★ 내용은 대부분 여기서 수정 (한/영 함께)
-├─ proxy.ts            ← 언어 자동 감지 (건드릴 일 거의 없음)
-├─ app/                ← 각 페이지 (about, projects, people, schedule ...)
-└─ components/         ← 공통 UI (네비게이션 바, 언어 전환, 푸터 등)
-public/                ← 사진·이미지 파일
+```sh
+npm run typecheck
+npm test
+npm run build
+npm start
 ```
 
-내용(글자·목록·사진)만 바꾸는 거라면 **`src/data/site.ts` 와 `public/` 폴더**만 건드리면 충분합니다.
+## 실제 브라우저 기능 검증
+
+공유 HTML과 별개로 실제 서버의 가입·승인·로봇 편집·다운로드·비밀번호 변경을 검증합니다. 아래 데이터베이스는 테스트 전용이며 기존 회원 데이터와 관리자 비밀번호 파일을 사용하지 않습니다.
+
+```sh
+DATABASE_PATH=.local/qa/live.sqlite npm run test:e2e:seed
+DATABASE_PATH=.local/qa/live.sqlite npm run build
+DATABASE_PATH=.local/qa/live.sqlite NEXT_PUBLIC_SITE_URL=http://localhost:3100 COOKIE_SECURE=false npm run start -- --port 3100
+```
+
+다른 터미널에서 실행합니다. 아래 계정은 테스트 데이터베이스에만 생성됩니다.
+
+```sh
+MERO_LIVE_E2E_BASE_URL=http://localhost:3100 \
+MERO_LIVE_E2E_ADMIN_EMAIL=qa-admin@mero.test \
+MERO_LIVE_E2E_ADMIN_PASSWORD='QA-only-MERO-2026!' \
+npm run test:e2e:live
+```
+
+2026-10-02 검증: 단위·권한 테스트 11개, 공유 HTML 브라우저 테스트 4개, 실제 서버 브라우저 테스트 2개 통과. 공개 화면 19개를 320/390/1440px와 두 테마에서 확인했습니다. 홈과 QDD 프로젝트의 Lighthouse는 데스크톱 성능 100, 모바일 성능 97이며 접근성·권장사항·SEO는 모두 100입니다. 보고서는 `.local/qa`에 저장했습니다.
+
+프로덕션 파일 목록에서 회원 DB·로컬 관리자 정보·환경 파일을 제외했습니다. 실제 운영 DB는 서버의 영구 저장 영역에 따로 보관해야 합니다.
+
+## 관리자
+
+```sh
+npm run admin:create -- --email admin@mero.local --name 'MERO 운영진'
+```
+
+초기 비밀번호는 `.local/admin-credentials.txt`에 저장합니다. 파일 권한은 600이며 공개 폴더와 저장소에서 제외됩니다. 기존 계정이 있으면 변경하지 않습니다. 로그인 후 내 계정에서 비밀번호를 바꿀 수 있습니다.
+
+회원가입 시 기본 상태는 승인 대기입니다. 관리자가 승인한 회원에게 로봇 접속 정보와 운용 설명서를 제공합니다. 웹 로그인과 SSH 장비 인증은 별도입니다.
+
+관리자는 로봇의 설명, 제작자, 기간, SSH 정보, 제어 명령과 설명서를 편집할 수 있습니다. 초기 장비의 실제 IP·사용자·실행 명령은 비워 두었습니다. QR 주소는 `/robots/로봇ID`이고 ID는 변경할 수 없습니다.
+
+운영 도메인을 정한 후 `NEXT_PUBLIC_SITE_URL`을 지정하고 HTTPS 환경에서는 `COOKIE_SECURE=true`를 사용하세요. 로봇 QR에 localhost를 사용하면 다른 기기에서 접속할 수 없습니다. 회원·세션·로봇 데이터는 `data/mero.sqlite`에 저장됩니다. 이 사이트는 정적 HTML 배포용이 아닙니다.
+
+## 디자인과 자료
+
+- 홈은 동아리 전반을 소개하고, 학기별 프로젝트는 ‘활동’에서 볼 수 있습니다.
+- 색상 기준: [서울대학교 로보틱스 사이트](https://robotics.snu.ac.kr/). 원본 CSS의 `#1640a8`, `#183889`를 기본·강조 색상으로 적용했습니다.
+- 활동 구조 참고: [KAIST MR history](https://mr.kaist.ac.kr/history). 학기/연도 구분과 활동 본문을 분리하는 구조를 참고해 새로 구현했습니다.
+- MERO 로고: `MERO_2026_OT.pptx` 첫 장 원본 그림에서 하단 영문 설명을 제외하고 SVG 경로로 변환했습니다. `public/brand/mero.svg`.
+- 기계공학부 로고는 원본의 흰색 배경과 가장자리의 흰색 성분만 제거한 실제 투명 PNG입니다. `public/brand/mechanical-engineering-transparent.png`를 밝은 테마, 같은 윤곽·주황색을 유지하고 회색을 밝힌 `mechanical-engineering-dark.png`를 어두운 테마에 사용합니다. 원본은 `mechanical-engineering.png`에 보존하며 `node scripts/prepare-department-logo.mjs`로 다시 만들 수 있습니다. 흰 배경에 재합성한 결과와 원본의 픽셀 차이가 0임을 확인했습니다.
+- 홈·소개 사진: 사용자가 제공한 `competition-group.jpg`. `public/images/mero-team.webp`.
+- AI 로봇챌린지 대표 사진: 사용자가 제공한 `6a7e83d019eba6286655.jpg`. `public/images/challenge-cover.webp`.
+- 활동 사진: 사용자가 제공한 AI챌린지, RI 개소식 ZIP.
+- [AI 로봇챌린지 영상](https://www.youtube.com/watch?v=bwild_6jS2U), [로봇신문 기사](https://www.irobotnews.com/news/articleView.html?idxno=47888)는 활동 상세 페이지에 연결했습니다.
+- 로봇 스케치는 실제 Mini Cheetah, Microban, RBY1 사진을 참고해 이미지 생성 도구로 제작했습니다. 실물 사진과 생성 스케치는 상세 페이지에서 구분합니다.
+- Microban 원본: [Rhoban Microban](https://github.com/rhoban/microban). 하드웨어·문서는 CC BY-NC-SA 4.0, 소프트웨어는 GPL-3.0입니다. 실제 프로젝트 자료는 `/home/user/microban`을 참고했습니다.
+- Pretendard 글꼴은 자체 제공하며 라이선스는 `public/fonts/OFL.txt`에 있습니다.
+
+사이트의 고정 문구는 같은 글꼴에서 추출한 약 100KB의 `MeroSiteSans.woff2`로 먼저 표시합니다. 포함되지 않은 회원 이름·편집 문구는 원본 Pretendard를 필요할 때 불러옵니다. 파생 글꼴은 OFL의 예약 이름 규칙에 따라 내부 이름을 변경했습니다. 고정 문구가 크게 바뀌면 `fonttools[woff]`가 설치된 환경에서 `python3 scripts/build-font-subset.py`로 다시 생성할 수 있습니다. 공유 HTML은 원본 글꼴을 포함합니다.
+
+작업 기록과 남은 준비 사항은 [WORK_STATUS.md](WORK_STATUS.md)에 기록했습니다.

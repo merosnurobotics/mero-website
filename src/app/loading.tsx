@@ -1,0 +1,1 @@
+export default function Loading() { return <div className="container loading-page" aria-label="페이지를 불러오는 중" role="status"><div className="skeleton loading-title"/><div className="skeleton loading-subtitle"/><div className="skeleton loading-content"/><span className="sr-only">페이지를 불러오고 있습니다.</span></div>; }

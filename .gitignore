@@ -42,3 +42,11 @@ next-env.d.ts
 
 # editor
 .vscode/
+
+# MERO private runtime files and local artifacts
+.local/
+data/
+output/
+playwright-report/
+test-results/
+!.env.example
