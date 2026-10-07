@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<rect width="900" height="560" fill="#f7f9f8"/>
+<text x="40" y="52" font-family="Noto Sans CJK KR, sans-serif" font-size="28" font-weight="700" fill="#16261f">ssh jetson → 저장해둔 접속 설정 사용</text>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#245a4a"/></marker></defs>
+<rect x="40" y="150" width="230" height="120" rx="8" fill="white" stroke="#bacbc3" stroke-width="2"/>
+<text x="155.0" y="190" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">ssh jetson</text>
+<text x="155.0" y="224" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">로컬 터미널</text>
+<rect x="335" y="110" width="270" height="230" rx="8" fill="white" stroke="#bacbc3" stroke-width="2"/>
+<text x="470.0" y="150" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">~/.ssh/config</text>
+<text x="470.0" y="184" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">Host jetson</text>
+<text x="470.0" y="218" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">HostName 100.x.x.x</text>
+<text x="470.0" y="252" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">User robot</text>
+<text x="470.0" y="286" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">IdentityFile …</text>
+<rect x="655" y="150" width="205" height="120" rx="8" fill="white" stroke="#bacbc3" stroke-width="2"/>
+<text x="757.5" y="190" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">Jetson shell</text>
+<text x="757.5" y="224" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">robot@jetson</text>
+<path d="M270,210 L330,210" stroke="#245a4a" stroke-width="3" marker-end="url(#a)"/>
+<path d="M605,210 L650,210" stroke="#245a4a" stroke-width="3" marker-end="url(#a)"/>
+<text x="40" y="475" font-family="Noto Sans CJK KR, sans-serif" font-size="22" fill="#455c50">별칭 설정은 로컬 컴퓨터에 저장합니다.</text>
+<text x="40" y="505" font-family="Noto Sans CJK KR, sans-serif" font-size="22" fill="#455c50">예제 IP와 계정 이름을 본인 장치 값으로 바꾸세요.</text>
+</svg>

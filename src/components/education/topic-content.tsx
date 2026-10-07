@@ -1,9 +1,11 @@
+import { requireEducationMember } from "@/lib/education/access";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/shared";
 import { ArrowRight } from "@/components/icons";
 import { educationTopics } from "@/lib/education/catalog";
 
-export function EducationTopicContent({ topic }: { topic: typeof educationTopics[number] }) {
+export async function EducationTopicContent({ topic }: { topic: typeof educationTopics[number] }) {
+  await requireEducationMember(topic.path);
   return <>
     <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: topic.title }]}/>
     <div className="education-intro"><h1>{topic.title}</h1><p>{topic.description}</p></div>

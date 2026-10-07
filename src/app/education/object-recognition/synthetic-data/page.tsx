@@ -1,3 +1,4 @@
+import { requireEducationMember } from "@/lib/education/access";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/shared";
@@ -14,9 +15,10 @@ function Chapter({ id, title, children }: { id: string; title: string; children:
 function Check({ children }: { children: ReactNode }) { return <details className="education-check"><summary>잠깐 확인하기</summary>{children}</details>; }
 function Recipe({ name, label }: { name: keyof typeof perceptionCommands; label: string }) { return <details className="education-recipe"><summary>{label} · 전체 명령 펼치기</summary><CodeExample code={perceptionCommands[name]} label={label} download={`${assets}/${name}.sh`}/></details>; }
 const figureSizes: Record<string, [number, number]> = { "synthetic-samples.jpg": [1308, 1024], "real-crops.jpg": [1372, 704], "scan-overlay.jpg": [2816, 900], "prediction-crop_0005.jpg": [960, 600], "prediction-crop_0007.jpg": [960, 600], "prediction-crop_0009.jpg": [960, 600], "prediction-crop_0050.jpg": [960, 600] };
-function Figure({ name, alt, children }: { name: string; alt: string; children: ReactNode }) { return <figure><Image src={`${assets}/${name}`} alt={alt} width={figureSizes[name][0]} height={figureSizes[name][1]} loading={name === "synthetic-samples.jpg" ? "eager" : "lazy"} fetchPriority={name === "synthetic-samples.jpg" ? "high" : "auto"} sizes="(max-width: 767px) 100vw, 900px" style={{ width: "100%", height: "auto" }}/><figcaption>{children}</figcaption></figure>; }
+function Figure({ name, alt, children }: { name: string; alt: string; children: ReactNode }) { return <figure><Image unoptimized src={`${assets}/${name}`} alt={alt} width={figureSizes[name][0]} height={figureSizes[name][1]} loading={name === "synthetic-samples.jpg" ? "eager" : "lazy"} fetchPriority={name === "synthetic-samples.jpg" ? "high" : "auto"} sizes="(max-width: 767px) 100vw, 900px" style={{ width: "100%", height: "auto" }}/><figcaption>{children}</figcaption></figure>; }
 
-export default function PerceptionLessonPage() {
+export default async function PerceptionLessonPage() {
+  await requireEducationMember("/education/object-recognition/synthetic-data");
   return <>
     <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: "객체인식", href: objectRecognitionPath }, { label: "합성 데이터로 시작하기" }]}/>
     <article className="perception-lesson">

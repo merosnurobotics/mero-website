@@ -5,7 +5,7 @@ import { execFileSync } from "node:child_process";
 import postcss from "postcss";
 
 const source = resolve(process.argv[2] || "/home/user/microbanRL/education");
-const assets = "public/education-assets/kimodo-mjwarp";
+const assets = "private/education-assets/kimodo-mjwarp";
 await rm(assets, { recursive: true, force: true });
 await mkdir(assets, { recursive: true });
 // The original curated offline package includes the media, evidence and licenses.

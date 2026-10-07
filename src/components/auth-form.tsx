@@ -28,7 +28,7 @@ export function AuthForm({ mode, next }: { mode: "login" | "signup"; next?: stri
       router.push(target); router.refresh();
     } catch (err) { setError(err instanceof Error ? err.message : "다시 시도해 주세요."); setBusy(false); }
   }
-  return <div className="auth-form-wrap"><h2>{signup ? "MERO 회원가입" : "로그인"}</h2><p className="auth-form-description">{signup ? "가입 후 운영진의 승인을 거쳐 활동 회원이 됩니다." : "로봇의 접속 정보와 운용 설명서를 확인하세요."}</p>
+  return <div className="auth-form-wrap"><h2>{signup ? "MERO 회원가입" : "로그인"}</h2><p className="auth-form-description">{signup ? "가입 후 운영진의 승인을 거쳐 활동 회원이 됩니다." : next?.startsWith("/education") ? "회원 로그인 후 교육자료를 이어서 볼 수 있습니다." : "교육자료와 로봇 운용 안내를 확인하세요."}</p>
     <form className="auth-form" onSubmit={submit} aria-describedby={error ? "auth-form-error" : undefined}>
       {signup && <><div className="form-field"><label htmlFor="name">이름</label><input id="name" name="name" autoComplete="name" placeholder="이름을 입력해 주세요" minLength={2} maxLength={40} required/></div><div className="form-field"><label htmlFor="department">소속 / 학과 <span style={{ color: "var(--muted)", fontWeight: 400 }}>(선택)</span></label><input id="department" name="department" autoComplete="organization" placeholder="예: 서울대학교 기계공학부" maxLength={80}/></div></>}
       <div className="form-field"><label htmlFor="email">이메일</label><input id="email" name="email" type="email" autoComplete="email" placeholder="you@example.com" maxLength={254} required/></div>

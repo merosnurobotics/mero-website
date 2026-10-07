@@ -23,6 +23,38 @@ export const perceptionChapters = [
   { id: "evaluate", label: "평가와 실제 사진 추론" },
   { id: "improve", label: "실습 확장하기" },
 ];
+export const localizationPath = "/education/localization";
+export const lidarLessonPath = `${localizationPath}/lidar`;
+export const controlTheoryPath = "/education/control-theory";
+export const pidLessonPath = `${controlTheoryPath}/pid-control`;
+export const developmentSetupPath = "/education/development-setup";
+export const remoteWorkLessonPath = `${developmentSetupPath}/remote-work`;
+export const lidarChapters = [
+  { id: "sensor", label: "LiDAR는 무엇을 측정할까" },
+  { id: "coordinates", label: "거리에서 좌표로" },
+  { id: "matching", label: "알려진 벽과 비교하기" },
+  { id: "practice", label: "경량 코드로 위치 찾기" },
+  { id: "robot", label: "실제 센서에 연결하기" },
+  { id: "discussion", label: "심화 discussion: 방향 정보" },
+];
+export const pidChapters = [
+  { id: "feedback", label: "목표·측정·오차" },
+  { id: "terms", label: "P, I, D를 그림으로 보기" },
+  { id: "digital", label: "컴퓨터에서 계산하기" },
+  { id: "encoder", label: "Encoder motor에 적용하기" },
+  { id: "line", label: "정해진 line 따라가기" },
+  { id: "practice", label: "실습과 튜닝 순서" },
+];
+export const remoteWorkChapters = [
+  { id: "roles", label: "로컬 컴퓨터와 Jetson" },
+  { id: "server", label: "Jetson의 SSH 서버 준비" },
+  { id: "tailscale", label: "Tailscale 설치와 로그인" },
+  { id: "keys", label: "SSH 키 생성과 등록" },
+  { id: "alias", label: "ssh jetson 별칭 만들기" },
+  { id: "workflow", label: "코드·파일·장시간 작업" },
+  { id: "gui", label: "GUI가 필요하면 RustDesk" },
+  { id: "troubleshooting", label: "연결 문제를 나눠 확인하기" },
+];
 export const educationTopics = [
   {
     title: "강화학습", path: reinforcementLearningPath,
@@ -33,5 +65,20 @@ export const educationTopics = [
     title: "객체인식", path: objectRecognitionPath,
     description: "사진 속 물체가 무엇이고 어디에 있는지 알아내는 방법을 배웁니다. 처음 공부하는 사람도 사진과 정답지부터 시작할 수 있습니다.",
     lessons: [{ path: perceptionLessonPath, shortTitle: "합성 데이터로 시작하기", label: "사진에서 형태와 과일 찾기", title: "합성 데이터로 시작하는 객체인식", description: "똥개 로봇의 정다면체와 과일 인식을 사례로 살펴봅니다. Blender로 학습 사진과 정답지를 함께 만들고, YOLO 모델을 학습한 뒤 실제 사진에서 확인합니다.", chapters: perceptionChapters }],
+  },
+  {
+    title: "Localization", path: localizationPath,
+    description: "센서로 측정한 주변 모습과 지도를 비교해 로봇의 위치를 알아냅니다.",
+    lessons: [{ path: lidarLessonPath, shortTitle: "LiDAR 사용", label: "알려진 벽으로 위치 찾기", title: "LiDAR로 시작하는 localization", description: "거리와 각도부터 이해하고, ddonggae의 벽 거리 비교 방식을 경량 Python 코드로 실습합니다.", chapters: lidarChapters }],
+  },
+  {
+    title: "Control theory", path: controlTheoryPath,
+    description: "목표와 측정값의 차이를 줄여 로봇이 원하는 움직임을 만들도록 합니다.",
+    lessons: [{ path: pidLessonPath, shortTitle: "PID control", label: "Encoder motor와 line tracking", title: "그림으로 이해하는 PID control", description: "P·I·D의 역할을 보고 encoder motor 속도 제어와 정해진 line을 따라가는 제어로 연결합니다.", chapters: pidChapters }],
+  },
+  {
+    title: "개발 환경 셋업", path: developmentSetupPath,
+    description: "내 컴퓨터에서 로봇의 컴퓨터에 접속하고, 코드를 옮기고 실행하는 환경을 준비합니다.",
+    lessons: [{ path: remoteWorkLessonPath, shortTitle: "원격 작업하기", label: "SSH · Tailscale · RustDesk", title: "원격 작업하기: ssh jetson부터 GUI까지", description: "SSH 키 생성, Tailscale 로그인, 접속 별칭 설정을 따라 하고 GUI 작업에는 RustDesk를 사용합니다.", chapters: remoteWorkChapters }],
   },
 ];

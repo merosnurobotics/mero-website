@@ -2,6 +2,14 @@ import { test, expect } from "@playwright/test";
 
 const baseURL = process.env.MERO_EDUCATION_TEST_URL;
 test.skip(!baseURL, "Set MERO_EDUCATION_TEST_URL to a running MERO server.");
+test.beforeEach(async ({ context }) => {
+  const email=process.env.MERO_EDUCATION_TEST_EMAIL;
+  const password=process.env.MERO_EDUCATION_TEST_PASSWORD;
+  test.skip(!email || !password,"Member credentials are required for protected lessons.");
+  const response=await context.request.post(`${baseURL}/api/auth/login`, {data:{email,password},headers:{Origin:baseURL!}});
+  expect(response.status()).toBe(200);
+});
+
 const lessonPath = "/education/reinforcement-learning/kimodo-mjwarp";
 
 test("education navigation, expandable catalog and lesson interactions", async ({ page, context }) => {

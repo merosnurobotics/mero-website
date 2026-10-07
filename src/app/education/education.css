@@ -146,3 +146,6 @@
 @media (max-width: 767px) {
   .education-prediction-grid { grid-template-columns: 1fr; }
 }
+.education-image-credit { display: block; margin-top: 7px; font-size: 12px; }
+.perception-lesson figure:has(img[src$="PID_en.svg"]), .perception-lesson figure:has(img[src$="PID_varyingP.jpg"]), .perception-lesson figure:has(img[src$="PID_Compensation_Animated.gif"]) { max-width: 760px; }
+.perception-lesson img[src$="PID_Compensation_Animated.gif"] { max-width: 600px; }

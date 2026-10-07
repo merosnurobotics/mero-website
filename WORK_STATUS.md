@@ -1,3 +1,14 @@
+# 2026-10-08 추가 교육 자료와 회원 접근 제한
+
+- Localization / LiDAR: ddonggae의 known-wall range matching을 경량 Python 코드로 재구성. 초기 yaw를 알고 있다고 가정하고 x/y 탐색. IMU는 심화 discussion의 방법론만 설명.
+- Control theory / PID: P·I·D 도식/Commons 이미지/애니메이션, encoder motor의 원본 PI와 street line tracking의 원본 P를 명시하고 교육용 I/D 확장을 추가.
+- 개발 환경 셋업 / 원격 작업: SSH server, Tailscale 로그인, key pair 등록, ssh jetson profile, 파일/장시간 작업, RustDesk GUI. 실제 장치 설정은 새로 바꾸지 않음.
+- 세 공개 저장소: merosnurobotics/meroedu-localization (83776d7), meroedu-control (8f3df0e), meroedu-setup (4c78a4f). lessons/01-* 독립 구조이며 후속 강의 확장 가능.
+- /education 페이지는 유효한 회원 로그인 필요. pending/active 등록 회원 허용, suspended/만료/무효 session 차단. 로봇 운용 권한은 기존 active 정책 유지.
+- /education-assets 파일을 public에서 private로 이동해 authenticated Node route로 제공. Video byte range 지원, private no-store, optimizer 복사 차단. 교육 파일 public static copy 없음.
+- GitHub 코드 저장소는 요청대로 공개이며 사이트 접근 제한과 별개. 공개 website source/history의 visibility는 변경하지 않음.
+- 검증: 양쪽 site typecheck/build, canonical production server에서 Playwright 6개 통과, LiDAR/PID 단위 테스트 9개 통과, 합성 위치/모터/line demo 실행, OpenSSH profile 해석, 실제 새 교육 자료의 mobile/desktop light/dark screenshot 확인. Vercel 배포 후 비회원 차단 추가 확인 예정.
+
 
 ### 최종 반영 상태 · 2026-10-08
 

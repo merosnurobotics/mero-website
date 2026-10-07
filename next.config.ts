@@ -8,6 +8,7 @@ const config: NextConfig = {
   outputFileTracingExcludes: {
     "/*": ["./data/**/*", "./.local/**/*", "./.env*", "./output/**/*"],
   },
+  outputFileTracingIncludes: { "/education-assets/*": ["./private/education-assets/**/*"] },
   async headers() {
     return [{ source: "/(.*)", headers: [
       { key: "X-Content-Type-Options", value: "nosniff" },

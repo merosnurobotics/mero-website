@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<rect width="900" height="560" fill="#f7f9f8"/>
+<text x="40" y="52" font-family="Noto Sans CJK KR, sans-serif" font-size="28" font-weight="700" fill="#16261f">로컬 컴퓨터에서 Jetson을 원격으로 조작</text>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#245a4a"/></marker></defs>
+<rect x="40" y="110" width="250" height="160" rx="8" fill="white" stroke="#bacbc3" stroke-width="2"/>
+<text x="165.0" y="150" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">로컬 컴퓨터</text>
+<text x="165.0" y="184" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">편집기 + 터미널</text>
+<text x="165.0" y="218" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">SSH 개인키</text>
+<rect x="340" y="110" width="220" height="160" rx="8" fill="white" stroke="#bacbc3" stroke-width="2"/>
+<text x="450.0" y="150" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">Tailscale</text>
+<text x="450.0" y="184" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">private network</text>
+<text x="450.0" y="218" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">같은 tailnet</text>
+<rect x="610" y="110" width="250" height="160" rx="8" fill="white" stroke="#bacbc3" stroke-width="2"/>
+<text x="735.0" y="150" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">Jetson / Ubuntu</text>
+<text x="735.0" y="184" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">코드는 여기서 실행</text>
+<text x="735.0" y="218" text-anchor="middle" font-family="Noto Sans CJK KR, sans-serif" font-size="24" fill="#16261f">SSH server</text>
+<path d="M290,195 L335,195" stroke="#245a4a" stroke-width="3" marker-end="url(#a)"/>
+<path d="M560,195 L605,195" stroke="#245a4a" stroke-width="3" marker-end="url(#a)"/>
+<text x="40" y="475" font-family="Noto Sans CJK KR, sans-serif" font-size="22" fill="#455c50">SSH: 명령과 파일을 암호화해 전달합니다.</text>
+<text x="40" y="505" font-family="Noto Sans CJK KR, sans-serif" font-size="22" fill="#455c50">Tailscale: 다른 네트워크의 장치를 연결합니다.</text>
+<text x="40" y="535" font-family="Noto Sans CJK KR, sans-serif" font-size="22" fill="#455c50">RustDesk: Jetson의 화면을 보고 조작합니다.</text>
+</svg>

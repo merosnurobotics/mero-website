@@ -2,7 +2,7 @@
 from pathlib import Path
 import subprocess, re, json
 repo = Path('/home/user/ddonggae')
-out = Path('public/education-assets/object-recognition')
+out = Path('private/education-assets/object-recognition')
 out.mkdir(parents=True, exist_ok=True)
 # Reviewed version, independent of later changes to origin/main.
 rev = 'd85758c'
