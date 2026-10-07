@@ -1,3 +1,12 @@
+# 2026-10-08 교육자료를 독립적인 안내로 정리
+
+- 사용자 요청: 강의에 프로젝트 이름을 직접 언급하지 않고 자료 자체로 따라갈 수 있게 구성.
+- 교육 본문·카탈로그·이미지/영상 설명·참고 링크에서 ddonggae/똥개 제거. 원본 저장소를 찾아 읽는 대신 교육 저장소의 코드와 단계별 입력·실행·출력을 설명.
+- Localization/PID/detection README와 코드 설명도 같은 방향으로 수정. 출처·MIT 라이선스 기록(UPSTREAM/LICENSE/NOTICE/provenance)은 별도로 유지.
+- 객체인식 FULL_RECIPE.md: 교육 repo clone, GPU 환경, 재료/전체 렌더, 장면 분리, 두 데이터셋 export, 두 모델 train, test 평가, COCO 확장 명령. 다운로드 source-reproduction.md를 이 독립 안내로 교체하고 import script도 유지하도록 수정.
+- 검증: canonical typecheck/build, 13개 교육 페이지의 본문/링크/모바일 overflow 및 다운로드 문서 확인, 객체인식 기존 Playwright regression 통과. README 이름 검사, Bash 문법 검사 통과. 렌더/학습 계산은 새 실행하지 않았고 ROS/geometry 알고리즘 변경 없음.
+- 공개 교육 repo: localization f1ad03e / control 125d433 / detection 6585ea7. 사이트 배포 확인 대기.
+
 # 2026-10-08 작성자 표시와 Localization 02/03
 
 - 모든 교육자료에 작성자 조연우 / yencho929@snu.ac.kr. catalog의 자료별 author + 공통 mailto 표시. d026f57 Vercel 배포 및 기존 5편 live 확인 완료.

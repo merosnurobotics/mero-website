@@ -1,174 +1,114 @@
-# Reproduce the synthetic perception models
+# 객체인식 · 전체 학습 설정과 실행 순서
 
-This is the runnable recipe for building the perception training inputs from a clean checkout. It creates a new public-data baseline with deterministic seeds; it does not recreate the competition checkpoints byte for byte. The training photographs and original checkpoint used for the July 2026 fine-tune were private, and the exact Blender binary used for the historical weights was not recorded. The renderer now follows the final arena rule: fruit prints on the top and one opposing side pair.
+작성자: 조연우 · yencho929@snu.ac.kr
 
-The full BlenderProc generator, dataset exporters, geometry and setup scripts are in [`../generation/`](../generation/). The historical design discussion and measured failures are in [`synthetic-data.md`](synthetic-data.md); the imported upstream experiment log is [`../generation/history/upstream/EXPERIMENTS.md`](../generation/history/upstream/EXPERIMENTS.md).
+이 문서는 교육 저장소만 clone한 상태에서 데이터 생성부터 두 모델의 평가까지 연결하는 Bash 안내입니다. 원본 프로젝트의 폴더나 별도 코드를 받을 필요가 없습니다. 먼저 웹 강의의 CPU 120장 실습으로 사진·정답·메타데이터가 생성되는지 확인한 뒤 확장합니다. 50,000장과 학습 epoch는 실행 예시이며 모든 문제에 필요한 최소 설정은 아닙니다.
 
-## 1. Requirements
+## 1. 환경과 시작 경로
 
-Use Python 3.11, BlenderProc 2.8.0, Blender Python (`bpy`) 5.0.1, PyTorch 2.10.0, torchvision 0.25.0 and Ultralytics 8.4.54. The pinned host dependencies are in [`../generation/requirements.txt`](../generation/requirements.txt). Install a PyTorch/torchvision pair for your CUDA platform using the official PyTorch wheel index, then install that file. Record the output of `python --version`, `python -m pip freeze`, `blenderproc --version`, and `nvidia-smi` with each run. Use `--device cpu` and `--render_device cpu` when no NVIDIA GPU is available; full generation and training will take substantially longer.
-
-From the repository root in PowerShell:
-
-```powershell
-py -3.11 -m venv .venv-perception
-.\.venv-perception\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
-python -m pip install -r perception\generation\requirements.txt
-python -c "import torch, torchvision, blenderproc, bpy, ultralytics; print(torch.__version__, torchvision.__version__, ultralytics.__version__, bpy.app.version_string)"
-```
-
-For a CPU-only install, install the matching CPU PyTorch wheels from `https://download.pytorch.org/whl/cpu` in the same step. Do not install a second torch build afterward. On Linux, use:
+Linux 또는 Windows WSL, Git, Python 3.11, NVIDIA GPU와 드라이버, 인터넷 및 충분한 저장공간이 필요합니다. 모든 명령은 같은 Bash 터미널에서 순서대로 실행합니다. 생성·학습에는 오랜 시간이 걸릴 수 있습니다. 데이터 장수·batch·worker는 장비에 맞게 조정하고 설정을 기록합니다.
 
 ```bash
+cd ~
+git clone https://github.com/merosnurobotics/meroedu-detection.git
+cd meroedu-detection/lessons/01-synthetic-data
 python3.11 -m venv .venv-perception
 source .venv-perception/bin/activate
 python -m pip install --upgrade pip
 python -m pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
 python -m pip install -r perception/generation/requirements.txt
-python -c 'import torch, torchvision, blenderproc, bpy, ultralytics; print(torch.__version__, torchvision.__version__, ultralytics.__version__, bpy.app.version_string)'
+python -c 'import torch; print(torch.__version__, torch.cuda.is_available())'
+nvidia-smi
 ```
 
-## 2. Build the public assets
+이미 clone했다면 그 저장소에서 `git pull --ff-only` 후 강의 폴더로 이동합니다. 위 Torch wheel은 CUDA 12.8 환경의 예시입니다. 장비와 호환되지 않으면 [PyTorch 공식 설치 안내](https://pytorch.org/get-started/locally/)에서 환경에 맞는 wheel을 선택합니다. `torch.cuda.is_available()`이 True인지 확인하고 `python -m pip freeze`와 드라이버 정보를 기록합니다. 모델은 `yolo26s-seg.yaml` 아키텍처에서 시작하며 이 강의의 기존 가중치를 다운로드할 필요가 없습니다.
 
-Run commands from `perception/generation`; all paths below are relative to that directory. In PowerShell use `Set-Location perception\generation`; in bash use `cd perception/generation`. The fruit texture downloader pins the Fruits-360 Git commit and verifies every downloaded file against its Git blob hash. It writes the license and SHA256 list to `datasets/fruit_textures/public_fruits360_256/assets-manifest.json`. Keep that attribution file with any redistributed texture-derived work; Fruits-360 is CC BY-SA 4.0. The generation commands use PowerShell line continuations and Windows path separators; on Linux replace trailing backticks with `\` and use `/` in paths.
+## 2. 재료 준비와 렌더
 
-```powershell
-Set-Location perception\generation
-python prepare_assets.py --out datasets\fruit_textures\public_fruits360_256 --per-class 256
-python scripts\make_polyhedron_objs.py --out assets\generated --size 0.08
+아래 첫 명령은 강의 폴더에서 시작해 재료를 준비하고 `perception/generation`으로 이동합니다. Fruits-360의 해시와 출처 manifest를 데이터와 함께 유지합니다.
+
+```bash
+source steps/02-assets.sh
+# 현재 경로: lessons/01-synthetic-data/perception/generation
+source ../../steps/full-render.sh
 ```
 
-`prepare_assets.py` is resumable and checks the manifest on subsequent runs. The images and generated datasets are intentionally ignored by Git; only their exact preparation recipe and asset hashes are tracked.
+`datasets/public_fruits360_arena_v1/images/train`, `labels/train`, `_meta/train`의 사진·정답·메타데이터를 비교합니다. 이미지와 라벨이 어긋나거나 누락되면 다음 단계로 진행하지 않습니다. 목표 물체가 없는 사진의 빈 라벨은 정상일 수 있습니다. 렌더 옵션은 `steps/full-render.sh`에 모두 들어 있습니다. 처음에는 worker 하나를 사용합니다.
 
-## 3. Smoke render, then make 50,000 scenes
+## 3. 장면별 분리
 
-First make 120 scenes with the smoke command below. This checks BlenderProc startup, texture lookup, labels, and Meta V2 output before committing to a long render:
+계속 `perception/generation`에서 실행합니다. 같은 장면에서 나온 여러 크롭이 서로 다른 split으로 가지 않도록 먼저 장면 단위 manifest를 만듭니다.
 
-```powershell
-python scripts\run_yolo_parallel.py `
-  --num_images 120 --workers 1 --worker_start_delay 0 `
-  --asset_dir assets\generated `
-  --fruit_texture_dir datasets\fruit_textures\public_fruits360_256 `
-  --background_dir datasets\backgrounds\unused `
-  --arena_background_ratio 1.0 --output datasets\smoke120 `
-  --width 640 --height 640 --samples 4 --cpu_threads 1 `
-  --seed 31000000 --min_objects 1 --max_objects 4 `
-  --scale_min 0.40 --scale_max 2.45 --negative_ratio 0.18 `
-  --label_format segment --seg_contour_mode largest `
-  --seg_contour_epsilon_ratio 0.01 --lighting_mode soft_overhead `
-  --fruit_texture_aug strong --fruit_texture_layout mixed `
-  --fruit_texture_collage_prob 0.35 --canonical_fruit_textures `
-  --allow_mixed_fruit_classes_per_image --allow_multiple_fruit_textures_per_cube `
-  --ideal_visibility --ideal_visibility_max_attempts 80 --meta_v2 --render_device cpu
-```
-
-Open several images from `datasets/smoke120/images/train/` and compare them with their text labels and JSON files under `_meta/train/`. Confirm that every scene has an image, label and metadata file. Do not scale up if the render reports missing classes, missing assets or a traceback.
-
-For the full dataset, use 50,000 scenes, 16 Cycles samples and the GPU. Start with one worker because each worker starts its own Blender process; increase `--workers` only after confirming available GPU memory and render stability. Keep every option and the seed fixed if resuming:
-
-```powershell
-python scripts\run_yolo_parallel.py `
-  --num_images 50000 --workers 1 --worker_start_delay 0 `
-  --asset_dir assets\generated `
-  --fruit_texture_dir datasets\fruit_textures\public_fruits360_256 `
-  --background_dir datasets\backgrounds\unused `
-  --arena_background_ratio 1.0 --output datasets\public_fruits360_arena_v1 `
-  --width 640 --height 640 --samples 16 --cpu_threads 1 `
-  --seed 31000000 --min_objects 1 --max_objects 4 `
-  --scale_min 0.40 --scale_max 2.45 --negative_ratio 0.18 `
-  --label_format segment --seg_contour_mode largest `
-  --seg_contour_epsilon_ratio 0.01 --min_object_visible_ratio 0.10 `
-  --min_fruit_visible_ratio 0.22 --min_fruit_face_pixels 1800 `
-  --single_object_min_projected_area 2600 `
-  --single_object_min_fruit_face_pixels 2200 --min_fruit_face_side 36 `
-  --fruit_visibility_easy_weight 0.50 --fruit_visibility_mid_weight 0.45 `
-  --fruit_visibility_hard_weight 0.05 --hard_min_fruit_visible_ratio 0.10 `
-  --hard_min_fruit_face_pixels 900 --lighting_mode soft_overhead `
-  --fruit_texture_aug strong --fruit_texture_layout mixed `
-  --fruit_texture_collage_prob 0.35 --canonical_fruit_textures `
-  --allow_mixed_fruit_classes_per_image --allow_multiple_fruit_textures_per_cube `
-  --ideal_visibility --ideal_visibility_max_attempts 80 --meta_v2 --render_device gpu
-```
-
-If interrupted, rerun the exact command with `--resume`. The generator skips only complete image/label/metadata triples. Do not change the seed, texture directory, class order or rendering options while resuming.
-
-## 4. Make a shared scene split and export model datasets
-
-Keep all crops from one rendered scene in the same split. This avoids the train/validation leakage that inflated early synthetic scores. The split script sorts scene ids, shuffles with seed `20261006`, and writes a manifest with scene-id checksum and exact counts:
-
-```powershell
-python scripts\split_meta_v2_dataset.py `
-  --dataset datasets\public_fruits360_arena_v1 `
-  --out datasets\public_fruits360_arena_v1\split.json --seed 20261006 `
+```bash
+python scripts/split_meta_v2_dataset.py \
+  --dataset datasets/public_fruits360_arena_v1 \
+  --out datasets/public_fruits360_arena_v1/split.json --seed 20261006 \
   --val-ratio 0.10 --test-ratio 0.10
 ```
 
-Export the A1 and auxiliary training sets using that same manifest:
+## 4. 두 모델의 데이터셋 내보내기
 
-```powershell
-python scripts\export_meta_v2_model_datasets.py `
-  --source_dataset datasets\public_fruits360_arena_v1 `
-  --output_root datasets\public_fruits360_arena_v1_models `
-  --split_manifest datasets\public_fruits360_arena_v1\split.json `
-  --splits train --tasks a1 c --copy_mode hardlink --reset
+A1은 전체 장면에서 형태를 찾고, face 모델은 큐브 크롭의 과일 면을 찾습니다. 클래스 순서는 내보낸 YAML 그대로 사용합니다.
 
-python scripts\export_meta_v2_cube_face_unified_dataset.py `
-  --source_dataset datasets\public_fruits360_arena_v1 `
-  --output_root datasets\public_fruits360_arena_v1_face `
-  --source_split train `
-  --split_manifest datasets\public_fruits360_arena_v1\split.json `
+```bash
+python scripts/export_meta_v2_model_datasets.py \
+  --source_dataset datasets/public_fruits360_arena_v1 \
+  --output_root datasets/public_fruits360_arena_v1_models \
+  --split_manifest datasets/public_fruits360_arena_v1/split.json \
+  --splits train --tasks a1 --copy_mode hardlink --reset
+
+python scripts/export_meta_v2_cube_face_unified_dataset.py \
+  --source_dataset datasets/public_fruits360_arena_v1 \
+  --output_root datasets/public_fruits360_arena_v1_face \
+  --source_split train \
+  --split_manifest datasets/public_fruits360_arena_v1/split.json \
   --seed 20261006 --crop_size 224 --crop_pad 0.18 --reset
 ```
 
-Inspect the exported model datasets' `data.yaml`, `manifest.json`, and `meta_v2_export_audit.json`. The raw renderer writes a legacy compatibility `data.yaml`; do not train from it. A1 must have the four classes `cube_like_object, octahedron, dodecahedron, icosahedron`; face segmentation must have `apple, orange, banana, pineapple, plain` in that order. Both model YAML files must point to separate `images/train`, `images/val`, and `images/test` directories.
+A1 결과는 `datasets/public_fruits360_arena_v1_models/a1_objectseg`, face 결과는 `datasets/public_fruits360_arena_v1_face`입니다. YAML의 train/val/test 경로를 열어 확인합니다. `--reset`은 해당 export 출력 폴더를 다시 만드는 옵션이므로 처음 실행하거나 재생성할 폴더를 확인한 상태에서 사용합니다.
 
-## 5. Train from scratch
+## 5. 학습
 
-Training starts from the Ultralytics `yolo26s-seg.yaml` architecture definition with random initialization; it does not download a pretrained checkpoint. Run names are immutable and the entry point refuses to overwrite an existing run:
+계속 `perception/generation`에서 실행합니다. A1은 140 epoch, face는 120 epoch의 예시입니다. GPU 메모리가 부족하면 batch를 줄입니다. 같은 run 이름은 재사용하지 않으므로 다시 학습할 때는 `--name`과 아래 평가의 model 경로를 함께 바꿉니다.
 
-```powershell
-python ..\training\train_segmentation.py `
-  --task a1 `
-  --data datasets\public_fruits360_arena_v1_models\a1_objectseg\data.yaml `
-  --init yolo26s-seg.yaml --epochs 140 --batch 32 --workers 4 `
-  --device 0 --seed 31000000 --lr 0.001 `
-  --project ..\..\runs\perception --name public_fruits360_arena_v1_a1
+```bash
+python ../training/train_segmentation.py \
+  --task a1 \
+  --data datasets/public_fruits360_arena_v1_models/a1_objectseg/data.yaml \
+  --init yolo26s-seg.yaml --epochs 140 --batch 32 --workers 4 \
+  --device 0 --seed 31000000 --lr 0.001 \
+  --project ../../runs/perception --name public_fruits360_arena_v1_a1
 
-python ..\training\train_segmentation.py `
-  --task face `
-  --data datasets\public_fruits360_arena_v1_face\data.yaml `
-  --init yolo26s-seg.yaml --epochs 120 --batch 32 --workers 4 `
-  --device 0 --seed 31000000 --lr 0.001 --hsv-h 0 `
-  --project ..\..\runs\perception --name public_fruits360_arena_v1_face
+python ../training/train_segmentation.py \
+  --task face \
+  --data datasets/public_fruits360_arena_v1_face/data.yaml \
+  --init yolo26s-seg.yaml --epochs 120 --batch 32 --workers 4 \
+  --device 0 --seed 31000000 --lr 0.001 --hsv-h 0 \
+  --project ../../runs/perception --name public_fruits360_arena_v1_face
 ```
 
-For the pair classifiers, the `c_facecls` dataset exported above can train apple/orange and banana/pineapple verifiers. Train both from the repository root:
+가중치는 강의 폴더의 `runs/perception/public_fruits360_arena_v1_a1/weights/best.pt`와 `public_fruits360_arena_v1_face/weights/best.pt`에 저장됩니다. Epoch는 데이터를 한 바퀴 보는 단위입니다. Training loss만으로 실제 카메라 성능을 판단하지 않습니다.
 
-```powershell
-python perception\training\train_face_mobilenetv3.py --data perception\generation\datasets\public_fruits360_arena_v1_models\c_facecls --classes apple,orange --epochs 60 --batch 128 --imgsz 128 --lr 0.0005 --weight_decay 0.0001 --workers 4 --device 0 --seed 20261006 --backbone mobilenet_v3_small --project runs\perception --name public_fruits360_arena_v1_pair_apple_orange
-python perception\training\train_face_mobilenetv3.py --data perception\generation\datasets\public_fruits360_arena_v1_models\c_facecls --classes banana,pineapple --epochs 60 --batch 128 --imgsz 128 --lr 0.0005 --weight_decay 0.0001 --workers 4 --device 0 --seed 20261006 --backbone mobilenet_v3_small --project runs\perception --name public_fruits360_arena_v1_pair_banana_pineapple
+## 6. 학습에 쓰지 않은 split으로 평가
+
+첫 명령으로 강의 폴더로 돌아온 후 평가합니다.
+
+```bash
+cd ../..
+yolo segment val model=runs/perception/public_fruits360_arena_v1_a1/weights/best.pt data=perception/generation/datasets/public_fruits360_arena_v1_models/a1_objectseg/data.yaml imgsz=640 split=test device=0
+yolo segment val model=runs/perception/public_fruits360_arena_v1_face/weights/best.pt data=perception/generation/datasets/public_fruits360_arena_v1_face/data.yaml imgsz=224 split=test device=0
 ```
 
-These classifiers use the pinned torchvision MobileNetV3-Small ImageNet initialization; torchvision downloads those weights on first use. They train only on `train/` crops, then use the explicit scene-held-out `val/` folders. The classifier writes `weights/best.pt` and `results.csv`. Export a selected verifier with [`../training/101_export_pair_onnx.py`](../training/101_export_pair_onnx.py) and evaluate once on the held-out `test/` crops with [`../training/100_eval_pair_on_val.py`](../training/100_eval_pair_on_val.py). The synthetic holdout measures repeatability on this recipe; field accuracy still requires a separately collected real-camera set.
+합성 test 점수와 실제 사진 결과를 함께 봅니다. 실제 큐브 크롭이 준비되면 `scripts/predict_examples.py --model runs/perception/public_fruits360_arena_v1_face/weights/best.pt --source my-crop.jpg --output runs/my-predictions --imgsz 224 --device 0`으로 입력과 mask를 비교할 수 있습니다. 이 문서의 명령은 전체 렌더와 학습을 새로 완료했다는 결과 보고가 아닙니다.
 
-```powershell
-python perception\training\101_export_pair_onnx.py runs\perception\public_fruits360_arena_v1_pair_apple_orange\weights\best.pt --out perception\generation\datasets\verifiers\apple_orange
-python perception\training\100_eval_pair_on_val.py --data perception\generation\datasets\public_fruits360_arena_v1_models\c_facecls --classes apple,orange --new runs\perception\public_fruits360_arena_v1_pair_apple_orange\weights\best.pt --split test
-python perception\training\101_export_pair_onnx.py runs\perception\public_fruits360_arena_v1_pair_banana_pineapple\weights\best.pt --out perception\generation\datasets\verifiers\banana_pineapple
-python perception\training\100_eval_pair_on_val.py --data perception\generation\datasets\public_fruits360_arena_v1_models\c_facecls --classes banana,pineapple --new runs\perception\public_fruits360_arena_v1_pair_banana_pineapple\weights\best.pt --split test
+## 7. COCO 배경으로 변경
+
+기본 예시는 방 형태 배경을 생성합니다. COCO 사진으로 바꾸려면 `perception/generation`에서 준비합니다.
+
+```bash
+python scripts/download_coco2017_backgrounds.py --split val2017 --output datasets/backgrounds/coco2017
 ```
 
-Every run directory contains `recipe.json`; save the asset manifest, split manifest, pip freeze, GPU details, and BlenderProc version next to the checkpoints. Report the test split once after model selection. Do not select checkpoints by repeated test-set evaluation.
+`steps/full-render.sh`를 별도 실험용으로 복사해 `--background_dir`을 `datasets/backgrounds/coco2017/val2017`, `--arena_background_ratio`를 `0.0`으로 바꿉니다. 새 seed와 출력 폴더를 사용하고, 이 문서의 split/export/train/evaluate 경로도 새 출력 이름으로 일관되게 바꿉니다. 사진 배경의 원래 사물은 목표 클래스 라벨로 사용하지 않습니다.
 
-With Ultralytics installed, evaluate the selected segmentation checkpoints on the held-out test scenes:
-
-```powershell
-yolo segment val model=runs\perception\public_fruits360_arena_v1_a1\weights\best.pt data=perception\generation\datasets\public_fruits360_arena_v1_models\a1_objectseg\data.yaml imgsz=640 split=test device=0
-yolo segment val model=runs\perception\public_fruits360_arena_v1_face\weights\best.pt data=perception\generation\datasets\public_fruits360_arena_v1_face\data.yaml imgsz=224 split=test device=0
-```
-
-## What this reproduces
-
-The scripts, class contracts, random seeds, split ids, public input assets, and hyperparameters are pinned so another person can run the same pipeline. GPU architecture, driver, Blender binary, image decode libraries and floating point kernels can change rendered pixels or final weight bytes. Therefore the expected result is the same dataset and training procedure, not a byte-identical `.pt`. The original 2026 competition models additionally used private/undistributed renders, real arena photographs and earlier initial checkpoints; those are documented as historical results and are not inputs to this public baseline.
+코드 출처·사용 조건은 저장소의 `UPSTREAM.json`과 `LICENSE`, 다운로드된 데이터의 attribution manifest에 기록돼 있습니다.

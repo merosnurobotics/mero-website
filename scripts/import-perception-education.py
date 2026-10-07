@@ -10,7 +10,9 @@ rev = subprocess.check_output(['git', 'rev-parse', rev], cwd=repo, text=True).st
 def read(p):
     return subprocess.check_output(['git', 'show', f'{rev}:{p}'], cwd=repo, text=True)
 guide = read('perception/docs/synthetic-data-reproduction.md')
-(out / 'source-reproduction.md').write_text(guide)
+# Keep the standalone teaching recipe separate from the import source.
+lesson_recipe = Path('/home/user/MERO-education/meroedu-detection/lessons/01-synthetic-data/FULL_RECIPE.md')
+(out / 'source-reproduction.md').write_text(lesson_recipe.read_text())
 (out / 'LICENSE.txt').write_text(read('LICENSE'))
 blocks = re.findall(r'```(powershell|bash)\n(.*?)```', guide, re.S)
 def bash(s):
@@ -31,7 +33,7 @@ for name, body in zip(names, selected):
     body = body.replace('--tasks a1 c', '--tasks a1')
     commands[name] = body.strip()
     cwd = '저장소 루트' if name in ['01-environment', '02-assets'] else 'perception/generation'
-    (out / f'{name}.sh').write_text('#!/usr/bin/env bash\n# MERO 객체인식 입문: ' + cwd + '에서 시작\n# Source: YenCho/ddonggae @ ' + rev + '\n# 같은 터미널에서 01부터 순서대로 source 명령으로 실행\nset -e\n' + body.strip() + '\n')
+    (out / f'{name}.sh').write_text('#!/usr/bin/env bash\n# MERO 객체인식 입문: ' + cwd + '에서 시작\n# 코드 출처·사용 조건: 별도 출처 기록 및 LICENSE\n# 같은 터미널에서 01부터 순서대로 source 명령으로 실행\nset -e\n' + body.strip() + '\n')
 (out / 'full-render.sh').write_text('#!/usr/bin/env bash\n# perception/generation에서 실행; GPU 및 충분한 저장공간 필요\nset -e\n' + bash(blocks[4][1]))
 Path('src/lib/education/perception-commands.ts').write_text('export const perceptionSourceCommit = ' + json.dumps(rev) + ';\nexport const perceptionCommands = ' + json.dumps(commands, ensure_ascii=False, indent=2) + ';\n')
 (out / 'provenance.json').write_text(json.dumps({'repository': 'https://github.com/YenCho/ddonggae', 'commit': rev, 'guide': 'perception/docs/synthetic-data-reproduction.md', 'exercise_changes': ['120 scenes', 'CPU torch and inference', '1 epoch, batch 4, workers 0', 'shared smoke120 dataset naming'], 'executed': False}, indent=2) + '\n')

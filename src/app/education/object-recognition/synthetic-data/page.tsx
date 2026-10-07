@@ -5,12 +5,11 @@ import Image from "next/image";
 import { Breadcrumbs } from "@/components/shared";
 import { CodeExample } from "@/components/education/code-example";
 import { objectRecognitionPath } from "@/lib/education/catalog";
-import { perceptionCommands, perceptionSourceCommit } from "@/lib/education/perception-commands";
+import { perceptionCommands } from "@/lib/education/perception-commands";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = { title: "합성 데이터로 시작하는 객체인식" };
 const assets = "/education-assets/object-recognition";
-const source = `https://github.com/YenCho/ddonggae/blob/${perceptionSourceCommit}`;
 const repo = "https://github.com/merosnurobotics/meroedu-detection";
 function Chapter({ id, title, children }: { id: string; title: string; children: ReactNode }) { return <section id={id} className="perception-chapter"><h2>{title}</h2>{children}</section>; }
 function Check({ children }: { children: ReactNode }) { return <details className="education-check"><summary>잠깐 확인하기</summary>{children}</details>; }
@@ -24,7 +23,7 @@ export default async function PerceptionLessonPage() {
     <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: "객체인식", href: objectRecognitionPath }, { label: "합성 데이터로 시작하기" }]}/>
     <article className="perception-lesson">
       <header className="perception-hero"><h1>합성 데이터로 시작하는<br/>객체인식</h1><p>사진 속 정다면체와 과일을 찾는 모델을 직접 만들어봅니다. 사진과 정답지가 무엇인지부터, 120장짜리 첫 실습과 실제 카메라 검증까지 차근차근 따라갑니다.</p><LessonAuthor path="/education/object-recognition/synthetic-data"/><a className="button" href={repo}>실습 저장소 열기</a></header>
-      <Figure name="synthetic-samples.jpg" alt="다양한 사진 배경 위의 정다면체와 과일 큐브, 물체 경계 정답이 표시된 합성 학습 이미지"><strong>이 선은 모델의 예측이 아니라 렌더러가 만든 정답입니다.</strong> 마지막처럼 찾을 물체가 없는 장면도 학습에 포함합니다. 원본: 똥개 프로젝트.</Figure>
+      <Figure name="synthetic-samples.jpg" alt="다양한 사진 배경 위의 정다면체와 과일 큐브, 물체 경계 정답이 표시된 합성 학습 이미지"><strong>이 선은 모델의 예측이 아니라 렌더러가 만든 정답입니다.</strong> 마지막처럼 찾을 물체가 없는 장면도 학습에 포함합니다.</Figure>
 
       <Chapter id="first-look" title="1. 객체인식은 무엇을 알아내는 걸까?">
         <p>로봇 앞에 사과 그림이 붙은 큐브와 정팔면체가 있다고 생각해봅시다. 로봇이 사과 큐브를 집으려면 먼저 사진에서 그 물체를 찾아야 합니다. 사람에게는 쉬운 일이지만 컴퓨터가 처음 받는 것은 빨강·초록·파랑 밝기 값으로 이루어진 픽셀 배열입니다.</p>
@@ -56,7 +55,7 @@ export default async function PerceptionLessonPage() {
       </Chapter>
 
       <Chapter id="pipeline" title="4. 형태부터 찾고, 큐브만 다시 살펴본다">
-        <p>똥개 프로젝트는 한 번에 모든 답을 내는 대신 두 단계로 나눴습니다. 첫 모델 A1이 물체의 형태를 찾고, 큐브처럼 생긴 물체만 잘라 두 번째 모델에 전달합니다. 잘라낸 작은 이미지를 <strong>크롭</strong>이라고 합니다.</p>
+        <p>이 실습은 형태와 과일 그림을 두 단계로 나누어 알아냅니다. 첫 모델 A1이 물체의 형태를 찾고, 큐브처럼 생긴 물체만 잘라 두 번째 모델에 전달합니다. 잘라낸 작은 이미지를 <strong>크롭</strong>이라고 합니다.</p>
         <div className="education-table-wrap"><table><caption>두 모델의 역할과 클래스 순서</caption><thead><tr><th>모델</th><th>입력과 역할</th><th>정답 클래스</th></tr></thead><tbody><tr><td>A1</td><td>전체 장면 → 형태 영역</td><td>0 cube_like_object<br/>1 octahedron (정팔면체)<br/>2 dodecahedron (정십이면체)<br/>3 icosahedron (정이십면체)</td></tr><tr><td>과일 면</td><td>큐브 크롭 → 보이는 면</td><td>0 apple · 1 orange<br/>2 banana · 3 pineapple<br/>4 plain (빈 면)</td></tr></tbody></table></div>
         <p>정다면체는 첫 단계에서 답이 나오므로 두 번째 모델을 거치지 않습니다. 큐브는 바깥 모양이 같아도 과일 면이 다르므로 한 번 더 봅니다. 크롭에 여백을 더하고 224px 크기의 입력으로 학습합니다.</p>
         <Figure name="real-crops.jpg" alt="실제 경기장에서 촬영한 큐브 크롭 10개, 과일 그림 크기와 밝기가 서로 다르고 빈 면도 보임">실제 사진에는 작은 그림, 반사, 흐림과 빈 면이 섞여 있습니다. 합성 이미지와 비교하면서 어떤 조건이 빠졌는지 찾아보세요.</Figure>
@@ -65,7 +64,7 @@ export default async function PerceptionLessonPage() {
 
       <Chapter id="setup" title="5. 실습 저장소와 환경을 준비한다">
         <p>먼저 CPU로 120장을 만들고 모델을 1 epoch 학습해 전체 연결을 확인합니다. Epoch는 학습 데이터를 한 바퀴 보는 단위입니다. 이것은 동작 확인용이며 정확도가 높은 완성 모델을 만드는 실험은 아닙니다. CPU 렌더링과 학습도 시간이 걸립니다.</p>
-        <p>Linux 또는 WSL에서 Git, Python 3.11, 인터넷 연결을 준비하세요. Windows PowerShell과 GPU용 명령은 <a href={`${source}/perception/docs/synthetic-data-reproduction.md`}>원본 재현 문서</a>에 있습니다. 교육 저장소에는 필요한 생성·학습 소스를 고정 버전으로 담았습니다.</p>
+        <p>Linux 또는 WSL에서 Git, Python 3.11, 인터넷 연결을 준비하세요. 이 자료의 명령은 Bash 기준이며, Windows에서는 WSL을 사용합니다. GPU로 확장할 때는 <a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서</a>를 따라갑니다. 교육 저장소에는 필요한 생성·학습 소스를 고정 버전으로 담았습니다.</p>
         <CodeExample label="교육 저장소 복제" code={'git clone https://github.com/merosnurobotics/meroedu-detection.git\ncd meroedu-detection/lessons/01-synthetic-data\nsource steps/01-environment.sh'}/>
         <p>가상환경은 프로젝트 전용 Python 패키지 공간입니다. 이 실습의 기준은 Python 3.11, BlenderProc 2.8.0, bpy 5.0.1, PyTorch 2.10.0, torchvision 0.25.0, Ultralytics 8.4.54입니다. 첫 단계는 CPU용 PyTorch를 설치합니다. GPU로 확장할 때는 같은 가상환경에 다른 Torch를 덮어넣지 말고 원본 GPU 설치 단계로 새 환경을 만드세요.</p>
         <Recipe name="01-environment" label="01 환경 설치"/>
@@ -114,7 +113,7 @@ export default async function PerceptionLessonPage() {
         <CodeExample label="실제 사진 추론" code={'yolo segment predict \\\n  model=runs/perception/smoke120_a1/weights/best.pt \\\n  source=my-photo.jpg imgsz=640 device=cpu'}/>
         <p>이 명령은 A1 형태 모델만 실행합니다. 과일 면 모델은 큐브 크롭을 준비해 <code>imgsz=224</code>로 실행합니다. OpenCV의 numpy 이미지는 BGR 순서입니다. PIL에서 RGB 배열로 읽었다면 Ultralytics의 numpy 입력에 넣기 전에 BGR로 바꿔야 합니다. 전체 카메라 사진을 그대로 면 모델에 넣는 것과 큐브 크롭을 넣는 것은 다른 입력입니다.</p>
         <h3>학습된 가중치로 실제 사진을 돌려본 예시</h3>
-        <p>똥개 프로젝트의 공개 과일 면 가중치 <code>unified_face_best.pt</code>를 실제 카메라 크롭에 직접 적용했습니다. 왼쪽은 입력 사진, 오른쪽의 색칠된 영역은 모델이 예측한 segmentation mask입니다. 아래 숫자는 각 면의 confidence입니다. 같은 큐브에서도 과일 면과 빈 면을 각각 예측할 수 있습니다.</p>
+        <p>미리 학습된 과일 면 가중치 <code>unified_face_best.pt</code>를 실제 카메라 크롭에 직접 적용했습니다. 왼쪽은 입력 사진, 오른쪽의 색칠된 영역은 모델이 예측한 segmentation mask입니다. 아래 숫자는 각 면의 confidence입니다. 같은 큐브에서도 과일 면과 빈 면을 각각 예측할 수 있습니다.</p>
         <p>입력 크기는 <code>imgsz=224</code>, confidence 기준은 <code>0.25</code>이며 CPU에서 실행했습니다. 이번 120장·1 epoch 실습으로 만든 가중치의 결과와는 별개입니다.</p>
         <div className="education-prediction-grid">
           <Figure name="prediction-crop_0005.jpg" alt="파인애플 큐브의 실제 입력 사진과 모델이 예측한 면 영역 비교">예시 1 · pineapple 면 두 개(0.972, 0.937)와 plain 면(0.963)을 예측했습니다.</Figure>
@@ -124,23 +123,23 @@ export default async function PerceptionLessonPage() {
         </div>
         <p><a href={`${assets}/inference-examples.json`}>가중치 해시·입력 이미지·예측 기록 보기</a> · <a href={`${repo}/blob/main/lessons/01-synthetic-data/scripts/predict_examples.py`}>입력과 예측 비교 이미지 만드는 코드</a></p>
         <h3>실제 로봇에서의 전체 파이프라인</h3>
-        <Figure name="scan-overlay.jpg" alt="실제 로봇의 경기장 스캔 이미지에 detection box와 클래스, 거리, 격자 위치가 표시됨">프로젝트의 기존 대회 모델이 실제 로봇에서 만든 결과입니다. 이번 120장 실습의 성능 결과가 아닙니다.</Figure>
-        <video controls preload="none" poster={`${assets}/scan-overlay.jpg`} aria-label="똥개 로봇의 실제 경기장 12회 스캔"><source src={`${assets}/scan.mp4`} type="video/mp4"/>브라우저가 영상을 지원하지 않습니다. <a href={`${assets}/scan.mp4`}>영상 다운로드</a></video>
+        <Figure name="scan-overlay.jpg" alt="실제 로봇의 경기장 스캔 이미지에 detection box와 클래스, 거리, 격자 위치가 표시됨">미리 학습된 모델을 실제 로봇에서 실행한 결과입니다. 이번 120장 실습의 성능 결과가 아닙니다.</Figure>
+        <video controls preload="none" poster={`${assets}/scan-overlay.jpg`} aria-label="실제 로봇의 경기장 12회 스캔"><source src={`${assets}/scan.mp4`} type="video/mp4"/>브라우저가 영상을 지원하지 않습니다. <a href={`${assets}/scan.mp4`}>영상 다운로드</a></video>
         <p>모델의 confidence는 예측 확신도를 나타내는 점수입니다. 0.9라고 해서 실제 정답일 확률이 항상 90%인 것은 아닙니다. 밝은 흰 물체를 큐브로 잘못 읽는 것처럼 높은 점수의 오탐도 직접 확인해야 합니다.</p>
       </Chapter>
 
       <Chapter id="improve" title="10. 실습 확장하기">
         <h3>GPU와 5만 장으로 확장하기</h3>
-        <p>원본 공개 레시피는 50,000장, 렌더 samples 16, A1 140 epoch, 과일 면 120 epoch를 사용합니다. GPU 환경에서 한 worker부터 시작해 안정성을 확인하세요. 배치와 worker 수는 장비에 맞춰 조정하되 바꾼 설정을 기록합니다. 아래 전체 레시피에서는 출력 폴더 이름도 바뀌므로 분리·내보내기·학습 단계를 모두 같은 이름으로 이어야 합니다.</p>
-        <p><a href={`${assets}/source-reproduction.md`} download>고정 버전 전체 재현 문서 다운로드</a> · <a href={`${assets}/full-render.sh`} download>5만 장 GPU 렌더 명령 다운로드</a></p>
-        <h3>당시 방식처럼 COCO 배경을 사용해보기</h3>
+        <p>전체 학습 예시는 50,000장, 렌더 samples 16, A1 140 epoch, 과일 면 120 epoch를 사용합니다. GPU 환경에서 한 worker부터 시작해 안정성을 확인하세요. 배치와 worker 수는 장비에 맞춰 조정하되 바꾼 설정을 기록합니다. 아래 전체 레시피에서는 출력 폴더 이름도 바뀌므로 분리·내보내기·학습 단계를 모두 같은 이름으로 이어야 합니다.</p>
+        <p><a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서 다운로드</a> · <a href={`${assets}/full-render.sh`} download>5만 장 GPU 렌더 명령 다운로드</a></p>
+        <h3>COCO 배경으로 다양성 늘리기</h3>
         <p><code>perception/generation</code>에서 배경을 준비한 후 렌더 명령의 <code>background_dir</code>을 아래 경로로 바꾸고 <code>arena_background_ratio</code>를 0.0으로 설정합니다. 새 출력 폴더와 별도의 seed를 사용하세요. COCO 배경 사진 속 원래 사물은 이번 목표 클래스의 정답이 아닙니다. 이 실험은 공개 경기장 레시피와 따로 평가합니다.</p>
         <CodeExample label="COCO 배경 준비" code={'python scripts/download_coco2017_backgrounds.py \\\n  --split val2017 --output datasets/backgrounds/coco2017\n# 렌더 명령에서 변경할 두 옵션:\n# --background_dir datasets/backgrounds/coco2017/val2017\n# --arena_background_ratio 0.0'}/>
         <h3>Codex에게 재현을 맡길 때</h3>
         <CodeExample label="실습 도움 요청 예시" code={'이 저장소의 README와 docs를 읽고 CPU 120장 실습을 따라갈 수 있게 도와줘.\n먼저 Python 버전과 가상환경, 현재 작업 경로를 확인해줘.\n사진·라벨·메타데이터가 모두 생성되고 정답이 맞는지 확인한 다음 진행해줘.\n같은 장면의 크롭은 train/val/test를 넘지 않게 유지하고 클래스 순서를 바꾸지 마.\n오류가 나면 원인과 수정한 설정을 기록해줘.\nGPU 5만 장 렌더링이나 장시간 학습은 장비와 설정을 확인한 후 진행하자.'}/>
         <Check><p>오늘 실습이 끝났다면 사진·정답·메타데이터가 한 세트라는 것, 형태와 과일 면이 서로 다른 모델이라는 것, 학습에 쓰지 않은 사진으로 평가해야 한다는 것을 설명할 수 있습니다. GPU 환경을 준비했다면 같은 순서로 렌더링부터 학습까지 확장해보세요.</p></Check>
       </Chapter>
-      <footer className="education-sources"><h2>원본과 실습 기록</h2><p>조연우의 자료 소개와 똥개 저장소 문서·코드를 입문용으로 재구성했습니다. 기준 커밋은 <code>{perceptionSourceCommit.slice(0, 7)}</code>입니다. 이 페이지의 CPU 120장·1 epoch 명령은 원본 소규모 렌더 레시피를 연결한 실습입니다. 웹페이지와 명령 형식은 검증했으며, 새 렌더링이나 재학습은 수행하지 않았으며, 위 네 가지 예시는 기존 공개 가중치로 직접 실행한 추론 결과입니다. 예시 이미지의 개수로 모델 전체 성능을 판단하지 않습니다.</p><ul><li><a href={`${source}/perception/README.md`}>인식 파이프라인 소개</a></li><li><a href={`${source}/perception/docs/synthetic-data-reproduction.md`}>공개 데이터 생성·학습 재현 방법</a></li><li><a href={`${source}/perception/docs/synthetic-data.md`}>합성 데이터 설계와 라벨 규칙</a></li><li><a href={`${source}/perception/docs/synthetic-data-experiments.md`}>실험 기록과 실패 사례</a></li><li><a href="https://docs.ultralytics.com/modes/train">Ultralytics 학습 문서</a></li><li><a href={`${assets}/LICENSE.txt`}>원본 MIT 라이선스</a> · <a href={`${assets}/provenance.json`}>이식 기록</a></li></ul></footer>
+      <footer className="education-sources"><h2>참고 자료와 실습 기록</h2><p>이 페이지의 CPU 120장·1 epoch 명령은 데이터 생성부터 평가까지 연결하는 첫 실습입니다. 웹페이지와 명령 형식은 검증했으며, 새 렌더링이나 재학습은 수행하지 않았습니다. 위 네 가지 예시는 미리 학습된 가중치로 직접 실행한 추론 결과입니다. 예시 이미지의 개수로 모델 전체 성능을 판단하지 않습니다.</p><ul><li><a href={`${repo}/tree/main/lessons/01-synthetic-data`}>실습 코드와 단계별 실행 안내</a></li><li><a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서</a></li><li><a href="https://docs.ultralytics.com/modes/train">Ultralytics 학습 문서</a></li><li><a href={`${assets}/LICENSE.txt`}>코드 사용 조건</a> · <a href={`${assets}/provenance.json`}>코드·이미지 출처 기록</a></li></ul></footer>
     </article>
   </>;
 }
