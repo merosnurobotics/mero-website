@@ -10,6 +10,8 @@ import { sessionMember } from "../src/lib/security";
 
 const directory = mkdtempSync(join(tmpdir(), "mero-vercel-"));
 process.env.VERCEL = "1";
+delete process.env.DATABASE_URL;
+delete process.env.POSTGRES_URL;
 process.env.DATABASE_PATH = join(directory, "never-created.sqlite");
 after(() => rmSync(directory, { recursive: true, force: true }));
 const origin = "https://mero-preview.vercel.app";
@@ -41,9 +43,12 @@ test("Vercel member writes and private reads fail safely without an ephemeral DB
     assert.equal(response.status, 503);
     assert.match((await response.json()).error, /회원 서비스 연결/);
   }
+  const health = await GET(request("health"), context("health"));
+  assert.equal(health.status, 503);
+  assert.deepEqual(await health.json(), { status: "unavailable", database: "unconfigured" });
   const privateRead = await GET(request("robots/qdd-01/connection"), context("robots/qdd-01/connection"));
   assert.equal(privateRead.status, 503);
-  assert.equal(sessionMember("a".repeat(64)), null);
+  assert.equal(await sessionMember("a".repeat(64)), null);
   assert.throws(() => getDb(), /persistent database/);
   assert.equal(existsSync(process.env.DATABASE_PATH!), false);
 });

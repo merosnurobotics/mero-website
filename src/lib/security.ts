@@ -20,21 +20,21 @@ export async function verifyPassword(password: string, stored: string) {
   return expected.length === key.length && timingSafeEqual(key, expected);
 }
 export function tokenHash(token: string) { return createHash("sha256").update(token).digest("hex"); }
-export function createSession(memberId: string) {
+export async function createSession(memberId: string) {
   const token = randomBytes(32).toString("hex");
   const db = getDb();
-  db.prepare("DELETE FROM sessions WHERE expires_at <= ?").run(Date.now());
-  db.prepare("INSERT INTO sessions VALUES (?, ?, ?)").run(tokenHash(token), memberId, Date.now() + SESSION_SECONDS * 1000);
+  await db.prepare("DELETE FROM sessions WHERE expires_at <= ?").run(Date.now());
+  await db.prepare("INSERT INTO sessions VALUES (?, ?, ?)").run(tokenHash(token), memberId, Date.now() + SESSION_SECONDS * 1000);
   return token;
 }
-export function sessionMember(token?: string): Member | null {
+export async function sessionMember(token?: string): Promise<Member | null> {
   if (!databaseAvailable() || !token || !/^[a-f0-9]{64}$/.test(token)) return null;
-  const member = getDb().prepare(`SELECT m.id, m.name, m.email, m.department, m.role, m.status, m.created_at
+  const member = await getDb().prepare(`SELECT m.id, m.name, m.email, m.department, m.role, m.status, m.created_at
     FROM members m JOIN sessions s ON s.member_id = m.id WHERE s.token_hash = ? AND s.expires_at > ?`)
     .get(tokenHash(token), Date.now()) as Member | undefined;
   return member && member.status !== "suspended" ? { ...member } : null;
 }
-export function destroySession(token: string) { getDb().prepare("DELETE FROM sessions WHERE token_hash = ?").run(tokenHash(token)); }
+export async function destroySession(token: string) { await getDb().prepare("DELETE FROM sessions WHERE token_hash = ?").run(tokenHash(token)); }
 export function canAccessRobot(member: Member | null) { return member?.status === "active"; }
 export function canAdmin(member: Member | null) { return member?.status === "active" && member.role === "admin"; }
 export function safeReturnPath(value: string | undefined) {
@@ -42,11 +42,10 @@ export function safeReturnPath(value: string | undefined) {
   try { const url = new URL(value, "https://mero.invalid"); return url.origin === "https://mero.invalid" ? url.pathname + url.search + url.hash : "/account"; }
   catch { return "/account"; }
 }
-export function takeRateLimit(key: string, limit: number, seconds: number) {
+export async function takeRateLimit(key: string, limit: number, seconds: number) {
   const db = getDb(); const now = Date.now();
-  db.prepare("DELETE FROM rate_limits WHERE reset_at <= ?").run(now);
-  db.prepare(`INSERT INTO rate_limits (key, attempts, reset_at) VALUES (?, 1, ?)
-    ON CONFLICT(key) DO UPDATE SET attempts = attempts + 1`).run(key, now + seconds * 1000);
-  const row = db.prepare("SELECT attempts FROM rate_limits WHERE key = ?").get(key) as { attempts: number };
+  await db.prepare("DELETE FROM rate_limits WHERE reset_at <= ?").run(now);
+  const row = await db.prepare(`INSERT INTO rate_limits (key, attempts, reset_at) VALUES (?, 1, ?)
+    ON CONFLICT(key) DO UPDATE SET attempts = rate_limits.attempts + 1 RETURNING attempts`).get(key, now + seconds * 1000) as { attempts: number };
   return row.attempts <= limit;
 }

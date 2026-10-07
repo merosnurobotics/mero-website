@@ -5,8 +5,8 @@ import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { NextRequest } from "next/server";
 import { GET, POST, PATCH } from "../src/app/api/[...path]/route";
-import { getDb, getRobot } from "../src/lib/db";
-import { createSession, hashPassword, SESSION_COOKIE, sessionMember, tokenHash } from "../src/lib/security";
+import { audit, getDb, getRobot } from "../src/lib/db";
+import { createSession, hashPassword, SESSION_COOKIE, sessionMember, takeRateLimit, tokenHash } from "../src/lib/security";
 
 const directory = mkdtempSync(join(tmpdir(), "mero-access-"));
 const origin = "http://localhost:3000";
@@ -15,12 +15,17 @@ let memberToken: string;
 let memberId: string;
 const password = "Test-Only-Password-2026";
 before(async () => {
+  if (process.env.MERO_TEST_DATABASE_URL) {
+    const url = new URL(process.env.MERO_TEST_DATABASE_URL);
+    if (url.hostname !== "127.0.0.1" || !url.pathname.startsWith("/mero_test")) throw new Error("Postgres tests must use a disposable local mero_test database.");
+    process.env.DATABASE_URL = process.env.MERO_TEST_DATABASE_URL;
+  } else { delete process.env.DATABASE_URL; delete process.env.POSTGRES_URL; }
   process.env.DATABASE_PATH = join(directory, "test.sqlite");
   const db = getDb();
-  db.prepare("INSERT INTO members VALUES (?, ?, ?, ?, ?, ?, ?, ?)").run("test-admin", "테스트 운영진", "admin@example.test", "기계공학부", await hashPassword(password), "admin", "active", new Date().toISOString());
-  adminToken = createSession("test-admin");
+  await db.prepare("INSERT INTO members VALUES (?, ?, ?, ?, ?, ?, ?, ?)").run("test-admin", "테스트 운영진", "admin@example.test", "기계공학부", await hashPassword(password), "admin", "active", new Date().toISOString());
+  adminToken = await createSession("test-admin");
 });
-after(() => { getDb().close(); rmSync(directory, { recursive: true, force: true }); });
+after(async () => { await getDb().close(); rmSync(directory, { recursive: true, force: true }); });
 
 async function request(method: "GET" | "POST" | "PATCH", path: string, data?: unknown, token?: string, requestOrigin = origin) {
   const headers: Record<string,string> = {};
@@ -30,6 +35,12 @@ async function request(method: "GET" | "POST" | "PATCH", path: string, data?: un
   return ({ GET, POST, PATCH }[method])(req, { params: Promise.resolve({ path: path.split("/") }) });
 }
 
+test("database health initializes the configured backend without disclosing credentials", async () => {
+  const response = await request("GET", "health");
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { status: "ready", database: process.env.MERO_TEST_DATABASE_URL ? "postgresql" : "sqlite" });
+});
+
 test("signup ignores forged administrator fields and starts pending", async () => {
   const response = await request("POST", "auth/signup", { name: "새 회원", email: "new@example.test", department: "기계공학부", password, consent: true, role: "admin", status: "active" });
   assert.equal(response.status, 201);
@@ -38,9 +49,9 @@ test("signup ignores forged administrator fields and starts pending", async () =
   assert.equal(member.role, "member"); assert.equal(member.status, "pending");
   assert.equal("password_hash" in member, false);
   assert.match(response.headers.get("set-cookie")!, /HttpOnly/i);
-  const stored = getDb().prepare("SELECT password_hash FROM members WHERE id=?").get(memberId)!;
+  const stored = await getDb().prepare("SELECT password_hash FROM members WHERE id=?").get(memberId)!;
   assert.notEqual(stored.password_hash, password);
-  assert.equal(getDb().prepare("SELECT token_hash FROM sessions WHERE member_id=?").get(memberId)!.token_hash, tokenHash(memberToken));
+  assert.equal((await getDb().prepare("SELECT token_hash FROM sessions WHERE member_id=?").get(memberId))!.token_hash, tokenHash(memberToken));
 });
 
 test("anonymous and pending members cannot read private robot details", async () => {
@@ -54,7 +65,7 @@ test("anonymous and pending members cannot read private robot details", async ()
 
 test("CSRF attempts fail before a mutation", async () => {
   const response = await request("PATCH", `admin/members/${memberId}`, { role: "member", status: "active" }, adminToken, "https://untrusted.example");
-  assert.equal(response.status, 403); assert.equal(sessionMember(memberToken)?.status, "pending");
+  assert.equal(response.status, 403); assert.equal((await sessionMember(memberToken))?.status, "pending");
 });
 
 test("browser origin follows the server Host and port while foreign origins stay blocked", async () => {
@@ -75,10 +86,10 @@ test("administrator approval takes effect in existing sessions", async () => {
 });
 
 test("robot updates persist, retain QR IDs, and never leak connection data publicly", async () => {
-  const robot = { ...getRobot("qdd-01")!, hostname: "robot.internal.test", ssh_user: "mero", ssh_port: 2222, workdir: "/home/mero/robot", launch_command: "python control.py", network_note: "테스트 전용 네트워크", guide: [{ title: "테스트 안내", body: "실제 장비에 연결하지 않는 테스트입니다." }] };
+  const robot = { ...(await getRobot("qdd-01"))!, hostname: "robot.internal.test", ssh_user: "mero", ssh_port: 2222, workdir: "/home/mero/robot", launch_command: "python control.py", network_note: "테스트 전용 네트워크", guide: [{ title: "테스트 안내", body: "실제 장비에 연결하지 않는 테스트입니다." }] };
   assert.equal((await request("PATCH", "admin/robots/qdd-01", robot, memberToken)).status, 403);
   assert.equal((await request("PATCH", "admin/robots/qdd-01", robot, adminToken)).status, 200);
-  assert.equal(getRobot("qdd-01")?.hostname, robot.hostname);
+  assert.equal((await getRobot("qdd-01"))?.hostname, robot.hostname);
   assert.equal((await request("PATCH", "admin/robots/qdd-01", { ...robot, id: "changed-id" }, adminToken)).status, 400);
   for (const route of ["robots", "robots/qdd-01"]) {
     const response = await request("GET", route); const text = await response.text();
@@ -94,19 +105,71 @@ test("robot updates persist, retain QR IDs, and never leak connection data publi
 
 test("self-demotion is rejected and suspension revokes all member sessions", async () => {
   assert.equal((await request("PATCH", "admin/members/test-admin", { role: "member", status: "active" }, adminToken)).status, 400);
-  const secondSession = createSession(memberId);
+  const secondSession = await createSession(memberId);
   assert.equal((await request("PATCH", `admin/members/${memberId}`, { role: "member", status: "suspended" }, adminToken)).status, 200);
-  assert.equal(sessionMember(memberToken), null); assert.equal(sessionMember(secondSession), null);
+  assert.equal(await sessionMember(memberToken), null); assert.equal(await sessionMember(secondSession), null);
   assert.equal((await request("GET", "robots/qdd-01/connection", undefined, memberToken)).status, 401);
   assert.equal((await request("POST", "auth/login", { email: "new@example.test", password })).status, 403);
 });
 
 test("password changes rotate sessions and invalidate the old password", async () => {
   const nextPassword = "Updated-Test-Password-2026";
-  const previousSession = createSession("test-admin");
+  const previousSession = await createSession("test-admin");
   const response = await request("POST", "auth/password", { current: password, password: nextPassword }, adminToken);
-  assert.equal(response.status, 200); assert.equal(sessionMember(adminToken), null); assert.equal(sessionMember(previousSession), null);
-  const replacement = response.headers.get("set-cookie")!.match(/mero_session=([^;]+)/)![1]; assert.equal(sessionMember(replacement)?.id, "test-admin");
+  assert.equal(response.status, 200); assert.equal(await sessionMember(adminToken), null); assert.equal(await sessionMember(previousSession), null);
+  const replacement = response.headers.get("set-cookie")!.match(/mero_session=([^;]+)/)![1]; assert.equal((await sessionMember(replacement))?.id, "test-admin");
   assert.equal((await request("POST", "auth/login", { email: "admin@example.test", password })).status, 401);
   assert.equal((await request("POST", "auth/login", { email: "admin@example.test", password: nextPassword })).status, 200);
+});
+
+
+test("a simultaneous old-password login cannot survive a password change", async () => {
+  const currentPassword = "Updated-Test-Password-2026";
+  const login = await request("POST", "auth/login", { email: "admin@example.test", password: currentPassword });
+  const token = login.headers.get("set-cookie")!.match(/mero_session=([^;]+)/)![1];
+  const [change, concurrentLogin] = await Promise.all([
+    request("POST", "auth/password", { current: currentPassword, password: "Concurrent-Test-Password-2026" }, token),
+    request("POST", "auth/login", { email: "admin@example.test", password: currentPassword }),
+  ]);
+  assert.equal(change.status, 200);
+  assert.ok([200, 401].includes(concurrentLogin.status));
+  if (concurrentLogin.status === 200) {
+    const oldPasswordToken = concurrentLogin.headers.get("set-cookie")!.match(/mero_session=([^;]+)/)![1];
+    assert.equal(await sessionMember(oldPasswordToken), null);
+  }
+});
+
+test("a failed transaction rolls back member writes and audit logs together", async () => {
+  const db = getDb();
+  const before = await db.prepare("SELECT name FROM members WHERE id = ?").get("test-admin");
+  await assert.rejects(db.transaction(async () => {
+    await db.prepare("UPDATE members SET name = ? WHERE id = ?").run("롤백될 이름", "test-admin");
+    await audit("test-admin", "rollback_test", "test-admin");
+    throw new Error("forced failure");
+  }), /forced failure/);
+  assert.deepEqual(await db.prepare("SELECT name FROM members WHERE id = ?").get("test-admin"), before);
+  assert.equal(await db.prepare("SELECT id FROM audit_log WHERE action = ?").get("rollback_test"), undefined);
+});
+
+test("concurrent rate limit requests count atomically", async () => {
+  const decisions = await Promise.all(Array.from({ length: 24 }, () => takeRateLimit("concurrency-test", 8, 60)));
+  assert.equal(decisions.filter(Boolean).length, 8);
+});
+
+test("concurrent administrators cannot suspend every active administrator", async () => {
+  const db = getDb();
+  await db.prepare("UPDATE members SET status = 'suspended' WHERE role = 'admin'").run();
+  for (const id of ["admin-a", "admin-b"]) {
+    await db.prepare("INSERT INTO members VALUES (?, ?, ?, '', ?, 'admin', 'active', ?)")
+      .run(id, id, `${id}@example.test`, await hashPassword(password), new Date().toISOString());
+  }
+  const [a, b] = await Promise.all([createSession("admin-a"), createSession("admin-b")]);
+  const responses = await Promise.all([
+    request("PATCH", "admin/members/admin-b", { role: "member", status: "suspended" }, a),
+    request("PATCH", "admin/members/admin-a", { role: "member", status: "suspended" }, b),
+  ]);
+  assert.equal(responses.filter(response => response.status === 200).length, 1);
+  assert.ok(responses.some(response => [401, 403].includes(response.status)));
+  const row = await db.prepare("SELECT COUNT(*) AS count FROM members WHERE role='admin' AND status='active'").get();
+  assert.equal(Number(row?.count), 1);
 });

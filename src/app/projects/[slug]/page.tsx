@@ -10,7 +10,7 @@ import { getRobots } from "@/lib/db";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const project = getProject((await params).slug); return { title: project?.title || "프로젝트" }; }
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
   const project = getProject((await params).slug); if (!project) notFound();
-  const robots = getRobots().filter(robot => robot.project_id === project.id);
+  const robots = (await getRobots()).filter(robot => robot.project_id === project.id);
   return <div className="container page-content"><Breadcrumbs items={[{ label: "프로젝트", href: "/projects" }, { label: project.title }]}/>
     <section className="project-detail-hero"><div><div className="tag-row"><span>{project.semester}</span><span>진행 중</span><span>{project.category}</span></div><h1>{project.title}</h1><p className="detail-summary">{project.summary}</p><p className="body-copy">{project.description}</p><div className="tag-row project-detail-tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div><a href="#robot-platforms" className="button">로봇 안내 보기<ArrowRight size={18}/></a></div><figure className="project-detail-art"><RobotArt project={project} priority/><figcaption>{project.imageCredit}</figcaption></figure></section>
     <section className="detail-section"><h2>이번 학기에 탐구하는 것.</h2><div className="goals-grid">{project.goals.map(goal => <article key={goal.title}><h3>{goal.title}</h3><p>{goal.text}</p></article>)}</div></section>

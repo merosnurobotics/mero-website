@@ -3,15 +3,14 @@ import { mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { seedRobots } from "./content";
 import type { Member, Robot, PublicRobot } from "./types";
+import { SqlDatabase, postgresDatabase } from "./sql-database";
 
-const databases = globalThis as typeof globalThis & { meroDatabases?: Map<string, DatabaseSync> };
+const databases = globalThis as typeof globalThis & { meroDatabases?: Map<string, DatabaseSync>; meroSqlAdapters?: Map<string, SqlDatabase> };
 
-// Vercel functions have no persistent local filesystem. Public content can
-// use the real seed data until a durable remote database is connected.
-export function databaseAvailable() { return process.env.VERCEL !== "1"; }
+export function databaseUrl() { return process.env.DATABASE_URL || process.env.POSTGRES_URL; }
+export function databaseAvailable() { return Boolean(databaseUrl()) || process.env.VERCEL !== "1"; }
 
-export function getDb() {
-  if (!databaseAvailable()) throw new Error("A persistent database is required for member features on Vercel.");
+function getSqlite() {
   const path = resolve(/* turbopackIgnore: true */ process.env.DATABASE_PATH || "./data/mero.sqlite");
   databases.meroDatabases ??= new Map();
   const cached = databases.meroDatabases.get(path);
@@ -63,12 +62,26 @@ export function getDb() {
   return db;
 }
 
-export function getMembers(): Member[] {
-  return getDb().prepare("SELECT id, name, email, department, role, status, created_at FROM members ORDER BY created_at DESC").all().map(row => ({ ...row })) as unknown as Member[];
+export function getDb(): SqlDatabase {
+  if (!databaseAvailable()) throw new Error("A persistent database is required for member features on Vercel.");
+  const url = databaseUrl();
+  if (url) return postgresDatabase(url, seedRobots);
+  const path = resolve(/* turbopackIgnore: true */ process.env.DATABASE_PATH || "./data/mero.sqlite");
+  databases.meroSqlAdapters ??= new Map();
+  let db = databases.meroSqlAdapters.get(path);
+  if (!db) {
+    db = new SqlDatabase(getSqlite());
+    databases.meroSqlAdapters.set(path, db);
+  }
+  return db;
 }
 
-export function getMember(id: string): Member | undefined {
-  const row = getDb().prepare("SELECT id, name, email, department, role, status, created_at FROM members WHERE id = ?").get(id);
+export async function getMembers(): Promise<Member[]> {
+  return (await getDb().prepare("SELECT id, name, email, department, role, status, created_at FROM members ORDER BY created_at DESC").all()).map(row => ({ ...row })) as unknown as Member[];
+}
+
+export async function getMember(id: string): Promise<Member | undefined> {
+  const row = await getDb().prepare("SELECT id, name, email, department, role, status, created_at FROM members WHERE id = ?").get(id);
   // node:sqlite rows have a null prototype; React requires plain client props.
   return row ? { ...row } as Member : undefined;
 }
@@ -76,29 +89,29 @@ export function getMember(id: string): Member | undefined {
 function decodeRobot(row: Record<string, unknown>): Robot {
   return { ...row, creators: JSON.parse(row.creators as string), guide: JSON.parse(row.guide as string) } as Robot;
 }
-export function getRobots(): Robot[] {
+export async function getRobots(): Promise<Robot[]> {
   if (!databaseAvailable()) return structuredClone(seedRobots);
-  return getDb().prepare("SELECT * FROM robots ORDER BY rowid").all().map(row => decodeRobot(row));
+  return (await getDb().prepare("SELECT * FROM robots ORDER BY CASE id WHEN 'qdd-01' THEN 0 WHEN 'microban-01' THEN 1 WHEN 'rby1-01' THEN 2 ELSE 3 END, id").all()).map(row => decodeRobot(row));
 }
-export function getRobot(id: string): Robot | undefined {
+export async function getRobot(id: string): Promise<Robot | undefined> {
   if (!databaseAvailable()) return structuredClone(seedRobots.find(robot => robot.id === id));
-  const row = getDb().prepare("SELECT * FROM robots WHERE id = ?").get(id);
+  const row = await getDb().prepare("SELECT * FROM robots WHERE id = ?").get(id);
   return row ? decodeRobot(row) : undefined;
 }
 export function publicRobot(robot: Robot): PublicRobot {
   const { id, name, platform, project_id, status, description, creators, start_date, end_date, updated_at } = robot;
   return { id, name, platform, project_id, status, description, creators, start_date, end_date, updated_at };
 }
-export function saveRobot(robot: Robot, insert = false) {
+export async function saveRobot(robot: Robot, insert = false) {
   const db = getDb();
   if (insert) {
-    db.prepare("INSERT INTO robots VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)").run(
+    await db.prepare("INSERT INTO robots VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)").run(
       robot.id, robot.name, robot.platform, robot.project_id, robot.status, robot.description,
       JSON.stringify(robot.creators), robot.start_date, robot.end_date, robot.hostname, robot.ssh_user,
       robot.ssh_port, robot.workdir, robot.launch_command, robot.stop_command, robot.network_note,
       JSON.stringify(robot.guide), robot.updated_at);
   } else {
-    db.prepare(`UPDATE robots SET name=?, platform=?, project_id=?, status=?, description=?, creators=?,
+    await db.prepare(`UPDATE robots SET name=?, platform=?, project_id=?, status=?, description=?, creators=?,
       start_date=?, end_date=?, hostname=?, ssh_user=?, ssh_port=?, workdir=?, launch_command=?,
       stop_command=?, network_note=?, guide=?, updated_at=? WHERE id=?`).run(
       robot.name, robot.platform, robot.project_id, robot.status, robot.description, JSON.stringify(robot.creators),
@@ -106,7 +119,7 @@ export function saveRobot(robot: Robot, insert = false) {
       robot.launch_command, robot.stop_command, robot.network_note, JSON.stringify(robot.guide), robot.updated_at, robot.id);
   }
 }
-export function audit(actor: string, action: string, target: string) {
-  getDb().prepare("INSERT INTO audit_log (actor_id, action, target_id, created_at) VALUES (?, ?, ?, ?)")
+export async function audit(actor: string, action: string, target: string) {
+  await getDb().prepare("INSERT INTO audit_log (actor_id, action, target_id, created_at) VALUES (?, ?, ?, ?)")
     .run(actor, action, target, new Date().toISOString());
 }

@@ -16,14 +16,14 @@ class ApiError extends Error { constructor(public status: number, message: strin
 function json(data: unknown, status = 200) {
   return NextResponse.json(data, { status, headers: { "Cache-Control": "private, no-store" } });
 }
-function requireMember(request: NextRequest, admin = false) {
-  const member = sessionMember(request.cookies.get(SESSION_COOKIE)?.value);
+async function requireMember(request: NextRequest, admin = false) {
+  const member = await sessionMember(request.cookies.get(SESSION_COOKIE)?.value);
   if (!member) throw new ApiError(401, "로그인이 필요합니다.");
   if (admin && !canAdmin(member)) throw new ApiError(403, "관리자만 이용할 수 있습니다.");
   return member;
 }
-function requireApproved(request: NextRequest) {
-  const member = requireMember(request);
+async function requireApproved(request: NextRequest) {
+  const member = await requireMember(request);
   if (!canAccessRobot(member)) throw new ApiError(403, "관리자 승인 후 로봇 운용 안내를 이용할 수 있습니다.");
   return member;
 }
@@ -67,112 +67,133 @@ async function dispatch(request: NextRequest, context: Context) {
   const method = request.method;
   if (method !== "GET") checkOrigin(request);
   // These read-only routes serve public data and QR images without a DB.
-  const publicRead = method === "GET" && (route === "me" || route === "robots" ||
+  const publicRead = method === "GET" && (route === "health" || route === "me" || route === "robots" ||
     (path[0] === "robots" && (path.length === 2 || (path.length === 3 && path[2] === "qr"))));
   if (!databaseAvailable() && !publicRead) throw new ApiError(503, "회원 서비스 연결을 준비 중입니다. 잠시 후 다시 이용해 주세요.");
+  if (method === "GET" && route === "health") {
+    if (!databaseAvailable()) return json({ status: "unavailable", database: "unconfigured" }, 503);
+    const database = getDb();
+    await database.prepare("SELECT 1 AS connected").get();
+    return json({ status: "ready", database: database.postgres ? "postgresql" : "sqlite" });
+  }
   const db = publicRead ? undefined : getDb();
 
   if (method === "POST" && route === "auth/signup") {
     const input = signupSchema.parse(await body(request));
-    if (!takeRateLimit(`signup:${input.email}`, 5, 3600)) throw new ApiError(429, "잠시 후 다시 가입해 주세요.");
-    if (db!.prepare("SELECT id FROM members WHERE email = ?").get(input.email)) throw new ApiError(409, "이미 가입된 이메일입니다. 로그인해 주세요.");
+    if (!await takeRateLimit(`signup:${input.email}`, 5, 3600)) throw new ApiError(429, "잠시 후 다시 가입해 주세요.");
+    if (await db!.prepare("SELECT id FROM members WHERE lower(email) = lower(?)").get(input.email)) throw new ApiError(409, "이미 가입된 이메일입니다. 로그인해 주세요.");
     const id = randomUUID();
     const hash = await hashPassword(input.password);
     try {
-      db!.prepare("INSERT INTO members (id, name, email, department, password_hash, role, status, created_at) VALUES (?, ?, ?, ?, ?, 'member', 'pending', ?)")
+      await db!.prepare("INSERT INTO members (id, name, email, department, password_hash, role, status, created_at) VALUES (?, ?, ?, ?, ?, 'member', 'pending', ?)")
         .run(id, input.name, input.email, input.department, hash, new Date().toISOString());
     } catch (error) {
-      if (db!.prepare("SELECT id FROM members WHERE email = ?").get(input.email)) throw new ApiError(409, "이미 가입된 이메일입니다. 로그인해 주세요.");
+      if (await db!.prepare("SELECT id FROM members WHERE lower(email) = lower(?)").get(input.email)) throw new ApiError(409, "이미 가입된 이메일입니다. 로그인해 주세요.");
       throw error;
     }
-    return setSession(json({ member: getMember(id) }, 201), createSession(id));
+    return setSession(json({ member: await getMember(id) }, 201), await createSession(id));
   }
   if (method === "POST" && route === "auth/login") {
     const input = loginSchema.parse(await body(request));
-    if (!takeRateLimit(`login:${input.email}`, 12, 900)) throw new ApiError(429, "로그인 시도가 많습니다. 15분 뒤 다시 시도해 주세요.");
-    const stored = db!.prepare("SELECT id, password_hash FROM members WHERE email = ?").get(input.email) as { id: string; password_hash: string } | undefined;
+    if (!await takeRateLimit(`login:${input.email}`, 12, 900)) throw new ApiError(429, "로그인 시도가 많습니다. 15분 뒤 다시 시도해 주세요.");
+    const stored = await db!.prepare("SELECT id, password_hash FROM members WHERE lower(email) = lower(?)").get(input.email) as { id: string; password_hash: string } | undefined;
     const dummy = "scrypt:00000000000000000000000000000000:" + "0".repeat(128);
     const valid = await verifyPassword(input.password, stored?.password_hash ?? dummy);
     if (!stored || !valid) throw new ApiError(401, "이메일 또는 비밀번호를 확인해 주세요.");
-    const member = getMember(stored.id)!;
-    if (member.status === "suspended") throw new ApiError(403, "이용이 중지된 계정입니다. 운영진에게 문의해 주세요.");
-    db!.prepare("DELETE FROM rate_limits WHERE key = ?").run(`login:${input.email}`);
-    const previous = request.cookies.get(SESSION_COOKIE)?.value;
-    if (previous) destroySession(previous);
-    return setSession(json({ member }), createSession(member.id));
+    const result = await db!.transaction(async () => {
+      await db!.lockMembers();
+      const current = await db!.prepare("SELECT password_hash FROM members WHERE id = ?").get(stored.id);
+      if (!current || current.password_hash !== stored.password_hash) throw new ApiError(401, "이메일 또는 비밀번호를 확인해 주세요.");
+      const member = (await getMember(stored.id))!;
+      if (member.status === "suspended") throw new ApiError(403, "이용이 중지된 계정입니다. 운영진에게 문의해 주세요.");
+      await db!.prepare("DELETE FROM rate_limits WHERE key = ?").run(`login:${input.email}`);
+      const previous = request.cookies.get(SESSION_COOKIE)?.value;
+      if (previous) await destroySession(previous);
+      return { member, token: await createSession(member.id) };
+    });
+    return setSession(json({ member: result.member }), result.token);
   }
   if (method === "POST" && route === "auth/logout") {
     const token = request.cookies.get(SESSION_COOKIE)?.value;
-    if (token) destroySession(token);
+    if (token) await destroySession(token);
     const response = json({ ok: true });
     response.cookies.set(SESSION_COOKIE, "", { httpOnly: true, sameSite: "lax", path: "/", maxAge: 0 });
     return response;
   }
-  if (method === "GET" && route === "me") return json({ member: sessionMember(request.cookies.get(SESSION_COOKIE)?.value) });
+  if (method === "GET" && route === "me") return json({ member: await sessionMember(request.cookies.get(SESSION_COOKIE)?.value) });
   if (method === "PATCH" && route === "me") {
-    const member = requireMember(request);
+    const member = await requireMember(request);
     const input = z.object({ name: z.string().trim().min(2).max(40), department: z.string().trim().max(80) }).parse(await body(request));
-    db!.prepare("UPDATE members SET name = ?, department = ? WHERE id = ?").run(input.name, input.department, member.id);
-    return json({ member: getMember(member.id) });
+    await db!.prepare("UPDATE members SET name = ?, department = ? WHERE id = ?").run(input.name, input.department, member.id);
+    return json({ member: await getMember(member.id) });
   }
   if (method === "POST" && route === "auth/password") {
-    const member = requireMember(request);
-    if (!takeRateLimit(`password:${member.id}`, 8, 900)) throw new ApiError(429, "잠시 후 다시 시도해 주세요.");
+    const member = await requireMember(request);
+    if (!await takeRateLimit(`password:${member.id}`, 8, 900)) throw new ApiError(429, "잠시 후 다시 시도해 주세요.");
     const input = z.object({ current: z.string().min(1).max(128), password: passwordSchema }).parse(await body(request));
-    const stored = db!.prepare("SELECT password_hash FROM members WHERE id = ?").get(member.id) as { password_hash: string };
+    const stored = await db!.prepare("SELECT password_hash FROM members WHERE id = ?").get(member.id) as { password_hash: string };
     if (!await verifyPassword(input.current, stored.password_hash)) throw new ApiError(400, "현재 비밀번호가 일치하지 않습니다.");
     const nextHash = await hashPassword(input.password);
-    db!.prepare("UPDATE members SET password_hash = ? WHERE id = ?").run(nextHash, member.id);
-    db!.prepare("DELETE FROM sessions WHERE member_id = ?").run(member.id);
-    audit(member.id, "password_changed", member.id);
-    return setSession(json({ ok: true }), createSession(member.id));
+    const token = await db!.transaction(async () => {
+      await db!.lockMembers();
+      await requireMember(request);
+      const current = await db!.prepare("SELECT password_hash FROM members WHERE id = ?").get(member.id) as { password_hash: string };
+      if (current.password_hash !== stored.password_hash) throw new ApiError(409, "비밀번호가 변경되었습니다. 다시 로그인해 주세요.");
+      await db!.prepare("UPDATE members SET password_hash = ? WHERE id = ?").run(nextHash, member.id);
+      await db!.prepare("DELETE FROM sessions WHERE member_id = ?").run(member.id);
+      await audit(member.id, "password_changed", member.id);
+      return createSession(member.id);
+    });
+    return setSession(json({ ok: true }), token);
   }
 
   if (method === "GET" && route === "admin/members") {
-    requireMember(request, true); return json({ members: getMembers() });
+    await requireMember(request, true); return json({ members: await getMembers() });
   }
   if (method === "PATCH" && path.length === 3 && path[0] === "admin" && path[1] === "members") {
-    const actor = requireMember(request, true);
-    const target = getMember(path[2]);
+    const actor = await requireMember(request, true);
+    const target = await getMember(path[2]);
     if (!target) throw new ApiError(404, "회원을 찾을 수 없습니다.");
     const input = memberUpdateSchema.parse(await body(request));
     if (input.role === "admin" && input.status !== "active") throw new ApiError(400, "관리자 계정은 활동 회원 상태여야 합니다.");
     if (actor.id === target.id && (input.role !== "admin" || input.status !== "active")) throw new ApiError(400, "현재 관리자 계정의 권한은 이 화면에서 해제할 수 없습니다.");
-    db!.exec("BEGIN IMMEDIATE");
-    try {
-      const activeAdmins = db!.prepare("SELECT COUNT(*) AS count FROM members WHERE role = 'admin' AND status = 'active'").get() as { count: number };
-      if (target.role === "admin" && target.status === "active" && (input.role !== "admin" || input.status !== "active") && activeAdmins.count <= 1) throw new ApiError(400, "최소 한 명의 활동 관리자가 필요합니다.");
-      db!.prepare("UPDATE members SET role = ?, status = ? WHERE id = ?").run(input.role, input.status, target.id);
-      if (input.status === "suspended") db!.prepare("DELETE FROM sessions WHERE member_id = ?").run(target.id);
-      audit(actor.id, `member_${input.role}_${input.status}`, target.id);
-      db!.exec("COMMIT");
-    } catch (error) { db!.exec("ROLLBACK"); throw error; }
-    return json({ member: getMember(target.id) });
+    await db!.transaction(async () => {
+      await db!.lockMembers();
+      await requireMember(request, true);
+      const currentTarget = await getMember(target.id);
+      if (!currentTarget) throw new ApiError(404, "회원을 찾을 수 없습니다.");
+      const activeAdmins = await db!.prepare("SELECT COUNT(*) AS count FROM members WHERE role = 'admin' AND status = 'active'").get() as { count: number };
+      if (currentTarget.role === "admin" && currentTarget.status === "active" && (input.role !== "admin" || input.status !== "active") && Number(activeAdmins.count) <= 1) throw new ApiError(400, "최소 한 명의 활동 관리자가 필요합니다.");
+      await db!.prepare("UPDATE members SET role = ?, status = ? WHERE id = ?").run(input.role, input.status, target.id);
+      if (input.status === "suspended") await db!.prepare("DELETE FROM sessions WHERE member_id = ?").run(target.id);
+      await audit(actor.id, `member_${input.role}_${input.status}`, target.id);
+    });
+    return json({ member: await getMember(target.id) });
   }
   if (method === "GET" && route === "admin/robots") {
-    requireMember(request, true); return json({ robots: getRobots() });
+    await requireMember(request, true); return json({ robots: await getRobots() });
   }
   if (method === "POST" && route === "admin/robots") {
-    const actor = requireMember(request, true);
+    const actor = await requireMember(request, true);
     const input = robotSchema.parse(await body(request));
-    if (getRobot(input.id)) throw new ApiError(409, "이미 사용 중인 로봇 ID입니다.");
+    if (await getRobot(input.id)) throw new ApiError(409, "이미 사용 중인 로봇 ID입니다.");
     const robot: Robot = { ...input, updated_at: new Date().toISOString() };
-    saveRobot(robot, true); audit(actor.id, "robot_created", robot.id);
+    await saveRobot(robot, true); await audit(actor.id, "robot_created", robot.id);
     return json({ robot }, 201);
   }
   if (method === "PATCH" && path.length === 3 && path[0] === "admin" && path[1] === "robots") {
-    const actor = requireMember(request, true);
-    const existing = getRobot(path[2]);
+    const actor = await requireMember(request, true);
+    const existing = await getRobot(path[2]);
     if (!existing) throw new ApiError(404, "로봇을 찾을 수 없습니다.");
     const input = robotSchema.parse(await body(request));
     if (input.id !== existing.id) throw new ApiError(400, "QR 주소 유지를 위해 로봇 ID는 변경할 수 없습니다.");
     const robot = { ...input, updated_at: new Date().toISOString() };
-    saveRobot(robot); audit(actor.id, "robot_updated", robot.id);
+    await saveRobot(robot); await audit(actor.id, "robot_updated", robot.id);
     return json({ robot });
   }
-  if (method === "GET" && route === "robots") return json({ robots: getRobots().map(publicRobot) });
+  if (method === "GET" && route === "robots") return json({ robots: (await getRobots()).map(publicRobot) });
   if (method === "GET" && path[0] === "robots" && (path.length === 2 || path.length === 3)) {
-    const robot = getRobot(path[1]);
+    const robot = await getRobot(path[1]);
     if (!robot) throw new ApiError(404, "로봇을 찾을 수 없습니다.");
     if (path.length === 2) return json({ robot: publicRobot(robot) });
     if (path[2] === "qr") {
@@ -187,7 +208,7 @@ async function dispatch(request: NextRequest, context: Context) {
         ...(request.nextUrl.searchParams.get("download") === "1" ? { "Content-Disposition": `attachment; filename="mero-${robot.id}-qr.png"` } : {}),
       } });
     }
-    requireApproved(request);
+    await requireApproved(request);
     if (path[2] === "connection") return json({ robot });
     if (["ssh-config", "setup.sh"].includes(path[2]) && !connectionConfigured(robot)) throw new ApiError(409, "담당 팀이 SSH 접속 정보를 등록하는 중입니다.");
     if (path[2] === "ssh-config") return file(sshConfig(robot), `${robot.id}-ssh-config.txt`);
@@ -201,7 +222,7 @@ async function handle(request: NextRequest, context: Context) {
   catch (error) {
     if (error instanceof ApiError) return json({ error: error.message }, error.status);
     if (error instanceof ZodError) return json({ error: error.issues[0]?.message || "입력 내용을 확인해 주세요." }, 400);
-    console.error("MERO API failure", error instanceof Error ? error.message : "unknown");
+    console.error("MERO API failure", error instanceof Error ? error.name : "unknown");
     return json({ error: "처리 중 문제가 생겼습니다. 잠시 후 다시 시도해 주세요." }, 500);
   }
 }

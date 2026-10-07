@@ -6,13 +6,27 @@
 
 기존 `merosnurobotics/mero-website`의 가상 콘텐츠를 제거하고 실제 MERO 사이트를 이식했습니다. 기존 GitHub–Vercel 프로젝트 연결을 그대로 사용합니다. `vercel.json`은 Next.js 빌드와 출력 경로를 명시하고 Node.js는 `24.x`로 고정합니다. 운영 브랜치는 변경하지 않았습니다.
 
-새 브랜치의 Preview 배포에서는 공개 페이지, 로봇 제작 정보와 QR 다운로드를 사용할 수 있습니다. Vercel에는 영구 로컬 파일시스템이 없으므로 SQLite 회원·관리자 기능은 활성화하지 않습니다. 가입·로그인·관리자 API는 `503`과 준비 안내를 반환하며 회원 데이터를 임시 디스크에 저장하지 않습니다. 외부 DB 연동은 별도 후속 작업입니다. `DATABASE_PATH`를 `/tmp`로 설정해도 이 제한을 해제하지 않습니다.
+Vercel Storage에서 Neon을 `mero-website`의 Preview / Production 환경에 연결하면 제공되는 `DATABASE_URL` 또는 `POSTGRES_URL`을 자동으로 사용합니다. 연결 문자열은 서버 전용 환경 변수이며 저장소나 클라이언트 코드에 넣지 않습니다. 환경 변수 추가 후에는 새 배포가 필요합니다.
 
-회원·관리자 기능은 영구 저장소가 있는 Node.js 서버에서 기존과 동일하게 동작합니다. 실제 운영 회원 DB, 계정 정보, `.env.local`, `.local` 자료는 이식하지 않았습니다.
+PostgreSQL 테이블과 실제 로봇 초기 자료는 최초 DB 요청에서 트랜잭션으로 생성합니다. 기존 회원이나 수정된 로봇은 덮어쓰지 않습니다. 초기 관리자 계정은 자동으로 만들지 않습니다. DB가 연결되지 않은 Vercel 환경에서는 공개 정보와 QR을 계속 제공하고 회원 API는 503 준비 안내를 반환합니다.
 
-Vercel Preview에서 `NEXT_PUBLIC_SITE_URL`은 비워 두면 배포 주소를 사용합니다. 운영 주소 확정 후 HTTPS 주소로 설정하고 `COOKIE_SECURE=true`를 사용하세요. 운영 배포 전에는 외부 DB 연동, 관리자 생성, 실제 장비 접속 정보 등록이 필요합니다.
+`/api/health`를 열면 연결 성공 시 `{"status":"ready","database":"postgresql"}`을 반환합니다. DB가 미설정이면 503, 설정은 있지만 접속/스키마 생성에 실패하면 500입니다. 연결 문자열이나 계정 정보는 응답에 포함하지 않습니다.
 
-Vercel 프로젝트 설정에 별도의 Root Directory / Build Command / Ignored Build Step이 지정되어 있다면 대시보드에서 확인해야 합니다. 저장소에는 별도 프로젝트 ID나 `.vercel` 연결 파일이 없고, 기존 성공 배포 기록으로 연동을 확인했습니다.
+초기 관리자 생성은 Vercel CLI로 서버 환경 변수를 로컬 비공개 파일에 받은 뒤 실행할 수 있습니다. Vercel 로그인과 프로젝트 접근 권한이 필요합니다.
+
+```sh
+npx vercel link --scope mero15 --project mero-website
+npx vercel env pull .env.local --environment=preview --git-branch=feat/migrate-real-mero-site
+node --env-file=.env.local --import tsx scripts/create-admin.ts --email 실제운영진이메일 --name 'MERO 운영진'
+```
+
+초기 비밀번호는 `.local/admin-credentials.txt`에만 기록됩니다. 이미 가입된 계정은 이 명령이 권한을 바꾸지 않으므로, 기존 회원을 첫 운영진으로 지정하려면 Neon SQL Editor에서 해당 계정을 명시적으로 변경해야 합니다. 일반 회원의 가입으로 관리자 권한이 생기지 않습니다.
+
+영구 저장소가 있는 로컬 Node 서버에서는 DB URL을 설정하지 않을 때 기존 SQLite 기능을 유지합니다. 실제 로컬 회원 DB, 계정 정보, `.env.local`, `.local` 자료는 이식하지 않았습니다. QA 데이터 생성 명령은 DB URL이 있으면 실행을 거부합니다.
+
+Vercel Preview에서 `NEXT_PUBLIC_SITE_URL`은 비워 두면 배포 주소를 사용합니다. 운영 주소 확정 후 HTTPS 주소로 설정하고 `COOKIE_SECURE=true`를 사용하세요. 실제 장비 접속 정보는 관리자가 등록해야 합니다.
+
+Vercel 프로젝트 설정에 별도의 Root Directory / Build Command / Ignored Build Step이 지정되어 있다면 대시보드에서 확인해야 합니다. 기존 성공 배포와 이번 Preview 성공 배포로 GitHub 연동을 확인했습니다.
 
 ## HTML 파일로 초안 공유
 
@@ -29,7 +43,7 @@ npm run test:e2e -- tests/offline-preview.spec.ts
 
 ## 실행
 
-Node.js 24 이상과 영구 저장이 가능한 파일시스템이 필요합니다.
+Node.js 24 이상이 필요합니다. 로컬 SQLite를 사용할 때는 영구 저장이 가능한 파일시스템이 필요하며, DB URL이 설정되어 있으면 PostgreSQL을 사용합니다.
 
 ```sh
 npm install
@@ -69,6 +83,13 @@ npm run test:e2e:live
 
 프로덕션 파일 목록에서 회원 DB·로컬 관리자 정보·환경 파일을 제외했습니다. 실제 운영 DB는 서버의 영구 저장 영역에 따로 보관해야 합니다.
 
+PostgreSQL 회귀 테스트는 비운영 로컬 DB에서만 실행합니다. 테스트는 `127.0.0.1`의 이름이 `mero_test`로 시작하는 DB만 허용합니다. 새 빈 DB를 사용하세요.
+
+```sh
+MERO_TEST_DATABASE_URL=postgresql://테스트계정:테스트암호@127.0.0.1:5432/mero_test_access \
+VERCEL=1 npx tsx --test tests/access.test.ts
+```
+
 ## 관리자
 
 ```sh
@@ -81,7 +102,7 @@ npm run admin:create -- --email admin@mero.local --name 'MERO 운영진'
 
 관리자는 로봇의 설명, 제작자, 기간, SSH 정보, 제어 명령과 설명서를 편집할 수 있습니다. 초기 장비의 실제 IP·사용자·실행 명령은 비워 두었습니다. QR 주소는 `/robots/로봇ID`이고 ID는 변경할 수 없습니다.
 
-운영 도메인을 정한 후 `NEXT_PUBLIC_SITE_URL`을 지정하고 HTTPS 환경에서는 `COOKIE_SECURE=true`를 사용하세요. 로봇 QR에 localhost를 사용하면 다른 기기에서 접속할 수 없습니다. 회원·세션·로봇 데이터는 `data/mero.sqlite`에 저장됩니다. 이 사이트는 정적 HTML 배포용이 아닙니다.
+운영 도메인을 정한 후 `NEXT_PUBLIC_SITE_URL`을 지정하고 HTTPS 환경에서는 `COOKIE_SECURE=true`를 사용하세요. 로봇 QR에 localhost를 사용하면 다른 기기에서 접속할 수 없습니다. 회원·세션·로봇 데이터는 DB URL이 설정된 환경에서는 PostgreSQL에, 그 외 로컬 환경에서는 `data/mero.sqlite`에 저장됩니다. 이 사이트는 정적 HTML 배포용이 아닙니다.
 
 ## 디자인과 자료
 

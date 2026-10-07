@@ -8,9 +8,9 @@ import { currentMember } from "@/lib/auth";
 import { getRobot } from "@/lib/db";
 import { getProject } from "@/lib/content";
 import { canAccessRobot, canAdmin } from "@/lib/security";
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { return { title: getRobot((await params).slug)?.name || "로봇 안내" }; }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { return { title: (await getRobot((await params).slug))?.name || "로봇 안내" }; }
 export default async function RobotPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params; const robot = getRobot(slug); if (!robot) notFound();
+  const { slug } = await params; const robot = await getRobot(slug); if (!robot) notFound();
   const project = getProject(robot.project_id); const member = await currentMember();
   const approved = canAccessRobot(member); const admin = canAdmin(member);
   return <div className="container page-content"><Breadcrumbs items={[{ label: "로봇 안내", href: "/robots" }, { label: robot.name }]}/><section className="robot-detail-header"><div><StatusBadge status={robot.status}/><h1>{robot.name}</h1><p>{robot.description}</p>{project && <Link href={`/projects/${project.id}`} className="text-link">{project.title}<ArrowRight size={17}/></Link>}</div>{project && <RobotArt project={project} priority/>}</section>
