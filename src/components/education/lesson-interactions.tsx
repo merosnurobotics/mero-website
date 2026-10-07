@@ -62,46 +62,6 @@ export function LessonInteractions() {
       }, { signal });
     });
 
-    const before = get<HTMLVideoElement>("#before-video");
-    const after = get<HTMLVideoElement>("#after-video");
-    const play = get<HTMLButtonElement>("#play-compare");
-    const status = get<HTMLElement>("#compare-status");
-    let starting = false;
-    const pause = () => {
-      before.pause(); after.pause(); play.textContent = "두 영상 함께 재생";
-    };
-    play.addEventListener("click", async () => {
-      if (starting) return;
-      if (!before.paused || !after.paused) { pause(); return; }
-      starting = true;
-      play.disabled = true;
-      play.setAttribute("aria-busy", "true");
-      try {
-        before.currentTime = after.currentTime = Math.min(before.currentTime, after.currentTime);
-        const results = await Promise.allSettled([before.play(), after.play()]);
-        if (signal.aborted) { pause(); return; }
-        if (results.some(result => result.status === "rejected")) throw new Error("Playback failed");
-        play.textContent = "두 영상 일시정지";
-        status.textContent = "같은 초기 자세 · 같은 외력 · 18초";
-      } catch {
-        pause();
-        status.textContent = "각 영상의 재생 버튼으로 영상을 열어 주세요.";
-      } finally {
-        starting = false;
-        play.disabled = false;
-        play.removeAttribute("aria-busy");
-      }
-    }, { signal });
-    get<HTMLButtonElement>("#reset-compare").addEventListener("click", () => {
-      pause(); before.currentTime = after.currentTime = 0;
-    }, { signal });
-    get<HTMLSelectElement>("#compare-rate").addEventListener("change", event => {
-      before.playbackRate = after.playbackRate = Number((event.target as HTMLSelectElement).value);
-    }, { signal });
-    after.addEventListener("timeupdate", () => {
-      if (!after.paused && !before.paused && Math.abs(after.currentTime - before.currentTime) > .12) before.currentTime = after.currentTime;
-    }, { signal });
-    [before, after].forEach(video => video.addEventListener("ended", pause, { signal }));
     return () => {
       controller.abort();
       timers.forEach(clearTimeout);
