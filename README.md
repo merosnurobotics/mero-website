@@ -92,9 +92,9 @@ npm run admin:create -- --email admin@mero.local --name 'MERO 운영진'
 
 ## 교육 자료
 
-교육 첫 화면(`/education`)에서 기존 자료와 입문 보충 자료를 연결한 21개 자료를 읽는 순서대로 안내합니다. 목록은 처음에 접혀 있습니다. **개발 환경 → 피드백 제어와 모터 → ROS → DeepML 기초 → 객체인식 → 위치 추정 → 로봇 모델·MuJoCo → 강화학습 기초·환경 → Kimodo 응용** 순서이며, ROS로 위치를 발행하는 자료는 LiDAR 개념 다음에 읽습니다. 순서와 자료 사이의 연결 설명은 `src/lib/education/curriculum.ts`에서 관리합니다. 각 자료 아래에는 이전·다음 자료 링크가 있습니다.
+교육 첫 화면(`/education`)의 23개 자료는 공통 입문 뒤 휴머노이드·사족보행·RB-Y1 VLA·ROS/Gazebo 선택 경로로 안내합니다. 경로와 분야 목록은 처음에 접혀 있습니다. 전체 일렬 순서는 참고용이며, 모든 하드웨어 실습을 선행할 필요는 없습니다. 경로·선수 자료는 `src/lib/education/curriculum.ts`에서 관리합니다.
 
-신경망·가중치·손실·학습·추론은 기존 객체인식 본문에서, 관측·행동·보상·정책·에피소드는 기존 모방 강화학습 본문에서 설명합니다. 별도 입문 과정이나 활동·과제·진도·수료 기능은 두지 않습니다.
+교육은 프로젝트에 투입하기 전 개념을 이해하는 단계입니다. 코드 작성·디버깅·테스트 도구를 별도 과정으로 늘리지 않습니다. 기존 자료에 좌표·시간·단위·배열·접촉·구동기 한계와 작은 계산 예제를 보강했고, VLA 및 Gazebo 개념 입문을 추가했습니다. 다음 집필 주제와 프로젝트로 남길 작업은 [교육 확장안](content/education/ROADMAP.md)에 정리했습니다. 활동·과제·진도·수료 기능은 두지 않습니다.
 
 PID·객체인식·강화학습 본문의 개념도는 [Answer me with HTML](https://github.com/QingYunA/answer-me-with-html) 스킬의 CLI로 생성합니다. 원고는 `content/education/diagrams.md`이며, 2026-10-08 작업에서는 0.4.14를 사용했습니다.
 
@@ -136,9 +136,10 @@ source /opt/ros/humble/setup.bash
 
 ### DeepML·시뮬레이션 입문 자료
 
-`content/education/deepml/`의 5개 초안 중 3개는 DeepML, 2개는 강화학습 주제에 배치합니다. `content/education/simulation/`의 3개 자료는 로봇 모델·MuJoCo·환경의 계약을 다룹니다. Kimodo는 강화학습 기초 자료와 같은 큰 주제에 둡니다. 강의 HTML은 Answer me with HTML CLI가 생성하며, 데스크톱 LR/모바일 TB 흐름도를 각각 렌더링합니다. 한국어 문장 옆에서도 강조가 실제 `<strong>`으로 표시되도록 생성 과정에서 보완합니다.
+`content/education/deepml/`의 5개 초안 중 3개는 DeepML, 2개는 강화학습 주제에 배치합니다. `content/education/simulation/`의 4개 자료는 로봇 모델·MuJoCo·환경의 계약을 다룹니다. VLA 초안은 `content/education/vla/`에 있습니다. Kimodo는 강화학습 기초 자료와 같은 큰 주제에 둡니다. 강의 HTML은 Answer me with HTML CLI가 생성하며, 데스크톱 LR/모바일 TB 흐름도를 각각 렌더링합니다. 한국어 문장 옆에서도 강조가 실제 `<strong>`으로 표시되도록 생성 과정에서 보완합니다.
 
 ```bash
+npm run education:foundations
 npm run education:deepml
 /home/user/microbanRL/.venv/bin/python scripts/run-deepml-example.py
 MUJOCO_GL=egl /home/user/microbanRL/.venv/bin/python scripts/run-mujoco-intro.py
@@ -160,7 +161,14 @@ Cart-pole의 PID 튜닝은 기존 MuJoCo 강의 안에 포함합니다. P `[12,2
 
 ```bash
 MUJOCO_GL=egl /home/user/microbanRL/.venv/bin/python scripts/render-cartpole-tuning.py
+npm run education:foundations
 npm run education:deepml
 ```
 
 전체 설정·실행별 상태·XML·파일 해시는 `private/education-assets/simulation/cartpole/`, UI용 수치는 `src/lib/education/generated/cartpole.json`에 저장합니다. 27개 GIF 합계 약 5.6 MB이며 화면에서는 선택/비교한 조합만 읽습니다. 움직임 줄이기 설정에서는 5초의 실제 상태 PNG를 표시합니다.
+
+### 개념 예제와 검증 범위
+
+`private/education-assets/foundations/`에는 선형 모델 업데이트, 작은 RL 환경, 합성 모터의 P/PI/PID 비교, 거리 보정 선형/MLP 비교와 완전한 MuJoCo 진자 예제를 제공합니다. 새 환경에서 코드를 작성하는 과정보다 수치·그래프·행동의 의미를 읽는 보조 예제입니다. 실제 실행 결과를 사용했고 Gazebo·RB-Y1 실물 실행은 수행하지 않았습니다.
+
+Microban 구성 요소 비교는 `scripts/evaluate-microban-ablation.py`로 보관 체크포인트와 Native MuJoCo CPU를 실행했습니다. 동일 초기 상태 8개에서 참조만 0/8, 기본 균형 피드백 8/8, 학습 잔차 추가 8/8입니다. 이 조건에서 PPO가 성공률을 높였다고 해석하지 않습니다. 설정·해시는 `private/education-assets/kimodo-mjwarp/evidence/control-ablation8.json`에 있습니다. 보관 환경의 시간 제한 처리 한계도 본문에 명시했으며, 정책을 다시 학습하지 않았습니다.

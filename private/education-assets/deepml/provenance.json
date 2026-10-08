@@ -8,13 +8,15 @@
   },
   "draftSha256": {
     "data-and-models": "f64a9d20742c618411d223aedecdc6774442c48a559e03f6c18919e49d8bc50f",
-    "neural-networks": "dcce5b21c1e136b6501f5f7d7e16a177793cd87651200d1232b867ebccf34a27",
-    "evaluation": "a7cd33e70cd039b80735832f4808415cb20ff6d932bf718cd32e992ea624b82e",
-    "reinforcement-learning": "3ce59a3ee21af1b770d6ffb964b9f385ae74f639f36f63523c40b0ea4d098aab",
-    "policy-and-robot": "fbb3464d3a992c365102fa5f9b396d73933fccd28da342b1ac817bd163c18932",
-    "robot-models": "29141cd2adf6dfe86050749c5f4035f5a4c1511c756498e48fae95e27a501b0f",
-    "mujoco-first-run": "c30c54f7d299ddeb5b06795427257b58c0cea17451ea8bcefa7bf6b6f3b53f9d",
-    "rl-environments": "8d9e653ae13a75e220c16efbce55c5d5ca684ed87eee8f8e081e0d9938d5b875"
+    "neural-networks": "e50c33e2ea274f78a4c74c7c74ce880e700260d0d1d3fd1cfe7ef85bd2875789",
+    "evaluation": "cb850ef967471aef9989c7f797707b5ee27af4edd62af3dddfc392842ae78b9a",
+    "reinforcement-learning": "f9e41c74b45d8513c231ecd738b96075c80dcabb721bc7bdfbd4462f1fd4a57b",
+    "policy-and-robot": "8670ebf6781dddae4f319bb2ce7204b8bedf9a6fa10397d6048872e016d7838d",
+    "robot-models": "47e67869793a386a4bcc48e8afa02426b47ecc7c2519a2253a8e36374b03b989",
+    "mujoco-first-run": "5dffa0c348a29a8edbc5170c9ad66e2d4cb28761b3fffd50348a287367a66a38",
+    "rl-environments": "36ea527df344aac0bbedc44ef8be9a160bd3506b40a744c3f9e423fe39c927d8",
+    "gazebo-basics": "469ce16f5cfeb8c5ea08d65b7b2aee80b0aa6c71fb9654532c21a1528c427b4c",
+    "foundations": "b735a8375e0158964e333b92eb33ef4f8804de0a26ca7a3955efc6d1e237d89e"
   },
-  "scope": "RL terminology and selected policy/PPO explanations translated and adapted; DL foundations and club examples added by MERO. No full translation or third-party media redistribution."
+  "scope": "RL terminology and selected policy/PPO explanations translated and adapted; DL, robotics, VLA and Gazebo conceptual foundations and club examples added by MERO. No full translation or third-party media redistribution."
 }

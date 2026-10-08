@@ -70,4 +70,4 @@ theme: shadcn
 
 추론 시간도 측정합니다. 평균뿐 아니라 느린 프레임이 얼마나 오래 걸리는지 확인합니다. 모델의 처리 시간에 입력 전달·전처리·후처리 시간이 더해져 최종 결과가 늦어질 수 있습니다. 실제 장비에서 측정한 지연을 기준으로 ROS 발행 주기를 정합니다.
 
-사진 속 마스크는 곧바로 모터 명령이 되지 않습니다. [객체 위치 추정](/education/localization/object-localization)에서 깊이와 로봇 위치를 합쳐 지도 좌표로 바꾸고, 그 좌표를 계획·제어 프로그램에 전달합니다. 이제 신경망이 물체 대신 **다음 행동**을 출력하는 강화학습으로 넘어갑니다.
+사진 속 마스크는 곧바로 모터 명령이 되지 않습니다. [객체 위치 추정](/education/localization/object-localization)에서 깊이와 로봇 위치를 합쳐 지도 좌표로 바꾸고, 그 좌표를 계획·제어 프로그램에 전달합니다. 인식 경로의 다음 자료는 [합성 데이터 객체인식](/education/object-recognition/synthetic-data)입니다. 로봇 제어를 학습하려면 [강화학습 기초](/education/reinforcement-learning/reinforcement-learning)로 바로 갈 수 있습니다.

@@ -10,10 +10,12 @@ export default function Page() { return <Lesson topic="제어" topicPath="/educa
 <Chapter id="roles" title="1. DYNAMIXEL은 제어기가 들어 있는 모터다">
 <p>DYNAMIXEL은 모터, 엔코더, 내부 제어기, 통신 인터페이스가 함께 들어 있는 구동기입니다. 목표 위치를 보내면 내부에서 측정 위치와 비교해 움직입니다. 외부 Arduino가 PWM을 계산하는 엔코더 모터와 달리, 이번에는 OpenRB가 디지털 패킷을 보내고 DYNAMIXEL이 자체 제어를 수행합니다.</p>
 <FlowDiagram title="USB 명령에서 내부 위치 제어까지" steps={[{title:"Jetson",lines:["Python USB console", "ASCII 명령 한 줄"]},{title:"OpenRB-150",lines:["Serial1 · TTL half-duplex", "Protocol 2.0 packet"]},{title:"DYNAMIXEL",lines:["목표 위치 → 내부 제어", "엔코더 측정 feedback"]}]} feedback="Position · current · voltage가 같은 bus를 거쳐 Jetson으로 돌아옵니다." caption="이번 편은 ROS 없이 기본 동작부터 확인합니다."/>
+<div className="education-table-wrap"><table><thead><tr><th>제어 방식</th><th>보내는 목표</th><th>내부에서 하는 일</th></tr></thead><tbody><tr><td>위치</td><td>목표 각도</td><td>위치 오차를 줄이도록 구동</td></tr><tr><td>속도</td><td>목표 회전 속도</td><td>측정 속도와 비교</td></tr><tr><td>전류</td><td>목표 전류</td><td>전류를 제어, 위치 유지는 별도</td></tr><tr><td>PWM</td><td>구동 듀티</td><td>모터 구동 출력을 직접 지정</td></tr><tr><td>전류 기반 위치(mode 5)</td><td>목표 각도 + 전류 한도</td><td>전류 제한 안에서 위치 제어</td></tr></tbody></table></div>
+<p>전류는 토크와 관계가 있지만 현재 위치와 같지 않습니다. 실제 지원 모드와 단위는 <a href="https://emanual.robotis.com/docs/en/dxl/x/xc330-t288/#operating-mode11">모델별 eManual</a>에서 확인합니다.</p>
 </Chapter>
 <Chapter id="setup" title="2. Jetson과 준비물을 먼저 맞춘다">
 <JetsonSetup/>
-<p>기본 편은 pySerial만 사용하지만 다음 회차를 위해 ROS 2 Humble까지 미리 준비합니다. 준비물은 OpenRB-150, XC330 계열 TTL 모터 한 개, 데이터 통신용 USB 케이블, DYNAMIXEL 연결 케이블, 모델 규격에 맞는 전원입니다. 예제는 XC330의 <strong>전류 기반 위치 제어 모드(5)</strong>를 사용합니다. 다른 모터의 지원 모드와 제어 항목표가 같다고 가정하지 마세요.</p>
+<p>기본 편은 pySerial만 사용합니다. ROS 연결은 ROS 기초를 읽은 뒤 선택합니다. 준비물은 OpenRB-150, XC330 계열 TTL 모터 한 개, 데이터 통신용 USB 케이블, DYNAMIXEL 연결 케이블, 모델 규격에 맞는 전원입니다. 예제는 XC330의 <strong>전류 기반 위치 제어 모드(5)</strong>를 사용합니다. 다른 모터의 지원 모드와 제어 항목표가 같다고 가정하지 마세요.</p>
 <CodeExample label="Jetson · 교육 코드만 clone" code={`git clone https://github.com/merosnurobotics/meroedu-control.git
 cd meroedu-control
 bash setup/check_jetson.sh
@@ -44,8 +46,8 @@ MOVE_DELTA 32
 STATUS?
 STOP
 DXL_POWER_OFF`}/>
-<p><code>INIT</code>은 mode 5, Goal Current raw 80, profile velocity 20과 acceleration 5를 설정합니다. 교육용 시작값이며 장착된 기구에 맞춘 튜닝값은 아닙니다. <code>MOVE_DELTA 32</code>는 현재 위치에서 32 ticks 이동하라는 뜻입니다. 4096 ticks가 한 바퀴이므로 약 2.8°입니다.</p>
-<p>예제는 명령당 ±64 ticks, 목표 0~4095 범위를 허용합니다. 상대 이동을 반복하면 계속 움직이므로 한 번만 입력하세요. 기계적 충돌을 알아내는 기능은 없습니다. Single-turn 위치와 작은 이동에 집중하며 multi-turn이나 homing은 다루지 않습니다.</p>
+<p><code>INIT</code>은 mode 5, Goal Current raw 80, profile velocity 20과 acceleration 5를 설정합니다. mode 5의 Goal Current는 위치 제어기가 계산한 전류의 한도입니다. raw 80을 항상 일정하게 출력하는 명령이 아닙니다. 교육용 시작값이며 장착된 기구에 맞춘 튜닝값은 아닙니다. <code>MOVE_DELTA 32</code>는 현재 위치에서 32 ticks 이동하라는 뜻입니다. 4096 ticks가 한 바퀴이므로 약 2.8°입니다.</p>
+<p>예제는 명령당 ±64 ticks, 목표 0~4095 범위를 허용합니다. 상대 이동을 반복하면 계속 움직이므로 한 번만 입력하세요. 기계적 충돌을 알아내는 기능은 없습니다. 0~4095는 교육 코드가 정한 목표 제한입니다. mode 5 자체는 다회전 위치를 지원하며, 일반 Position 모드의 Min/Max Position Limit은 mode 5에 적용되지 않습니다. 이 코드에서는 작은 이동만 확인하고 다회전·homing은 다루지 않습니다.</p>
 <Check><p>OK_MOVE는 목표 register 쓰기가 성공했다는 뜻입니다. 실제로 도착했는지는 POSITION 피드백을 읽어 확인해야 합니다.</p></Check>
     <ExecutionResult id="openrb-protocol" alt="32 tick 이동은 허용하고 65 tick과 줄바꿈 명령은 거부하는 형식 검사">USB 미연결 · 명령 형식과 범위 검사</ExecutionResult>
 </Chapter>
@@ -54,7 +56,7 @@ DXL_POWER_OFF`}/>
 <p><code>POSITION</code>은 엔코더 측정값입니다. Current와 voltage raw에는 모델별 단위를 적용해야 합니다. XC330-T288에서 전류는 1mA/LSB, 전압은 0.1V/LSB입니다. 프로그램이 요청한 <code>TORQUE</code>와 실제 register인 <code>TORQUE_READ</code>를 함께 보세요. 위 값은 형식 설명용이며 실제 측정 사진이나 기록이 아닙니다.</p>
 <p>응답이 없으면 전원·ID·DXL baud·TTL cable을 확인합니다. USB baud 115200과 모터 bus 1 Mbps는 서로 다른 구간입니다. VALID=0이면 읽기 오류 또는 모터 alert가 있으므로 숫자를 유효한 측정값으로 사용하지 않습니다.</p>
 <p>콘솔은 0.5초마다 STATUS?를 보내고, 펌웨어는 통신이 3초 이상 끊기면 토크 OFF를 요청합니다. Bus 자체가 끊기면 정지 요청도 전달되지 않을 수 있습니다. 콘솔 종료 시 STOP을 보내고, 재연결 후 이전 이동을 자동 실행하지 않습니다.</p>
-<p>기본 동작이 확인되면 <a href="/education/ros/dynamixel">다음 편 · ROS 2 토픽으로 DYNAMIXEL 제어하기</a>로 이어집니다.</p>
+<p>기본 경로는 <a href="/education/ros/basics">ROS 기초</a>로 이어집니다. ROS를 이미 알고 있다면 <a href="/education/ros/dynamixel">ROS 2 토픽으로 DYNAMIXEL 제어하기</a>를 바로 읽습니다.</p>
 </Chapter>
 <footer className="education-sources"><h2>실습 코드와 참고 자료</h2><p><a href={repo}>Console · 펌웨어 · 상세 실행 안내</a> · <a href="https://emanual.robotis.com/docs/en/parts/controller/openrb-150/">OpenRB eManual</a> · <a href="https://emanual.robotis.com/docs/en/dxl/x/xc330-t288/">XC330-T288 제어 항목표</a></p><p>OpenRB board core로 컴파일을 검증했습니다. 실제 모터·전원·기구 시험은 별도입니다. <a href="https://github.com/merosnurobotics/meroedu-control/blob/main/UPSTREAM.md">출처·라이선스 기록</a></p></footer>
 </Lesson>; }

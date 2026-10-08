@@ -1,3 +1,4 @@
+import notes from "@/lib/education/generated/microban-notes.json";
 import { LessonAuthor } from "@/components/education/lesson-author";
 import { requireEducationMember } from "@/lib/education/access";
 import type { Metadata } from "next";
@@ -27,6 +28,7 @@ export default async function KimodoLessonPage() {
     <LessonContext path="/education/reinforcement-learning/kimodo-mjwarp"/>
     <article id="kimodo-lesson" className="education-lesson">
       <div dangerouslySetInnerHTML={{ __html: beforeValidation }}/>
+      {Object.entries(notes).map(([id,note])=><section id={id} className="chapter wrap" key={id}><h2>{note.title}</h2><div className="deepml-content" data-am-theme="shadcn" data-am-mode="light" dangerouslySetInnerHTML={{__html:note.html}}/></section>)}
       <section id="validation" className="chapter wrap">
         <div dangerouslySetInnerHTML={{ __html: validationBody }}/>
         <h3>CPU에서 정책 재실행</h3>

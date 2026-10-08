@@ -109,7 +109,7 @@ reference.json
 |---|---|
 | Num environments | 64 GPU |
 | Rollout length | 32 steps |
-| Policy / Value network | 64 → 64, tanh |
+| Policy / Value network | 정책 70 → 64 → 64 → 19 / 가치 70 → 64 → 64 → 1, 은닉층 tanh · 출력층 선형 |
 | Residual scale | 0.15 |
 | Discount factor γ | 0.995 |
 | GAE λ | 0.95 |

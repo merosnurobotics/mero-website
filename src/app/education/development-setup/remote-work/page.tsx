@@ -1,3 +1,4 @@
+import { FoundationChapter } from "@/components/education/foundation-chapter";
 import { ExecutionResult } from "@/components/education/execution-result";
 import { FlowDiagram } from "@/components/education/native-diagrams";
 import type { Metadata } from "next";
@@ -6,6 +7,8 @@ import { CodeExample } from "@/components/education/code-example";
 export const metadata: Metadata = {title:"원격 작업하기: ssh jetson부터 GUI까지"};
 const a="/education-assets/setup";
 export default function RemoteWorkLesson() { return <Lesson topic="개발 환경 준비" topicPath="/education/development-setup" path="/education/development-setup/remote-work" title="원격 작업하기: ssh jetson부터 GUI까지" intro="내 노트북의 터미널에서 Jetson의 코드를 실행하는 환경을 만듭니다. SSH 서버, Tailscale 로그인, SSH 키 등록과 접속 별칭을 순서대로 설정하고, 화면이 필요한 작업에는 RustDesk를 사용합니다." repo="meroedu-setup">
+<FoundationChapter id="system"/>
+<FoundationChapter id="local-python"/>
   <Chapter id="roles" title="1. 명령을 입력하는 컴퓨터와 실행하는 컴퓨터">
     <p>로컬 컴퓨터는 지금 키보드를 누르고 있는 노트북입니다. Jetson은 로봇에 달린 별도의 Linux 컴퓨터입니다. SSH로 접속하면 터미널 창은 노트북에 있지만 그 안의 명령은 Jetson에서 실행됩니다. 예를 들어 접속 후 <code>python3 train.py</code>를 실행하면 Jetson의 Python, 파일, CPU/GPU를 사용합니다.</p>
     <FlowDiagram title="로컬 컴퓨터에서 Jetson 원격 작업" steps={[{title:"로컬 컴퓨터",lines:["키보드와 터미널", "SSH 개인키"]},{title:"Tailscale",lines:["같은 tailnet", "장치 사이 연결"]},{title:"Jetson / Ubuntu",lines:["SSH server", "코드는 여기서 실행"]}]} note="SSH는 명령과 파일을, RustDesk는 화면과 입력을 주고받습니다." caption="SSH: 원격 작업. Tailscale: 장치 연결. RustDesk: 원격 desktop 조작. 각 도구의 역할을 구분합니다."/>

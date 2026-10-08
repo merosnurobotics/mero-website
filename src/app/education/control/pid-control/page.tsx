@@ -1,3 +1,4 @@
+import { FoundationChapter } from "@/components/education/foundation-chapter";
 import { ExecutionResult } from "@/components/education/execution-result";
 import { FlowDiagram } from "@/components/education/native-diagrams";
 import { ConceptDiagram } from "@/components/education/concept-diagram";
@@ -51,5 +52,6 @@ export default function PIDLesson() { return <Lesson topic="제어" topicPath="/
     <p>출력에는 모터 전류·PWM·이동 속도의 한계가 있습니다. 최대 출력에 도달했다고 오차가 바로 없어지지는 않습니다. 적분이 계속 쌓이지 않게 제한하고, 측정값이 오래 갱신되지 않으면 명령을 유지해도 되는지 따로 판단해야 합니다.</p>
     <p>필요한 함수만 정리한 <a href="https://github.com/merosnurobotics/meroedu-control/tree/main/lessons/01-pid">교육용 코드</a>에서 엔코더 속도 변환과 PID 계산을 확인할 수 있습니다. 엔코더의 회전당 tick 수, 드라이버 출력 범위, 내 로봇의 목표·측정·출력을 정해 연결하세요.</p>
   </Chapter>
+  <FoundationChapter id="pid-response"/>
   <footer className="education-sources"><h2>참고 자료와 실습 코드</h2><p><a href="https://en.wikipedia.org/wiki/PID_controller">Wikipedia · PID controller</a> · <a href="https://github.com/merosnurobotics/meroedu-control/tree/main/lessons/01-pid">PID 계산과 활용 예시 코드</a></p><p>활용 예시는 적용할 값과 피드백 구조를 이해하는 데 집중합니다. <a href={`${a}/NOTICE.md`}>이미지 출처·라이선스</a> · <a href="https://github.com/merosnurobotics/meroedu-control/blob/main/UPSTREAM.md">코드 출처·라이선스 기록</a></p></footer>
 </Lesson>; }

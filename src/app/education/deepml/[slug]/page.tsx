@@ -1,3 +1,5 @@
+import { TinyRLEnvironment } from "@/components/education/tiny-rl-environment";
+import { FoundationChapter } from "@/components/education/foundation-chapter";
 import { SourceNotices } from "@/components/education/source-notices";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -26,12 +28,14 @@ export default async function DeepMLLessonPage({ params }: Props) {
   return <>
     <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: isRL ? "강화학습" : "DeepML", href: isRL ? "/education/reinforcement-learning" : deepMLPath }, { label: lesson.shortTitle }]}/>
     <article className="perception-lesson deepml-lesson">
-      <header className="perception-hero"><p className="eyebrow">{isRL ? "강화학습" : "DeepML"} · {String(deepMLLessons.indexOf(lesson) + 1).padStart(2, "0")}</p><h1>{lesson.title}</h1><p>{lesson.description}</p></header>
+      <header className="perception-hero"><p className="eyebrow">{isRL ? "강화학습" : "DeepML"} · {String(deepMLLessons.indexOf(lesson) + 1 - (isRL ? 3 : 0)).padStart(2, "0")}</p><h1>{lesson.title}</h1><p>{lesson.description}</p></header>
       <LessonContext path={lesson.path}/>
+      {lesson.slug === "data-and-models" && <FoundationChapter id="arrays"/>}
       {chapters.map((chapter, index) => <section className="perception-chapter" id={chapter.id} key={chapter.id}>
         <h2>{index + 1}. {chapter.title}</h2>
         {lesson.slug === "neural-networks" && chapter.id === "loss" && <picture className="deepml-network-animation"><source media="(prefers-reduced-motion: reduce)" srcSet="/education-assets/deepml/neural-network.png"/><img src="/education-assets/deepml/neural-network.gif" width="960" height="540" loading="lazy" alt="신경망의 순전파·역전파·가중치 수정 흐름"/></picture>}
         <div className="deepml-content" data-am-theme="shadcn" data-am-mode="light" dangerouslySetInnerHTML={{ __html: chapter.html }}/>
+        {chapter.id === "tiny-environment" && <TinyRLEnvironment/>}
       </section>)}
       <footer className="education-sources">
         <h2>원문과 참고 자료</h2>

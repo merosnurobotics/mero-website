@@ -7,12 +7,17 @@
   "train": 96,
   "validation": 32,
   "test": 32,
+  "linear_test_mae_cm": 3.1544409692287445,
+  "linear_parameters": [
+    0.5369996428489685,
+    0.23491975665092468
+  ],
   "initial_test_mae_cm": 56.22932314872742,
   "test_mae_cm": 0.517047755420208,
   "shifted_test_mae_cm": 9.094609320163727,
   "epochs": 401,
   "selected_epoch": 400,
-  "source_sha256": "be7f176033f8a8f672c04efd592a0ea7ccd44ad0f531fdd476abb44f985ca222",
+  "source_sha256": "ae620a2b2afa330c9efcf64a516a41458b22c655f73ecef4c894b511f371d4b2",
   "history": [
     {
       "epoch": 0,

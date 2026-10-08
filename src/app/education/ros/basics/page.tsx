@@ -1,3 +1,4 @@
+import { FoundationChapter } from "@/components/education/foundation-chapter";
 import { ExecutionResult } from "@/components/education/execution-result";
 import type { Metadata } from "next";
 import { Lesson, Chapter, Check } from "@/components/education/lesson-primitives";
@@ -5,6 +6,8 @@ import { FlowDiagram } from "@/components/education/native-diagrams";
 import { CodeExample } from "@/components/education/code-example";
 export const metadata: Metadata = {title:"처음 시작하는 ROS 2"};
 export default function Page() {return <Lesson topic="ROS" topicPath="/education/ros" path="/education/ros/basics" title="처음 시작하는 ROS 2" intro="ROS가 무엇을 연결하는지부터 시작합니다. 노드·패키지·토픽·메시지를 구분하고 터미널에서 첫 메시지를 주고받습니다." repo="meroedu-ros">
+<FoundationChapter id="units"/>
+<FoundationChapter id="frames"/>
 <Chapter id="role" title="1. ROS는 여러 로봇 프로그램을 연결한다">
 <p>로봇은 센서를 읽고, 위치를 계산하고, 이동할 곳을 정하고, 모터를 움직여야 합니다. 이 일을 맡은 프로그램들이 데이터를 주고받게 돕는 도구가 <strong>ROS</strong>입니다.</p>
 <p>ROS는 Ubuntu 같은 운영체제 위에서 실행합니다. 각 프로그램의 역할을 나누고, 같은 센서 값을 여러 프로그램에 전달할 수 있습니다.</p>

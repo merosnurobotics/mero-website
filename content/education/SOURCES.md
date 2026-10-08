@@ -20,3 +20,5 @@
 교육 전체를 같은 라이선스로 묶지 않는다. CC BY 4.0은 해당 ROS 원문을 편집한 부분에, MIT/Apache는 각각 채택한 문서와 자산에 적용한다.
 
 Manim 렌더링은 사용자 규칙에 따라 영문 전용, Lato 폰트 사용. `private/education-assets/deepml/fonts/OFL.txt`에 폰트 라이선스 보존. Python 3.12.13 / Manim 0.22.0 / ManimML 0.0.24 / modern-robotics 1.1.1. ManimML의 빈 animation group과 최신 Manim의 호환성 문제는 패키지 수정 없이 실제 connective layer의 순전파 함수를 사용하여 해결.
+
+VLA/Gazebo 추가분은 공식 문서·연구 소개의 개념을 참고한 자체 설명·도식이며 외부 본문·이미지를 복제하지 않았다. VLA는 OpenVLA 연구 소개, LeRobot ACT·SmolVLA 공식 문서, Rainbow Robotics RB-Y1 SDK를 참고한다. Gazebo는 공식 ROS 호환 안내와 Harmonic 모델·센서·ROS 연결 튜토리얼을 연결한다. 원문 번역판이나 공식 인증 교육으로 표기하지 않는다. Gazebo·RB-Y1 실행 검증 없이 개념과 실행 경로만 제공한다.

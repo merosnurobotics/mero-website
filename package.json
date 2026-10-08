@@ -17,7 +17,8 @@
     "preview:build": "node scripts/build-preview.mjs",
     "admin:create": "tsx scripts/create-admin.ts",
     "education:build": "node scripts/build-education-diagrams.mjs",
-    "education:deepml": "node scripts/build-deepml.mjs"
+    "education:deepml": "node scripts/build-deepml.mjs",
+    "education:foundations": "node scripts/build-foundations.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

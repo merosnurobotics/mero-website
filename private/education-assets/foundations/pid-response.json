@@ -1,0 +1,38 @@
+{
+  "dt_s": 0.01,
+  "plant": "drive lag .08 s; speed lag .5 s; steady gain 3 rad/s per unit drive",
+  "load_change": {
+    "time_s": 4,
+    "value": 0.5
+  },
+  "scope": "synthetic motor; not hardware validation",
+  "metrics": {
+    "P": {
+      "gains": [
+        1.2,
+        0,
+        0
+      ],
+      "overshoot_pct_before_load": 0,
+      "mean_error_last_second_rad_s": 0.3260869565207508
+    },
+    "PI": {
+      "gains": [
+        1.2,
+        4.5,
+        0
+      ],
+      "overshoot_pct_before_load": 25.70156935384116,
+      "mean_error_last_second_rad_s": 2.056186683625109e-08
+    },
+    "PID": {
+      "gains": [
+        1.2,
+        4.5,
+        0.14
+      ],
+      "overshoot_pct_before_load": 18.75101873605416,
+      "mean_error_last_second_rad_s": -1.5664478832442834e-05
+    }
+  }
+}

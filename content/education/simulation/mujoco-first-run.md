@@ -93,3 +93,20 @@ GIF는 초당 20프레임으로 보여주지만, 물리 계산은 초당 500스�
 강화학습 환경에서는 정책의 행동 하나를 여러 물리 스텝 동안 유지할 수도 있습니다. 물리 스텝 0.002초를 10번 실행하면 정책의 행동 간격은 0.02초입니다. **물리 계산 주기**와 **정책 실행 주기**를 구분해 기록합니다.
 
 실물과 비교할 때는 질량·마찰·센서 잡음·통신 지연·모터 응답도 확인합니다. 시뮬레이션이 성공했다는 이유만으로 같은 명령을 실물에 그대로 적용할 수 있다고 판단하지 않습니다.
+
+
+직접 실행할 때는 [XML·전체 스크립트 묶음](/education-assets/foundations/mujoco-lab.zip)을 풀고 그 폴더에서 다음을 실행합니다. 모델 XML은 묶음에 포함되므로 코드 조각을 이어 붙일 필요가 없습니다.
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install mujoco
+python run.py --controller none
+python run.py --controller p
+python run.py --controller pd
+python run.py --model inverted --controller pd
+```
+
+`results/*.csv`에 시간·각도·각속도·토크가 저장됩니다. 같은 정진자를 3초 계산한 마지막 각도는 제어 없음 약 0.253 rad, P 약 −0.325 rad, PD 약 0.000028 rad였습니다. 마지막 각도 하나로 전체 응답을 판단하지 말고 CSV와 GIF의 진동도 비교합니다. 이 숫자는 MuJoCo 3.8.1에서 실행한 결과입니다.
+
+Linux 데스크톱에서 `python run.py --controller pd --viewer`로 창을 볼 수 있습니다. macOS의 passive viewer는 `mjpython run.py --controller pd --viewer`를 사용합니다. 화면 없는 서버에서는 `--viewer`를 빼고 계산부터 확인합니다. README에 모델의 영점과 실행 범위를 적었습니다.

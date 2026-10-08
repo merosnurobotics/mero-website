@@ -1,3 +1,4 @@
+import { vlaLessons } from "../src/lib/education/vla-catalog.ts";
 import { readFile, writeFile, mkdir, copyFile } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
@@ -42,8 +43,8 @@ function adaptAnimations(html) {
   return html;
 }
 let sharedStyle;
-for (const lesson of [...deepMLLessons, ...simulationLessons]) {
-  const draft = resolve(`content/education/${simulationLessons.some(item => item.slug === lesson.slug) ? "simulation" : "deepml"}/${lesson.slug}.md`);
+for (const lesson of [...deepMLLessons, ...simulationLessons, ...vlaLessons]) {
+  const draft = resolve(`content/education/${vlaLessons.some(item => item.slug === lesson.slug) ? "vla" : simulationLessons.some(item => item.slug === lesson.slug) ? "simulation" : "deepml"}/${lesson.slug}.md`);
   const output = resolve(working, `${lesson.slug}.html`);
   const run = spawnSync(process.execPath, [resolve(skill, "scripts/am.mjs"), "render", draft, "-o", output, "--no-open"], { encoding: "utf8" });
   if (run.error || run.status !== 0) throw new Error(run.error?.message || run.stderr || run.stdout);
@@ -102,8 +103,8 @@ const sourceFiles = ["docs/spinningup/rl_intro.rst", "docs/spinningup/rl_intro2.
 const sourceSha256 = {};
 for (const file of sourceFiles) sourceSha256[file] = createHash("sha256").update(await readFile(resolve(sourceRoot, file))).digest("hex");
 await writeFile(resolve(assets, "provenance.json"), JSON.stringify({ upstream: `https://github.com/openai/spinningup/tree/${upstream}`, sourceSha256, draftSha256: hashes,
-  scope: "RL terminology and selected policy/PPO explanations translated and adapted; DL foundations and club examples added by MERO. No full translation or third-party media redistribution." }, null, 2) + "\n");
-console.log("Built eight introductory lessons and preserved the upstream MIT notice.");
+  scope: "RL terminology and selected policy/PPO explanations translated and adapted; DL, robotics, VLA and Gazebo conceptual foundations and club examples added by MERO. No full translation or third-party media redistribution." }, null, 2) + "\n");
+console.log("Built ten introductory lessons and preserved the upstream MIT notice.");
 
 const sourceNotices = {};
 for (const [name, licenseFile, licenseName, title, url, original] of [

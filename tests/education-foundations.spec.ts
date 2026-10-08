@@ -22,13 +22,14 @@ test("generated lessons render readable emphasis, figures and legal notices", as
     '/education/deepml/data-and-models','/education/deepml/neural-networks','/education/deepml/evaluation',
     '/education/reinforcement-learning/reinforcement-learning','/education/reinforcement-learning/policy-and-robot',
     '/education/simulation/robot-models','/education/simulation/mujoco-first-run','/education/simulation/rl-environments',
+    '/education/simulation/gazebo-basics','/education/vla/foundations',
   ];
   const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
   for (const width of [320,1440]) for (const path of paths) {
     await page.setViewportSize({width,height:1000});
     await page.goto(`${baseURL}${path}`);
-    await expect(page.locator('.perception-chapter')).toHaveCount(path.endsWith('/mujoco-first-run') ? 6 : path.endsWith('/robot-models') ? 5 : 4);
-    expect((await page.locator('.deepml-content').allTextContents()).join('')).not.toContain('**');
+    await expect(page.locator('.perception-chapter')).toHaveCount(path.endsWith('/foundations') ? 8 : path.endsWith('/mujoco-first-run') ? 6 : path.endsWith('/robot-models') ? 7 : path.endsWith('/evaluation') || path.endsWith('/rl-environments') ? 4 : 5);
+    expect(await page.locator('.deepml-content').evaluateAll(elements=>elements.map(el=>{const clone=el.cloneNode(true) as HTMLElement;clone.querySelectorAll('pre,code').forEach(item=>item.remove());return clone.textContent;}).join(''))).not.toContain('**');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth),`${path}/${width}`).toBe(true);
     const images=page.locator('.deepml-content img');
     for (const image of await images.all()) { await image.scrollIntoViewIfNeeded(); await expect.poll(()=>image.evaluate(el=>(el as HTMLImageElement).complete && (el as HTMLImageElement).naturalWidth>0)).toBe(true); }
@@ -104,4 +105,30 @@ test("cart-pole sliders select recorded PID trials and retain a comparison", asy
   }
   await page.setViewportSize({width:320,height:900});
   await expect.poll(() => page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+
+test("preparation paths stay collapsed and the small environment separates task end from time limits", async ({ page }) => {
+  await page.goto(`${baseURL}/education`);
+  await expect(page.locator('.education-route[open]')).toHaveCount(0);
+  await expect(page.locator('a[href="/education/vla/foundations"]').first()).toBeAttached();
+  await page.goto(`${baseURL}/education/reinforcement-learning/reinforcement-learning`);
+  const environment=page.locator('.tiny-rl-environment');
+  await environment.getByRole('button',{name:'오른쪽 →'}).click();
+  await environment.getByRole('button',{name:'오른쪽 →'}).click();
+  await expect(environment.getByRole('status')).toContainText('실제 종료');
+  await expect(environment).toContainText('4.400');
+  await expect(environment.getByRole('button',{name:'오른쪽 →'})).toBeDisabled();
+  await environment.getByRole('button',{name:'초기화'}).click();
+  for(let step=0;step<8;step++) await environment.getByRole('button',{name:step%2===0 ? '← 왼쪽' : '오른쪽 →'}).click();
+  await expect(environment.getByRole('status')).toContainText('외부 시간 제한');
+  await page.goto(`${baseURL}/education/reinforcement-learning/kimodo-mjwarp`);
+  await expect(page.locator('#control-comparison')).toContainText('8 / 8');
+  await expect(page.locator('#control-comparison')).toContainText('성공률');
+  await page.goto(`${baseURL}/education/vla/foundations`);
+  await expect(page.locator('#chunks')).toContainText('ACT');
+  await expect(page.locator('#boundary')).toContainText('프로젝트');
+  await page.screenshot({path:'.local/qa/education/vla-desktop.png',fullPage:true});
+  await page.setViewportSize({width:390,height:900});
+  await page.screenshot({path:'.local/qa/education/vla-mobile.png',fullPage:true});
 });

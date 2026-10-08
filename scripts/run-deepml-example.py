@@ -62,6 +62,11 @@ with torch.no_grad():
     shifted_mae = (shifted_prediction - test_y).abs().mean().item()
     initial_mae = (initial_prediction - test_y).abs().mean().item()
 
+design = torch.cat([train_x, torch.ones_like(train_x)], dim=1)
+linear_parameters = torch.linalg.lstsq(design, train_y).solution
+linear_prediction = torch.cat([test_x, torch.ones_like(test_x)], dim=1) @ linear_parameters
+linear_mae = (linear_prediction - test_y).abs().mean().item()
+
 font = FontProperties(fname="/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc")
 plt.rcParams.update({"font.family": font.get_name(), "font.size": 12, "axes.spines.top": False,
                      "axes.spines.right": False, "axes.unicode_minus": False})
@@ -91,6 +96,7 @@ plt.close(fig)
 source = Path(__file__).read_text()
 result = {"seed": 1409, "python": platform.python_version(), "torch": torch.__version__, "device": "cpu",
           "input": "synthetic range calibration; no hardware measurements", "train": 96, "validation": 32, "test": 32,
+          "linear_test_mae_cm": linear_mae * 100, "linear_parameters": linear_parameters.flatten().tolist(),
           "initial_test_mae_cm": initial_mae * 100, "test_mae_cm": mae * 100, "shifted_test_mae_cm": shifted_mae * 100,
           "epochs": 401, "selected_epoch": min(records, key=lambda row: row["validation_mse"])["epoch"],
           "source_sha256": hashlib.sha256(source.encode()).hexdigest(), "history": records}

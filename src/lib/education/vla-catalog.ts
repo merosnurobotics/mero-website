@@ -1,0 +1,3 @@
+export const vlaPath="/education/vla";
+export const vlaLessons=[{slug:"foundations",path:`${vlaPath}/foundations`,shortTitle:"VLA의 입력과 행동 이해하기",title:"VLA는 사진과 지시를 어떻게 행동으로 바꾸는가",label:"사진 · 언어 · 시연 · 행동 청크",description:"VLA·VLM·행동 복제를 구분하고, 상태와 행동의 의미·시연·청크·평가를 RB-Y1 연결의 개념으로 읽습니다.",chapters:[{id:"meaning",label:"VLA와 다른 모델"},{id:"inputs",label:"사진·언어·상태"},{id:"actions",label:"행동 표현"},{id:"demonstrations",label:"시연과 행동 복제"},{id:"chunks",label:"행동 청크와 지연"},{id:"evaluation",label:"언어와 수행 평가"},{id:"rby1",label:"RB-Y1 연결 개념"},{id:"boundary",label:"교육과 프로젝트의 경계"}]}];
+export const vlaTopic={title:"VLA · 로봇 조작",path:vlaPath,description:"프로젝트 투입 전 VLA의 입력·행동·시연·평가를 이해합니다. 로봇 어댑터 구현과 실제 과제 학습은 프로젝트에서 진행합니다.",lessons:vlaLessons};

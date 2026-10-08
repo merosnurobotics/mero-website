@@ -23,10 +23,11 @@ test("education navigation, expandable catalog and lesson interactions", async (
   await expect(page.locator(".education-stage[open]")).toHaveCount(0);
   await page.locator(".education-topic-tree > summary").first().click();
   await expect(page.locator(".education-lesson-tree").first()).toBeVisible();
+  await page.locator(".education-reference-order > summary").click();
   await page.locator(".education-stage").filter({hasText:"강화학습: 기초에서 로봇 제어까지"}).locator(":scope > summary").click();
   await page.locator(".education-series-list").getByRole("link", { name: "모방 강화학습" }).click();
   await expect(page).toHaveURL(`${baseURL}${lessonPath}`);
-  await expect(page.locator(".education-lesson .chapter")).toHaveCount(6);
+  await expect(page.locator(".education-lesson .chapter")).toHaveCount(12);
   const assets = await page.locator(".education-lesson [src], .education-lesson [poster], .education-lesson a[href^='/education-assets/']").evaluateAll(elements => [...new Set(elements.flatMap(element => [element.getAttribute("src"), element.getAttribute("poster"), element.getAttribute("href")]).filter((url): url is string => Boolean(url?.startsWith("/education-assets/"))))]);
   for (const url of assets) expect((await page.request.get(`${baseURL}${url}`)).status(), url).toBe(200);
   await page.locator(".education-sidebar a[href='/education/reinforcement-learning/kimodo-mjwarp#kimodo']").click();
@@ -73,6 +74,7 @@ test("education pages fit mobile and desktop in both themes", async ({ page }) =
 test("object recognition course, chapter catalog, code and private activity", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto(`${baseURL}/education`);
+  await page.locator('.education-reference-order > summary').click();
   await page.locator('.education-stage').filter({hasText:'사진에서 물체 찾기'}).locator(':scope > summary').click();
   await page.locator('.education-series-list').getByRole('link', { name: '합성 데이터로 시작하기' }).click();
   await expect(page.locator('.perception-chapter')).toHaveCount(10);

@@ -1,0 +1,263 @@
+{
+  "backend": "Native MuJoCo CPU",
+  "seed": 75501,
+  "n": 8,
+  "horizon_s": 18,
+  "perturb_std": 0.006,
+  "external_force_n": 0,
+  "transition": true,
+  "scope": "Matched initial states; one trained checkpoint; no retraining, dynamics randomization or hardware",
+  "checkpoint_sha256": "db0635be7c73a96f47ec6ef4d5a0e4f6976dda4603c6965407ffc82a1a02e794",
+  "reference_sha256": "bab861f1fe349cbe45659a4361a5a25f2f247ec4bdc365e942e8e6af79b1a787",
+  "source_sha256": "b9b2f95adae88fea16dcf9f9c46cb70c221dd23fae6231e1e577030d3a87fe9e",
+  "evaluation_script_sha256": "7160e8c9c9f6dc23da9af0e9df531dc49a28d188fa1a671ed61fc12cd7733078",
+  "initial_qpos_sha256": "690949d479d856a2312f3219352bdf1d09007459ee848596b683fc9238940953",
+  "results": [
+    {
+      "condition": "reference",
+      "passed": 0,
+      "n": 8,
+      "mean_joint_error_rms_rad": 0.10136273403118756,
+      "mean_action_change_rms_rad": 0.0,
+      "max_torque_nm": 0.18489660121114665,
+      "rows": [
+        {
+          "episode": 0,
+          "passed": false,
+          "fell": true,
+          "longest_single_support_s": 0.0,
+          "joint_error_rms_rad": 0.09839737363225508,
+          "action_change_rms_rad": 0.0,
+          "max_torque_nm": 0.181409726195667
+        },
+        {
+          "episode": 1,
+          "passed": false,
+          "fell": true,
+          "longest_single_support_s": 0.0,
+          "joint_error_rms_rad": 0.09901917907830447,
+          "action_change_rms_rad": 0.0,
+          "max_torque_nm": 0.18489660121114665
+        },
+        {
+          "episode": 2,
+          "passed": false,
+          "fell": true,
+          "longest_single_support_s": 0.0,
+          "joint_error_rms_rad": 0.10104237007276011,
+          "action_change_rms_rad": 0.0,
+          "max_torque_nm": 0.1816823651881482
+        },
+        {
+          "episode": 3,
+          "passed": false,
+          "fell": true,
+          "longest_single_support_s": 0.0,
+          "joint_error_rms_rad": 0.10802924965117246,
+          "action_change_rms_rad": 0.0,
+          "max_torque_nm": 0.1750447485238798
+        },
+        {
+          "episode": 4,
+          "passed": false,
+          "fell": true,
+          "longest_single_support_s": 0.0,
+          "joint_error_rms_rad": 0.10695011358922835,
+          "action_change_rms_rad": 0.0,
+          "max_torque_nm": 0.1764255861387889
+        },
+        {
+          "episode": 5,
+          "passed": false,
+          "fell": true,
+          "longest_single_support_s": 0.0,
+          "joint_error_rms_rad": 0.10068679746072937,
+          "action_change_rms_rad": 0.0,
+          "max_torque_nm": 0.17917162736823894
+        },
+        {
+          "episode": 6,
+          "passed": false,
+          "fell": true,
+          "longest_single_support_s": 0.0,
+          "joint_error_rms_rad": 0.09739470237811569,
+          "action_change_rms_rad": 0.0,
+          "max_torque_nm": 0.18288587712790041
+        },
+        {
+          "episode": 7,
+          "passed": false,
+          "fell": true,
+          "longest_single_support_s": 0.0,
+          "joint_error_rms_rad": 0.09938208638693503,
+          "action_change_rms_rad": 0.0,
+          "max_torque_nm": 0.18116499367345335
+        }
+      ]
+    },
+    {
+      "condition": "balance",
+      "passed": 8,
+      "n": 8,
+      "mean_joint_error_rms_rad": 0.07761243270355578,
+      "mean_action_change_rms_rad": 0.01216233078061378,
+      "max_torque_nm": 0.33845697584661694,
+      "rows": [
+        {
+          "episode": 0,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.079999999999746,
+          "joint_error_rms_rad": 0.07749055212261166,
+          "action_change_rms_rad": 0.01109317971862351,
+          "max_torque_nm": 0.3384569534472608
+        },
+        {
+          "episode": 1,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.019999999999747,
+          "joint_error_rms_rad": 0.07766887280238054,
+          "action_change_rms_rad": 0.012284371956308604,
+          "max_torque_nm": 0.33845689043921845
+        },
+        {
+          "episode": 2,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.019999999999747,
+          "joint_error_rms_rad": 0.07760112783768501,
+          "action_change_rms_rad": 0.013144435267136465,
+          "max_torque_nm": 0.33845681313106935
+        },
+        {
+          "episode": 3,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.039999999999747,
+          "joint_error_rms_rad": 0.07771388562775053,
+          "action_change_rms_rad": 0.011645275320197167,
+          "max_torque_nm": 0.338456445571239
+        },
+        {
+          "episode": 4,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.039999999999747,
+          "joint_error_rms_rad": 0.07762377888161195,
+          "action_change_rms_rad": 0.012690049470590133,
+          "max_torque_nm": 0.3384568944015407
+        },
+        {
+          "episode": 5,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.039999999999747,
+          "joint_error_rms_rad": 0.07754657915896787,
+          "action_change_rms_rad": 0.01133712290727051,
+          "max_torque_nm": 0.33845697584661694
+        },
+        {
+          "episode": 6,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.019999999999747,
+          "joint_error_rms_rad": 0.07772926671539458,
+          "action_change_rms_rad": 0.011985053657581663,
+          "max_torque_nm": 0.3384564901507041
+        },
+        {
+          "episode": 7,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.059999999999746,
+          "joint_error_rms_rad": 0.0775253984820441,
+          "action_change_rms_rad": 0.01311915794720218,
+          "max_torque_nm": 0.3384568917747034
+        }
+      ]
+    },
+    {
+      "condition": "learned",
+      "passed": 8,
+      "n": 8,
+      "mean_joint_error_rms_rad": 0.07760113698076007,
+      "mean_action_change_rms_rad": 0.011038468009911075,
+      "max_torque_nm": 0.3384492520668687,
+      "rows": [
+        {
+          "episode": 0,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.019999999999747,
+          "joint_error_rms_rad": 0.07782887549838523,
+          "action_change_rms_rad": 0.012691538279517602,
+          "max_torque_nm": 0.3384491472024054
+        },
+        {
+          "episode": 1,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.059999999999746,
+          "joint_error_rms_rad": 0.07741581965888207,
+          "action_change_rms_rad": 0.009077175301744142,
+          "max_torque_nm": 0.3384492082527131
+        },
+        {
+          "episode": 2,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.059999999999746,
+          "joint_error_rms_rad": 0.07758939513144725,
+          "action_change_rms_rad": 0.010856119807790852,
+          "max_torque_nm": 0.33844912716997144
+        },
+        {
+          "episode": 3,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.079999999999746,
+          "joint_error_rms_rad": 0.07740705823654745,
+          "action_change_rms_rad": 0.010852002880774895,
+          "max_torque_nm": 0.3384492163852044
+        },
+        {
+          "episode": 4,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.079999999999746,
+          "joint_error_rms_rad": 0.07760061108330477,
+          "action_change_rms_rad": 0.008783274227582578,
+          "max_torque_nm": 0.3384492520668687
+        },
+        {
+          "episode": 5,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.039999999999747,
+          "joint_error_rms_rad": 0.07775760272878868,
+          "action_change_rms_rad": 0.01109199970322455,
+          "max_torque_nm": 0.33844904472901793
+        },
+        {
+          "episode": 6,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.059999999999746,
+          "joint_error_rms_rad": 0.07760459927664456,
+          "action_change_rms_rad": 0.011474812148505707,
+          "max_torque_nm": 0.33844915542427034
+        },
+        {
+          "episode": 7,
+          "passed": true,
+          "fell": false,
+          "longest_single_support_s": 16.019999999999747,
+          "joint_error_rms_rad": 0.07760513423208056,
+          "action_change_rms_rad": 0.013480821730148258,
+          "max_torque_nm": 0.3384491311978876
+        }
+      ]
+    }
+  ]
+}

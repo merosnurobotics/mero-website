@@ -1,3 +1,4 @@
+import { vlaPath, vlaTopic } from "./vla-catalog";
 import { simulationPath, simulationTopic } from "./simulation-catalog";
 import { deepMLPath, deepMLTopic, deepMLLessons } from "./deepml-catalog";
 export type EducationAuthor = { name: string; email: string };
@@ -14,6 +15,7 @@ export const lessonChapters = [
   { id: "query", label: "실제 입력과 코드" },
   { id: "retarget", label: "Microban 리타기팅" },
   { id: "learning", label: "PPO 학습" },
+  {id:"observations",label:"관측 70차원"},{id:"action-contract",label:"행동과 스케일"},{id:"reward-terms",label:"보상과 성공 판정"},{id:"implementation-notes",label:"종료 처리의 한계"},{id:"balance-physics",label:"균형과 평가 조건"},{id:"control-comparison",label:"기본 제어기 대비 비교"},
   { id: "validation", label: "정책 검증" },
 ];
 
@@ -91,8 +93,10 @@ export const pidChapters = [
   { id: "digital", label: "컴퓨터에서 계산하기" },
   { id: "applications", label: "PID 활용 예시" },
   { id: "tuning", label: "적용과 튜닝의 관점" },
+ {id:"pid-response",label:"P·PI·PID 폐루프 비교"},
 ];
 export const remoteWorkChapters = [
+{id:"system",label:"로봇 전체 구조"},{id:"local-python",label:"로컬 Python과 경로"},
   { id: "roles", label: "로컬 컴퓨터와 Jetson" },
   { id: "server", label: "Jetson의 SSH 서버 준비" },
   { id: "tailscale", label: "Tailscale 설치와 로그인" },
@@ -107,10 +111,12 @@ export const rosBasicsPath = `${rosPath}/basics`;
 export const rosPythonPath = `${rosPath}/python-pubsub`;
 export const rosBagRvizPath = `${rosPath}/bag-rviz`;
 export const rosBasicsChapters = [
+{id:"units",label:"단위와 시간"},{id:"frames",label:"좌표계와 회전"},
  {id:"role",label:"ROS의 역할"},{id:"vocabulary",label:"노드·패키지·토픽"},{id:"environment",label:"Humble 실습 환경"},
  {id:"first-message",label:"첫 메시지 보내기"},{id:"contracts",label:"Service·Action·Parameter"},{id:"check",label:"확인과 다음 단계"},{id:"official-examples",label:"공식 talker/listener·turtlesim"},
 ];
 export const rosPythonChapters = [
+
  {id:"classes",label:"Python 클래스와 노드"},{id:"publisher",label:"발행 노드와 타이머"},{id:"subscriber",label:"구독 노드와 콜백"},
  {id:"lifecycle",label:"Spin과 종료"},{id:"package",label:"패키지와 빌드"},{id:"run",label:"세 터미널 실습"},
 ];
@@ -119,6 +125,7 @@ export const rosBagRvizChapters = [
  {id:"record",label:"기록하고 정보 보기"},{id:"replay",label:"재생과 ROS time"},{id:"checks",label:"Frame·TF·QoS 점검"},
 ];
 const topics: EducationTopic[] = [
+  vlaTopic,
   deepMLTopic,
   simulationTopic,
   {
@@ -164,4 +171,4 @@ const topics: EducationTopic[] = [
   },
 ];
 
-export const educationTopics = [developmentSetupPath, controlPath, rosPath, deepMLPath, objectRecognitionPath, localizationPath, simulationPath, kimodoTopicPath].map(path => topics.find(topic => topic.path === path)!);
+export const educationTopics = [developmentSetupPath, controlPath, rosPath, deepMLPath, objectRecognitionPath, localizationPath, simulationPath, kimodoTopicPath, vlaPath].map(path => topics.find(topic => topic.path === path)!).map(topic=>({...topic,lessons:topic.lessons.map(lesson=>lesson.path===deepMLLessons[0].path ? {...lesson,chapters:[{id:"arrays",label:"배열·shape 보충"},...lesson.chapters]} : lesson)}));

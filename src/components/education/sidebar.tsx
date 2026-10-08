@@ -20,7 +20,8 @@ export function EducationSidebar() {
   return <aside className="education-sidebar">
     <button className="education-catalog-toggle" type="button" aria-controls="education-catalog" aria-expanded={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)}>교육자료 목록<CaretDown size={17}/></button>
     <nav id="education-catalog" className={mobileOpen ? "" : "education-mobile-collapsed"} aria-label="교육자료 목록">
-      <Link className="education-index-link" href="/education" aria-current={path === "/education" ? "page" : undefined}>교육자료</Link>
+      <Link className="education-index-link" href="/education" aria-current={path === "/education" ? "page" : undefined}>권장 학습 경로</Link>
+      <p className="education-browse-label">분야별 찾아보기 · 학습 순서와 별개</p>
       {educationTopics.map(topic => {
         return <details open={path === topic.path || topic.lessons.some(lesson => path === lesson.path)} className="education-topic-tree" key={`${topic.path}:${path}`}>
           <summary>{topic.title}<span>{String(topic.lessons.length).padStart(2, "0")}</span></summary>
