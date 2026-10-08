@@ -33,7 +33,7 @@ if __name__=='__main__':
     for label,gains,color in [('P',(args.kp,0,0),'#b06f24'),('PI',(args.kp,args.ki,0),'#168472'),('PID',(args.kp,args.ki,args.kd),'#214fc4')]:
         rows=simulate(*gains)
         with (out/f'{label.lower()}.csv').open('w') as file:
-            writer=csv.DictWriter(file,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
+            writer=csv.DictWriter(file,fieldnames=list(rows[0]),lineterminator="\n");writer.writeheader();writer.writerows(rows)
         axes[0].plot([r['time_s'] for r in rows],[r['speed_rad_s'] for r in rows],label=label,color=color)
         axes[1].plot([r['time_s'] for r in rows],[r['output'] for r in rows],label=label,color=color)
         metrics[label]={'gains':gains,'overshoot_pct_before_load':max(0,100*(max(r['speed_rad_s'] for r in rows if 1<=r['time_s']<4)-1)),'mean_error_last_second_rad_s':sum(1-r['speed_rad_s'] for r in rows if r['time_s']>=7)/101}
