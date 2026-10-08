@@ -27,7 +27,7 @@ test("generated lessons render readable emphasis, figures and legal notices", as
   for (const width of [320,1440]) for (const path of paths) {
     await page.setViewportSize({width,height:1000});
     await page.goto(`${baseURL}${path}`);
-    await expect(page.locator('.perception-chapter')).toHaveCount(path.endsWith('/robot-models') ? 5 : 4);
+    await expect(page.locator('.perception-chapter')).toHaveCount(/\/(robot-models|mujoco-first-run)$/.test(path) ? 5 : 4);
     expect((await page.locator('.deepml-content').allTextContents()).join('')).not.toContain('**');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth),`${path}/${width}`).toBe(true);
     const images=page.locator('.deepml-content img');
@@ -49,4 +49,24 @@ test("generated lessons render readable emphasis, figures and legal notices", as
   await expect(page.locator('.education-sources')).toContainText('Farama');
   await expect(page.locator('.education-sources')).toContainText('MIT');
   expect(errors).toEqual([]);
+});
+
+
+test("MuJoCo animations load and switch to static results for reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto(`${baseURL}/education/simulation/mujoco-first-run`);
+  for (const name of ["pendulum", "inverted-pendulum"]) {
+    const image = page.locator(`img[src="/education-assets/simulation/${name}.gif"]`);
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(() => image.evaluate(el => (el as HTMLImageElement).currentSrc)).toContain(`${name}.gif`);
+    const response = await page.request.get(`${baseURL}/education-assets/simulation/${name}.gif`);
+    expect(response.status()).toBe(200);
+    expect(response.headers()["content-type"]).toBe("image/gif");
+  }
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  for (const name of ["pendulum", "inverted-pendulum"]) {
+    const image = page.locator(`img[src="/education-assets/simulation/${name}.gif"]`);
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(() => image.evaluate(el => (el as HTMLImageElement).currentSrc)).toContain(`${name}-at-1.0s.png`);
+  }
 });

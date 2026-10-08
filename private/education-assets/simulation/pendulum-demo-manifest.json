@@ -1,0 +1,77 @@
+{
+  "script_sha256": "9bfe00a6ea0bd8a14441154e3643eaab8fe46daf329a93b00d7e4f47a1811c02",
+  "files": {
+    "inverted-pendulum-demo-results.json": {
+      "bytes": 24371,
+      "sha256": "01664d0e27a0afe8054b297985d6547d9a3dbe71758e7010cb39cae165bb9dd0"
+    },
+    "inverted-pendulum-at-2.1s.png": {
+      "bytes": 43810,
+      "sha256": "0165f18839f0d7fa75d0249f27e0bd7d41ed6c803ab97bc5cff996b03731f65a"
+    },
+    "pendulum.gif": {
+      "bytes": 294609,
+      "sha256": "ff0a366056cb4419f87c392263feef232979faca90c3d218adbd8249a7d4326f"
+    },
+    "pendulum.png": {
+      "bytes": 69265,
+      "sha256": "6365e7d9e309d9d9b405e9993f7ffca56a972a443bf747f427f85624f3fe5ad5"
+    },
+    "inverted-pendulum-at-1.0s.png": {
+      "bytes": 41234,
+      "sha256": "1401c6afcbf4ff1d5e44c1e26952e884a825f3cb15657537a53d4384846068f3"
+    },
+    "pendulum-at-2.5s.png": {
+      "bytes": 40313,
+      "sha256": "4a63d777cbc531dd7c8d70c6d9ebe1ae256242f908357eca36c8b3c955a57a82"
+    },
+    "inverted-pendulum-demo.png": {
+      "bytes": 38136,
+      "sha256": "f97f79d13dcbdb1f02ab32a6365d1acdc6dbe2699cd7e07ca31b9c16dc7d9ec9"
+    },
+    "inverted-pendulum-at-5.0s.png": {
+      "bytes": 42675,
+      "sha256": "795d25b1086ce174a5ac4db632ddeaa3e396f2e54af578fdd0af0a8772351bfc"
+    },
+    "inverted-pendulum-demo.xml": {
+      "bytes": 971,
+      "sha256": "96b670939a601caa902e9cc052f566f2952b408dc24a8913c0d485f67d67e3a2"
+    },
+    "pendulum-demo-results.json": {
+      "bytes": 12427,
+      "sha256": "cfb932615fa25ecbd0017396e9fe3499df70cf0e0ba97c2305b47927fc33b418"
+    },
+    "pendulum-at-0.5s.png": {
+      "bytes": 40328,
+      "sha256": "34d654078d9a46ed519ffe1099bac867048fe80df04c94e1c3804e72cc2a762c"
+    },
+    "inverted-pendulum.gif": {
+      "bytes": 482764,
+      "sha256": "0f35b2a3bc134a132fee563e67abec3d18a1b9643455ee5a9f48b71d84e8899b"
+    },
+    "pendulum-demo.xml": {
+      "bytes": 972,
+      "sha256": "4ae67811e0bacf73a4623a3b35a1f1c48e221b6bc431b274fb8becf07c7c7061"
+    },
+    "pendulum.xml": {
+      "bytes": 677,
+      "sha256": "af7819d4533fe1641203c90e269c30f40445b10573edb0e4d95d2a5daff7a487"
+    },
+    "inverted-pendulum-control.png": {
+      "bytes": 80795,
+      "sha256": "a1a0d97fa79e9da5d99ee9b89a8d8db32b58d169c131706498fab251b7a9812b"
+    },
+    "pendulum-demo.png": {
+      "bytes": 37263,
+      "sha256": "8ddc2ccfed7e752a989f3796ebadd111c0addc5d465cb257aa4c55b3ad40e6ef"
+    },
+    "pendulum-at-1.0s.png": {
+      "bytes": 40406,
+      "sha256": "0375e534f48db9e21a8214f7be8dc6f98b61e7ed1a12e458b83f6f9b746b2744"
+    },
+    "inverted-pendulum-at-2.6s.png": {
+      "bytes": 43356,
+      "sha256": "d4314a754fe42b5467665b32d61805c47612838312288b12347e7c1779abe6ea"
+    }
+  }
+}

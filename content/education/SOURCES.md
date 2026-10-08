@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | [OpenAI Spinning Up](https://spinningup.openai.com/en/latest/spinningup/rl_intro.html) | 관측·행동·정책·보상·PPO 입문 | [MIT](https://github.com/openai/spinningup/blob/master/LICENSE). 문서 포함. OpenAI 고지 전문 유지. 고급 증명 제외. |
 | [Hugging Face Deep RL Course](https://huggingface.co/learn/deep-rl-course/en/unit1/rl-framework) | 누적 보상과 경험의 연결 설명 | [Apache 2.0](https://github.com/huggingface/deep-rl-class/blob/main/LICENSE.md). 선택 번역과 로봇 예시 변경 표시. 외부 데이터셋의 그림과 제3자 인용 그림은 가져오지 않음. |
-| [MuJoCo 공식 문서](https://mujoco.readthedocs.io/en/stable/overview.html) | 몸체·관절·구동기, MjModel/MjData, 스텝과 렌더링 | [Apache 2.0](https://github.com/google-deepmind/mujoco/blob/main/LICENSE). 선택 번역·요약. 진자 XML·코드·PNG는 MERO 제작. |
+| [MuJoCo 공식 문서](https://mujoco.readthedocs.io/en/stable/overview.html) | 몸체·관절·구동기, MjModel/MjData, 스텝과 렌더링 | [Apache 2.0](https://github.com/google-deepmind/mujoco/blob/main/LICENSE). 선택 번역·요약. 정진자·역진자 XML·코드·PNG·GIF는 MERO 제작. |
 | [Gymnasium Basic Usage](https://gymnasium.farama.org/introduction/basic_usage/) | reset/step, terminated/truncated, 관측·행동·보상 | [MIT](https://github.com/Farama-Foundation/Gymnasium/blob/main/LICENSE). OpenAI/Farama 고지 유지. `docs/_static/diagrams/AE_loop.png`를 원본 그대로 첨부. |
 | [ROS 2 URDF 입문](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html) | 링크·관절·형상 설명 | [CC BY 4.0](https://github.com/ros2/ros2_documentation/blob/humble/LICENSE). ROS 2 기여자 출처, 라이선스, 한국어 편집·요약 표시. 시간 활동 및 외부 메시 파일 제외. |
 | [PyTorch Learn the Basics](https://docs.pytorch.org/tutorials/beginner/basics/intro.html) | 딥러닝 보충 자료의 참고 링크 | 본문·그림 복제 없음. MERO 센서 사례와 자체 실행 코드·손실 곡선 사용. |

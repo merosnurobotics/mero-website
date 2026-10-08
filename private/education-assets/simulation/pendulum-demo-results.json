@@ -1,0 +1,385 @@
+{
+  "mujoco": "3.8.1",
+  "duration_s": 3,
+  "physics_timestep_s": 0.002,
+  "steps": 1500,
+  "gif_fps": 20,
+  "gif_frame_count": 61,
+  "initial_angle_rad": 0.65,
+  "target_angle_rad": 0,
+  "upright": false,
+  "kp": 3,
+  "kd": 1,
+  "torque_limit_nm": 2,
+  "external_torque": null,
+  "final_controlled_angle_rad": 2.7616578433310095e-05,
+  "trace": [
+    {
+      "time_s": 0.0,
+      "free_angle_rad": 0.65,
+      "controlled_angle_rad": 0.65,
+      "controlled_torque_nm": 0.0
+    },
+    {
+      "time_s": 0.05000000000000003,
+      "free_angle_rad": 0.6373608432561513,
+      "controlled_angle_rad": 0.6281660315281705,
+      "controlled_torque_nm": -1.1125299826147457
+    },
+    {
+      "time_s": 0.10000000000000007,
+      "free_angle_rad": 0.6011715869055415,
+      "controlled_angle_rad": 0.5717489615557905,
+      "controlled_torque_nm": -0.3502033150652293
+    },
+    {
+      "time_s": 0.1500000000000001,
+      "free_angle_rad": 0.5431169131035741,
+      "controlled_angle_rad": 0.4913602874295922,
+      "controlled_torque_nm": 0.27814764711812345
+    },
+    {
+      "time_s": 0.20000000000000015,
+      "free_angle_rad": 0.46562080089597885,
+      "controlled_angle_rad": 0.39687420273909174,
+      "controlled_torque_nm": 0.7611066873845547
+    },
+    {
+      "time_s": 0.25000000000000017,
+      "free_angle_rad": 0.37181640637900537,
+      "controlled_angle_rad": 0.2970554024841418,
+      "controlled_torque_nm": 1.0972201189566468
+    },
+    {
+      "time_s": 0.3000000000000002,
+      "free_angle_rad": 0.2654815237383917,
+      "controlled_angle_rad": 0.19927307332280236,
+      "controlled_torque_nm": 1.2941277553472683
+    },
+    {
+      "time_s": 0.35000000000000026,
+      "free_angle_rad": 0.15092069387492815,
+      "controlled_angle_rad": 0.109311422177726,
+      "controlled_torque_nm": 1.3670338542074205
+    },
+    {
+      "time_s": 0.4000000000000003,
+      "free_angle_rad": 0.03278711666520143,
+      "controlled_angle_rad": 0.031295626047913375,
+      "controlled_torque_nm": 1.3365195096931868
+    },
+    {
+      "time_s": 0.45000000000000034,
+      "free_angle_rad": -0.08414539753461568,
+      "controlled_angle_rad": -0.032260966045999734,
+      "controlled_torque_nm": 1.2260533827693976
+    },
+    {
+      "time_s": 0.5000000000000003,
+      "free_angle_rad": -0.19523415746401165,
+      "controlled_angle_rad": -0.08030312876137687,
+      "controlled_torque_nm": 1.0596427172507548
+    },
+    {
+      "time_s": 0.5500000000000004,
+      "free_angle_rad": -0.29620832002283354,
+      "controlled_angle_rad": -0.1130039584836143,
+      "controlled_torque_nm": 0.8599422994976633
+    },
+    {
+      "time_s": 0.6000000000000004,
+      "free_angle_rad": -0.3833668199255308,
+      "controlled_angle_rad": -0.13149469989683762,
+      "controlled_torque_nm": 0.646943747666451
+    },
+    {
+      "time_s": 0.6500000000000005,
+      "free_angle_rad": -0.4537143557764658,
+      "controlled_angle_rad": -0.1375862457700942,
+      "controlled_torque_nm": 0.4372124317169194
+    },
+    {
+      "time_s": 0.7000000000000005,
+      "free_angle_rad": -0.5050329914222318,
+      "controlled_angle_rad": -0.1335061105727723,
+      "controlled_torque_nm": 0.24356459379154582
+    },
+    {
+      "time_s": 0.7500000000000006,
+      "free_angle_rad": -0.5359010791437593,
+      "controlled_angle_rad": -0.12166596901024773,
+      "controlled_torque_nm": 0.07506793030395015
+    },
+    {
+      "time_s": 0.8000000000000006,
+      "free_angle_rad": -0.545678522717567,
+      "controlled_angle_rad": -0.10446787635494915,
+      "controlled_torque_nm": -0.0627291092375522
+    },
+    {
+      "time_s": 0.8500000000000006,
+      "free_angle_rad": -0.534477078697627,
+      "controlled_angle_rad": -0.08415247393482737,
+      "controlled_torque_nm": -0.1674083752242756
+    },
+    {
+      "time_s": 0.9000000000000007,
+      "free_angle_rad": -0.5031282948329012,
+      "controlled_angle_rad": -0.06268930961538165,
+      "controlled_torque_nm": -0.23918579439611018
+    },
+    {
+      "time_s": 0.9500000000000007,
+      "free_angle_rad": -0.4531527560170359,
+      "controlled_angle_rad": -0.041707177847812985,
+      "controlled_torque_nm": -0.2803530795060028
+    },
+    {
+      "time_s": 1.0000000000000007,
+      "free_angle_rad": -0.38672547867204454,
+      "controlled_angle_rad": -0.02246065756698382,
+      "controlled_torque_nm": -0.2946999455668975
+    },
+    {
+      "time_s": 1.0500000000000007,
+      "free_angle_rad": -0.3066260327867746,
+      "controlled_angle_rad": -0.005827662049170204,
+      "controlled_torque_nm": -0.2869561907162821
+    },
+    {
+      "time_s": 1.1000000000000008,
+      "free_angle_rad": -0.21616013882448235,
+      "controlled_angle_rad": 0.007668132448553014,
+      "controlled_torque_nm": -0.2622866795540275
+    },
+    {
+      "time_s": 1.1500000000000008,
+      "free_angle_rad": -0.11904301492248881,
+      "controlled_angle_rad": 0.01781655389758247,
+      "controlled_torque_nm": -0.2258630424116807
+    },
+    {
+      "time_s": 1.2000000000000008,
+      "free_angle_rad": -0.019243070739080874,
+      "controlled_angle_rad": 0.024668386399729157,
+      "controlled_torque_nm": -0.18252550115695196
+    },
+    {
+      "time_s": 1.2500000000000009,
+      "free_angle_rad": 0.07920476245516735,
+      "controlled_angle_rad": 0.02847695283524337,
+      "controlled_torque_nm": -0.13653854330208115
+    },
+    {
+      "time_s": 1.300000000000001,
+      "free_angle_rad": 0.17239749083732506,
+      "controlled_angle_rad": 0.02963890697383868,
+      "controlled_torque_nm": -0.09143642641330471
+    },
+    {
+      "time_s": 1.350000000000001,
+      "free_angle_rad": 0.2567514892115175,
+      "controlled_angle_rad": 0.028638270709567263,
+      "controlled_torque_nm": -0.049949106076067874
+    },
+    {
+      "time_s": 1.400000000000001,
+      "free_angle_rad": 0.3291585714785841,
+      "controlled_angle_rad": 0.025996662969398943,
+      "controlled_torque_nm": -0.013995947649689977
+    },
+    {
+      "time_s": 1.450000000000001,
+      "free_angle_rad": 0.3870984097583119,
+      "controlled_angle_rad": 0.022231626351049572,
+      "controlled_torque_nm": 0.015266944902488935
+    },
+    {
+      "time_s": 1.500000000000001,
+      "free_angle_rad": 0.4287052619642886,
+      "controlled_angle_rad": 0.0178240256568502,
+      "controlled_torque_nm": 0.0373602220456611
+    },
+    {
+      "time_s": 1.5500000000000012,
+      "free_angle_rad": 0.45279566003463156,
+      "controlled_angle_rad": 0.013194702593346416,
+      "controlled_torque_nm": 0.05236940649994555
+    },
+    {
+      "time_s": 1.6000000000000012,
+      "free_angle_rad": 0.45886832825659213,
+      "controlled_angle_rad": 0.0086899385582931,
+      "controlled_torque_nm": 0.06082013850492853
+    },
+    {
+      "time_s": 1.6500000000000012,
+      "free_angle_rad": 0.4470875565805902,
+      "controlled_angle_rad": 0.004574806418701703,
+      "controlled_torque_nm": 0.06355127420035868
+    },
+    {
+      "time_s": 1.7000000000000013,
+      "free_angle_rad": 0.41825756411327236,
+      "controlled_angle_rad": 0.0010331775889656884,
+      "controlled_torque_nm": 0.06159448107951637
+    },
+    {
+      "time_s": 1.7500000000000013,
+      "free_angle_rad": 0.3737898981161343,
+      "controlled_angle_rad": -0.0018270196196462113,
+      "controlled_torque_nm": 0.05606675949915236
+    },
+    {
+      "time_s": 1.8000000000000014,
+      "free_angle_rad": 0.31566061342865426,
+      "controlled_angle_rad": -0.003964738763217204,
+      "controlled_torque_nm": 0.048080135160611555
+    },
+    {
+      "time_s": 1.8500000000000014,
+      "free_angle_rad": 0.24635058178688873,
+      "controlled_angle_rad": -0.005394340680515796,
+      "controlled_torque_nm": 0.03867075499621121
+    },
+    {
+      "time_s": 1.9000000000000015,
+      "free_angle_rad": 0.16876195574838843,
+      "controlled_angle_rad": -0.006172958228836459,
+      "controlled_torque_nm": 0.028747881707746538
+    },
+    {
+      "time_s": 1.9500000000000015,
+      "free_angle_rad": 0.08610689208536838,
+      "controlled_angle_rad": -0.006387763492973858,
+      "controlled_torque_nm": 0.019061881816733316
+    },
+    {
+      "time_s": 2.0000000000000013,
+      "free_angle_rad": 0.0017703793803130873,
+      "controlled_angle_rad": -0.0061439820859704,
+      "controlled_torque_nm": 0.010189260743542683
+    },
+    {
+      "time_s": 2.049999999999996,
+      "free_angle_rad": -0.08084438525081682,
+      "controlled_angle_rad": -0.005554272121874866,
+      "controlled_torque_nm": 0.002532106990226964
+    },
+    {
+      "time_s": 2.0999999999999903,
+      "free_angle_rad": -0.15847449688085793,
+      "controlled_angle_rad": -0.004729866517624225,
+      "controlled_torque_nm": -0.003671065307053592
+    },
+    {
+      "time_s": 2.149999999999985,
+      "free_angle_rad": -0.22814441733788515,
+      "controlled_angle_rad": -0.003773678943296015,
+      "controlled_torque_nm": -0.008326185420025011
+    },
+    {
+      "time_s": 2.1999999999999793,
+      "free_angle_rad": -0.2872886165889219,
+      "controlled_angle_rad": -0.002775404425849992,
+      "controlled_torque_nm": -0.011459194586372207
+    },
+    {
+      "time_s": 2.249999999999974,
+      "free_angle_rad": -0.33384213410734503,
+      "controlled_angle_rad": -0.0018085100863537327,
+      "controlled_torque_nm": -0.013189013397434817
+    },
+    {
+      "time_s": 2.2999999999999683,
+      "free_angle_rad": -0.366297789386943,
+      "controlled_angle_rad": -0.000928911345704768,
+      "controlled_torque_nm": -0.013700205629909454
+    },
+    {
+      "time_s": 2.349999999999963,
+      "free_angle_rad": -0.38373400787012646,
+      "controlled_angle_rad": -0.0001750631607634765,
+      "controlled_torque_nm": -0.013217170791650095
+    },
+    {
+      "time_s": 2.3999999999999573,
+      "free_angle_rad": -0.38581992866444004,
+      "controlled_angle_rad": 0.0004308385495706374,
+      "controlled_torque_nm": -0.011981211949214466
+    },
+    {
+      "time_s": 2.4499999999999518,
+      "free_angle_rad": -0.37280433422134984,
+      "controlled_angle_rad": 0.000880857551060071,
+      "controlled_torque_nm": -0.010231355003345488
+    },
+    {
+      "time_s": 2.4999999999999463,
+      "free_angle_rad": -0.3454926483650106,
+      "controlled_angle_rad": 0.00117881792921985,
+      "controlled_torque_nm": -0.00818936773923614
+    },
+    {
+      "time_s": 2.5499999999999408,
+      "free_angle_rad": -0.30521297756933174,
+      "controlled_angle_rad": 0.0013375720354722044,
+      "controlled_torque_nm": -0.006049060482176684
+    },
+    {
+      "time_s": 2.5999999999999353,
+      "free_angle_rad": -0.25376922166796834,
+      "controlled_angle_rad": 0.0013762616401828249,
+      "controlled_torque_nm": -0.003969655853313705
+    },
+    {
+      "time_s": 2.6499999999999297,
+      "free_angle_rad": -0.19337774259375823,
+      "controlled_angle_rad": 0.0013177508989029602,
+      "controlled_torque_nm": -0.002072796763860116
+    },
+    {
+      "time_s": 2.6999999999999242,
+      "free_angle_rad": -0.12658458669615438,
+      "controlled_angle_rad": 0.0011863608860718752,
+      "controlled_torque_nm": -0.000442617473122988
+    },
+    {
+      "time_s": 2.7499999999999187,
+      "free_angle_rad": -0.05616280294263923,
+      "controlled_angle_rad": 0.0010059885272952164,
+      "controlled_torque_nm": 0.000871774063340052
+    },
+    {
+      "time_s": 2.7999999999999132,
+      "free_angle_rad": 0.01500672350239347,
+      "controlled_angle_rad": 0.0007986503950494784,
+      "controlled_torque_nm": 0.0018520725837132264
+    },
+    {
+      "time_s": 2.8499999999999077,
+      "free_angle_rad": 0.08406355199389243,
+      "controlled_angle_rad": 0.0005834558006050755,
+      "controlled_torque_nm": 0.0025054517410494576
+    },
+    {
+      "time_s": 2.899999999999902,
+      "free_angle_rad": 0.1482950701457804,
+      "controlled_angle_rad": 0.0003759849090950565,
+      "controlled_torque_nm": 0.0028587169653804772
+    },
+    {
+      "time_s": 2.9499999999998967,
+      "free_angle_rad": 0.20525259536826032,
+      "controlled_angle_rad": 0.00018802653367162338,
+      "controlled_torque_nm": 0.002952423768129424
+    },
+    {
+      "time_s": 2.999999999999891,
+      "free_angle_rad": 0.252847819175462,
+      "controlled_angle_rad": 2.7616578433310095e-05,
+      "controlled_torque_nm": 0.0028353492575960942
+    }
+  ],
+  "scope": "Original fixed-pivot torque-actuated pendulum, local PD balance only; no cart, swing-up, learned policy or real hardware."
+}

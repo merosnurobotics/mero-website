@@ -27,6 +27,20 @@ function renderStrong(html) {
     return rawDepth ? token : token.replace(/\*\*([^*\n]+)\*\*/g, "<strong>$1</strong>");
   });
 }
+// Keep the skill's image placement, but serve animations separately and respect reduced motion.
+const animatedAssets = await Promise.all(["pendulum", "inverted-pendulum"].map(async name => ({
+  embedded: `data:image/gif;base64,${(await readFile(resolve(`private/education-assets/simulation/${name}.gif`))).toString("base64")}`,
+  gif: `/education-assets/simulation/${name}.gif`,
+  still: `/education-assets/simulation/${name}-at-1.0s.png`,
+})));
+function adaptAnimations(html) {
+  for (const asset of animatedAssets) {
+    html = html.replaceAll(`src="${asset.embedded}"`, `src="${asset.gif}"`);
+    html = html.replace(/<img\b[^>]*>/g, tag => tag.includes(`src="${asset.gif}"`)
+      ? `<picture><source media="(prefers-reduced-motion: reduce)" srcset="${asset.still}">${tag}</picture>` : tag);
+  }
+  return html;
+}
 let sharedStyle;
 for (const lesson of [...deepMLLessons, ...simulationLessons]) {
   const draft = resolve(`content/education/${simulationLessons.some(item => item.slug === lesson.slug) ? "simulation" : "deepml"}/${lesson.slug}.md`);
@@ -62,7 +76,7 @@ for (const lesson of [...deepMLLessons, ...simulationLessons]) {
       const mobileUnique = mobile.replaceAll(/am(\d+)-/g, "am-mobile$1-");
       return desktop.replace('class="am-diagram', 'class="am-diagram am-flow-desktop') + mobileUnique.replace('class="am-diagram', 'class="am-diagram am-flow-mobile');
     });
-    const content = renderStrong(responsiveBody.replace(/<button\b[\s\S]*?<\/button>/g, ""));
+    const content = adaptAnimations(renderStrong(responsiveBody.replace(/<button\b[\s\S]*?<\/button>/g, "")));
     if (/<script\b|<iframe\b|\bon\w+=/i.test(content)) throw new Error("Unexpected executable content");
     return { id: lesson.chapters[index].id, title, html: content };
   });

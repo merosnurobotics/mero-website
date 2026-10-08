@@ -1,7 +1,7 @@
 export const simulationPath = "/education/simulation";
 export const simulationLessons = [
  {slug:"robot-models",shortTitle:"로봇의 몸을 모델로 표현하기",title:"로봇의 몸을 모델로 표현하기",label:"몸체 · 관절 · 좌표 · 구동기",description:"로봇의 외형과 물리 모델을 구분하고, 관절 상태와 구동기 명령의 의미를 읽습니다.",chapters:[{id:"bodies",label:"몸체와 관절"},{id:"frames",label:"좌표와 관절축"},{id:"kinematics",label:"순기구학과 역기구학"},{id:"physics",label:"형상·질량·관성"},{id:"commands",label:"관절 상태와 명령"}]},
- {slug:"mujoco-first-run",shortTitle:"MuJoCo로 움직임 계산하기",title:"MuJoCo로 명령과 움직임 연결하기",label:"MjModel · MjData · 제어 주기",description:"한 관절 진자를 실제로 실행한 이미지와 그래프로 물리 계산·제어·화면 표시의 관계를 살펴봅니다.",chapters:[{id:"engine",label:"계산과 화면"},{id:"model-data",label:"모델과 실행 상태"},{id:"pendulum",label:"진자 실행 코드"},{id:"timing",label:"제어 주기와 결과"}]},
+ {slug:"mujoco-first-run",shortTitle:"MuJoCo로 움직임 계산하기",title:"MuJoCo로 명령과 움직임 연결하기",label:"MjModel · MjData · 제어 주기",description:"정진자·역진자의 실제 MuJoCo GIF를 비교하며 물리 계산과 PD 제어, 화면 표시의 관계를 살펴봅니다.",chapters:[{id:"engine",label:"계산과 화면"},{id:"model-data",label:"모델과 실행 상태"},{id:"pendulum",label:"정진자의 PD 제어"},{id:"inverted",label:"역진자 균형 유지"},{id:"timing",label:"제어 주기와 결과"}]},
  {slug:"rl-environments",shortTitle:"강화학습 환경의 입출력",title:"강화학습 환경의 입출력 읽기",label:"Gymnasium · reset · step · 종료",description:"물리 엔진 위에 관측·행동·보상·종료를 정의하고 Kimodo 학습 환경의 계약으로 이어갑니다.",chapters:[{id:"environment",label:"물리 엔진과 환경"},{id:"api",label:"reset과 step"},{id:"termination",label:"종료와 평가"},{id:"kimodo",label:"Kimodo로 연결"}]},
 ].map(lesson=>({...lesson,path:`${simulationPath}/${lesson.slug}`,author:undefined}));
 export const simulationTopic = {title:"로보틱스 · MuJoCo",path:simulationPath,description:"로봇의 몸체와 관절을 모델로 표현하고, MuJoCo의 물리 계산을 강화학습 환경에 연결합니다. ROS·MuJoCo·Gymnasium 공식 문서를 바탕으로 한 입문 자료입니다.",lessons:simulationLessons};

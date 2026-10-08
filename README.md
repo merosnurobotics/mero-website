@@ -142,6 +142,7 @@ source /opt/ros/humble/setup.bash
 npm run education:deepml
 /home/user/microbanRL/.venv/bin/python scripts/run-deepml-example.py
 MUJOCO_GL=egl /home/user/microbanRL/.venv/bin/python scripts/run-mujoco-intro.py
+MUJOCO_GL=egl /home/user/microbanRL/.venv/bin/python scripts/render-pendulum-examples.py
 .local/manim-venv/bin/python scripts/run-robot-kinematics.py
 .local/manim-venv/bin/manim -qm --renderer=cairo --media_dir .local/manim-render scripts/render-neural-network.py LearningNetwork
 ```
@@ -151,3 +152,5 @@ MUJOCO_GL=egl /home/user/microbanRL/.venv/bin/python scripts/run-mujoco-intro.py
 원문 선정·재사용 범위는 `content/education/SOURCES.md`, 각 라이선스와 원문 커밋은 `src/lib/education/generated/source-notices.json`에 보존합니다. Modern Robotics의 교재 개념은 자체 예제로 설명하고, MIT인 동반 코드의 `FKinSpace`를 실행합니다. 교재 본문·그림의 재배포 허가와 코드 라이선스를 혼동하지 않습니다.
 
 검증: `MERO_EDUCATION_TEST_URL=http://localhost:3100 npx playwright test tests/education.spec.ts tests/education-foundations.spec.ts`.
+
+MuJoCo 자료의 정진자·역진자 GIF는 실제 물리 상태를 20fps로 렌더링합니다. 정진자는 3초, 역진자는 6초이며, 제어 없음과 PD 제어를 같은 초기 조건에서 비교합니다. 역진자는 고정 관절의 위쪽 균형 유지 예제로 2초에 외부 토크를 가합니다. XML·실행 수치·해시는 `private/education-assets/simulation/*-demo*`에 보관합니다. 움직임 줄이기 설정에서는 정적 PNG로 바뀝니다.
