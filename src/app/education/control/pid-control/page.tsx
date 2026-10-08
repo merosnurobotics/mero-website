@@ -8,7 +8,7 @@ import { CodeExample } from "@/components/education/code-example";
 export const metadata: Metadata = {title:"그림으로 이해하는 PID 제어"};
 const a="/education-assets/control";
 const commons=(name:string)=>`https://commons.wikimedia.org/wiki/File:${name}`;
-export default function PIDLesson() { return <Lesson topic="제어" topicPath="/education/control" path="/education/control/pid-control" title="그림으로 이해하는 PID 제어" intro="바퀴에 짐을 올렸더니 속도가 느려졌습니다. 실제 속도를 재고 출력을 고치면 목표 속도를 유지할 수 있습니다. 이 원리를 P·I·D와 두 가지 로봇 사례로 익힙니다." repo="meroedu-control">
+export default function PIDLesson() { return <Lesson topic="제어" topicPath="/education/control" path="/education/control/pid-control" title="그림으로 이해하는 PID 제어" intro="바퀴에 짐을 올렸더니 속도가 느려졌습니다. 실제 속도를 재고 출력을 고치면 목표 속도를 유지할 수 있습니다. P·I·D 응답을 읽고, 춤·점프·조작에서 관절 목표·토크·궤적 추종이 어떻게 연결되는지 익힙니다." repo="meroedu-control">
   <Chapter id="feedback" title="1. 목표대로 움직이려면 결과를 다시 본다">
     <p>모터에 같은 출력을 줘도 바퀴 속도는 달라집니다. 배터리 상태, 바닥 마찰, 실린 짐이 영향을 주기 때문입니다. 그래서 회전량을 재는 센서인 <strong>엔코더</strong>로 실제 속도를 확인합니다.</p>
     <p>명령만 보내는 방식을 개루프 제어라고 합니다. 측정한 결과를 목표와 비교해 명령을 고치는 방식은 폐루프 제어입니다. 이렇게 결과를 다시 입력으로 돌려주는 것이 <strong>피드백</strong>입니다.</p>
@@ -53,5 +53,8 @@ export default function PIDLesson() { return <Lesson topic="제어" topicPath="/
     <p>필요한 함수만 정리한 <a href="https://github.com/merosnurobotics/meroedu-control/tree/main/lessons/01-pid">교육용 코드</a>에서 엔코더 속도 변환과 PID 계산을 확인할 수 있습니다. 엔코더의 회전당 tick 수, 드라이버 출력 범위, 내 로봇의 목표·측정·출력을 정해 연결하세요.</p>
   </Chapter>
   <FoundationChapter id="pid-response"/>
+  <FoundationChapter id="joint-control"/>
+  <FoundationChapter id="trajectory-control"/>
+  <FoundationChapter id="contact-control"/>
   <footer className="education-sources"><h2>참고 자료와 실습 코드</h2><p><a href="https://en.wikipedia.org/wiki/PID_controller">Wikipedia · PID controller</a> · <a href="https://github.com/merosnurobotics/meroedu-control/tree/main/lessons/01-pid">PID 계산과 활용 예시 코드</a></p><p>활용 예시는 적용할 값과 피드백 구조를 이해하는 데 집중합니다. <a href={`${a}/NOTICE.md`}>이미지 출처·라이선스</a> · <a href="https://github.com/merosnurobotics/meroedu-control/blob/main/UPSTREAM.md">코드 출처·라이선스 기록</a></p></footer>
 </Lesson>; }

@@ -63,7 +63,7 @@ export const educationLearningPaths = [
   {path:`${remoteWorkLessonPath}#system`,label:"센서 · 추정 · 계획 · 제어의 역할"},
   {path:`${rosBasicsPath}#units`,label:"단위 · 시간 · 좌표계"},
   {path:`${deepMLLessons[0].path}#arrays`,label:"배열 · 관측의 순서와 모양"},
-  {path:pidLessonPath,label:"피드백 · P·PI·PID 응답"},
+  {path:pidLessonPath,label:"피드백 · PID · 관절 PD · 궤적 추종"},
  ]},
  {title:"휴머노이드 동작 이해",description:"춤은 시간에 따른 모션과 접촉을, 포복은 여러 부위의 허용 접촉과 몸 높이를 이해해야 합니다. 교육에서 움직임의 의미를 익히고 실제 정책·장애물 과제는 프로젝트에서 만듭니다.",steps:[
   {path:simulationLessons[0].path,label:"관절 · 2링크 기구학 · 접촉과 구동기 한계"},

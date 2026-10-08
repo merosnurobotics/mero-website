@@ -132,3 +132,15 @@ test("preparation paths stay collapsed and the small environment separates task 
   await page.setViewportSize({width:390,height:900});
   await page.screenshot({path:'.local/qa/education/vla-mobile.png',fullPage:true});
 });
+
+
+test("joint control connects policy targets to torque and separates tracking from contact", async ({page})=>{
+  await page.goto(`${baseURL}/education/control/pid-control`);
+  await expect(page.locator('.perception-chapter')).toHaveCount(9);
+  await expect(page.locator('#joint-control')).toContainText('+0.15 N·m');
+  await expect(page.locator('#joint-control')).toContainText('+0.12 N·m');
+  await expect(page.locator('#trajectory-control')).toContainText('1.2 rad/s');
+  await expect(page.locator('#contact-control')).toContainText('임피던스');
+  await page.setViewportSize({width:320,height:900});
+  await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+});

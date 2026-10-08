@@ -4,7 +4,7 @@ test.skip(!baseURL,"Set MERO_EDUCATION_TEST_URL.");
 const membersOnly = process.env.MERO_EDUCATION_TEST_MEMBERS_ONLY === "true";
 const courses=[
   ["/education/localization/lidar","LiDAR로 시작하는 위치 추정",6],
-  ["/education/control/pid-control","그림으로 이해하는 PID 제어",6],
+  ["/education/control/pid-control","그림으로 이해하는 PID 제어",9],
   ["/education/development-setup/remote-work","원격 작업하기: ssh jetson부터 GUI까지",10],
 ] as const;
 async function login(context: import("@playwright/test").BrowserContext) {

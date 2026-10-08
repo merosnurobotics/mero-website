@@ -94,6 +94,7 @@ export const pidChapters = [
   { id: "applications", label: "PID 활용 예시" },
   { id: "tuning", label: "적용과 튜닝의 관점" },
  {id:"pid-response",label:"P·PI·PID 폐루프 비교"},
+ {id:"joint-control",label:"정책 목표와 관절 PD"},{id:"trajectory-control",label:"궤적·피드포워드"},{id:"contact-control",label:"접촉·포화·지연"},
 ];
 export const remoteWorkChapters = [
 {id:"system",label:"로봇 전체 구조"},{id:"local-python",label:"로컬 Python과 경로"},
@@ -159,8 +160,8 @@ const topics: EducationTopic[] = [
   },
   {
     title: "제어", path: controlPath,
-    description: "목표와 측정값의 차이를 줄여 로봇이 원하는 움직임을 만들도록 합니다.",
-    lessons: [{ author: yeonwooCho, path: pidLessonPath, shortTitle: "PID 제어", label: "엔코더 모터와 경로 추종", title: "그림으로 이해하는 PID 제어", description: "P·I·D의 역할을 그림으로 이해하고, 엔코더 모터와 경로 추종에 어떻게 적용할 수 있는지 살펴봅니다.", chapters: pidChapters },
+    description: "피드백 응답과 관절 PD를 익히고, 궤적·접촉·구동기 한계를 로봇 움직임에 연결합니다.",
+    lessons: [{ author: yeonwooCho, path: pidLessonPath, shortTitle: "PID 제어", label: "피드백 · 관절 PD · 궤적 · 접촉", title: "그림으로 이해하는 PID 제어", description: "P·I·D 응답을 비교하고 정책 목표·관절 PD·궤적 추종·피드포워드·접촉·출력 제한의 관계를 읽습니다.", chapters: pidChapters },
       { author: yeonwooCho, path: openrbDynamixelLessonPath, shortTitle: "OpenRB + DYNAMIXEL 기본 사용", label: "USB 연결부터 위치 피드백까지", title: "Jetson + OpenRB로 DYNAMIXEL 기본 사용하기", description: "전원·ID·baud·펌웨어를 준비하고 ROS 없이 USB 콘솔로 토크와 작은 위치 이동을 확인합니다.", chapters: openrbDynamixelChapters },
     ],
   },

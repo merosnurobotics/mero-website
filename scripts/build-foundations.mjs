@@ -21,7 +21,7 @@ let diagram=0;
 function adapt(body) {
  return body.replace(/<img data-am-src="\/home\/user\/MEROsite\/private\/education-assets\/([^"]+)" src="[^"]+"/g, '<img src="/education-assets/$1"').replace(/<figure class="am-diagram[^"]*"[\s\S]*?<\/figure>/g,desktop=>desktop.replace('class="am-diagram','class="am-diagram am-flow-desktop')+mobileFigures[diagram++][0].replaceAll(/am(\d+)-/g,'am-foundation-mobile$1-').replace('class="am-diagram','class="am-diagram am-flow-mobile')).replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>');
 }
-const ids=['system','local-python','arrays','units','frames','pid-response'];
+const ids=['system','local-python','arrays','units','frames','pid-response','joint-control','trajectory-control','contact-control'];
 const panels=[...html.matchAll(/<section class="am-panel" id="panel-[^"]+">([\s\S]*?)<\/section>/g)];
 if(panels.length!==ids.length)throw new Error('Unexpected foundations panel count');
 const generated=Object.fromEntries(panels.map((panel,i)=>[ids[i],{title:panel[1].match(/<h2>([\s\S]*?)<\/h2>/)[1],html:adapt(panel[1].match(/<div class="am-panel-body">([\s\S]*)<\/div>\s*$/)[1])}]));

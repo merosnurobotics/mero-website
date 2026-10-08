@@ -22,3 +22,5 @@
 Manim 렌더링은 사용자 규칙에 따라 영문 전용, Lato 폰트 사용. `private/education-assets/deepml/fonts/OFL.txt`에 폰트 라이선스 보존. Python 3.12.13 / Manim 0.22.0 / ManimML 0.0.24 / modern-robotics 1.1.1. ManimML의 빈 animation group과 최신 Manim의 호환성 문제는 패키지 수정 없이 실제 connective layer의 순전파 함수를 사용하여 해결.
 
 VLA/Gazebo 추가분은 공식 문서·연구 소개의 개념을 참고한 자체 설명·도식이며 외부 본문·이미지를 복제하지 않았다. VLA는 OpenVLA 연구 소개, LeRobot ACT·SmolVLA 공식 문서, Rainbow Robotics RB-Y1 SDK를 참고한다. Gazebo는 공식 ROS 호환 안내와 Harmonic 모델·센서·ROS 연결 튜토리얼을 연결한다. 원문 번역판이나 공식 인증 교육으로 표기하지 않는다. Gazebo·RB-Y1 실행 검증 없이 개념과 실행 경로만 제공한다.
+
+제어 보강은 Modern Robotics 11장의 관절 운동·힘·임피던스 제어 구분과 MuJoCo 공식 구동기 모델을 개념 참고했다. PD 토크·속도 피드포워드 수치와 관절 제어 도식은 자체 예제이다. 교재 본문·그림을 번역 복제하지 않았다. 계산용 계수를 실물 raw gain으로 그대로 사용하지 않는다.

@@ -94,7 +94,7 @@ npm run admin:create -- --email admin@mero.local --name 'MERO 운영진'
 
 교육 첫 화면(`/education`)의 23개 자료는 공통 입문 뒤 휴머노이드·사족보행·RB-Y1 VLA·ROS/Gazebo 선택 경로로 안내합니다. 경로와 분야 목록은 처음에 접혀 있습니다. 전체 일렬 순서는 참고용이며, 모든 하드웨어 실습을 선행할 필요는 없습니다. 경로·선수 자료는 `src/lib/education/curriculum.ts`에서 관리합니다.
 
-교육은 프로젝트에 투입하기 전 개념을 이해하는 단계입니다. 코드 작성·디버깅·테스트 도구를 별도 과정으로 늘리지 않습니다. 기존 자료에 좌표·시간·단위·배열·접촉·구동기 한계와 작은 계산 예제를 보강했고, VLA 및 Gazebo 개념 입문을 추가했습니다. 다음 집필 주제와 프로젝트로 남길 작업은 [교육 확장안](content/education/ROADMAP.md)에 정리했습니다. 활동·과제·진도·수료 기능은 두지 않습니다.
+교육은 프로젝트에 투입하기 전 개념을 이해하는 단계입니다. 코드 작성·디버깅·테스트 도구를 별도 과정으로 늘리지 않습니다. 기존 자료에 좌표·시간·단위·배열·관절 PD·궤적 추종·접촉·구동기 한계와 작은 계산 예제를 보강했고, VLA 및 Gazebo 개념 입문을 추가했습니다. 다음 집필 주제와 프로젝트로 남길 작업은 [교육 확장안](content/education/ROADMAP.md)에 정리했습니다. 활동·과제·진도·수료 기능은 두지 않습니다.
 
 PID·객체인식·강화학습 본문의 개념도는 [Answer me with HTML](https://github.com/QingYunA/answer-me-with-html) 스킬의 CLI로 생성합니다. 원고는 `content/education/diagrams.md`이며, 2026-10-08 작업에서는 0.4.14를 사용했습니다.
 
