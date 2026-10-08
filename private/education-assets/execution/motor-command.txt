@@ -1,0 +1,5 @@
+Script started on 2026-10-08 18:00:39+09:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="100" LINES="12"]
+data: m 0.03000 0.00000 0.00000
+---
+
+Script done on 2026-10-08 18:00:40+09:00 [COMMAND_EXIT_CODE="0"]

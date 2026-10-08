@@ -1,0 +1,37 @@
+[
+  {
+    "input": "PING",
+    "state": "ACCEPT",
+    "result": "'PING\\n'"
+  },
+  {
+    "input": "INIT",
+    "state": "ACCEPT",
+    "result": "'INIT\\n'"
+  },
+  {
+    "input": "STATUS?",
+    "state": "ACCEPT",
+    "result": "'STATUS?\\n'"
+  },
+  {
+    "input": "MOVE_DELTA 32",
+    "state": "ACCEPT",
+    "result": "'MOVE_DELTA 32\\n'"
+  },
+  {
+    "input": "MOVE_DELTA 65",
+    "state": "REJECT",
+    "result": "Unsupported command or delta outside +/-64 ticks"
+  },
+  {
+    "input": "MOVE_DELTA 32\nSTOP",
+    "state": "REJECT",
+    "result": "One command per message"
+  },
+  {
+    "input": "STOP",
+    "state": "ACCEPT",
+    "result": "'STOP\\n'"
+  }
+]

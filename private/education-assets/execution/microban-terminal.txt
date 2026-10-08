@@ -1,0 +1,13 @@
+Script started on 2026-10-08 17:58:22+09:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="100" LINES="19"]
+Native MuJoCo 3.8.1 | CPU physics | one initial state
+Saved PPO policy: 400 updates; no retraining in this run
+seed=75501, duration=18 s, policy=50 Hz, external force=0 N
+
+t= 0.02s  right clearance= -0.37 mm  tilt= 0.12 deg  support=False
+t= 4.50s  right clearance= 19.27 mm  tilt= 8.36 deg  support=True
+t=13.50s  right clearance= 19.04 mm  tilt= 8.30 deg  support=True
+
+Continuous rollout: 900 steps; recorded in microban-trace.json
+PNG saved: microban-trace.png
+
+Script done on 2026-10-08 17:58:26+09:00 [COMMAND_EXIT_CODE="0"]

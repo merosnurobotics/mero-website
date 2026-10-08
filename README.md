@@ -2,32 +2,6 @@
 
 서울대학교 로봇 동아리 MERO 소개 및 회원·로봇 관리 사이트. Next.js App Router, React, TypeScript, Radix Themes, Node SQLite로 구성했습니다.
 
-## GitHub / Vercel 이식
-
-기존 `merosnurobotics/mero-website`의 가상 콘텐츠를 제거하고 실제 MERO 사이트를 이식했습니다. 기존 GitHub–Vercel 프로젝트 연결을 그대로 사용합니다. `vercel.json`은 Next.js 빌드와 출력 경로를 명시하고 Node.js는 `24.x`로 고정합니다. 운영 브랜치는 변경하지 않았습니다.
-
-Vercel Storage에서 Neon을 `mero-website`의 Preview / Production 환경에 연결하면 제공되는 `DATABASE_URL` 또는 `POSTGRES_URL`을 자동으로 사용합니다. 연결 문자열은 서버 전용 환경 변수이며 저장소나 클라이언트 코드에 넣지 않습니다. 환경 변수 추가 후에는 새 배포가 필요합니다.
-
-PostgreSQL 테이블과 실제 로봇 초기 자료는 최초 DB 요청에서 트랜잭션으로 생성합니다. 기존 회원이나 수정된 로봇은 덮어쓰지 않습니다. 초기 관리자 계정은 자동으로 만들지 않습니다. DB가 연결되지 않은 Vercel 환경에서는 공개 정보와 QR을 계속 제공하고 회원 API는 503 준비 안내를 반환합니다.
-
-`/api/health`를 열면 연결 성공 시 `{"status":"ready","database":"postgresql"}`을 반환합니다. DB가 미설정이면 503, 설정은 있지만 접속/스키마 생성에 실패하면 500입니다. 연결 문자열이나 계정 정보는 응답에 포함하지 않습니다.
-
-초기 관리자 생성은 Vercel CLI로 서버 환경 변수를 로컬 비공개 파일에 받은 뒤 실행할 수 있습니다. Vercel 로그인과 프로젝트 접근 권한이 필요합니다.
-
-```sh
-npx vercel link --scope mero15 --project mero-website
-npx vercel env pull .env.local --environment=preview --git-branch=feat/migrate-real-mero-site
-node --env-file=.env.local --import tsx scripts/create-admin.ts --email 실제운영진이메일 --name 'MERO 운영진'
-```
-
-초기 비밀번호는 `.local/admin-credentials.txt`에만 기록됩니다. 이미 가입된 계정은 이 명령이 권한을 바꾸지 않으므로, 기존 회원을 첫 운영진으로 지정하려면 Neon SQL Editor에서 해당 계정을 명시적으로 변경해야 합니다. 일반 회원의 가입으로 관리자 권한이 생기지 않습니다.
-
-영구 저장소가 있는 로컬 Node 서버에서는 DB URL을 설정하지 않을 때 기존 SQLite 기능을 유지합니다. 실제 로컬 회원 DB, 계정 정보, `.env.local`, `.local` 자료는 이식하지 않았습니다. QA 데이터 생성 명령은 DB URL이 있으면 실행을 거부합니다.
-
-Vercel Preview에서 `NEXT_PUBLIC_SITE_URL`은 비워 두면 배포 주소를 사용합니다. 운영 주소 확정 후 HTTPS 주소로 설정하고 `COOKIE_SECURE=true`를 사용하세요. 실제 장비 접속 정보는 관리자가 등록해야 합니다.
-
-Vercel 프로젝트 설정에 별도의 Root Directory / Build Command / Ignored Build Step이 지정되어 있다면 대시보드에서 확인해야 합니다. 기존 성공 배포와 이번 Preview 성공 배포로 GitHub 연동을 확인했습니다.
-
 ## HTML 파일로 초안 공유
 
 `output/MERO-preview.html` 하나만 전달하면 됩니다. 사진·로고·글꼴·스타일·브라우저 코드가 모두 들어 있어 서버 없이 브라우저에서 열 수 있습니다. 홈부터 프로젝트·활동 상세, 회원·관리자 화면까지 19개 화면을 담았습니다. 상단의 페이지 선택과 방문자·회원·관리자 체험 버튼으로 이동할 수 있습니다.
@@ -43,7 +17,7 @@ npm run test:e2e -- tests/offline-preview.spec.ts
 
 ## 실행
 
-Node.js 24 이상이 필요합니다. 로컬 SQLite를 사용할 때는 영구 저장이 가능한 파일시스템이 필요하며, DB URL이 설정되어 있으면 PostgreSQL을 사용합니다.
+Node.js 24 이상과 영구 저장이 가능한 파일시스템이 필요합니다.
 
 ```sh
 npm install
@@ -83,13 +57,6 @@ npm run test:e2e:live
 
 프로덕션 파일 목록에서 회원 DB·로컬 관리자 정보·환경 파일을 제외했습니다. 실제 운영 DB는 서버의 영구 저장 영역에 따로 보관해야 합니다.
 
-PostgreSQL 회귀 테스트는 비운영 로컬 DB에서만 실행합니다. 테스트는 `127.0.0.1`의 이름이 `mero_test`로 시작하는 DB만 허용합니다. 새 빈 DB를 사용하세요.
-
-```sh
-MERO_TEST_DATABASE_URL=postgresql://테스트계정:테스트암호@127.0.0.1:5432/mero_test_access \
-VERCEL=1 npx tsx --test tests/access.test.ts
-```
-
 ## 관리자
 
 ```sh
@@ -102,7 +69,7 @@ npm run admin:create -- --email admin@mero.local --name 'MERO 운영진'
 
 관리자는 로봇의 설명, 제작자, 기간, SSH 정보, 제어 명령과 설명서를 편집할 수 있습니다. 초기 장비의 실제 IP·사용자·실행 명령은 비워 두었습니다. QR 주소는 `/robots/로봇ID`이고 ID는 변경할 수 없습니다.
 
-운영 도메인을 정한 후 `NEXT_PUBLIC_SITE_URL`을 지정하고 HTTPS 환경에서는 `COOKIE_SECURE=true`를 사용하세요. 로봇 QR에 localhost를 사용하면 다른 기기에서 접속할 수 없습니다. 회원·세션·로봇 데이터는 DB URL이 설정된 환경에서는 PostgreSQL에, 그 외 로컬 환경에서는 `data/mero.sqlite`에 저장됩니다. 이 사이트는 정적 HTML 배포용이 아닙니다.
+운영 도메인을 정한 후 `NEXT_PUBLIC_SITE_URL`을 지정하고 HTTPS 환경에서는 `COOKIE_SECURE=true`를 사용하세요. 로봇 QR에 localhost를 사용하면 다른 기기에서 접속할 수 없습니다. 회원·세션·로봇 데이터는 `data/mero.sqlite`에 저장됩니다. 이 사이트는 정적 HTML 배포용이 아닙니다.
 
 ## 디자인과 자료
 
@@ -123,7 +90,34 @@ npm run admin:create -- --email admin@mero.local --name 'MERO 운영진'
 
 작업 기록과 남은 준비 사항은 [WORK_STATUS.md](WORK_STATUS.md)에 기록했습니다.
 
+## 교육 자료
 
+교육 첫 화면(`/education`)에서 기존 자료와 입문 보충 자료를 연결한 21개 자료를 읽는 순서대로 안내합니다. 목록은 처음에 접혀 있습니다. **개발 환경 → 피드백 제어와 모터 → ROS → DeepML 기초 → 객체인식 → 위치 추정 → 로봇 모델·MuJoCo → 강화학습 기초·환경 → Kimodo 응용** 순서이며, ROS로 위치를 발행하는 자료는 LiDAR 개념 다음에 읽습니다. 순서와 자료 사이의 연결 설명은 `src/lib/education/curriculum.ts`에서 관리합니다. 각 자료 아래에는 이전·다음 자료 링크가 있습니다.
+
+신경망·가중치·손실·학습·추론은 기존 객체인식 본문에서, 관측·행동·보상·정책·에피소드는 기존 모방 강화학습 본문에서 설명합니다. 별도 입문 과정이나 활동·과제·진도·수료 기능은 두지 않습니다.
+
+PID·객체인식·강화학습 본문의 개념도는 [Answer me with HTML](https://github.com/QingYunA/answer-me-with-html) 스킬의 CLI로 생성합니다. 원고는 `content/education/diagrams.md`이며, 2026-10-08 작업에서는 0.4.14를 사용했습니다.
+
+```bash
+# ~/.codex/skills/answer-me-with-html에 설치한 스킬 사용
+npm run education:build
+# 다른 설치 위치를 사용한다면
+ANSWER_HTML_SKILL_DIR=/path/to/answer-me-with-html npm run education:build
+```
+
+생성한 그림은 `src/lib/education/generated/diagrams.json`, 범위를 제한한 스타일은 `src/app/education/diagrams.generated.css`에 저장합니다. `.local/education-diagrams.html`은 제작용 중간 파일이며 별도 교육 페이지로 제공하지 않습니다. 생성물을 함께 유지하므로 일반 `npm run build`에는 스킬 설치가 필요하지 않습니다. 공개/회원 전용 설정은 기존 `EDUCATION_MEMBERS_ONLY`를 따릅니다.
+
+기존 13개 자료에는 실제 실행으로 얻은 PNG 29개를 본문에 첨부했습니다. 터미널은 Xterm, ROS 화면은 RViz에서 직접 캡처했으며, 그래프는 실행이 저장한 수치로 그렸습니다. 원본 PNG·출력 로그·CSV/JSON·RViz 설정은 `private/education-assets/execution/`, 일괄 다운로드는 `private/education-assets/execution-captures.zip`에 있습니다. 모든 자료는 기존 교육 자료 접근 설정을 따르는 `/education-assets/` 경로로 제공합니다. 이미지 목록과 크기는 `src/lib/education/execution-results.json`, 실행 명령·원본 코드 해시·PNG 해시는 `execution/manifest.json`에 기록합니다.
+
+다시 캡처하려면 이 작업에서 사용한 ROS 2 Humble, `/home/user/MERO-education`의 실습 저장소, `/home/user/microbanRL`의 Python 환경과 저장 정책이 필요합니다. 객체인식은 이미 학습된 가중치로 실사진 4장에 추론을 실행합니다. 캡처 스크립트의 로컬 경로는 실행 환경에 맞게 조정하세요. Xvfb·Xterm·libutempter는 `.local/capture-tools/root/usr`, 추론용 추가 패키지는 `.local/inference-deps`를 사용합니다.
+
+```bash
+source /opt/ros/humble/setup.bash
+/usr/bin/python3 scripts/capture-education-results.py all
+# 일부만 다시 실행: all 대신 basic, ros, perception, microban
+```
+
+스크립트는 별도 X 디스플레이와 로컬 ROS 도메인 183을 사용하고, 자신이 시작한 프로세스를 종료합니다. 모터는 드라이런, LiDAR·물체 좌표 계산은 합성 입력, PID는 예제 입력 수열임을 본문 캡션에 명시했습니다. Microban은 저장 정책을 Native MuJoCo에서 18초간 재실행한 결과이며, 새로 학습한 결과가 아닙니다. 수치 계산과 PNG 렌더링은 `scripts/capture-education-data.py`가 담당합니다. ZIP은 캡처 당시의 묶음이므로 다시 캡처했다면 함께 갱신해야 합니다.
 
 `/education` → `/education/reinforcement-learning` → `/education/reinforcement-learning/kimodo-mjwarp` 순서로 교육 목록, 강화학습 시리즈, 첫 번째 강의에 접근합니다. 왼쪽 자료 목록은 주제와 강의별로 펼칠 수 있으며 모바일에서는 상단 버튼으로 목록 전체를 여닫습니다.
 
@@ -138,3 +132,22 @@ npm run admin:create -- --email admin@mero.local --name 'MERO 운영진'
 실습 저장소는 [meroedu-rl](https://github.com/merosnurobotics/meroedu-rl), [meroedu-detection](https://github.com/merosnurobotics/meroedu-detection)입니다. 루트는 시리즈 목차, `lessons/01-.../`은 독립된 환경·실행 코드·최소 입력입니다. 영상과 과거 실험 결과는 교육 사이트에 남깁니다.
 
 객체인식 원본은 YenCho/ddonggae의 `d85758c`입니다. `scripts/import-perception-education.py`로 이 버전의 문서·그림·실습 명령을 스냅샷합니다. 전체 렌더링이나 학습을 자동 실행하지 않습니다.
+
+
+### DeepML·시뮬레이션 입문 자료
+
+`content/education/deepml/`의 5개 초안 중 3개는 DeepML, 2개는 강화학습 주제에 배치합니다. `content/education/simulation/`의 3개 자료는 로봇 모델·MuJoCo·환경의 계약을 다룹니다. Kimodo는 강화학습 기초 자료와 같은 큰 주제에 둡니다. 강의 HTML은 Answer me with HTML CLI가 생성하며, 데스크톱 LR/모바일 TB 흐름도를 각각 렌더링합니다. 한국어 문장 옆에서도 강조가 실제 `<strong>`으로 표시되도록 생성 과정에서 보완합니다.
+
+```bash
+npm run education:deepml
+/home/user/microbanRL/.venv/bin/python scripts/run-deepml-example.py
+MUJOCO_GL=egl /home/user/microbanRL/.venv/bin/python scripts/run-mujoco-intro.py
+.local/manim-venv/bin/python scripts/run-robot-kinematics.py
+.local/manim-venv/bin/manim -qm --renderer=cairo --media_dir .local/manim-render scripts/render-neural-network.py LearningNetwork
+```
+
+자료 재생성에는 설치된 HTML 스킬과 `.local/research/`의 고정 버전 원문이 필요합니다. 생성된 JSON/CSS와 PNG/GIF를 함께 유지하므로 일반 사이트 빌드는 이 도구들을 실행하지 않습니다. 실제 실험 수치와 합성·설명용 데이터 범위는 `private/education-assets/deepml/results.json`, `simulation/results.json`, `simulation/kinematics-results.json`에 기록합니다. Manim/ManimML 자산 내부 텍스트는 영문 전용이며 Lato 폰트를 직접 등록합니다. 영상은 `.local/manim-render/videos/render-neural-network/720p30/LearningNetwork.mp4`에서 `private/education-assets/deepml/neural-network.mp4`로 복사하고, ffmpeg로 0.5초 프레임을 `neural-network.png`에 저장합니다. 웹에는 10 fps·960px·96색 팔레트로 압축한 `neural-network.gif`를 첨부하며, 재생 조작이 필요 없는 짧은 설명은 GIF를 우선합니다. 이후 `npm run education:deepml`을 실행합니다.
+
+원문 선정·재사용 범위는 `content/education/SOURCES.md`, 각 라이선스와 원문 커밋은 `src/lib/education/generated/source-notices.json`에 보존합니다. Modern Robotics의 교재 개념은 자체 예제로 설명하고, MIT인 동반 코드의 `FKinSpace`를 실행합니다. 교재 본문·그림의 재배포 허가와 코드 라이선스를 혼동하지 않습니다.
+
+검증: `MERO_EDUCATION_TEST_URL=http://localhost:3100 npx playwright test tests/education.spec.ts tests/education-foundations.spec.ts`.

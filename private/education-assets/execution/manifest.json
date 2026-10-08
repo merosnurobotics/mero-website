@@ -1,0 +1,309 @@
+{
+  "capturedAt": "2026-10-08T09:03:41.681525+00:00",
+  "rosDistro": "humble",
+  "rosDomainId": 183,
+  "display": "isolated Xvfb session",
+  "hardware": "not connected",
+  "sourceSha256": {
+    "/home/user/MEROsite/scripts/capture-education-data.py": "7792b32c91094088564bb451fbded6ec7951b654477bd3cab4b22823eb66e77e",
+    "/home/user/MEROsite/scripts/capture-education-results.py": "a3811c606061a8cbb2cd2dff93b622840cd8042fbda4055e4450a516d061392d",
+    "/home/user/microbanRL/src/microban_rl/one_leg.py": "b9b2f95adae88fea16dcf9f9c46cb70c221dd23fae6231e1e577030d3a87fe9e",
+    "/home/user/MERO-education/meroedu-control/lessons/04-ros2-dynamixel/bridge_node.py": "6c558104f3de3396ef09752b0e04ef2257f492783e1393f57daf15f8dda6c6a5",
+    "/home/user/MERO-education/meroedu-control/lessons/04-ros2-dynamixel/test_bridge_ros2.py": "290acb68b1f1a0fc2b445c94926ac126b651d587b35cdbf9e777445180f2c234",
+    "/home/user/MERO-education/meroedu-control/lessons/01-pid/pid.py": "d5da048109def7fd5edb32cefc7a863150cf990dcf543f6e6def4bf8a66f6847",
+    "/home/user/MERO-education/meroedu-control/lessons/03-openrb-dynamixel/test_protocol.py": "5c808267c1cfd13dd5335b03e5726bc9e9053e0efe91bf586197b65b5db8c233",
+    "/home/user/MERO-education/meroedu-control/lessons/03-openrb-dynamixel/serial_console.py": "09c59b7043bb2bc7790b4e4d405a00371f09e2758e9b9490bd41658c784be345",
+    "/home/user/MERO-education/meroedu-control/lessons/03-openrb-dynamixel/protocol.py": "8b205ffc8141dbe9b1b1142f8718da168cdfe4d99630fdc69bde50b5b57804e9",
+    "/home/user/MERO-education/meroedu-control/lessons/02-ros-arduino-motor/test_protocol.py": "76ed2b1378aee41c29913a4d742a47f057ee58e7b80742976df27b14b1c4b3b0",
+    "/home/user/MERO-education/meroedu-control/lessons/02-ros-arduino-motor/bridge_node.py": "d36dfa1230e3dc07fc299c7d86a7fca11bf73686f705a0f50f68431a730ce5d3",
+    "/home/user/MERO-education/meroedu-control/lessons/02-ros-arduino-motor/test_bridge_ros2.py": "865ccd4bc25edff92022584002f8495cfa1f60e036b880832680e3b7c86bb840",
+    "/home/user/MERO-education/meroedu-control/lessons/02-ros-arduino-motor/protocol.py": "e81c04bf2d78352102da10d997bd0639d76c0af3fcb4ea20a88f0eb39e1963dc",
+    "/home/user/MERO-education/meroedu-setup/lessons/01-remote-work/check_config.py": "652dfa8391fd70af64177d330bb529c05f8757d41800bc3bac195ba2ec325559",
+    "/home/user/MERO-education/meroedu-localization/lessons/03-object-localization/demo.py": "563dbcfa7132860d91872c2aa8f6f6df62f62c5e2c82135d7055634ef06d8a99",
+    "/home/user/MERO-education/meroedu-localization/lessons/03-object-localization/test_geometry.py": "7e047e403b21acf824691a244170a10433d8fb9af10c644a9785ac27794a7294",
+    "/home/user/MERO-education/meroedu-localization/lessons/03-object-localization/object_localizer.py": "e17b3be877cc0abae88888db1f2d12c530c8a3d68834513789ee4180b9bccc58",
+    "/home/user/MERO-education/meroedu-localization/lessons/02-ros2-topics/test_ros2.py": "a9d32ddfc5c67914ab1319842b0100163c5ce8e570c116c97e4e51b68bcdc793",
+    "/home/user/MERO-education/meroedu-localization/lessons/02-ros2-topics/demo_scan.py": "2a5f7c95112b94faa9bcf1e5fa645d2213d79db2edc684cd188447162d51a555",
+    "/home/user/MERO-education/meroedu-localization/lessons/02-ros2-topics/localization_node.py": "dab52d660727d287a476b58bb75b21985fc1f0d6ca72eccf5e6589a2858fffad",
+    "/home/user/MERO-education/meroedu-localization/lessons/01-lidar/demo.py": "531c0574ebd21f61c765a334349dc10cf9718657d01d40939fcc4cb254bfa9cf",
+    "/home/user/MERO-education/meroedu-localization/lessons/01-lidar/wall_localizer.py": "a27a08fcc476ca54c1768c9a9f97b6fefe2b646b615000587aaf9015275f6923",
+    "/home/user/MERO-education/meroedu-ros/lessons/03-bag-rviz/pose_publisher.py": "a82819a01ad62885aefd4fdc825571188a130ea5f69f1da8c9b8b58f3a024fde",
+    "/home/user/MERO-education/meroedu-detection/lessons/01-synthetic-data/scripts/predict_examples.py": "25abc709ad06145bbad63473482f4f97f75b7d99cfb97add46d2fe429d133633",
+    "/home/user/MERO-education/meroedu-ros/lessons/02-python-pubsub/ros_ws/src/meroedu_ros_basics/meroedu_ros_basics/listener.py": "89ca8aea2ef2a94e30dc45889931841e650cb93a2db7280f8beeab28ead4e8d3",
+    "/home/user/MERO-education/meroedu-ros/lessons/02-python-pubsub/ros_ws/src/meroedu_ros_basics/meroedu_ros_basics/talker.py": "8d5b4ea21366ee4e173171ac9cbe0843908b043c3ac36d671afd36b11ae7a020",
+    "/home/user/MERO-education/meroedu-ros/lessons/02-python-pubsub/ros_ws/src/meroedu_ros_basics/meroedu_ros_basics/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "results": {
+    "ssh-config": {
+      "image": "ssh-config.png",
+      "width": 1336,
+      "height": 316,
+      "sha256": "ab8773db047d69d799c204b20b3cb9ec91e81e7d3fb205880d2bfd9b656eb3d1",
+      "kind": "terminal screenshot",
+      "command": "python3 check_config.py ssh_config.example",
+      "cwd": "/home/user/MERO-education/meroedu-setup/lessons/01-remote-work",
+      "log": "ssh-config.txt",
+      "exitCode": 0
+    },
+    "pid-terminal": {
+      "image": "pid-terminal.png",
+      "width": 1336,
+      "height": 516,
+      "sha256": "561f6d46000a8b553915e0ebe54e42be5c08e6a7a676bd906003270cd203d723",
+      "kind": "terminal screenshot",
+      "command": "python3 \"$CAPTURE_HELPER\" pid --output \"$CAPTURE_OUT\"",
+      "cwd": "/home/user/MEROsite",
+      "log": "pid-terminal.txt",
+      "exitCode": 0
+    },
+    "openrb-protocol": {
+      "image": "openrb-protocol.png",
+      "width": 1336,
+      "height": 366,
+      "sha256": "76a8c4b77104dc4b039c0d587bf5dcbcdb451476027353bb3cc18737251b8fca",
+      "kind": "terminal screenshot",
+      "command": "python3 \"$CAPTURE_HELPER\" protocol --output \"$CAPTURE_OUT\"",
+      "cwd": "/home/user/MEROsite",
+      "log": "openrb-protocol.txt",
+      "exitCode": 0
+    },
+    "lidar-terminal": {
+      "image": "lidar-terminal.png",
+      "width": 1336,
+      "height": 516,
+      "sha256": "d6e0d0febda8549f173c95a9ed5daf1c2035f121f23a4bd21fc5cd7876e7cb85",
+      "kind": "terminal screenshot",
+      "command": "python3 demo.py --output \"$CAPTURE_OUT/lidar\"",
+      "cwd": "/home/user/MERO-education/meroedu-localization/lessons/01-lidar",
+      "log": "lidar-terminal.txt",
+      "exitCode": 0
+    },
+    "object-map-terminal": {
+      "image": "object-map-terminal.png",
+      "width": 1336,
+      "height": 766,
+      "sha256": "d28901b479e8ceeeb006cd32190591a1bc164d62528b813c4069cc7dbacd36d9",
+      "kind": "terminal screenshot",
+      "command": "python3 demo.py --output \"$CAPTURE_OUT/object-map\"",
+      "cwd": "/home/user/MERO-education/meroedu-localization/lessons/03-object-localization",
+      "log": "object-map-terminal.txt",
+      "exitCode": 0
+    },
+    "lidar-result": {
+      "image": "lidar-result.png",
+      "width": 1852,
+      "height": 920,
+      "kind": "code output PNG",
+      "sha256": "c4b3eb6e163579a7dc9ff95421c66d72ddf10145abd036c9f6f0a5dadc8f6cb5"
+    },
+    "object-map-result": {
+      "image": "object-map-result.png",
+      "width": 2077,
+      "height": 886,
+      "kind": "code output PNG",
+      "sha256": "af6e0fc956b7b65a1e6d7031097e2dad2df0cc8a99498d139d1b2d02ea1d7ec0"
+    },
+    "pid-calculation": {
+      "image": "pid-calculation.png",
+      "width": 1600,
+      "height": 1226,
+      "kind": "code output PNG",
+      "sha256": "5623f0651e4dfedcda9c47bf670e50dd21686914b40edb9d9b7233f42723ea0e"
+    },
+    "ros-topic": {
+      "image": "ros-topic.png",
+      "width": 1336,
+      "height": 241,
+      "sha256": "0e9ac72dfd81afedb9224d9df1974ce7fbea85cab035b4f7ac6c1d26201e902d",
+      "kind": "terminal screenshot",
+      "command": "ros2 topic type /meroedu/hello\nros2 topic echo /meroedu/hello std_msgs/msg/String --once",
+      "cwd": "/home/user/MEROsite",
+      "log": "ros-topic.txt",
+      "exitCode": 0
+    },
+    "ros-pubsub": {
+      "image": "ros-pubsub.png",
+      "width": 1336,
+      "height": 266,
+      "sha256": "96b8790eaaaf9c836dd1561ccef59f66f026d93ef1006c83554cbe1dae86da39",
+      "kind": "terminal screenshot",
+      "command": "timeout --preserve-status --signal=INT 6s python3 listener.py",
+      "cwd": "/home/user/MERO-education/meroedu-ros/lessons/02-python-pubsub/ros_ws/src/meroedu_ros_basics/meroedu_ros_basics",
+      "log": "ros-pubsub.txt",
+      "exitCode": 0
+    },
+    "ros-pose": {
+      "image": "ros-pose.png",
+      "width": 1336,
+      "height": 541,
+      "sha256": "9c34e4f5c2fd60a41c0dfed4f395627d4029472cfa855d1a7698a5a3f3c11850",
+      "kind": "terminal screenshot",
+      "command": "ros2 topic echo /meroedu/pose geometry_msgs/msg/PoseStamped --once",
+      "cwd": "/home/user/MEROsite",
+      "log": "ros-pose.txt",
+      "exitCode": 0
+    },
+    "rviz-pose": {
+      "image": "rviz-pose.png",
+      "width": 1240,
+      "height": 820,
+      "sha256": "542a18f348b13e70d36aafde7b1f476c01c0de3e151bd71671c5641ebbfb1f1a",
+      "kind": "RViz screenshot",
+      "command": "rviz2 -d pose.rviz",
+      "config": "rviz-pose.rviz"
+    },
+    "rosbag-info": {
+      "image": "rosbag-info.png",
+      "width": 1336,
+      "height": 416,
+      "sha256": "375f65d7b7c8acc959864685873f620e71cd165027d39fd568edb3e335f25317",
+      "kind": "terminal screenshot",
+      "command": "ros2 bag info \"$CAPTURE_BAG\"",
+      "cwd": "/home/user/MEROsite",
+      "log": "rosbag-info.txt",
+      "exitCode": 0
+    },
+    "rosbag-replay": {
+      "image": "rosbag-replay.png",
+      "width": 1336,
+      "height": 541,
+      "sha256": "3454819a89c33c9fc066613328844eb13efdce4cc331d33cae44147e08792058",
+      "kind": "terminal screenshot",
+      "command": "ros2 topic echo /meroedu/pose geometry_msgs/msg/PoseStamped --once",
+      "cwd": "/home/user/MEROsite",
+      "log": "rosbag-replay.txt",
+      "exitCode": 0
+    },
+    "ros-localization": {
+      "image": "ros-localization.png",
+      "width": 1336,
+      "height": 616,
+      "sha256": "fa1b14cc5829f61c324422b55904edde1d22b5b84d4249d0cfb3264f755f1733",
+      "kind": "terminal screenshot",
+      "command": "ros2 topic echo /meroedu/pose geometry_msgs/msg/PoseStamped --once\nros2 topic echo /meroedu/match_score std_msgs/msg/Float64 --once",
+      "cwd": "/home/user/MEROsite",
+      "log": "ros-localization.txt",
+      "exitCode": 0
+    },
+    "rviz-localization": {
+      "image": "rviz-localization.png",
+      "width": 1240,
+      "height": 820,
+      "sha256": "70103c660949cbfa66a62e4b821a9daa2e637b34af8bf13ec3f0102dca0872e2",
+      "kind": "RViz screenshot",
+      "command": "rviz2 -d localization.rviz",
+      "config": "rviz-localization.rviz"
+    },
+    "motor-command": {
+      "image": "motor-command.png",
+      "width": 1336,
+      "height": 191,
+      "sha256": "fc9bfd068ea30509012919f77fb99073330ab6de71867aed311d4a57de777f40",
+      "kind": "terminal screenshot",
+      "command": "ros2 topic echo /motor/serial_tx std_msgs/msg/String --once",
+      "cwd": "/home/user/MEROsite",
+      "log": "motor-command.txt",
+      "exitCode": 0
+    },
+    "motor-timeout": {
+      "image": "motor-timeout.png",
+      "width": 1336,
+      "height": 191,
+      "sha256": "582f2c01249614190faa96ce1d911b9344acba0a3275fe2ec64511600c496d55",
+      "kind": "terminal screenshot",
+      "command": "ros2 topic echo /motor/serial_tx std_msgs/msg/String --once",
+      "cwd": "/home/user/MEROsite",
+      "log": "motor-timeout.txt",
+      "exitCode": 0
+    },
+    "dynamixel-command": {
+      "image": "dynamixel-command.png",
+      "width": 1336,
+      "height": 216,
+      "sha256": "8ff8db56dab8ae6d94bce0683b14fcdfbf2fabd3f32fb1fe24bd604485ad74a2",
+      "kind": "terminal screenshot",
+      "command": "ros2 topic echo /dynamixel/serial_tx std_msgs/msg/String --once --filter \"m.data.startswith('MOVE_DELTA')\"",
+      "cwd": "/home/user/MEROsite",
+      "log": "dynamixel-command.txt",
+      "exitCode": 0
+    },
+    "perception-terminal": {
+      "image": "perception-terminal.png",
+      "width": 1336,
+      "height": 291,
+      "sha256": "c9555c4957fb399ecfacc50bb7886a5a2cf112322f831af3fdec997aef3c0238",
+      "kind": "terminal screenshot",
+      "command": "/home/user/microbanRL/.venv/bin/python scripts/predict_examples.py --model \"$CAPTURE_MODEL\" --source \"$CAPTURE_IMAGES/crop_0005.png\" \"$CAPTURE_IMAGES/crop_0007.png\" \"$CAPTURE_IMAGES/crop_0009.png\" \"$CAPTURE_IMAGES/crop_0050.png\" --output \"$CAPTURE_OUT/inference\" --device cpu",
+      "cwd": "/home/user/MERO-education/meroedu-detection/lessons/01-synthetic-data",
+      "log": "perception-terminal.txt",
+      "exitCode": 0
+    },
+    "perception-crop_0005": {
+      "image": "perception-crop_0005.png",
+      "width": 960,
+      "height": 600,
+      "kind": "code output PNG",
+      "sha256": "94170784cad0a50c508dd3dbff021f298a2476381e38993b20bd24ee0e044081"
+    },
+    "perception-crop_0007": {
+      "image": "perception-crop_0007.png",
+      "width": 960,
+      "height": 600,
+      "kind": "code output PNG",
+      "sha256": "f9346551bd233511eef2d41e6f9d94cbfa9741b442d476dd9f894dad3a6f67ac"
+    },
+    "microban-terminal": {
+      "image": "microban-terminal.png",
+      "width": 1336,
+      "height": 391,
+      "sha256": "06b57bfbd17903315aab51974c12cd83414c15739c161f9ee1b10c612a2d36e8",
+      "kind": "terminal screenshot",
+      "command": "/home/user/microbanRL/.venv/bin/python \"$CAPTURE_HELPER\" microban --output \"$CAPTURE_OUT\"",
+      "cwd": "/home/user/MEROsite",
+      "log": "microban-terminal.txt",
+      "exitCode": 0
+    },
+    "microban-0001": {
+      "image": "microban-0001.png",
+      "width": 960,
+      "height": 720,
+      "kind": "code output PNG",
+      "sha256": "9e7dd406c7a6cce7b293f2a8c7d7f5d9727d97e4506cb023b09ab4d394023fff"
+    },
+    "microban-0675": {
+      "image": "microban-0675.png",
+      "width": 960,
+      "height": 720,
+      "kind": "code output PNG",
+      "sha256": "6b4c9a65c753d352c49136a1f6a21b8d439753460278dc80049f71e1f755b119"
+    },
+    "microban-0225": {
+      "image": "microban-0225.png",
+      "width": 960,
+      "height": 720,
+      "kind": "code output PNG",
+      "sha256": "3dd4d139a99d6b380d2998b8d4f8b3173087529e2c8d17b18654d934ea10631b"
+    },
+    "microban-trace": {
+      "image": "microban-trace.png",
+      "width": 1600,
+      "height": 1090,
+      "kind": "code output PNG",
+      "sha256": "4f887a9b8e8cf5b0c44692d032310d6a042532b7bc435b85868b98d70e557e74"
+    },
+    "perception-crop_0009": {
+      "image": "perception-crop_0009.png",
+      "width": 960,
+      "height": 600,
+      "kind": "code output PNG",
+      "sha256": "d9653eeaa27f9213d807cb312e934db9b100f3303d47705da75fea9cc7027a07"
+    },
+    "perception-crop_0050": {
+      "image": "perception-crop_0050.png",
+      "width": 960,
+      "height": 600,
+      "kind": "code output PNG",
+      "sha256": "a1d72b3e7640e5eaace155780e2be10c93d2ec02c610d6831327fade63bb06aa"
+    }
+  }
+}

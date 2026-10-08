@@ -1,0 +1,20 @@
+{
+  "upstream": "https://github.com/openai/spinningup/tree/038665d62d569055401d91856abb287263096178",
+  "sourceSha256": {
+    "docs/spinningup/rl_intro.rst": "eeb43dae9f931d46ff07c3da99ea47f4dccdb5be84333085fac7a91479750bc2",
+    "docs/spinningup/rl_intro2.rst": "8d7fcf6d2ee0063ab42ca6f91b4ce1d0e09938bec5cc15c7d9185705564615f4",
+    "docs/algorithms/ppo.rst": "f4d4fd9579f22c1242dba9ca1ba3515e9af90d9b937ed2c63c73337d0decab64",
+    "LICENSE": "f0f761bec044b403bafbc7c373b2267072926dabd123ed4edb78ce4f2c214703"
+  },
+  "draftSha256": {
+    "data-and-models": "f64a9d20742c618411d223aedecdc6774442c48a559e03f6c18919e49d8bc50f",
+    "neural-networks": "dcce5b21c1e136b6501f5f7d7e16a177793cd87651200d1232b867ebccf34a27",
+    "evaluation": "a7cd33e70cd039b80735832f4808415cb20ff6d932bf718cd32e992ea624b82e",
+    "reinforcement-learning": "3ce59a3ee21af1b770d6ffb964b9f385ae74f639f36f63523c40b0ea4d098aab",
+    "policy-and-robot": "fbb3464d3a992c365102fa5f9b396d73933fccd28da342b1ac817bd163c18932",
+    "robot-models": "29141cd2adf6dfe86050749c5f4035f5a4c1511c756498e48fae95e27a501b0f",
+    "mujoco-first-run": "ff955b7b2bdbcfe75f230f59ae41d28b8065f5c3a3acb894ab340379d68ec915",
+    "rl-environments": "8d9e653ae13a75e220c16efbce55c5d5ca684ed87eee8f8e081e0d9938d5b875"
+  },
+  "scope": "RL terminology and selected policy/PPO explanations translated and adapted; DL foundations and club examples added by MERO. No full translation or third-party media redistribution."
+}

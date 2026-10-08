@@ -1,0 +1,13 @@
+Script started on 2026-10-08 18:00:28+09:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="100" LINES="21"]
+
+Files:             pose-bag-180024_0.db3
+Bag size:          25.0 KiB
+Storage id:        sqlite3
+Duration:          3.599989570s
+Start:             Oct  8 2026 18:00:24.607857164 (1791450024.607857164)
+End:               Oct  8 2026 18:00:28.207846734 (1791450028.207846734)
+Messages:          37
+Topic information: Topic: /meroedu/pose | Type: geometry_msgs/msg/PoseStamped | Count: 37 | Serialization Format: cdr
+
+
+Script done on 2026-10-08 18:00:28+09:00 [COMMAND_EXIT_CODE="0"]

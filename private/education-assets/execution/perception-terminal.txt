@@ -1,0 +1,7 @@
+Script started on 2026-10-08 18:03:37+09:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="100" LINES="18"]
+crop_0005.png pineapple 0.972 / plain 0.963 / pineapple 0.937
+crop_0007.png orange 0.903 / orange 0.684
+crop_0009.png banana 0.976 / plain 0.974 / banana 0.942
+crop_0050.png plain 0.974 / apple 0.963 / apple 0.910
+
+Script done on 2026-10-08 18:03:41+09:00 [COMMAND_EXIT_CODE="0"]

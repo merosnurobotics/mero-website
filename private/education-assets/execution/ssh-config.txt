@@ -1,0 +1,10 @@
+Script started on 2026-10-08 18:00:03+09:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="100" LINES="13"]
+user robot
+hostname 100.101.102.103
+identitiesonly yes
+serveralivecountmax 3
+serveraliveinterval 30
+identityfile ~/.ssh/id_ed25519_jetson
+Configuration only: no connection was attempted.
+
+Script done on 2026-10-08 18:00:03+09:00 [COMMAND_EXIT_CODE="0"]

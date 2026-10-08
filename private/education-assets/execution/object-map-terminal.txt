@@ -1,0 +1,28 @@
+Script started on 2026-10-08 18:00:07+09:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="100" LINES="34"]
+{
+  "pixel_uv": [
+    11.0,
+    10.0
+  ],
+  "depth_m": 1.5,
+  "camera_xyz_m": [
+    0.056249999999999994,
+    0.07500000000000001,
+    1.5
+  ],
+  "robot_xyz_m": [
+    1.6294773110509133,
+    -0.056249999999999994,
+    0.13932699537453874
+  ],
+  "map_xyz_m": [
+    0.5562500000000001,
+    1.1294773110509133,
+    0.13932699537453874
+  ],
+  "point_kind": "visible lower surface estimate, not object center or ground truth",
+  "label": "apple_cube",
+  "input_kind": "synthetic educational input"
+}
+
+Script done on 2026-10-08 18:00:07+09:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,106 @@
+{
+  "assetHashes": {
+    "private/education-assets/deepml/provenance.json": {
+      "bytes": 1465,
+      "sha256": "937f99cd8dbcdd11e9c091ab15c786b7a898d269c07cda93fb051b1b7f42a39b"
+    },
+    "private/education-assets/deepml/evaluation.png": {
+      "bytes": 100941,
+      "sha256": "d079400b02a049c879b4eafe7b6912c315a38c88cb6a25e48d37b97a5442ea99"
+    },
+    "private/education-assets/deepml/neural-network.mp4": {
+      "bytes": 997472,
+      "sha256": "7ac7042eac4c665ac5a3be86d4db1161fac796e190c688900041a0c1fd1db89f"
+    },
+    "private/education-assets/deepml/neural-network.gif": {
+      "bytes": 1356542,
+      "sha256": "103998375b46f73e101fc35d0d8da0ce548fbf00543e7538517f537498591b17"
+    },
+    "private/education-assets/deepml/results.json": {
+      "bytes": 48937,
+      "sha256": "05a888268117cfc682d00aef7202217287527c48e2c1b7bf334b14140b579490"
+    },
+    "private/education-assets/deepml/training.png": {
+      "bytes": 85322,
+      "sha256": "5f59d0431633d869a536e8abad3d77f42fcf2efe11be20ba14fa27a23d3248db"
+    },
+    "private/education-assets/deepml/huggingface-LICENSE.txt": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "private/education-assets/deepml/ros2-docs-LICENSE.txt": {
+      "bytes": 18657,
+      "sha256": "134ca66d63690220f89aa2f9d5f1082cbae9695cf88e6eb6df57d149d22f6afd"
+    },
+    "private/education-assets/deepml/mujoco-LICENSE.txt": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "private/education-assets/deepml/SPINNINGUP-LICENSE.txt": {
+      "bytes": 1087,
+      "sha256": "f0f761bec044b403bafbc7c373b2267072926dabd123ed4edb78ce4f2c214703"
+    },
+    "private/education-assets/deepml/gymnasium-LICENSE.txt": {
+      "bytes": 1104,
+      "sha256": "7dacaa9772e856aee6943b32ef663d3634d91d72ec7bbc74d136943673f91e18"
+    },
+    "private/education-assets/deepml/neural-network.png": {
+      "bytes": 310897,
+      "sha256": "d1532cf5f9a7dbe0bc0925eec259c0ac66c2adb6058732e8cd73ae9e3d8cb801"
+    },
+    "private/education-assets/deepml/modernrobotics-LICENSE.txt": {
+      "bytes": 1063,
+      "sha256": "fceef33c97fed32a270a56069bb45c108e473dfd1642c2648fa84779a9455d88"
+    },
+    "private/education-assets/deepml/fonts/OFL.txt": {
+      "bytes": 4407,
+      "sha256": "74ba064d03f1f1c4a952da936c3eb71866c34404916734de3cae73b34357e59e"
+    },
+    "private/education-assets/deepml/fonts/Lato-Regular.ttf": {
+      "bytes": 656568,
+      "sha256": "d636e4683231f931eda222d588e944d082bfd3bdba02f928bee461c0f185b251"
+    },
+    "private/education-assets/simulation/pendulum.png": {
+      "bytes": 69265,
+      "sha256": "6365e7d9e309d9d9b405e9993f7ffca56a972a443bf747f427f85624f3fe5ad5"
+    },
+    "private/education-assets/simulation/control.png": {
+      "bytes": 56148,
+      "sha256": "24ba97831a8978ae31f4a1283080b30dd0973a4a4198298a427a29965734d77b"
+    },
+    "private/education-assets/simulation/results.json": {
+      "bytes": 18465,
+      "sha256": "b235bf9fd660049c4ab7927d6fe48e881bb30fc385ad0f6c21519683ac891ed6"
+    },
+    "private/education-assets/simulation/kinematics-results.json": {
+      "bytes": 838,
+      "sha256": "d43920d0e9e4d1f78d169d517b8fa50ce5504af13f7dfed898414c892da885f7"
+    },
+    "private/education-assets/simulation/kinematics.png": {
+      "bytes": 90429,
+      "sha256": "a55126678c43a0a96329fb554fe94d19d55aa6edd3744f7db4fe6a7b0331c9fa"
+    },
+    "private/education-assets/simulation/pendulum.xml": {
+      "bytes": 677,
+      "sha256": "af7819d4533fe1641203c90e269c30f40445b10573edb0e4d95d2a5daff7a487"
+    }
+  },
+  "scriptHashes": {
+    "scripts/run-deepml-example.py": "be7f176033f8a8f672c04efd592a0ea7ccd44ad0f531fdd476abb44f985ca222",
+    "scripts/run-mujoco-intro.py": "6bf41cb5ef0212a30b981d996bf3e00b601cd6e4ceb200f52190e929951a7d65",
+    "scripts/run-robot-kinematics.py": "848d2a5127ec0ad8e8ac95e706bed6bfdb78dddb0a535783e97667defd3eb14a",
+    "scripts/render-neural-network.py": "8838198081394d823f7d513caf01aeb5cf75a10aa1e45777ceb64b416b90086a"
+  },
+  "manim": {
+    "version": "0.22.0",
+    "manimml": "0.0.24",
+    "font": "Lato",
+    "textLanguage": "en",
+    "webFormat": "GIF",
+    "fps": 10,
+    "width": 960,
+    "maxColors": 96,
+    "renderScope": "Schematic geometry/activations, not recorded model activations"
+  },
+  "experiments": "Synthetic calibration, MuJoCo one-joint PD, original planar 2R kinematics"
+}

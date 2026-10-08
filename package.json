@@ -15,7 +15,9 @@
     "test:e2e:live": "playwright test --config playwright.live.config.ts",
     "test:e2e:seed": "tsx tests/seed-live-db.ts",
     "preview:build": "node scripts/build-preview.mjs",
-    "admin:create": "tsx scripts/create-admin.ts"
+    "admin:create": "tsx scripts/create-admin.ts",
+    "education:build": "node scripts/build-education-diagrams.mjs",
+    "education:deepml": "node scripts/build-deepml.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -39,6 +41,7 @@
     "esbuild": "^0.28.2",
     "lighthouse": "^13.5.0",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "postcss": "^8.5.28"
   }
 }

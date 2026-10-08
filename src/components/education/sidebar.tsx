@@ -22,13 +22,13 @@ export function EducationSidebar() {
     <nav id="education-catalog" className={mobileOpen ? "" : "education-mobile-collapsed"} aria-label="교육자료 목록">
       <Link className="education-index-link" href="/education" aria-current={path === "/education" ? "page" : undefined}>교육자료</Link>
       {educationTopics.map(topic => {
-        return <details open className="education-topic-tree" key={topic.path}>
+        return <details open={path === topic.path || topic.lessons.some(lesson => path === lesson.path)} className="education-topic-tree" key={`${topic.path}:${path}`}>
           <summary>{topic.title}<span>{String(topic.lessons.length).padStart(2, "0")}</span></summary>
           <div className="education-tree-content">
             <Link href={topic.path} aria-current={path === topic.path ? "page" : undefined}>시리즈 소개</Link>
             {topic.lessons.map((lesson, lessonIndex) => {
               const inLesson = path === lesson.path;
-              return <details open className="education-lesson-tree" key={lesson.path}>
+              return <details open={inLesson} className="education-lesson-tree" key={`${lesson.path}:${inLesson}`}>
                 <summary>{String("number" in lesson ? lesson.number : lessonIndex + 1).padStart(2, "0")}. {lesson.shortTitle}</summary>
                 <Link href={lesson.path} onClick={() => setHash("")} aria-current={inLesson && !hash ? "page" : undefined}>{lesson.label}</Link>
                 <ol>{lesson.chapters.map((chapter, index) => <li key={chapter.id}><Link href={`${lesson.path}#${chapter.id}`} onClick={() => setHash(`#${chapter.id}`)} aria-current={inLesson && hash === `#${chapter.id}` ? "location" : undefined}><span>{String(index + 1).padStart(2, "0")}</span>{chapter.label}</Link></li>)}</ol>

@@ -1,3 +1,13 @@
+# 2026-10-09 · 교육자료 가독성·입문 흐름·실행 시각화
+
+- 기존 13개 자료를 정리하고, DeepML 3개·강화학습 기초 2개·로봇 모델/MuJoCo/환경 3개를 연결한 21개 자료 구성. 처음 진입 시 자료 목록을 접고, Kimodo를 강화학습의 응용 자료로 배치.
+- 시간 활동·반복적인 이미지 안내·원본 이미지 다운로드 문구 제거. 강조는 실제 strong 요소로 표시. 데스크톱 가로/모바일 세로 흐름도는 Answer me with HTML CLI로 생성.
+- 실제 실행한 기존 자료 PNG 29개, 합성 거리 모델 학습·평가 곡선, MuJoCo 진자 렌더/PD 곡선, Modern Robotics 동반 코드로 계산한 자체 2R 기구학 그림 첨부.
+- ManimML 1–8–8–1 신경망 구조·계산 흐름을 직접 렌더. 영문 전용 Lato 폰트, 짧은 설명은 압축 GIF 우선 규칙 기록. GIF 약 1.3 MB.
+- Spinning Up·Gymnasium(MIT), MuJoCo·Hugging Face(Apache 2.0), ROS 문서(CC BY 4.0) 출처·고지 보존. Modern Robotics는 교재 개념 참고와 자체 예제, MIT 동반 코드 사용. 개별 영상·교재 그림의 권리는 별도로 처리.
+- 작업 폴더에서 build/typecheck·단위 테스트 11개·교육 브라우저 테스트 6개 통과. 운영 체크아웃의 PostgreSQL/Vercel 설정은 유지.
+- 이번 스냅샷에는 현재 추가 중인 정진자 GIF·역진자 예제를 포함하지 않음.
+
 # 2026-10-08 · ROS / Control 시리즈와 독립 하드웨어 자료
 
 - 분류 Control theory → Control. ROS를 별도 분류로 추가하고 기본 / Python pub-sub / rosbag·RViz / localization topic / Arduino encoder motor / DYNAMIXEL topic의 6편을 배치. 기존 경로는 permanent redirect. Control에는 PID와 OpenRB 기본 사용.

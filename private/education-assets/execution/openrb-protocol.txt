@@ -1,0 +1,12 @@
+Script started on 2026-10-08 18:00:05+09:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="100" LINES="16"]
+OpenRB USB protocol | encoder only, no serial port opened
+
+ACCEPT 'PING'                   -> 'PING\n'
+ACCEPT 'INIT'                   -> 'INIT\n'
+ACCEPT 'STATUS?'                -> 'STATUS?\n'
+ACCEPT 'MOVE_DELTA 32'          -> 'MOVE_DELTA 32\n'
+REJECT 'MOVE_DELTA 65'          -> Unsupported command or delta outside +/-64 ticks
+REJECT 'MOVE_DELTA 32\nSTOP'    -> One command per message
+ACCEPT 'STOP'                   -> 'STOP\n'
+
+Script done on 2026-10-08 18:00:05+09:00 [COMMAND_EXIT_CODE="0"]

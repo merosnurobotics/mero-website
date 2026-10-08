@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import { requireEducationMember } from "@/lib/education/access";
 import { EducationSidebar } from "@/components/education/sidebar";
 import "./lesson.css";
+import "./diagrams.generated.css";
+import "./deepml.generated.css";
 import "./education.css";
 
 export function generateMetadata() { return { robots: { index: !educationMembersOnly(), follow: !educationMembersOnly() } }; }

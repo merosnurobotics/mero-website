@@ -1,0 +1,19 @@
+Script started on 2026-10-08 18:00:19+09:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="100" LINES="25"]
+header:
+  stamp:
+    sec: 1791450020
+    nanosec: 7665868
+  frame_id: map
+pose:
+  position:
+    x: 1.0
+    y: 0.5
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.3826834323650898
+    w: 0.9238795325112867
+---
+
+Script done on 2026-10-08 18:00:20+09:00 [COMMAND_EXIT_CODE="0"]

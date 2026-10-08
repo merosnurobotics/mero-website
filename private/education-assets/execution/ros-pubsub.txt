@@ -1,0 +1,8 @@
+Script started on 2026-10-08 18:00:12+09:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="100" LINES="17"]
+[INFO] [meroedu_listener]: RX: hello MERO 0
+[INFO] [meroedu_listener]: RX: hello MERO 1
+[INFO] [meroedu_listener]: RX: hello MERO 2
+[INFO] [meroedu_listener]: RX: hello MERO 3
+[INFO] [meroedu_listener]: RX: hello MERO 4
+
+Script done on 2026-10-08 18:00:18+09:00 [COMMAND_EXIT_CODE="0"]

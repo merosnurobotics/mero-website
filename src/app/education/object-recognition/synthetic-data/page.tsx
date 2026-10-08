@@ -1,3 +1,4 @@
+import { ExecutionResult } from "@/components/education/execution-result";
 import { LessonAuthor } from "@/components/education/lesson-author";
 import { requireEducationMember } from "@/lib/education/access";
 import type { Metadata } from "next";
@@ -7,12 +8,14 @@ import { CodeExample } from "@/components/education/code-example";
 import { objectRecognitionPath } from "@/lib/education/catalog";
 import { perceptionCommands } from "@/lib/education/perception-commands";
 import type { ReactNode } from "react";
+import { LessonContext, LessonNavigation } from "@/components/education/lesson-context";
+import { ConceptDiagram } from "@/components/education/concept-diagram";
 
 export const metadata: Metadata = { title: "합성 데이터로 시작하는 객체인식" };
 const assets = "/education-assets/object-recognition";
 const repo = "https://github.com/merosnurobotics/meroedu-detection";
 function Chapter({ id, title, children }: { id: string; title: string; children: ReactNode }) { return <section id={id} className="perception-chapter"><h2>{title}</h2>{children}</section>; }
-function Check({ children }: { children: ReactNode }) { return <details className="education-check"><summary>잠깐 확인하기</summary>{children}</details>; }
+function Check({ children }: { children: ReactNode }) { return <aside className="education-note">{children}</aside>; }
 function Recipe({ name, label }: { name: keyof typeof perceptionCommands; label: string }) { return <details className="education-recipe"><summary>{label} · 전체 명령 펼치기</summary><CodeExample code={perceptionCommands[name]} label={label} download={`${assets}/${name}.sh`}/></details>; }
 const figureSizes: Record<string, [number, number]> = { "synthetic-samples.jpg": [1308, 1024], "real-crops.jpg": [1372, 704], "scan-overlay.jpg": [2816, 900], "prediction-crop_0005.jpg": [960, 600], "prediction-crop_0007.jpg": [960, 600], "prediction-crop_0009.jpg": [960, 600], "prediction-crop_0050.jpg": [960, 600] };
 function Figure({ name, alt, children }: { name: string; alt: string; children: ReactNode }) { return <figure><Image unoptimized src={`${assets}/${name}`} alt={alt} width={figureSizes[name][0]} height={figureSizes[name][1]} loading={name === "synthetic-samples.jpg" ? "eager" : "lazy"} fetchPriority={name === "synthetic-samples.jpg" ? "high" : "auto"} sizes="(max-width: 767px) 100vw, 900px" style={{ width: "100%", height: "auto" }}/><figcaption>{children}</figcaption></figure>; }
@@ -23,18 +26,24 @@ export default async function PerceptionLessonPage() {
     <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: "객체인식", href: objectRecognitionPath }, { label: "합성 데이터로 시작하기" }]}/>
     <article className="perception-lesson">
       <header className="perception-hero"><h1>합성 데이터로 시작하는<br/>객체인식</h1><p>사진 속 정다면체와 과일을 찾는 모델을 직접 만들어봅니다. 사진과 정답지가 무엇인지부터, 120장짜리 첫 실습과 실제 카메라 검증까지 차근차근 따라갑니다.</p><LessonAuthor path="/education/object-recognition/synthetic-data"/><a className="button" href={repo}>실습 저장소 열기</a></header>
+      <LessonContext path="/education/object-recognition/synthetic-data"/>
       <Figure name="synthetic-samples.jpg" alt="다양한 사진 배경 위의 정다면체와 과일 큐브, 물체 경계 정답이 표시된 합성 학습 이미지"><strong>이 선은 모델의 예측이 아니라 렌더러가 만든 정답입니다.</strong> 마지막처럼 찾을 물체가 없는 장면도 학습에 포함합니다.</Figure>
 
       <Chapter id="first-look" title="1. 객체인식은 무엇을 알아내는 걸까?">
         <p>로봇 앞에 사과 그림이 붙은 큐브와 정팔면체가 있다고 생각해봅시다. 로봇이 사과 큐브를 집으려면 먼저 사진에서 그 물체를 찾아야 합니다. 사람에게는 쉬운 일이지만 컴퓨터가 처음 받는 것은 빨강·초록·파랑 밝기 값으로 이루어진 픽셀 배열입니다.</p>
         <p><strong>모델</strong>은 이 숫자 배열을 보고 답을 계산하는 함수입니다. 정답이 있는 예시를 반복해서 보여주며 함수 안의 숫자, 즉 가중치를 수정하는 과정이 <strong>학습</strong>입니다. 학습된 모델을 새 사진에 적용하는 과정은 <strong>추론</strong>이라고 합니다.</p>
+        <p><strong>신경망</strong>은 가중치를 가진 계산층을 여러 개 연결한 모델입니다. 각 층이 앞선 계산 결과를 받아 다음 표현을 만듭니다. 여러 층의 표현을 함께 학습하는 방법을 <strong>딥러닝</strong>이라고 합니다.</p>
         <div className="education-table-wrap"><table><caption>비슷해 보이는 세 가지 문제</caption><thead><tr><th>문제</th><th>묻는 것</th><th>결과</th></tr></thead><tbody><tr><td>classification</td><td>이 사진은 무엇인가?</td><td>사과</td></tr><tr><td>detection</td><td>무엇이 어디에 있는가?</td><td>사과 + 사각형 위치</td></tr><tr><td>instance segmentation</td><td>각 물체가 차지하는 영역은?</td><td>사과 + 물체별 픽셀 경계</td></tr></tbody></table></div>
         <p>여기서는 넓은 의미의 객체인식을 배우고, 실습에는 각 물체의 영역을 찾는 <strong>YOLO segmentation 모델</strong>을 사용합니다. 형태만 맞히는 것과, 여러 물체를 각각 찾아 경계를 그리는 것은 서로 다른 작업입니다.</p>
+        <h3>모델의 가중치는 어떻게 바뀌는가</h3>
+        <p>먼저 사진을 넣어 물체 영역을 예측하고, 정답 영역과 얼마나 다른지 수치로 계산합니다. 이 값이 <strong>손실</strong>입니다. 역전파는 각 가중치가 손실에 미치는 영향을 미분으로 구합니다. 최적화 알고리즘은 그 값을 이용해 손실을 줄이는 방향으로 가중치를 조금씩 바꿉니다.</p>
+        <ConceptDiagram name="learning" caption="학습할 때는 사진과 정답을 비교해 가중치를 수정합니다. 추론할 때는 학습한 가중치를 고정하고 새 사진의 결과를 계산합니다."/>
+        <p>학습에 쓴 사진에서만 잘 맞는 현상을 <strong>과적합</strong>이라고 합니다. 그래서 학습용 사진과 검증용 사진을 나누고, 마지막에는 실제 카메라 사진에서도 확인합니다. 뒤의 데이터 분리·학습·평가 명령은 이 과정을 실행하는 코드입니다. <a href="https://docs.pytorch.org/tutorials/beginner/basics/optimization_tutorial.html">PyTorch의 학습 과정 설명</a></p>
         <Check><p>사진 전체에 “사과”라는 답 하나를 붙이면 classification입니다. 사진에 있는 사과 두 개를 각각 찾아 경계를 그리면 instance segmentation입니다.</p></Check>
       </Chapter>
 
       <Chapter id="labels" title="2. 학습에는 사진과 정답지가 함께 필요하다">
-        <p>사진만 많이 모으면 컴퓨터가 저절로 사과의 이름을 알게 될까요? 이 실습은 <strong>지도학습</strong>이므로, 사진마다 “이 영역은 사과”라는 정답을 함께 줍니다. 이 정답을 라벨, 정답 영역을 마스크라고 부릅니다.</p>
+        <p>이 실습은 사진과 정답을 짝지어 학습하는 <strong>지도학습</strong>입니다. 각 사진에 “이 영역은 사과”라는 정답을 붙입니다. 이 정답을 라벨, 물체가 차지하는 정답 영역을 마스크라고 부릅니다.</p>
         <p>YOLO segmentation 라벨은 물체 하나당 텍스트 한 줄입니다. 첫 숫자는 클래스 번호, 뒤의 숫자는 경계를 따라 찍은 점의 x, y 좌표입니다. 좌표를 이미지 너비와 높이로 나누어 0부터 1 사이로 저장합니다. 좌표 개수는 물체 윤곽에 따라 달라집니다.</p>
         <CodeExample label="라벨 형식 예시" code={'0 0.20 0.25 0.60 0.25 0.60 0.75 0.20 0.75\n# 설명용 사각형 예시: 클래스 0, 경계점 4개\n# 실제 labels/*.txt에는 주석 줄을 넣지 않습니다.'}/>
         <p>640×640 사진에서 점 (128, 160)은 (0.20, 0.25)로 저장됩니다. 클래스 0의 뜻은 데이터셋마다 다릅니다. A1 모델에서는 큐브 형태이고, 과일 면 모델에서는 사과입니다. 그래서 클래스 이름과 순서를 적은 <code>data.yaml</code>을 함께 사용합니다.</p>
@@ -104,7 +113,7 @@ export default async function PerceptionLessonPage() {
       </Chapter>
 
       <Chapter id="evaluate" title="9. 처음 보는 사진에서도 작동하는지 확인한다">
-        <p>모델이 없는 물체를 잡으면 <strong>오탐</strong>, 있는 물체를 놓치면 <strong>미탐</strong>입니다. Precision은 잡은 것 중 정답의 비율, recall은 정답 중 찾아낸 비율입니다. IoU는 예측 영역과 정답 영역이 얼마나 겹치는지 나타냅니다. mAP는 클래스별 detection 품질을 요약하는 지표이며, box와 mask 점수는 평가하는 영역이 다릅니다.</p>
+        <p>모델이 없는 물체를 잡으면 <strong>오탐</strong>, 있는 물체를 놓치면 <strong>미탐</strong>입니다. Precision은 잡은 것 중 정답의 비율, recall은 정답 중 찾아낸 비율입니다. IoU는 예측 영역과 정답 영역이 얼마나 겹치는지 나타냅니다. mAP는 클래스별 detection 품질을 요약하는 지표이며, box와 마스크 점수는 평가하는 영역이 다릅니다.</p>
         <CodeExample label="남겨둔 test 장면 평가" code={'# 현재 위치: perception/generation → 평가 후 회차 루트\nsource ../../steps/07-evaluate.sh'}/>
         <Recipe name="07-evaluate" label="07 test 평가"/>
         <p>test 점수를 보고 계속 설정을 고르면 test가 사실상 val이 됩니다. 설정은 val에서 고르고 마지막 모델을 test로 평가하세요. 120장 중 일부만 남긴 작은 시험은 성능을 단정하기에도 부족합니다.</p>
@@ -112,16 +121,16 @@ export default async function PerceptionLessonPage() {
         <p>별도로 촬영한 사진을 회차 루트의 <code>my-photo.jpg</code>로 준비합니다. 모든 클래스가 잘 보이는 가까운 사진에서 시작하고, 거리·빛·방향을 바꿔봅니다.</p>
         <CodeExample label="실제 사진 추론" code={'yolo segment predict \\\n  model=runs/perception/smoke120_a1/weights/best.pt \\\n  source=my-photo.jpg imgsz=640 device=cpu'}/>
         <p>이 명령은 A1 형태 모델만 실행합니다. 과일 면 모델은 큐브 크롭을 준비해 <code>imgsz=224</code>로 실행합니다. OpenCV의 numpy 이미지는 BGR 순서입니다. PIL에서 RGB 배열로 읽었다면 Ultralytics의 numpy 입력에 넣기 전에 BGR로 바꿔야 합니다. 전체 카메라 사진을 그대로 면 모델에 넣는 것과 큐브 크롭을 넣는 것은 다른 입력입니다.</p>
-        <h3>학습된 가중치로 실제 사진을 돌려본 예시</h3>
-        <p>미리 학습된 과일 면 가중치 <code>unified_face_best.pt</code>를 실제 카메라 크롭에 직접 적용했습니다. 왼쪽은 입력 사진, 오른쪽의 색칠된 영역은 모델이 예측한 segmentation mask입니다. 아래 숫자는 각 면의 confidence입니다. 같은 큐브에서도 과일 면과 빈 면을 각각 예측할 수 있습니다.</p>
+        <h3>과일 면과 빈 면 인식</h3>
+        <p>미리 학습된 <code>unified_face_best.pt</code>를 카메라 크롭에 적용했습니다. 왼쪽은 입력, 오른쪽은 예측 마스크이며 아래 숫자는 각 면의 confidence입니다.</p>
         <p>입력 크기는 <code>imgsz=224</code>, confidence 기준은 <code>0.25</code>이며 CPU에서 실행했습니다. 이번 120장·1 epoch 실습으로 만든 가중치의 결과와는 별개입니다.</p>
         <div className="education-prediction-grid">
-          <Figure name="prediction-crop_0005.jpg" alt="파인애플 큐브의 실제 입력 사진과 모델이 예측한 면 영역 비교">예시 1 · pineapple 면 두 개(0.972, 0.937)와 plain 면(0.963)을 예측했습니다.</Figure>
-          <Figure name="prediction-crop_0007.jpg" alt="오렌지 큐브의 실제 입력 사진과 모델이 예측한 두 면 영역 비교">예시 2 · orange 면 두 개를 각각 0.903, 0.684로 예측했습니다.</Figure>
-          <Figure name="prediction-crop_0009.jpg" alt="바나나 큐브의 실제 입력 사진과 모델이 예측한 과일 면과 빈 면 비교">예시 3 · banana 면 두 개(0.976, 0.942)와 plain 면(0.974)을 예측했습니다.</Figure>
-          <Figure name="prediction-crop_0050.jpg" alt="사과 큐브의 실제 입력 사진과 모델이 예측한 과일 면과 빈 면 비교">예시 4 · apple 면 두 개(0.963, 0.910)와 plain 면(0.974)을 예측했습니다.</Figure>
+          <ExecutionResult id="perception-crop_0005" alt="파인애플 면과 빈 면의 입력 사진 및 예측 마스크"/>
+          <ExecutionResult id="perception-crop_0007" alt="오렌지 면의 입력 사진 및 예측 마스크"/>
+          <ExecutionResult id="perception-crop_0009" alt="바나나 면과 빈 면의 입력 사진 및 예측 마스크"/>
+          <ExecutionResult id="perception-crop_0050" alt="사과 면과 빈 면의 입력 사진 및 예측 마스크"/>
         </div>
-        <p><a href={`${assets}/inference-examples.json`}>가중치 해시·입력 이미지·예측 기록 보기</a> · <a href={`${repo}/blob/main/lessons/01-synthetic-data/scripts/predict_examples.py`}>입력과 예측 비교 이미지 만드는 코드</a></p>
+        <ExecutionResult id="perception-terminal" alt="CPU에서 실사진 네 장에 실행한 객체인식 추론 기록"/>
         <h3>실제 로봇에서의 전체 파이프라인</h3>
         <Figure name="scan-overlay.jpg" alt="실제 로봇의 경기장 스캔 이미지에 detection box와 클래스, 거리, 격자 위치가 표시됨">미리 학습된 모델을 실제 로봇에서 실행한 결과입니다. 이번 120장 실습의 성능 결과가 아닙니다.</Figure>
         <video controls preload="none" poster={`${assets}/scan-overlay.jpg`} aria-label="실제 로봇의 경기장 12회 스캔"><source src={`${assets}/scan.mp4`} type="video/mp4"/>브라우저가 영상을 지원하지 않습니다. <a href={`${assets}/scan.mp4`}>영상 다운로드</a></video>
@@ -137,9 +146,10 @@ export default async function PerceptionLessonPage() {
         <CodeExample label="COCO 배경 준비" code={'python scripts/download_coco2017_backgrounds.py \\\n  --split val2017 --output datasets/backgrounds/coco2017\n# 렌더 명령에서 변경할 두 옵션:\n# --background_dir datasets/backgrounds/coco2017/val2017\n# --arena_background_ratio 0.0'}/>
         <h3>Codex에게 재현을 맡길 때</h3>
         <CodeExample label="실습 도움 요청 예시" code={'이 저장소의 README와 docs를 읽고 CPU 120장 실습을 따라갈 수 있게 도와줘.\n먼저 Python 버전과 가상환경, 현재 작업 경로를 확인해줘.\n사진·라벨·메타데이터가 모두 생성되고 정답이 맞는지 확인한 다음 진행해줘.\n같은 장면의 크롭은 train/val/test를 넘지 않게 유지하고 클래스 순서를 바꾸지 마.\n오류가 나면 원인과 수정한 설정을 기록해줘.\nGPU 5만 장 렌더링이나 장시간 학습은 장비와 설정을 확인한 후 진행하자.'}/>
-        <Check><p>오늘 실습이 끝났다면 사진·정답·메타데이터가 한 세트라는 것, 형태와 과일 면이 서로 다른 모델이라는 것, 학습에 쓰지 않은 사진으로 평가해야 한다는 것을 설명할 수 있습니다. GPU 환경을 준비했다면 같은 순서로 렌더링부터 학습까지 확장해보세요.</p></Check>
+        <Check><p>학습 데이터를 늘릴 때도 사진·정답·생성 기록을 함께 보관합니다. 형태 모델과 과일 면 모델은 따로 학습하고, 학습에 쓰지 않은 사진으로 평가합니다.</p></Check>
       </Chapter>
       <footer className="education-sources"><h2>참고 자료와 실습 기록</h2><p>이 페이지의 CPU 120장·1 epoch 명령은 데이터 생성부터 평가까지 연결하는 첫 실습입니다. 웹페이지와 명령 형식은 검증했으며, 새 렌더링이나 재학습은 수행하지 않았습니다. 위 네 가지 예시는 미리 학습된 가중치로 직접 실행한 추론 결과입니다. 예시 이미지의 개수로 모델 전체 성능을 판단하지 않습니다.</p><ul><li><a href={`${repo}/tree/main/lessons/01-synthetic-data`}>실습 코드와 단계별 실행 안내</a></li><li><a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서</a></li><li><a href="https://docs.ultralytics.com/modes/train">Ultralytics 학습 문서</a></li><li><a href={`${assets}/LICENSE.txt`}>코드 사용 조건</a> · <a href={`${assets}/provenance.json`}>코드·이미지 출처 기록</a></li></ul></footer>
     </article>
+    <LessonNavigation path="/education/object-recognition/synthetic-data"/>
   </>;
 }
