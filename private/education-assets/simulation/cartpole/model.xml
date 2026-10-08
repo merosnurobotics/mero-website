@@ -1,0 +1,11 @@
+<mujoco model="cartpole_pid"><option timestep="0.002" gravity="0 0 -9.81"/>
+<visual><global offwidth="640" offheight="360"/></visual>
+<worldbody><light pos="0 -2 4" ambient="0.5 0.5 0.5"/>
+<geom type="plane" size="4 4 0.1" rgba="0.8 0.83 0.87 1"/>
+<geom type="box" pos="0 0 0.12" size="2.5 0.06 0.025" rgba="0.4 0.45 0.5 1"/>
+<body name="cart" pos="0 0 0.3"><joint name="slide" type="slide" axis="1 0 0" damping="0.1"/>
+<geom type="box" size="0.15 0.1 0.07" mass="1" rgba="0.2 0.5 0.8 1" contype="0" conaffinity="0"/>
+<body name="pole"><joint name="hinge" type="hinge" axis="0 1 0" damping="0.01"/>
+<geom type="capsule" fromto="0 0 0 0 0 0.7" size="0.025" mass="0.15" rgba="0.3 0.65 0.8 1" contype="0" conaffinity="0"/>
+<geom type="sphere" pos="0 0 0.7" size="0.055" mass="0.05" rgba="0.95 0.55 0.2 1" contype="0" conaffinity="0"/>
+</body></body></worldbody><actuator><motor joint="slide" gear="1" ctrllimited="true" ctrlrange="-8 8"/></actuator></mujoco>

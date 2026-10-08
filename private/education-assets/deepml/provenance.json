@@ -13,7 +13,7 @@
     "reinforcement-learning": "3ce59a3ee21af1b770d6ffb964b9f385ae74f639f36f63523c40b0ea4d098aab",
     "policy-and-robot": "fbb3464d3a992c365102fa5f9b396d73933fccd28da342b1ac817bd163c18932",
     "robot-models": "29141cd2adf6dfe86050749c5f4035f5a4c1511c756498e48fae95e27a501b0f",
-    "mujoco-first-run": "3765a16938a0a97336f7b077474a54946e83c80dbd17e0f3eea0f2b1f3ff007b",
+    "mujoco-first-run": "c30c54f7d299ddeb5b06795427257b58c0cea17451ea8bcefa7bf6b6f3b53f9d",
     "rl-environments": "8d9e653ae13a75e220c16efbce55c5d5ca684ed87eee8f8e081e0d9938d5b875"
   },
   "scope": "RL terminology and selected policy/PPO explanations translated and adapted; DL foundations and club examples added by MERO. No full translation or third-party media redistribution."

@@ -1,0 +1,832 @@
+{
+  "engine": "MuJoCo 3.8.1",
+  "values": {
+    "kp": [
+      12,
+      24,
+      48
+    ],
+    "ki": [
+      0,
+      2,
+      6
+    ],
+    "kd": [
+      1,
+      4,
+      8
+    ]
+  },
+  "initial_angle_rad": 0.12,
+  "physics_timestep_s": 0.002,
+  "duration_s": 8,
+  "fps": 20,
+  "force_limit_n": 8,
+  "cart_feedback": {
+    "position": 0.8,
+    "velocity": 1.5
+  },
+  "integral_limit": 0.3,
+  "pole_bias_torque_nm": 0.025,
+  "disturbance": {
+    "force_n": 0.8,
+    "start_s": 3,
+    "end_s": 3.2
+  },
+  "stop_limits": {
+    "angle_rad": 0.7,
+    "cart_m": 2.2
+  },
+  "runs": [
+    {
+      "id": "p12-i0-d1",
+      "kp": 12,
+      "ki": 0,
+      "kd": 1,
+      "gif": "/education-assets/simulation/cartpole/p12-i0-d1.gif",
+      "still": "/education-assets/simulation/cartpole/p12-i0-d1.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 1.348000000000001,
+        "stop_reason": "angle",
+        "max_angle_deg": 40.2194150837401,
+        "max_cart_m": 1.2284729270574883,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 1.4836795252225519
+      }
+    },
+    {
+      "id": "p12-i0-d4",
+      "kp": 12,
+      "ki": 0,
+      "kd": 4,
+      "gif": "/education-assets/simulation/cartpole/p12-i0-d4.gif",
+      "still": "/education-assets/simulation/cartpole/p12-i0-d4.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 3.0059999999998905,
+        "stop_reason": "cart",
+        "max_angle_deg": 33.907316183022274,
+        "max_cart_m": 2.2062314824323095,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p12-i0-d8",
+      "kp": 12,
+      "ki": 0,
+      "kd": 8,
+      "gif": "/education-assets/simulation/cartpole/p12-i0-d8.gif",
+      "still": "/education-assets/simulation/cartpole/p12-i0-d8.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 3.8599999999997965,
+        "stop_reason": "cart",
+        "max_angle_deg": 20.156732347478876,
+        "max_cart_m": 2.201256445006657,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p12-i2-d1",
+      "kp": 12,
+      "ki": 2,
+      "kd": 1,
+      "gif": "/education-assets/simulation/cartpole/p12-i2-d1.gif",
+      "still": "/education-assets/simulation/cartpole/p12-i2-d1.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 1.314000000000001,
+        "stop_reason": "angle",
+        "max_angle_deg": 40.15174016106034,
+        "max_cart_m": 1.1487171417299389,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 2.43531202435312
+      }
+    },
+    {
+      "id": "p12-i2-d4",
+      "kp": 12,
+      "ki": 2,
+      "kd": 4,
+      "gif": "/education-assets/simulation/cartpole/p12-i2-d4.gif",
+      "still": "/education-assets/simulation/cartpole/p12-i2-d4.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 2.973999999999894,
+        "stop_reason": "angle",
+        "max_angle_deg": 40.19740541134609,
+        "max_cart_m": 1.9131563978117385,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 2.0174848688634834
+      }
+    },
+    {
+      "id": "p12-i2-d8",
+      "kp": 12,
+      "ki": 2,
+      "kd": 8,
+      "gif": "/education-assets/simulation/cartpole/p12-i2-d8.gif",
+      "still": "/education-assets/simulation/cartpole/p12-i2-d8.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 4.125999999999768,
+        "stop_reason": "cart",
+        "max_angle_deg": 30.56538356821101,
+        "max_cart_m": 2.2006759399993805,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p12-i6-d1",
+      "kp": 12,
+      "ki": 6,
+      "kd": 1,
+      "gif": "/education-assets/simulation/cartpole/p12-i6-d1.gif",
+      "still": "/education-assets/simulation/cartpole/p12-i6-d1.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 1.260000000000001,
+        "stop_reason": "angle",
+        "max_angle_deg": 40.26367825564612,
+        "max_cart_m": 1.0255761694673164,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 4.603174603174603
+      }
+    },
+    {
+      "id": "p12-i6-d4",
+      "kp": 12,
+      "ki": 6,
+      "kd": 4,
+      "gif": "/education-assets/simulation/cartpole/p12-i6-d4.gif",
+      "still": "/education-assets/simulation/cartpole/p12-i6-d4.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 2.7859999999999148,
+        "stop_reason": "angle",
+        "max_angle_deg": 40.129772835561404,
+        "max_cart_m": 1.2602221777121891,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 3.230437903804738
+      }
+    },
+    {
+      "id": "p12-i6-d8",
+      "kp": 12,
+      "ki": 6,
+      "kd": 8,
+      "gif": "/education-assets/simulation/cartpole/p12-i6-d8.gif",
+      "still": "/education-assets/simulation/cartpole/p12-i6-d8.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 4.883999999999684,
+        "stop_reason": "cart",
+        "max_angle_deg": 27.672828568038344,
+        "max_cart_m": 2.2043075973529573,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p24-i0-d1",
+      "kp": 24,
+      "ki": 0,
+      "kd": 1,
+      "gif": "/education-assets/simulation/cartpole/p24-i0-d1.gif",
+      "still": "/education-assets/simulation/cartpole/p24-i0-d1.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 4.4539999999997315,
+        "stop_reason": "angle",
+        "max_angle_deg": 40.229097874494336,
+        "max_cart_m": 1.1678595186034744,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 12.572968118545129
+      }
+    },
+    {
+      "id": "p24-i0-d4",
+      "kp": 24,
+      "ki": 0,
+      "kd": 4,
+      "gif": "/education-assets/simulation/cartpole/p24-i0-d4.gif",
+      "still": "/education-assets/simulation/cartpole/p24-i0-d4.png",
+      "metrics": {
+        "completed": true,
+        "stop_s": null,
+        "stop_reason": null,
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 0.9299981644588773,
+        "tail_angle_rms_deg": 1.7444988016484737,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p24-i0-d8",
+      "kp": 24,
+      "ki": 0,
+      "kd": 8,
+      "gif": "/education-assets/simulation/cartpole/p24-i0-d8.gif",
+      "still": "/education-assets/simulation/cartpole/p24-i0-d8.png",
+      "metrics": {
+        "completed": true,
+        "stop_s": null,
+        "stop_reason": null,
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 1.3644575330808155,
+        "tail_angle_rms_deg": 2.076213728383208,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p24-i2-d1",
+      "kp": 24,
+      "ki": 2,
+      "kd": 1,
+      "gif": "/education-assets/simulation/cartpole/p24-i2-d1.gif",
+      "still": "/education-assets/simulation/cartpole/p24-i2-d1.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 3.747999999999809,
+        "stop_reason": "angle",
+        "max_angle_deg": 40.199396776490474,
+        "max_cart_m": 1.4144328029973905,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 8.431163287086447
+      }
+    },
+    {
+      "id": "p24-i2-d4",
+      "kp": 24,
+      "ki": 2,
+      "kd": 4,
+      "gif": "/education-assets/simulation/cartpole/p24-i2-d4.gif",
+      "still": "/education-assets/simulation/cartpole/p24-i2-d4.png",
+      "metrics": {
+        "completed": true,
+        "stop_s": null,
+        "stop_reason": null,
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 1.3113647781015223,
+        "tail_angle_rms_deg": 1.7407390438200843,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p24-i2-d8",
+      "kp": 24,
+      "ki": 2,
+      "kd": 8,
+      "gif": "/education-assets/simulation/cartpole/p24-i2-d8.gif",
+      "still": "/education-assets/simulation/cartpole/p24-i2-d8.png",
+      "metrics": {
+        "completed": true,
+        "stop_s": null,
+        "stop_reason": null,
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 1.3624160410928963,
+        "tail_angle_rms_deg": 2.1459516687489826,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p24-i6-d1",
+      "kp": 24,
+      "ki": 6,
+      "kd": 1,
+      "gif": "/education-assets/simulation/cartpole/p24-i6-d1.gif",
+      "still": "/education-assets/simulation/cartpole/p24-i6-d1.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 3.0699999999998835,
+        "stop_reason": "angle",
+        "max_angle_deg": 40.15496496045711,
+        "max_cart_m": 0.952410916664006,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 13.811074918566776
+      }
+    },
+    {
+      "id": "p24-i6-d4",
+      "kp": 24,
+      "ki": 6,
+      "kd": 4,
+      "gif": "/education-assets/simulation/cartpole/p24-i6-d4.gif",
+      "still": "/education-assets/simulation/cartpole/p24-i6-d4.png",
+      "metrics": {
+        "completed": true,
+        "stop_s": null,
+        "stop_reason": null,
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 2.0747993846725183,
+        "tail_angle_rms_deg": 1.695791528142912,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p24-i6-d8",
+      "kp": 24,
+      "ki": 6,
+      "kd": 8,
+      "gif": "/education-assets/simulation/cartpole/p24-i6-d8.gif",
+      "still": "/education-assets/simulation/cartpole/p24-i6-d8.png",
+      "metrics": {
+        "completed": true,
+        "stop_s": null,
+        "stop_reason": null,
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 2.0848392956384374,
+        "tail_angle_rms_deg": 1.9594844300347363,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p48-i0-d1",
+      "kp": 48,
+      "ki": 0,
+      "kd": 1,
+      "gif": "/education-assets/simulation/cartpole/p48-i0-d1.gif",
+      "still": "/education-assets/simulation/cartpole/p48-i0-d1.png",
+      "metrics": {
+        "completed": true,
+        "stop_s": null,
+        "stop_reason": null,
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 2.116270606546821,
+        "tail_angle_rms_deg": 2.8461789501502386,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p48-i0-d4",
+      "kp": 48,
+      "ki": 0,
+      "kd": 4,
+      "gif": "/education-assets/simulation/cartpole/p48-i0-d4.gif",
+      "still": "/education-assets/simulation/cartpole/p48-i0-d4.png",
+      "metrics": {
+        "completed": true,
+        "stop_s": null,
+        "stop_reason": null,
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 2.1358452840620323,
+        "tail_angle_rms_deg": 2.1587475101680043,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p48-i0-d8",
+      "kp": 48,
+      "ki": 0,
+      "kd": 8,
+      "gif": "/education-assets/simulation/cartpole/p48-i0-d8.gif",
+      "still": "/education-assets/simulation/cartpole/p48-i0-d8.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 5.861999999999576,
+        "stop_reason": "cart",
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 2.200021227640189,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p48-i2-d1",
+      "kp": 48,
+      "ki": 2,
+      "kd": 1,
+      "gif": "/education-assets/simulation/cartpole/p48-i2-d1.gif",
+      "still": "/education-assets/simulation/cartpole/p48-i2-d1.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 6.085999999999552,
+        "stop_reason": "cart",
+        "max_angle_deg": 7.09827484453087,
+        "max_cart_m": 2.2001065137777545,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p48-i2-d4",
+      "kp": 48,
+      "ki": 2,
+      "kd": 4,
+      "gif": "/education-assets/simulation/cartpole/p48-i2-d4.gif",
+      "still": "/education-assets/simulation/cartpole/p48-i2-d4.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 5.803999999999583,
+        "stop_reason": "cart",
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 2.2000874123131338,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p48-i2-d8",
+      "kp": 48,
+      "ki": 2,
+      "kd": 8,
+      "gif": "/education-assets/simulation/cartpole/p48-i2-d8.gif",
+      "still": "/education-assets/simulation/cartpole/p48-i2-d8.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 5.167999999999653,
+        "stop_reason": "cart",
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 2.200345799091755,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p48-i6-d1",
+      "kp": 48,
+      "ki": 6,
+      "kd": 1,
+      "gif": "/education-assets/simulation/cartpole/p48-i6-d1.gif",
+      "still": "/education-assets/simulation/cartpole/p48-i6-d1.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 5.339999999999634,
+        "stop_reason": "cart",
+        "max_angle_deg": 7.902394728401586,
+        "max_cart_m": 2.200464178331509,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p48-i6-d4",
+      "kp": 48,
+      "ki": 6,
+      "kd": 4,
+      "gif": "/education-assets/simulation/cartpole/p48-i6-d4.gif",
+      "still": "/education-assets/simulation/cartpole/p48-i6-d4.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 5.187999999999651,
+        "stop_reason": "cart",
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 2.20067872424926,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    },
+    {
+      "id": "p48-i6-d8",
+      "kp": 48,
+      "ki": 6,
+      "kd": 8,
+      "gif": "/education-assets/simulation/cartpole/p48-i6-d8.gif",
+      "still": "/education-assets/simulation/cartpole/p48-i6-d8.png",
+      "metrics": {
+        "completed": false,
+        "stop_s": 4.835999999999689,
+        "stop_reason": "cart",
+        "max_angle_deg": 6.875493541569878,
+        "max_cart_m": 2.2001246823360514,
+        "tail_angle_rms_deg": null,
+        "saturation_pct": 0.0
+      }
+    }
+  ],
+  "script_sha256": "702a1e5ca54a3f0276717bd040df361ba8b37cc1fc87b6d4d6e1133ade95fcb7",
+  "files": {
+    "p12-i0-d1.json": {
+      "bytes": 41023,
+      "sha256": "48b5db65a830782d483012f351dd74cb44a84e253b74e587c8e5c0e98846b38a"
+    },
+    "p12-i2-d1.png": {
+      "bytes": 52711,
+      "sha256": "7022ca5f3e4c5ac24c8793029c6f7c2771a969bf64c682ed189882a1c44478a8"
+    },
+    "p12-i2-d1.gif": {
+      "bytes": 98403,
+      "sha256": "166cfff29f851b2075a9a3d34123e48080945aeebdb1d2247fb484c650e112f9"
+    },
+    "p12-i6-d8.png": {
+      "bytes": 53130,
+      "sha256": "ff90e114b67f22a0485b904db1417cea4009fdda7ada1ae1d6c146a6cc136f53"
+    },
+    "p48-i2-d4.png": {
+      "bytes": 50474,
+      "sha256": "d665c2c6dbfebfdd0c0770ee77ba126ae2927a4522d05b24cb4b314761cb3a8e"
+    },
+    "p24-i6-d4.gif": {
+      "bytes": 275872,
+      "sha256": "b2b38bf1e627e05b3d9a66827c5bc9b7281911bc75f7371d6365e26119a809d1"
+    },
+    "p24-i2-d8.png": {
+      "bytes": 50896,
+      "sha256": "f37b494f38761c9edbee32c6363fb45608343a9302b87a792c577b0c954bb176"
+    },
+    "p48-i2-d1.json": {
+      "bytes": 43341,
+      "sha256": "124ce1e715e30b2945b9e234323cb911dbf12a1b3ee2fab5638e5292fc2b62ee"
+    },
+    "p12-i0-d4.json": {
+      "bytes": 43036,
+      "sha256": "c587e9068fb3a0b56f08b97cecfaca69896510b6c1663928f5ab8e644ecdc3d6"
+    },
+    "p24-i0-d4.gif": {
+      "bytes": 236715,
+      "sha256": "c96db6bdd2671117838a035ac4e3c71b83d531409aa99852c297bcbb22dfd00c"
+    },
+    "p12-i0-d8.gif": {
+      "bytes": 189764,
+      "sha256": "45f8d63f31e80a9cb83a9069262616f8c40b17b47c2811191175a2fbe52c9430"
+    },
+    "p24-i6-d1.gif": {
+      "bytes": 160897,
+      "sha256": "f027176ca1032fcd97ff5d26c57ee1c69c8ba60e87e393ef9f130160b03a65d5"
+    },
+    "p48-i0-d1.gif": {
+      "bytes": 315391,
+      "sha256": "5b5acb317bf32e6284a12f32f50f57c5903ce7bed8d891b99548b1237a98bb0f"
+    },
+    "p24-i2-d1.gif": {
+      "bytes": 177773,
+      "sha256": "305c742df5cde562cb1adb5303d2cc3e96df96ccf765974f1d70d2afc321c68a"
+    },
+    "p48-i6-d1.png": {
+      "bytes": 50989,
+      "sha256": "f822d7ed4cbf74ad73d2da053e66c8bf9d9f772d3dc3aea6735862a3fb0927db"
+    },
+    "p48-i2-d1.png": {
+      "bytes": 51536,
+      "sha256": "878c27a7108cb18141ff2b171cd7cfeda7471f1f41bbf1db4f6f8ac9af5b0ba3"
+    },
+    "p24-i6-d1.json": {
+      "bytes": 41296,
+      "sha256": "badc0480723212cf5b7fb3fe4defcd03d919d32763e1721006b8346ceaf4e0bc"
+    },
+    "p24-i2-d4.json": {
+      "bytes": 43755,
+      "sha256": "c7fa918ddbeca3c75ecd4c0445419a1d68eb35482468a72432b704e6812ed583"
+    },
+    "p12-i2-d8.json": {
+      "bytes": 42747,
+      "sha256": "7d9ec5efe27f5f9f6f8cd95899e4bfac3e038151af5cb42bf133f97dd11187f8"
+    },
+    "p48-i6-d8.png": {
+      "bytes": 52543,
+      "sha256": "27d94fab9150010d6939122b173d75269818ed6a74a66355b8381f694f350c98"
+    },
+    "p48-i0-d4.png": {
+      "bytes": 50804,
+      "sha256": "b5804f01c003067550888bc1a35aea6bfd393e62782f360b5cf814786b824331"
+    },
+    "p12-i0-d4.png": {
+      "bytes": 53740,
+      "sha256": "edbe61716f6e04911e6535ac12bddcf02e078d1c86fed16d593816f657e481ef"
+    },
+    "p48-i2-d8.json": {
+      "bytes": 43389,
+      "sha256": "cd58085c378c2e5492dca3ad75ba7dcfa8de12d28fecfdf98943a9208a81547b"
+    },
+    "p12-i2-d1.json": {
+      "bytes": 41020,
+      "sha256": "2d4d831dbdf1a662092ea7e7917b5c4cb3dc579bb90e82c2ad32f7f60e993d13"
+    },
+    "p48-i0-d8.gif": {
+      "bytes": 212405,
+      "sha256": "2233e35efc795d32b3fbb9a5adec9c4858afd5ddc7e7ba712e26b1d4c1f1c120"
+    },
+    "p12-i2-d4.json": {
+      "bytes": 41489,
+      "sha256": "4cfcd6bb55c61b8e0616800d3a2b03ebc07856bf26e6e9dc75326075d0c9ddb1"
+    },
+    "p48-i6-d4.png": {
+      "bytes": 50952,
+      "sha256": "35792f46d97bd9ee9be7689bb834c3fc459c740e3058c8aba024efef8b4b5d85"
+    },
+    "p24-i6-d8.json": {
+      "bytes": 43636,
+      "sha256": "d2f7bcd0084991dd2394b7d31768a5fb4ff96880b37d788608d5d3c58940713b"
+    },
+    "p24-i6-d1.png": {
+      "bytes": 53983,
+      "sha256": "58a326f9deff30d08441dd79da30c72f591c0109a8c03bac7845d70fb25da744"
+    },
+    "p12-i2-d8.gif": {
+      "bytes": 198203,
+      "sha256": "8ffeca55a1945ba7989255e1ab9482fbf9aa80e049f1ef8d6716cacc9d77b735"
+    },
+    "p48-i2-d4.json": {
+      "bytes": 43727,
+      "sha256": "51c4c1cf00814a59d6d9b877e827a023333d13154127466c0aa6118d1df03362"
+    },
+    "p24-i2-d8.json": {
+      "bytes": 43608,
+      "sha256": "5f9e7422f3dd11c613867e375fa291bc51715e2562163e917533d8dd182fc62a"
+    },
+    "p12-i2-d4.gif": {
+      "bytes": 159777,
+      "sha256": "6c717d948c5abcd1df266ec7ea8edb3bb405aaeec8b93f837f6c931b9f0082e7"
+    },
+    "p24-i0-d4.png": {
+      "bytes": 50678,
+      "sha256": "bbbe50efec65425e813c72076acade5b6b4eade8a8794f57902900c1eda80c34"
+    },
+    "p48-i6-d4.gif": {
+      "bytes": 198722,
+      "sha256": "23d17abae282320d3f9aacc1f6aaf56abd10f56342262bbb9e8f5ddac4311bba"
+    },
+    "p48-i2-d4.gif": {
+      "bytes": 218212,
+      "sha256": "456adea18322e9c742a8f2839366e3aa854e9ee47e77c63420119fbf7438e707"
+    },
+    "p48-i2-d8.png": {
+      "bytes": 51126,
+      "sha256": "d3f4a2cf78e1435e449f9b7bef221f1a2b42c6748f9515a8b26df1775a6e41d8"
+    },
+    "p48-i0-d8.png": {
+      "bytes": 50491,
+      "sha256": "b0132bb42daff1747bbb84198d02af12afedb00460992e3ad25891a0d98e8d3c"
+    },
+    "p24-i2-d1.json": {
+      "bytes": 41801,
+      "sha256": "626beaefa75df28fd60addf283ed894e251f4f1c468695b9e16639c21e34f512"
+    },
+    "p48-i6-d4.json": {
+      "bytes": 43580,
+      "sha256": "07acf4829c17ee0a19b492639f62653d44340715e724095fb851e22d26367165"
+    },
+    "p12-i6-d1.gif": {
+      "bytes": 93468,
+      "sha256": "cc09540c48d755fc370413a44d994e4536f31177ad0758087b8cccd1d25e7dbc"
+    },
+    "p24-i0-d1.png": {
+      "bytes": 52999,
+      "sha256": "c238bc656a618874968ff48f78c784dc9a771c11aff6a92455fa301da3ac4192"
+    },
+    "p24-i6-d4.json": {
+      "bytes": 43700,
+      "sha256": "efe18ccef6976653ea5cb3b249d26a8b9cb6d29e31206b3f6098ed59cb1b1ad1"
+    },
+    "p48-i0-d4.json": {
+      "bytes": 43624,
+      "sha256": "b3b500f42436d9e2e867836df58f5122280b08cbbb402771489f4280b28c6c32"
+    },
+    "p12-i0-d1.gif": {
+      "bytes": 89750,
+      "sha256": "60ab787fe102dbcafc9629780c2f33030a7d1b62b9c5097890b474132fd15bd6"
+    },
+    "p48-i6-d1.gif": {
+      "bytes": 234335,
+      "sha256": "3c178554c632059021e763e8bef001fb41f400d8817e7b46a6fd4b55eb9b914a"
+    },
+    "p48-i2-d8.gif": {
+      "bytes": 195627,
+      "sha256": "597f0341fa50b992ad63c4237d78680a43e85170545e7d619785376bff9ea984"
+    },
+    "p48-i0-d4.gif": {
+      "bytes": 264888,
+      "sha256": "3fc36520955f450cdef84d0b551ece60e3cb3e1ea9401e5719d7cd98cd0704c2"
+    },
+    "p24-i0-d8.png": {
+      "bytes": 51156,
+      "sha256": "9c8e51ff0a80f1579992d0523898b7a29d12b2a54b26690f5369a54760a0519c"
+    },
+    "p24-i6-d8.png": {
+      "bytes": 51295,
+      "sha256": "6b39d7359b5d2525f22c3005e9b4d942fd6f76561eb4833fc83d61db6febf0e1"
+    },
+    "p48-i0-d1.png": {
+      "bytes": 51300,
+      "sha256": "300ecc6a0e61b0e1d90491c720d97921c763e5dd728350b796395418295f257b"
+    },
+    "p12-i6-d4.png": {
+      "bytes": 53688,
+      "sha256": "6419d5c3ad9a83cf51f32b31f25d21e3c78dbae197314d65ad151fffe58b22d4"
+    },
+    "p24-i0-d1.json": {
+      "bytes": 42117,
+      "sha256": "3ab06449cf807dd2fb22297bd21c660177d370ff1618b6f3955bb92a10e8db39"
+    },
+    "p12-i6-d4.gif": {
+      "bytes": 149146,
+      "sha256": "4cde8fd5ecfa40866cddb340b2cb075ff0bc8f1bb38153df04ca88d2baa85132"
+    },
+    "p24-i0-d4.json": {
+      "bytes": 43741,
+      "sha256": "d165ed2731cf26adfa7b44fadfb3b1d4211d4d293c5a7f07ca9ac5086e81beca"
+    },
+    "p12-i6-d4.json": {
+      "bytes": 41511,
+      "sha256": "b1bd7d97c006ab1c3feb40417331a7c273bc6403d74976c91d52638c9611ea54"
+    },
+    "p24-i2-d4.gif": {
+      "bytes": 251353,
+      "sha256": "16ddae10c5e4a5800893051710d96196cb177933f493c369b77d116ceaca31fe"
+    },
+    "p12-i2-d4.png": {
+      "bytes": 53366,
+      "sha256": "c5bba14d55445dd4078da0a024583351451e64fce44a825c05b9f7a9e3f89657"
+    },
+    "p24-i6-d8.gif": {
+      "bytes": 269577,
+      "sha256": "c0c1ed999f7c95cccb51c540f570bcd30278aa52ecdea3a66c602d99140d4d22"
+    },
+    "p12-i0-d1.png": {
+      "bytes": 53582,
+      "sha256": "43d3091e7e60d481d98145bddeb07a6a53c03497e94981d6fb60178368f14f61"
+    },
+    "p24-i2-d4.png": {
+      "bytes": 49875,
+      "sha256": "f62362e207819d115fbb2fccf81b747d1b41c9ab7f20e158748b7ffb6d4703f7"
+    },
+    "p24-i2-d8.gif": {
+      "bytes": 274512,
+      "sha256": "e4734605de71f83f3fe4da8846edd7a2e214f0deaafa02d225fc3ed201c7af7d"
+    },
+    "p12-i6-d8.json": {
+      "bytes": 43219,
+      "sha256": "aa369424ec7c2ca9c91def1b7c9945698a9bd3f6f36f4cb0c053811ca6d38375"
+    },
+    "p48-i2-d1.gif": {
+      "bytes": 259308,
+      "sha256": "3139217decedf3ba412331740d38dcbff9ac134a6c10ebaaf0daa0ee43a09cb0"
+    },
+    "p48-i6-d8.json": {
+      "bytes": 43767,
+      "sha256": "98abd00244116023e3d4b762c21a8715237dec5678c19560b04bb3b9568d56e5"
+    },
+    "p24-i0-d1.gif": {
+      "bytes": 209802,
+      "sha256": "01b3865dcd38d2e5287460b5db2220785d28513671bb786a6a26f61fbcb5b748"
+    },
+    "p12-i0-d4.gif": {
+      "bytes": 163014,
+      "sha256": "e1ce39d72550f7f2e53a2d2f69c2ad84f06bd1e5f2af763cc648e87d22d8f167"
+    },
+    "p24-i6-d4.png": {
+      "bytes": 50967,
+      "sha256": "aa34a9697c3e5e7adae0a1b476221913d9b4629a702083f554e4bdb79561662f"
+    },
+    "p12-i6-d1.png": {
+      "bytes": 53215,
+      "sha256": "afea9679578d0d00a4d47d33bbbaf81f05f84494cfbce962a75628d4d20f3936"
+    },
+    "p12-i2-d8.png": {
+      "bytes": 53552,
+      "sha256": "db0302128650dfd250b27581051370f6365cda8814d04e4395e275b3ccad8ff2"
+    },
+    "p48-i6-d1.json": {
+      "bytes": 43220,
+      "sha256": "d29cb83863ab6e6f8a514679aa49462e17844150512033892fce83faad605022"
+    },
+    "p48-i6-d8.gif": {
+      "bytes": 195858,
+      "sha256": "a7557cb20a9178dfb3cbb6343c3a665cf7da3dc6b513358c01aadc6779cd6316"
+    },
+    "p12-i6-d1.json": {
+      "bytes": 41012,
+      "sha256": "330563d9f58e73348de713a91e5756b431b04c4c18ddca4c45a0dba1f08e8d89"
+    },
+    "p12-i0-d8.png": {
+      "bytes": 54036,
+      "sha256": "513a42116ba24b214a55c39e37f5b34ee1875b4aba22592dd6dac7bf3a9a717b"
+    },
+    "p12-i0-d8.json": {
+      "bytes": 43173,
+      "sha256": "e9fd594e80043faf7a1e6e161be206605b53074ff62accfe16ddf141c714fe00"
+    },
+    "p24-i0-d8.json": {
+      "bytes": 43581,
+      "sha256": "583b3678fed886c62b6ef21c21ebee15f09e9b64368ac9db638f905bd6f8083b"
+    },
+    "model.xml": {
+      "bytes": 955,
+      "sha256": "49e53bc9d7877a2c3794c5477d0813a342660b97d54c37022600aec26d63ca50"
+    },
+    "p48-i0-d1.json": {
+      "bytes": 43382,
+      "sha256": "baf52dd1c017c49150eecda7fe07e91698ef5ddc2580639af466a80439c8b522"
+    },
+    "p24-i2-d1.png": {
+      "bytes": 53756,
+      "sha256": "a5083b8608d7f05dd38558bb35844720bad7759c8d3849861285344260650a87"
+    },
+    "p12-i6-d8.gif": {
+      "bytes": 229392,
+      "sha256": "15a1277714ca30f482646be327a8e04420f8e737a493a055de632e036d6dda02"
+    },
+    "p48-i0-d8.json": {
+      "bytes": 43620,
+      "sha256": "c3c0427abe19c074391a457ccd5999b4cb07d384d5f337f30290ceabfc25cd18"
+    },
+    "p24-i0-d8.gif": {
+      "bytes": 275525,
+      "sha256": "2016da262df43553dbc6dabaa7267bf6c20607ea79e907d562e36f0acf0bd584"
+    }
+  }
+}

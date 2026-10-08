@@ -154,3 +154,13 @@ MUJOCO_GL=egl /home/user/microbanRL/.venv/bin/python scripts/render-pendulum-exa
 검증: `MERO_EDUCATION_TEST_URL=http://localhost:3100 npx playwright test tests/education.spec.ts tests/education-foundations.spec.ts`.
 
 MuJoCo 자료의 정진자·역진자 GIF는 실제 물리 상태를 20fps로 렌더링합니다. 정진자는 3초, 역진자는 6초이며, 제어 없음과 PD 제어를 같은 초기 조건에서 비교합니다. 역진자는 고정 관절의 위쪽 균형 유지 예제로 2초에 외부 토크를 가합니다. XML·실행 수치·해시는 `private/education-assets/simulation/*-demo*`에 보관합니다. 움직임 줄이기 설정에서는 정적 PNG로 바뀝니다.
+
+
+Cart-pole의 PID 튜닝은 기존 MuJoCo 강의 안에 포함합니다. P `[12,24,48]`, I `[0,2,6]`, D `[1,4,8]`의 27개 조합을 같은 초기 상태·외부 힘으로 미리 실행합니다. 슬라이더는 사전 계산한 GIF를 선택하며, 비교 기준 저장과 양쪽 재생 시작을 지원합니다. 8초 유지/중도 종료, 최대 기울기·카트 이동·마지막 2초 각도 RMS를 실제 기록에서 읽습니다. 카트 위치·속도 보정과 적분 제한은 고정하며, 장기 안정성이나 실제 하드웨어 튜닝을 보증하는 결과가 아닙니다.
+
+```bash
+MUJOCO_GL=egl /home/user/microbanRL/.venv/bin/python scripts/render-cartpole-tuning.py
+npm run education:deepml
+```
+
+전체 설정·실행별 상태·XML·파일 해시는 `private/education-assets/simulation/cartpole/`, UI용 수치는 `src/lib/education/generated/cartpole.json`에 저장합니다. 27개 GIF 합계 약 5.6 MB이며 화면에서는 선택/비교한 조합만 읽습니다. 움직임 줄이기 설정에서는 5초의 실제 상태 PNG를 표시합니다.

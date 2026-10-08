@@ -277,3 +277,37 @@
 .deepml-content .am-flow-mobile { display: none; }
 .deepml-network-animation img { width: 100%; height: auto; display: block; margin-block: 28px; border-radius: var(--control-radius); background: #101827; }
 @media (max-width: 767px) { .deepml-content .am-flow-desktop { display: none; } .deepml-content .am-flow-mobile { display: block; } .deepml-content .am-diagram svg { max-width: 300px; } }
+
+.cartpole-tuner { margin-top: 28px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.cartpole-controls { padding: 24px; background: var(--surface); }
+.cartpole-controls > p { margin-top: 0; }
+.cartpole-sliders { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; margin-block: 24px; }
+.cartpole-slider label { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+.cartpole-slider output { font-size: 22px; font-variant-numeric: tabular-nums; color: var(--accent); }
+.cartpole-slider input { width: 100%; min-height: 36px; accent-color: #214fc4; cursor: pointer; }
+.cartpole-slider input:focus-visible { outline: 2px solid #214fc4; outline-offset: 4px; }
+.cartpole-ticks { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+.cartpole-slider p { font-size: 13px; margin-bottom: 0; }
+.cartpole-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.cartpole-actions button { border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: inherit; padding: 10px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+.cartpole-actions button:hover { border-color: #214fc4; }
+.cartpole-selection { font-size: 13px; margin-bottom: 0; margin-top: 14px !important; }
+.cartpole-comparison { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; background: var(--line); }
+.cartpole-result { min-width: 0; padding: 20px; background: var(--bg); }
+.cartpole-result header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 14px; }
+.cartpole-result h3 { margin: 0; font-size: 17px; }
+.cartpole-result header span { font-size: 13px; font-variant-numeric: tabular-nums; }
+.cartpole-frame { position: relative; aspect-ratio: 640 / 424; background: #101827; border-radius: 8px; overflow: hidden; }
+.cartpole-frame img { display: block; width: 100%; height: auto; }
+.cartpole-loading { position: absolute; inset: 0; display: grid; place-items: center; background: #101827; color: white; font-size: 14px; }
+.cartpole-outcome { font-size: 13px; padding: 10px 0; margin: 0; }
+.cartpole-outcome.is-complete { color: #226443; }
+.cartpole-outcome.is-stopped { color: #a55222; }
+.cartpole-metrics { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin: 0; }
+.cartpole-metrics dt { font-size: 11px; line-height: 1.5; }
+.cartpole-metrics dd { margin: 6px 0 0; font-size: 19px; font-variant-numeric: tabular-nums; }
+.cartpole-footnote { padding: 0 24px 20px; font-size: 13px; margin: 20px 0 0; }
+@media(max-width: 760px) { .cartpole-sliders,.cartpole-comparison { grid-template-columns: 1fr; } .cartpole-controls,.cartpole-result { padding: 18px; } .cartpole-sliders { gap: 18px; } .cartpole-footnote { padding-inline: 18px; } }
+
+[data-theme="dark"] .cartpole-outcome.is-complete { color: #8bd4b0; }
+[data-theme="dark"] .cartpole-outcome.is-stopped { color: #f1b586; }

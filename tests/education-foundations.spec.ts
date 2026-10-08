@@ -27,7 +27,7 @@ test("generated lessons render readable emphasis, figures and legal notices", as
   for (const width of [320,1440]) for (const path of paths) {
     await page.setViewportSize({width,height:1000});
     await page.goto(`${baseURL}${path}`);
-    await expect(page.locator('.perception-chapter')).toHaveCount(/\/(robot-models|mujoco-first-run)$/.test(path) ? 5 : 4);
+    await expect(page.locator('.perception-chapter')).toHaveCount(path.endsWith('/mujoco-first-run') ? 6 : path.endsWith('/robot-models') ? 5 : 4);
     expect((await page.locator('.deepml-content').allTextContents()).join('')).not.toContain('**');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth),`${path}/${width}`).toBe(true);
     const images=page.locator('.deepml-content img');
@@ -69,4 +69,39 @@ test("MuJoCo animations load and switch to static results for reduced motion", a
     await image.scrollIntoViewIfNeeded();
     await expect.poll(() => image.evaluate(el => (el as HTMLImageElement).currentSrc)).toContain(`${name}-at-1.0s.png`);
   }
+});
+
+test("cart-pole sliders select recorded PID trials and retain a comparison", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto(`${baseURL}/education/simulation/mujoco-first-run#cartpole`);
+  const tuner = page.locator('.cartpole-tuner');
+  const results = tuner.locator('.cartpole-result');
+  await expect(tuner.locator('.cartpole-loading')).toHaveCount(0);
+  await expect(results.first()).toContainText('1.35초에 종료');
+  for (const [key, values] of [['kp',[12,24,48]],['ki',[0,2,6]],['kd',[1,4,8]]] as const) {
+    const slider = page.locator(`#cartpole-${key}`);
+    await slider.focus();
+    await slider.press('ArrowRight');
+    await expect(slider).toHaveAttribute('aria-valuetext', String(values[1]));
+  }
+  await expect(results.first()).toContainText('P 24 · I 2 · D 4');
+  await expect(results.first()).toContainText('8초 동안');
+  const selected = results.first().locator('img');
+  await expect.poll(() => selected.evaluate(el => (el as HTMLImageElement).complete && (el as HTMLImageElement).naturalWidth > 0)).toBe(true);
+  await tuner.getByRole('button', {name:'현재 조합을 비교 기준으로'}).click();
+  await page.locator('#cartpole-kp').press('End');
+  await expect(results.first()).toContainText('P 48 · I 2 · D 4');
+  await expect(results.last()).toContainText('P 24 · I 2 · D 4');
+  const before = await selected.getAttribute('src');
+  await tuner.getByRole('button', {name:'처음부터 다시 보기'}).click();
+  await expect(selected).not.toHaveAttribute('src', before!);
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await expect.poll(() => selected.evaluate(el => (el as HTMLImageElement).currentSrc)).toContain('p48-i2-d4.png');
+  for (const p of [12,24,48]) for (const i of [0,2,6]) for (const d of [1,4,8]) {
+    const response = await page.request.get(`${baseURL}/education-assets/simulation/cartpole/p${p}-i${i}-d${d}.gif`);
+    expect(response.status()).toBe(200);
+    expect(response.headers()['content-type']).toBe('image/gif');
+  }
+  await page.setViewportSize({width:320,height:900});
+  await expect.poll(() => page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
