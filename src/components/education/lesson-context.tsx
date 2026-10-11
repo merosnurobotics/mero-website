@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LessonDemos } from "./lesson-demos";
 import { educationReadingOrder, lessonConnection, lessonPreparation, educationLearningPaths } from "@/lib/education/curriculum";
 
 export function LessonContext({ path }: { path: string }) {
@@ -24,7 +25,7 @@ export function LessonNavigation({ path }: { path: string }) {
     const position=route.steps.findIndex(step=>step.path.split("#")[0]===path);
     return position>=0 && route.steps[position+1] ? [{title:route.title,next:route.steps[position+1]}] : [];
   });
-  return <><div className="education-route-next">{routes.map(route=><p key={route.title}>{route.title} 경로의 다음 단계: <Link href={route.next.path}>{route.next.label}</Link></p>)}<Link href="/education">학습 경로 선택으로 돌아가기</Link></div>
+  return <><LessonDemos path={path}/><div className="education-route-next">{routes.map(route=><p key={route.title}>{route.title} 경로의 다음 단계: <Link href={route.next.path}>{route.next.label}</Link></p>)}<Link href="/education">학습 경로 선택으로 돌아가기</Link></div>
   <nav className="education-reading-nav" aria-label="교육자료 읽는 순서">
     <Link href={previous?.path || "/education"}><span>{previous ? "참고 순서 · 이전 자료" : "전체 자료"}</span>{previous?.shortTitle || "교육자료 목록"}</Link>
     <Link href={next?.path || "/education"}><span>{next ? "참고 순서 · 다음 자료" : "전체 자료"}</span>{next?.shortTitle || "교육자료 목록"}</Link>

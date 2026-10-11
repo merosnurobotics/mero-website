@@ -92,9 +92,9 @@ npm run admin:create -- --email admin@mero.local --name 'MERO 운영진'
 
 ## 교육 자료
 
-교육 첫 화면(`/education`)의 23개 자료는 공통 입문 뒤 휴머노이드·사족보행·RB-Y1 VLA·ROS/Gazebo 선택 경로로 안내합니다. 경로와 분야 목록은 처음에 접혀 있습니다. 전체 일렬 순서는 참고용이며, 모든 하드웨어 실습을 선행할 필요는 없습니다. 경로·선수 자료는 `src/lib/education/curriculum.ts`에서 관리합니다.
+교육 첫 화면(`/education`)의 자료는 공통 입문 뒤 휴머노이드·사족보행·RB-Y1 VLA·ROS/Gazebo 선택 경로로 안내합니다. 경로와 분야 목록은 처음에 접혀 있습니다. 전체 일렬 순서는 참고용이며, 모든 하드웨어 실습을 선행할 필요는 없습니다. 경로·선수 자료는 `src/lib/education/curriculum.ts`에서 관리합니다.
 
-교육은 프로젝트에 투입하기 전 개념을 이해하는 단계입니다. 코드 작성·디버깅·테스트 도구를 별도 과정으로 늘리지 않습니다. 기존 자료에 좌표·시간·단위·배열·관절 PD·궤적 추종·접촉·구동기 한계와 작은 계산 예제를 보강했고, VLA 및 Gazebo 개념 입문을 추가했습니다. 다음 집필 주제와 프로젝트로 남길 작업은 [교육 확장안](content/education/ROADMAP.md)에 정리했습니다. 활동·과제·진도·수료 기능은 두지 않습니다.
+교육은 프로젝트에 투입하기 전 개념을 이해하는 단계입니다. 각 분야는 입문·기초·응용으로 나누고, 개발 환경도 명령어 암기보다 실행 환경·데이터·프로세스의 역할을 중심으로 설명합니다. 기존 자료에 좌표·시간·단위·배열·관절 PD·궤적 추종·접촉·구동기 한계와 작은 계산 예제를 보강했고, VLA 및 Gazebo 개념 입문을 추가했습니다. 다음 집필 주제와 프로젝트로 남길 작업은 [교육 확장안](content/education/ROADMAP.md)에 정리했습니다. 활동·과제·진도·수료 기능은 두지 않습니다.
 
 PID·객체인식·강화학습 본문의 개념도는 [Answer me with HTML](https://github.com/QingYunA/answer-me-with-html) 스킬의 CLI로 생성합니다. 원고는 `content/education/diagrams.md`이며, 2026-10-08 작업에서는 0.4.14를 사용했습니다.
 
@@ -127,7 +127,7 @@ source /opt/ros/humble/setup.bash
 
 검증: 실행 중인 서버에 `MERO_EDUCATION_TEST_URL=http://localhost:3100 npx playwright test tests/education.spec.ts`를 실행합니다. 탐색·자료 목록·프레임 이동·코드 복사·동시 재생·속도 변경·인쇄·ZIP 다운로드와 320/390/1440px의 밝은/어두운 테마를 확인합니다.
 
-객체인식 시리즈는 `/education/object-recognition`, 첫 회차는 `/education/object-recognition/synthetic-data`입니다. `src/lib/education/catalog.ts`의 `educationTopics[].lessons`에 회차를 추가하면 시리즈 소개와 왼쪽 교육 목록에 반영됩니다. 각 회차의 페이지·장 목록은 별도로 만듭니다.
+객체인식과 VLA는 `/education/robot-vision`의 로봇 비전 시리즈로 통합했습니다. 기존 `/education/object-recognition`과 `/education/vla` 목록은 통합 목록으로 이동하며, `/education/object-recognition/synthetic-data`와 `/education/vla/foundations` 본문 주소는 유지합니다. `src/lib/education/catalog.ts`의 `educationTopics[].lessons`에 회차를 추가하면 시리즈 소개와 왼쪽 교육 목록에 반영됩니다. 각 회차의 페이지·장 목록은 별도로 만듭니다.
 
 실습 저장소는 [meroedu-rl](https://github.com/merosnurobotics/meroedu-rl), [meroedu-detection](https://github.com/merosnurobotics/meroedu-detection)입니다. 루트는 시리즈 목차, `lessons/01-.../`은 독립된 환경·실행 코드·최소 입력입니다. 영상과 과거 실험 결과는 교육 사이트에 남깁니다.
 
@@ -172,3 +172,18 @@ npm run education:deepml
 `private/education-assets/foundations/`에는 선형 모델 업데이트, 작은 RL 환경, 합성 모터의 P/PI/PID 비교, 거리 보정 선형/MLP 비교와 완전한 MuJoCo 진자 예제를 제공합니다. 새 환경에서 코드를 작성하는 과정보다 수치·그래프·행동의 의미를 읽는 보조 예제입니다. 실제 실행 결과를 사용했고 Gazebo·RB-Y1 실물 실행은 수행하지 않았습니다.
 
 Microban 구성 요소 비교는 `scripts/evaluate-microban-ablation.py`로 보관 체크포인트와 Native MuJoCo CPU를 실행했습니다. 동일 초기 상태 8개에서 참조만 0/8, 기본 균형 피드백 8/8, 학습 잔차 추가 8/8입니다. 이 조건에서 PPO가 성공률을 높였다고 해석하지 않습니다. 설정·해시는 `private/education-assets/kimodo-mjwarp/evidence/control-ablation8.json`에 있습니다. 보관 환경의 시간 제한 처리 한계도 본문에 명시했으며, 정책을 다시 학습하지 않았습니다.
+
+### 분야별 개념 교육 확장
+
+개발 환경·제어·ROS·DeepML·위치 추정·시뮬레이션·강화학습 각 10편, 로봇 비전 12편으로 총 82편을 제공합니다. 신규 개념 글은 `src/lib/education/concepts/`의 TypeScript 원고로 관리합니다. 공식 문서와 논문의 핵심 개념을 한국어로 풀고, 자체 로봇 사례·오해·확인 질문과 해설·원문 링크를 함께 제공합니다. 각 원고의 `Order` 배열에 기존 자료까지 포함한 권장 순서를 정의합니다.
+
+```sh
+npm run education:concepts
+npm run typecheck
+npm test
+MERO_EDUCATION_TEST_URL=http://localhost:3100 npx playwright test tests/education-expansion.spec.ts
+```
+
+`education:concepts`는 `generated/concept-index.json`에 탐색용 메타데이터를 생성합니다. 본문은 서버에서만 불러오므로 사이드바에 전체 원고가 포함되지 않습니다. 원고·선수자료·순서를 바꾸면 메타데이터를 재생성하고 함께 반영합니다. 카탈로그 검사는 영역별 수량·난이도·중복·선수자료·장 구성·참고 출처를, 브라우저 검사는 전체 자료와 앵커·기존 주소·모바일·질문 해설을 확인합니다.
+
+실제 로봇 데모는 `src/lib/education/robot-demos.ts`에서 출처·게시자·연도·영상 성격과 수업별 관찰 질문을 관리합니다. RAI UMV 학습/동작, ALOHA·OpenVLA·DayDreamer·SLAM 등의 제작팀 원본을 연결하며 영상·썸네일을 복제하지 않습니다. 클릭 전에는 외부 플레이어를 생성하지 않고, YouTube 개인정보 보호 강화 도메인 또는 제작팀 원본 MP4를 사용합니다. 원본 영상과 연구 페이지 링크는 항상 표시합니다. 데모 연결을 바꿔도 `education:concepts`를 다시 실행해야 목차에 반영됩니다.

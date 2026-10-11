@@ -1,3 +1,6 @@
+import { findConceptLesson } from "@/lib/education/concepts";
+import { ConceptLessonContent } from "@/components/education/concept-lesson";
+import { educationTopics } from "@/lib/education/catalog";
 import { TinyRLEnvironment } from "@/components/education/tiny-rl-environment";
 import { FoundationChapter } from "@/components/education/foundation-chapter";
 import { SourceNotices } from "@/components/education/source-notices";
@@ -12,14 +15,18 @@ import license from "@/lib/education/generated/spinningup-license.json";
 
 type Props = { params: Promise<{ slug: string }> };
 function getLesson(slug: string) { return deepMLLessons.find(lesson => lesson.slug === slug); }
-export function generateStaticParams() { return deepMLLessons.map(({ slug }) => ({ slug })); }
+export function generateStaticParams() { return educationTopics.find(item => item.path === "/education/deepml")!.lessons.map(item => ({ slug: item.path.split("/").at(-1)! })); }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const concept = await findConceptLesson("deepml", (await params).slug);
+  if (concept) return { title: concept.title, description: concept.description };
   const lesson = getLesson((await params).slug);
   if (!lesson) notFound();
   return { title: lesson.title, description: lesson.description };
 }
 
 export default async function DeepMLLessonPage({ params }: Props) {
+  const concept = await findConceptLesson("deepml", (await params).slug);
+  if (concept) return <ConceptLessonContent lesson={concept} topicSlug="deepml"/>;
   const lesson = getLesson((await params).slug);
   if (!lesson) notFound();
   await requireEducationMember(lesson.path);
@@ -28,7 +35,7 @@ export default async function DeepMLLessonPage({ params }: Props) {
   return <>
     <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: isRL ? "강화학습" : "DeepML", href: isRL ? "/education/reinforcement-learning" : deepMLPath }, { label: lesson.shortTitle }]}/>
     <article className="perception-lesson deepml-lesson">
-      <header className="perception-hero"><p className="eyebrow">{isRL ? "강화학습" : "DeepML"} · {String(deepMLLessons.indexOf(lesson) + 1 - (isRL ? 3 : 0)).padStart(2, "0")}</p><h1>{lesson.title}</h1><p>{lesson.description}</p></header>
+      <header className="perception-hero"><p className="eyebrow">{isRL ? "강화학습" : "DeepML"} · {String(educationTopics.flatMap(topic => topic.lessons).find(item => item.path === lesson.path)?.number || 1).padStart(2, "0")}</p><h1>{lesson.title}</h1><p>{lesson.description}</p></header>
       <LessonContext path={lesson.path}/>
       {lesson.slug === "data-and-models" && <FoundationChapter id="arrays"/>}
       {chapters.map((chapter, index) => <section className="perception-chapter" id={chapter.id} key={chapter.id}>

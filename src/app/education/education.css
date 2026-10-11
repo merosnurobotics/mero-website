@@ -329,3 +329,39 @@
 .cartpole-actions button:disabled { opacity: .5; cursor: default; }
 .tiny-rl-environment .cartpole-footnote { padding: 0; }
 @media(max-width: 500px){.tiny-rl-environment{padding:18px;}}
+
+/* Concept readings share the existing lesson typography and accessible native disclosures. */
+.concept-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; font-size: 13px; color: var(--muted); }
+.concept-meta span:first-child { color: var(--accent); font-weight: 650; }
+.concept-lesson .education-connection ul { margin-block: 12px; }
+.concept-lesson .education-sources li p { margin-block: 5px 18px; }
+.concept-lesson .education-check { margin-block: 18px; }
+.concept-lesson .education-sources { scroll-margin-top: 106px; }
+@media print { .concept-lesson details > p { display: block; } }
+
+.education-topic-links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--line); margin-bottom:40px; }
+.education-topic-links a { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:18px 12px; border-bottom:1px solid var(--line); font-size:15px; }
+.education-topic-links a:hover { color:var(--accent); background:var(--surface); }
+.education-topic-links span { color:var(--muted); font-size:12px; white-space:nowrap; }
+@media (max-width:500px) { .education-topic-links { grid-template-columns:1fr; } }
+
+.education-robot-demos { max-width:920px; line-height:1.9; word-break:keep-all; overflow-wrap:anywhere; border-top:1px solid var(--line); margin-top:48px; padding-top:36px; }
+.education-robot-demo { margin:24px 0 36px; }
+.education-robot-demos a { text-decoration:underline; text-underline-offset:3px; }
+.education-robot-demos ul { padding-left:22px; margin-block:20px; }
+.education-robot-demos li { margin-bottom:12px; }
+.education-robot-demos > h2 { font-size:clamp(23px,2.3vw,30px); line-height:1.5; margin-bottom:28px; }
+.education-robot-demo h3 { font-size:21px; line-height:1.55; margin-bottom:8px; }
+.education-demo-credit { font-size:13px; color:var(--muted); margin-bottom:18px; }
+.education-demo-player { width:100%; aspect-ratio:16/9; background:var(--surface); border:1px solid var(--line); border-radius:var(--control-radius); overflow:hidden; }
+.education-demo-player iframe, .education-demo-player video { width:100%; height:100%; border:0; display:block; object-fit:contain; }
+.education-robot-demo + .education-robot-demo { margin-top:36px; }
+.education-demo-player button { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; border:0; background:transparent; color:var(--text); padding:16px; cursor:pointer; font:inherit; text-align:center; }
+.education-demo-player button:hover { background:var(--accent-soft); }
+.education-demo-player button:focus-visible { outline:3px solid var(--accent); outline-offset:-4px; }
+.education-demo-play { font-size:30px; color:var(--accent); }
+.education-demo-player small { font-size:12px; color:var(--muted); }
+.education-robot-demo figcaption { color:var(--muted); font-size:15px; margin-top:12px; line-height:1.7; }
+.education-robot-demo figcaption > p { margin-block:12px; }
+.education-demo-links { display:flex; flex-wrap:wrap; gap:10px 24px; }
+@media print { .education-demo-player { display:none; } }

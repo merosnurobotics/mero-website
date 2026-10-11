@@ -1,3 +1,6 @@
+import { findConceptLesson } from "@/lib/education/concepts";
+import { ConceptLessonContent } from "@/components/education/concept-lesson";
+import { educationTopics } from "@/lib/education/catalog";
 import { CartpoleTuner } from "@/components/education/cartpole-tuner";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -10,13 +13,17 @@ import generated from "@/lib/education/generated/deepml.json";
 
 type Props = { params: Promise<{ slug: string }> };
 function getLesson(slug: string) { return simulationLessons.find(lesson => lesson.slug === slug); }
-export function generateStaticParams() { return simulationLessons.map(({ slug }) => ({ slug })); }
+export function generateStaticParams() { return educationTopics.find(item => item.path === "/education/simulation")!.lessons.map(item => ({ slug: item.path.split("/").at(-1)! })); }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const concept = await findConceptLesson("simulation", (await params).slug);
+  if (concept) return { title: concept.title, description: concept.description };
   const lesson = getLesson((await params).slug);
   if (!lesson) notFound();
   return { title: lesson.title, description: lesson.description };
 }
 export default async function SimulationLessonPage({ params }: Props) {
+  const concept = await findConceptLesson("simulation", (await params).slug);
+  if (concept) return <ConceptLessonContent lesson={concept} topicSlug="simulation"/>;
   const lesson = getLesson((await params).slug);
   if (!lesson) notFound();
   await requireEducationMember(lesson.path);

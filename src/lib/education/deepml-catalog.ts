@@ -34,6 +34,6 @@ export const deepMLLessons = [
 
 export const deepMLTopic = {
   title: "DeepML · 학습의 기초", path: deepMLPath,
-  description: "딥러닝을 처음 접하는 동아리원을 위한 3개 자료입니다. 사진과 센서 데이터에서 시작해 신경망의 학습·평가를 익힙니다. 변수·함수에 더해 배열의 shape·배치와 실행 환경이 필요합니다. 각 자료의 선행 설명을 먼저 확인하세요.",
+  description: "사진과 센서 데이터에서 시작해 신경망의 학습·평가, 표현 학습, Transformer와 멀티모달·생성 모델을 익힙니다. 수식보다 입력·출력과 로봇 사례를 중심으로 읽습니다.",
   lessons: deepMLLessons.slice(0, 3),
 };

@@ -1,4 +1,6 @@
 import { test, expect } from "@playwright/test";
+import { educationTopics } from "../src/lib/education/catalog";
+import { educationReadingOrder } from "../src/lib/education/curriculum";
 const baseURL = process.env.MERO_EDUCATION_TEST_URL;
 test.skip(!baseURL,"Set MERO_EDUCATION_TEST_URL.");
 const membersOnly = process.env.MERO_EDUCATION_TEST_MEMBERS_ONLY === "true";
@@ -38,7 +40,7 @@ test("guests and invalid sessions cannot read education pages, files or optimize
 test("members can read all new courses and play authenticated media ranges",async({page,context})=>{
   await login(context); await context.grantPermissions(["clipboard-read","clipboard-write"]);
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(`${baseURL}/education`);await expect(page.locator('.education-stage')).toHaveCount(9);
+  await page.goto(`${baseURL}/education`);await expect(page.locator('.education-stage')).toHaveCount(educationTopics.length);
   for(const [path,title,count] of courses) {
     await page.goto(`${baseURL}${path}`);
     await expect(page.locator('h1')).toHaveText(title);
@@ -97,7 +99,7 @@ test("public mode opens lessons and files without a member account",async({page,
     await expect(page.locator('meta[name=robots]')).toHaveAttribute('content','index, follow');
   }
   await page.goto(`${baseURL}/education`);
-  await expect(page.locator('.education-stage')).toHaveCount(9);
+  await expect(page.locator('.education-stage')).toHaveCount(educationTopics.length);
   for(const asset of ['localization/NOTICE.md','control/PID_en.svg','setup/NOTICE.md','object-recognition/inference-examples.json','kimodo-mjwarp/microban-imitation-rl-lesson.zip']) {
     expect((await context.request.get(`${baseURL}/education-assets/${asset}`)).status()).toBe(200);
   }

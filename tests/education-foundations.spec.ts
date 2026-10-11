@@ -1,4 +1,6 @@
 import { test, expect } from "@playwright/test";
+import { educationTopics } from "../src/lib/education/catalog";
+import { educationReadingOrder } from "../src/lib/education/curriculum";
 const baseURL = process.env.MERO_EDUCATION_TEST_URL;
 test.skip(!baseURL || process.env.MERO_EDUCATION_TEST_MEMBERS_ONLY === "true", "Requires the public education QA server.");
 
@@ -11,10 +13,10 @@ test("foundations connect to the existing robot application", async ({ page }) =
   await expect(page.locator('.education-topic-tree').filter({has:page.locator('a[href="/education/reinforcement-learning"]')})).toContainText('모방 강화학습');
   await page.goto(`${baseURL}/education/reinforcement-learning`);
   await expect(page.locator('h1')).toHaveText('강화학습');
-  await expect(page.locator('.education-course')).toHaveCount(3);
+  await expect(page.locator('.education-course')).toHaveCount(educationTopics.find(topic => topic.title === '강화학습')!.lessons.length);
   await page.goto(`${baseURL}/education/simulation/rl-environments`);
   await page.getByRole('navigation',{name:'교육자료 읽는 순서'}).getByRole('link',{name:/다음 자료/}).click();
-  await expect(page).toHaveURL(`${baseURL}/education/reinforcement-learning/kimodo-mjwarp`);
+  await expect(page).toHaveURL(`${baseURL}${educationReadingOrder[educationReadingOrder.findIndex(lesson => lesson.path === '/education/simulation/rl-environments') + 1].path}`);
 });
 
 test("generated lessons render readable emphasis, figures and legal notices", async ({ page }) => {

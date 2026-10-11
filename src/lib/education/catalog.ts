@@ -1,8 +1,9 @@
-import { vlaPath, vlaTopic } from "./vla-catalog";
+import { vlaLessons } from "./vla-catalog";
+import conceptIndex from "./generated/concept-index.json";
 import { simulationPath, simulationTopic } from "./simulation-catalog";
 import { deepMLPath, deepMLTopic, deepMLLessons } from "./deepml-catalog";
 export type EducationAuthor = { name: string; email: string };
-export type EducationLesson = { author?: EducationAuthor; path: string; number?: number; shortTitle: string; label: string; title: string; description: string; chapters: { id: string; label: string }[] };
+export type EducationLesson = { level?: "입문" | "기초" | "응용"; minutes?: number; goals?: string[]; prerequisites?: string[]; author?: EducationAuthor; path: string; number?: number; shortTitle: string; label: string; title: string; description: string; chapters: { id: string; label: string }[] };
 export type EducationTopic = { title: string; path: string; description: string; lessons: EducationLesson[] };
 const yeonwooCho: EducationAuthor = { name: "조연우", email: "yencho929@snu.ac.kr" };
 
@@ -19,6 +20,7 @@ export const lessonChapters = [
   { id: "validation", label: "정책 검증" },
 ];
 
+export const robotVisionPath = "/education/robot-vision";
 export const objectRecognitionPath = "/education/object-recognition";
 export const perceptionLessonPath = `${objectRecognitionPath}/synthetic-data`;
 export const perceptionChapters = [
@@ -126,7 +128,6 @@ export const rosBagRvizChapters = [
  {id:"record",label:"기록하고 정보 보기"},{id:"replay",label:"재생과 ROS time"},{id:"checks",label:"Frame·TF·QoS 점검"},
 ];
 const topics: EducationTopic[] = [
-  vlaTopic,
   deepMLTopic,
   simulationTopic,
   {
@@ -135,9 +136,9 @@ const topics: EducationTopic[] = [
     lessons: [...deepMLLessons.slice(3), { author: yeonwooCho, path: kimodoLessonPath, shortTitle: "모방 강화학습", label: "Kimodo + MuJoCo Warp", title: "한 발 서기로 배우는 모방 강화학습", description: "따라 할 동작을 만들고 Microban의 몸체에 맞춘 뒤, 넘어지지 않도록 제어를 배웁니다. Kimodo와 MuJoCo Warp를 쓴 코드와 검증 영상을 함께 읽습니다.", chapters: lessonChapters }],
   },
   {
-    title: "객체인식", path: objectRecognitionPath,
-    description: "사진 속 물체가 무엇이고 어디에 있는지 알아내는 방법을 배웁니다. 처음 공부하는 사람도 사진과 정답지부터 시작할 수 있습니다.",
-    lessons: [{ author: yeonwooCho, path: perceptionLessonPath, shortTitle: "합성 데이터로 시작하기", label: "사진에서 형태와 과일 찾기", title: "합성 데이터로 시작하는 객체인식", description: "정다면체의 형태와 과일 그림을 알아내는 두 단계 모델을 살펴봅니다. Blender로 학습 사진과 정답지를 함께 만들고, YOLO 모델을 학습한 뒤 실제 사진에서 확인합니다.", chapters: perceptionChapters }],
+    title: "로봇 비전", path: robotVisionPath,
+    description: "카메라와 객체인식에서 깊이·시연 학습·VLA까지 연결합니다. 물체를 찾는 것부터 사진과 언어로 로봇의 행동을 정하는 과정까지 난이도에 맞춰 읽습니다.",
+    lessons: [{ author: yeonwooCho, path: perceptionLessonPath, shortTitle: "합성 데이터로 시작하기", label: "사진에서 형태와 과일 찾기", title: "합성 데이터로 시작하는 객체인식", description: "정다면체의 형태와 과일 그림을 알아내는 두 단계 모델을 살펴봅니다. Blender로 학습 사진과 정답지를 함께 만들고, YOLO 모델을 학습한 뒤 실제 사진에서 확인합니다.", chapters: perceptionChapters }, ...vlaLessons],
   },
   {
     title: "위치 추정", path: localizationPath,
@@ -148,7 +149,7 @@ const topics: EducationTopic[] = [
   },
   {
     title: "ROS", path: rosPath,
-    description: "노드와 토픽으로 프로그램을 연결하고, 데이터를 기록·표시한 뒤 로봇 하드웨어까지 이어갑니다. ROS 2 Humble 기준의 실습 시리즈입니다.",
+    description: "노드·토픽·서비스·액션부터 좌표·시간·QoS와 실행 구조까지 익힙니다. 기존 실습은 ROS 2 Humble 기준이며 개념 자료는 최신 공식 문서도 함께 참고합니다.",
     lessons: [
       {author: yeonwooCho, path: rosBasicsPath, shortTitle:"ROS 2 시작하기",label:"노드 · 패키지 · 토픽",title:"처음 시작하는 ROS 2",description:"ROS의 역할부터 익히고, 터미널에서 메시지를 보내고 받으며 연결 관계를 확인합니다.",chapters:rosBasicsChapters},
       {author: yeonwooCho, path: rosPythonPath, shortTitle:"Python으로 메시지 주고받기",label:"클래스 · 타이머 · 콜백",title:"Python으로 메시지 주고받기",description:"작은 노드 두 개를 작성하고 ament_python 패키지로 빌드하여 메시지를 주고받습니다.",chapters:rosPythonChapters},
@@ -167,9 +168,37 @@ const topics: EducationTopic[] = [
   },
   {
     title: "개발 환경 준비", path: developmentSetupPath,
-    description: "내 컴퓨터에서 로봇의 컴퓨터에 접속하고, 코드를 옮기고 실행하는 환경을 준비합니다.",
+    description: "로봇 컴퓨터의 역할부터 터미널·프로세스·데이터·네트워크를 익히고, CPU·GPU·컨테이너와 원격 작업으로 이어갑니다.",
     lessons: [{ author: yeonwooCho, path: remoteWorkLessonPath, shortTitle: "원격 작업하기", label: "SSH · Tailscale · RustDesk", title: "원격 작업하기: ssh jetson부터 GUI까지", description: "SSH 키 생성, Tailscale 로그인, 접속 별칭 설정을 따라 하고 GUI 작업에는 RustDesk를 사용합니다.", chapters: remoteWorkChapters }],
   },
 ];
 
-export const educationTopics = [developmentSetupPath, controlPath, rosPath, deepMLPath, objectRecognitionPath, localizationPath, simulationPath, kimodoTopicPath, vlaPath].map(path => topics.find(topic => topic.path === path)!).map(topic=>({...topic,lessons:topic.lessons.map(lesson=>lesson.path===deepMLLessons[0].path ? {...lesson,chapters:[{id:"arrays",label:"배열·shape 보충"},...lesson.chapters]} : lesson)}));
+const legacyLevels: Record<string, EducationLesson["level"]> = {
+  [remoteWorkLessonPath]: "응용",
+  [pidLessonPath]: "기초", [openrbDynamixelLessonPath]: "응용",
+  [rosBasicsPath]: "입문", [rosPythonPath]: "기초", [rosBagRvizPath]: "기초",
+  [ros2TopicsLessonPath]: "응용", [rosArduinoMotorLessonPath]: "응용", [ros2DynamixelLessonPath]: "응용",
+  [deepMLLessons[0].path]: "입문", [deepMLLessons[1].path]: "기초", [deepMLLessons[2].path]: "기초",
+  [deepMLLessons[3].path]: "입문", [deepMLLessons[4].path]: "기초", [kimodoLessonPath]: "응용",
+  [perceptionLessonPath]: "응용", [vlaLessons[0].path]: "기초",
+  [lidarLessonPath]: "기초", [objectLocalizationLessonPath]: "응용",
+  "/education/simulation/robot-models": "입문", "/education/simulation/mujoco-first-run": "기초",
+  "/education/simulation/gazebo-basics": "기초", "/education/simulation/rl-environments": "응용",
+};
+const additions = conceptIndex.metadata as Record<string, EducationLesson[]>;
+const topicOrders = conceptIndex.orders as Record<string, string[]>;
+const demoPaths = new Set((conceptIndex as { demoPaths?: string[] }).demoPaths || []);
+export const educationTopics: EducationTopic[] = [developmentSetupPath, controlPath, rosPath, deepMLPath, localizationPath, simulationPath, reinforcementLearningPath, robotVisionPath].map(path => {
+  const topic = topics.find(item => item.path === path)!;
+  const order = topicOrders[path] || [];
+  const lessons = [...topic.lessons.map(lesson => ({...lesson, level: legacyLevels[lesson.path]})), ...(additions[path] || [])];
+  lessons.sort((a, b) => order.indexOf(a.path) - order.indexOf(b.path));
+  return {...topic, lessons: lessons.map((lesson, index) => ({
+    ...lesson,
+    number: index + 1,
+    chapters: [
+      ...(lesson.path === deepMLLessons[0].path ? [{id:"arrays", label:"배열·shape 보충"}, ...lesson.chapters] : lesson.chapters),
+      ...(demoPaths.has(lesson.path) ? [{id:"robot-demos", label:"실제 로봇 데모"}] : []),
+    ],
+  }))};
+});

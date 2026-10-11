@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/shared";
 import { CodeExample } from "@/components/education/code-example";
-import { objectRecognitionPath } from "@/lib/education/catalog";
+import { robotVisionPath } from "@/lib/education/catalog";
 import { perceptionCommands } from "@/lib/education/perception-commands";
 import type { ReactNode } from "react";
 import { LessonContext, LessonNavigation } from "@/components/education/lesson-context";
@@ -23,7 +23,7 @@ function Figure({ name, alt, children }: { name: string; alt: string; children: 
 export default async function PerceptionLessonPage() {
   await requireEducationMember("/education/object-recognition/synthetic-data");
   return <>
-    <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: "객체인식", href: objectRecognitionPath }, { label: "합성 데이터로 시작하기" }]}/>
+    <Breadcrumbs items={[{ label: "교육", href: "/education" }, { label: "로봇 비전", href: robotVisionPath }, { label: "합성 데이터로 시작하기" }]}/>
     <article className="perception-lesson">
       <header className="perception-hero"><h1>합성 데이터로 시작하는<br/>객체인식</h1><p>사진 속 정다면체와 과일을 찾는 모델을 직접 만들어봅니다. 사진과 정답지가 무엇인지부터, 120장짜리 첫 실습과 실제 카메라 검증까지 차근차근 따라갑니다.</p><LessonAuthor path="/education/object-recognition/synthetic-data"/><a className="button" href={repo}>실습 저장소 열기</a></header>
       <LessonContext path="/education/object-recognition/synthetic-data"/>

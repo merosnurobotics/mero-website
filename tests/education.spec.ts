@@ -24,7 +24,7 @@ test("education navigation, expandable catalog and lesson interactions", async (
   await page.locator(".education-topic-tree > summary").first().click();
   await expect(page.locator(".education-lesson-tree").first()).toBeVisible();
   await page.locator(".education-reference-order > summary").click();
-  await page.locator(".education-stage").filter({hasText:"강화학습: 기초에서 로봇 제어까지"}).locator(":scope > summary").click();
+  await page.locator(".education-stage").filter({has: page.getByRole("heading", {name:"강화학습", exact:true})}).locator(":scope > summary").click();
   await page.locator(".education-series-list").getByRole("link", { name: "모방 강화학습" }).click();
   await expect(page).toHaveURL(`${baseURL}${lessonPath}`);
   await expect(page.locator(".education-lesson .chapter")).toHaveCount(12);
@@ -75,7 +75,7 @@ test("object recognition course, chapter catalog, code and private activity", as
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto(`${baseURL}/education`);
   await page.locator('.education-reference-order > summary').click();
-  await page.locator('.education-stage').filter({hasText:'사진에서 물체 찾기'}).locator(':scope > summary').click();
+  await page.locator('.education-stage').filter({has: page.getByRole('heading', {name:'로봇 비전', exact:true})}).locator(':scope > summary').click();
   await page.locator('.education-series-list').getByRole('link', { name: '합성 데이터로 시작하기' }).click();
   await expect(page.locator('.perception-chapter')).toHaveCount(10);
   await expect(page.locator('#improve h2')).toHaveText('10. 실습 확장하기');
