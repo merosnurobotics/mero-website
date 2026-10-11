@@ -10,6 +10,7 @@ export type ConceptLesson = {
   sections: {
     id: string;
     title: string;
+    summary?: string;
     paragraphs: string[];
     bullets?: string[];
     comparison?: { headers: string[]; rows: string[][] };

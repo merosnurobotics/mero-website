@@ -4,6 +4,7 @@ import { requireEducationMember } from "@/lib/education/access";
 import { educationTopics } from "@/lib/education/catalog";
 import type { ConceptLesson } from "@/lib/education/concepts/types";
 import { LessonNavigation } from "./lesson-context";
+import { ConceptReferenceImages, ConceptVisual } from "./concept-visuals";
 
 export async function ConceptLessonContent({ lesson, topicSlug }: { lesson: ConceptLesson; topicSlug: string }) {
   const topicPath = `/education/${topicSlug}`;
@@ -27,7 +28,11 @@ export async function ConceptLessonContent({ lesson, topicSlug }: { lesson: Conc
       </aside>
       {lesson.sections.map((section, index) => <section className="perception-chapter" id={section.id} key={section.id}>
         <h2>{index + 1}. {section.title}</h2>
-        {section.paragraphs.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
+        {section.summary && <p className="concept-section-summary">{section.summary}</p>}
+        <ConceptReferenceImages path={path} sectionId={section.id}/>
+        {section.paragraphs[0] && <p>{section.paragraphs[0]}</p>}
+        <ConceptVisual path={path} sectionId={section.id}/>
+        {section.paragraphs.slice(1).map((paragraph, i) => <p key={i}>{paragraph}</p>)}
         {section.bullets && <ul>{section.bullets.map(item => <li key={item}>{item}</li>)}</ul>}
         {section.comparison && <div className="education-table-wrap" tabIndex={0} role="region" aria-label={`${section.title} 비교표`}><table>
           <caption>{section.title} 비교</caption>

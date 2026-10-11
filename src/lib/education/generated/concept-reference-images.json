@@ -1,0 +1,1101 @@
+[
+  {
+    "id": "control-rotary-pendulum",
+    "fileName": "control-rotary-pendulum.webp",
+    "creator": "Quanser Inc. — image courtesy, Quanser Inc.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:RotaryInvertedPendulum.JPG",
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:RotaryInvertedPendulum.JPG",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/stability-and-robustness",
+        "sectionId": "local-recovery",
+        "alt": "회전 받침대와 긴 막대로 구성된 Quanser 도립진자 실험 장치",
+        "caption": "실제 회전형 도립진자입니다. 막대의 각도뿐 아니라 넘어가는 속도에 따라 필요한 회복 동작이 달라집니다."
+      },
+      {
+        "lessonPath": "/education/control/state-feedback-and-observers",
+        "sectionId": "state",
+        "alt": "각도와 각속도를 함께 생각할 수 있는 회전형 도립진자",
+        "caption": "같은 각도의 막대라도 넘어지는 중인지 되돌아오는 중인지 구분해야 합니다. 정지 사진에 없는 속도 정보가 상태에 필요한 이유입니다."
+      },
+      {
+        "lessonPath": "/education/control/models-and-feedforward",
+        "sectionId": "dynamics",
+        "alt": "모터로 받침대를 회전시키는 도립진자 장치",
+        "caption": "막대와 회전 받침대의 움직임이 연결된 장치입니다. 자세·가속·질량이 달라질 때 필요한 힘이 어떻게 달라질지 생각해 보세요."
+      }
+    ],
+    "width": 521,
+    "height": 945,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/RotaryInvertedPendulum.JPG",
+    "sourceSha256": "66aa5db0df040b9620576b8374cb9bb73629871d94e2581f1c1ba9536fb8db7b",
+    "assetSha256": "44e79206e265ac14fedf14189c334dbae76634c8799b58cae4c18d6c68690a4c",
+    "bytes": 21248,
+    "sha256": "44e79206e265ac14fedf14189c334dbae76634c8799b58cae4c18d6c68690a4c"
+  },
+  {
+    "id": "control-harmonic-drive",
+    "fileName": "control-harmonic-drive.webp",
+    "creator": "Jahobr & Kaboldy",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Harmonic_drive_cross_Legend.svg",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Harmonic_drive_cross_Legend.svg",
+    "modifications": "원본 SVG의 Commons PNG 미리보기를 흰 배경의 WebP로 변환. 도해 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/actuator-command-modes",
+        "sectionId": "transmission",
+        "alt": "입력축과 출력축, 내부 전달 구조가 보이는 파동 기어 감속기 단면",
+        "caption": "1은 입력축, 5는 출력축입니다. 2의 파동 발생기, 3의 유연 기어, 4의 원형 기어를 거쳐 회전이 전달됩니다. 모터와 관절 출력 사이의 전달계를 확인해 보세요."
+      },
+      {
+        "lessonPath": "/education/control/models-and-feedforward",
+        "sectionId": "useful-model",
+        "alt": "파동 기어 감속기의 입력축과 출력축 사이 전달 구조",
+        "caption": "관절 모델을 생각할 때 모터만 아니라 중간 전달계도 포함합니다. 이 단면은 전달 구조의 예시이며 마찰이나 유격의 실제 크기를 보여 주는 측정 결과는 아닙니다."
+      }
+    ],
+    "width": 960,
+    "height": 653,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Harmonic_drive_cross_Legend.svg/960px-Harmonic_drive_cross_Legend.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20180321235422",
+    "sourceSha256": "ef1f8d8caae2234f5776468ebef8b5d4a2e4338c6f40acda3628ec715eb087d8",
+    "assetSha256": "181b0e424286b3c6a3a1a09e6e0604b05fe792ec4d9ba3af4f25ee651187171d",
+    "bytes": 45724,
+    "sha256": "181b0e424286b3c6a3a1a09e6e0604b05fe792ec4d9ba3af4f25ee651187171d"
+  },
+  {
+    "id": "control-robonaut",
+    "fileName": "control-robonaut.webp",
+    "creator": "NASA / Keegan Barber",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Robonaut_2_on_display_at_NASM_(NHQ202410240001).jpg",
+    "license": "Public domain (NASA)",
+    "licenseUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Robonaut_2_on_display_at_NASM_(NHQ202410240001).jpg",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/trajectories-and-timing",
+        "sectionId": "coordination",
+        "alt": "여러 팔 관절과 손목을 가진 Robonaut 2 전시 사진",
+        "caption": "손끝 자세는 어깨·팔꿈치·손목의 조합으로 정해집니다. 여러 관절이 각자 도착하는 것과 같은 시간축에서 협응하는 것의 차이를 생각해 보세요."
+      },
+      {
+        "lessonPath": "/education/control/contact-and-impedance",
+        "sectionId": "contact-changes-task",
+        "alt": "손가락과 손목의 여러 관절이 보이는 Robonaut 2",
+        "caption": "여러 손가락과 손목은 물체에 닿는 위치와 방향을 바꿀 수 있습니다. 사진은 기구의 예시이며 이 수업의 특정 임피던스 제어를 시연한 장면은 아닙니다."
+      },
+      {
+        "lessonPath": "/education/control/whole-body-and-learned-control",
+        "sectionId": "coupled-body",
+        "alt": "팔과 몸통이 이어진 휴머노이드 Robonaut 2의 상체",
+        "caption": "팔과 몸통의 연결을 보세요. 손의 도달 목표를 바꾸면 다른 관절의 자세도 영향을 받습니다. 사진만으로 사용된 제어기나 학습 정책을 판정하지 않습니다."
+      }
+    ],
+    "width": 960,
+    "height": 640,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Robonaut_2_on_display_at_NASM_%28NHQ202410240001%29.jpg/960px-Robonaut_2_on_display_at_NASM_%28NHQ202410240001%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20241025011021",
+    "sourceSha256": "414c04e5eacbc57f651877402e085d6e7e231c7ab2504632d02250c1df769eb9",
+    "assetSha256": "acb72c90f9e852e1970afaac7c2c6709563ff115c7a0088aa0fa269e85669270",
+    "bytes": 135998,
+    "sha256": "acb72c90f9e852e1970afaac7c2c6709563ff115c7a0088aa0fa269e85669270"
+  },
+  {
+    "id": "control-cart-pendulum",
+    "fileName": "control-cart-pendulum.webp",
+    "creator": "Chojitsa",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cart-pendulum.png",
+    "license": "Public domain (author release)",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:Cart-pendulum.png#Licensing",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Cart-pendulum.png",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/model-predictive-control",
+        "sectionId": "receding-horizon",
+        "alt": "수레에 가해지는 힘과 진자의 각도가 표시된 카트 도립진자 도식",
+        "caption": "수레에 힘을 주면 수레 위치와 진자 각도가 함께 변합니다. 미래 명령을 비교하려면 현재 각도뿐 아니라 속도와 모델도 필요합니다. 그림은 예측 대상을 설명하는 기구도입니다."
+      }
+    ],
+    "width": 616,
+    "height": 487,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Cart-pendulum.png",
+    "sourceSha256": "9b027fb4b0bdc7b537916cfe1b42d5e35627ed06fea9c9a110da3d735a7388d6",
+    "assetSha256": "aa4b9d6fa442f530448f800fb0f6e9c3097a0b44bc5d827588c619596c9a071d",
+    "bytes": 9392,
+    "sha256": "aa4b9d6fa442f530448f800fb0f6e9c3097a0b44bc5d827588c619596c9a071d"
+  },
+  {
+    "id": "control-encoder",
+    "fileName": "control-encoder.webp",
+    "creator": "I G (qubodup)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rotary_Encoder_(15257349276).jpg",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Rotary_Encoder_(15257349276).jpg",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/closed-loop-systems",
+        "sectionId": "feedback-loop",
+        "alt": "축과 전기 단자가 보이는 회전 엔코더 두 개",
+        "caption": "회전량을 전기 신호로 바꾸는 엔코더의 예시입니다. 센서를 장착하는 것에 더해 이 측정값이 다음 명령 계산으로 돌아가야 폐루프가 됩니다."
+      },
+      {
+        "lessonPath": "/education/control/actuator-command-modes",
+        "sectionId": "measurement-contract",
+        "alt": "회전 엔코더의 축과 단자",
+        "caption": "엔코더가 어떤 축에 연결되는지 확인해야 측정값의 의미를 알 수 있습니다. 사진의 부품은 원리를 보여 주는 예시이며 특정 로봇 관절용 센서로 소개하는 것은 아닙니다."
+      }
+    ],
+    "width": 1400,
+    "height": 1050,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Rotary_Encoder_%2815257349276%29.jpg",
+    "sourceSha256": "61122161f5c8ed2497bbcc1d458c5ab6703ec00dac2711f31b11b238b5ea9cf1",
+    "assetSha256": "c032b5bed2e68a0f92191adb6d37f1071feb62613a596788843e775c7097ef8a",
+    "bytes": 188202,
+    "sha256": "c032b5bed2e68a0f92191adb6d37f1071feb62613a596788843e775c7097ef8a"
+  },
+  {
+    "id": "localization-k10",
+    "fileName": "localization-k10.webp",
+    "creator": "NASA Ames Research Center",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:K10_red_rover_at_Haughton_Crater.jpg",
+    "license": "Public domain (NASA)",
+    "licenseUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:K10_red_rover_at_Haughton_Crater.jpg",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/pose-and-frames",
+        "sectionId": "reference",
+        "alt": "차체 위 높은 위치에 LiDAR 센서를 장착한 NASA K10 Red 로버",
+        "caption": "K10 Red의 차체와 위쪽 LiDAR는 서로 다른 위치에 있습니다. 센서에서 본 점을 차체나 지도에 놓으려면 장착 위치·방향과 로봇 포즈를 연결해야 합니다."
+      },
+      {
+        "lessonPath": "/education/localization/odometry-and-drift",
+        "sectionId": "complement",
+        "alt": "바퀴와 상부 LiDAR가 함께 보이는 NASA K10 Red",
+        "caption": "바퀴는 이동의 단서를, LiDAR는 주변 지형의 단서를 제공합니다. 서로 다른 측정 원천이 어디서 도움이 되는지 생각할 수 있는 실제 센서 배치 사례입니다."
+      }
+    ],
+    "width": 876,
+    "height": 1100,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ca/K10_red_rover_at_Haughton_Crater.jpg",
+    "sourceSha256": "1e2766355908f9b5cbcd180333ae0b9cf2c5bf888c31c5d4f7a859d362813e8b",
+    "assetSha256": "261ab8949921a27716ab9bd39d7fb0428087451b9a163dc787bf382694f37d75",
+    "bytes": 257036,
+    "sha256": "261ab8949921a27716ab9bd39d7fb0428087451b9a163dc787bf382694f37d75"
+  },
+  {
+    "id": "localization-imu",
+    "fileName": "localization-imu.webp",
+    "creator": "© Nevit Dilmen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:GY-521_MPU-6050_Module_3_Axis_Gyroscope_%2B_Accelerometer_0487.jpg",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:GY-521_MPU-6050_Module_3_Axis_Gyroscope_%2B_Accelerometer_0487.jpg",
+    "modifications": "웹 표시용 크기 조정 및 WebP 변환. 내용 변경 없음. 동일 CC BY-SA 라이선스로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/visual-inertial-odometry",
+        "sectionId": "two-clues",
+        "alt": "MPU-6050 칩과 통신 핀이 있는 GY-521 관성 센서 보드",
+        "caption": "자이로와 가속도계를 담은 IMU 보드입니다. 이 보드가 지도 좌표를 직접 알려 주는 것은 아닙니다. 영상의 공간 단서와 결합할 운동 측정값을 제공합니다."
+      },
+      {
+        "lessonPath": "/education/localization/uncertainty-and-fusion",
+        "sectionId": "independence",
+        "alt": "GY-521 보드에 실장된 MPU-6050 관성 센서",
+        "caption": "하나의 IMU 측정이 여러 추정기와 토픽에 들어갈 수 있습니다. 출력 이름이 달라도 같은 원천을 공유하는지 데이터 계보를 확인해야 합니다."
+      }
+    ],
+    "width": 500,
+    "height": 641,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/GY-521_MPU-6050_Module_3_Axis_Gyroscope_%2B_Accelerometer_0487.jpg/500px-GY-521_MPU-6050_Module_3_Axis_Gyroscope_%2B_Accelerometer_0487.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20140608072844",
+    "sourceSha256": "d9cd163eed992d783d7b2b6772a43e991c232d1e9ad96fb6d50902063d9e10ef",
+    "assetSha256": "439130e61d7036d91bc2aee6df6c5a77f0e78d6b17a402effb73100dcaddc8ab",
+    "bytes": 104276,
+    "sha256": "439130e61d7036d91bc2aee6df6c5a77f0e78d6b17a402effb73100dcaddc8ab"
+  },
+  {
+    "id": "localization-particle-filter",
+    "fileName": "localization-particle-filter.webp",
+    "creator": "Eleschinski2000",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Particle_filters.gif",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Particle_filters.gif",
+    "modifications": "원본 GIF의 16번째 프레임을 정지 이미지로 추출하고 WebP로 변환. CC BY-SA 4.0으로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/relocalization",
+        "sectionId": "particles",
+        "alt": "실내 지도 위에 로봇 관측과 위치 후보를 표시한 입자 필터 예시의 정지 프레임",
+        "caption": "입자 필터 위치 추정 애니메이션에서 뽑은 한 순간입니다. 지도와 관측의 일치 정도에 따라 가능한 위치 후보가 달라집니다. 실제 로봇 여러 대를 표시한 그림이 아닙니다."
+      }
+    ],
+    "width": 530,
+    "height": 392,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/Particle_filters.gif",
+    "sourceSha256": "bb25d8468c29d793e7e744f3cf0af9f724aa36d29cbedf826369704af2f397c1",
+    "assetSha256": "5b91f166faac6b34c39becc995b5866b9017b1a2f2ac93925dab1e4f2773374a",
+    "bytes": 12940,
+    "sha256": "5b91f166faac6b34c39becc995b5866b9017b1a2f2ac93925dab1e4f2773374a"
+  },
+  {
+    "id": "localization-gaussian-splat",
+    "fileName": "localization-gaussian-splat.webp",
+    "creator": "Jurdein",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:3dgs_viewer_QIBWA66MsC.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:3dgs_viewer_QIBWA66MsC.jpg",
+    "modifications": "웹 표시용 크기 조정 및 WebP 변환. 내용 변경 없음. 동일 CC BY-SA 라이선스로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/semantic-and-gaussian-maps",
+        "sectionId": "gaussians",
+        "alt": "Gaussian Splatting으로 표현한 무너진 건물 장면을 VulkanSplatter에서 본 화면",
+        "caption": "Gaussian Splatting으로 재구성한 건물의 외관입니다. 색과 질감을 볼 수 있다는 사실과 충돌 경계·통행 가능한 공간을 정확히 안다는 사실은 별도로 확인해야 합니다."
+      }
+    ],
+    "width": 960,
+    "height": 576,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/3dgs_viewer_QIBWA66MsC.jpg/960px-3dgs_viewer_QIBWA66MsC.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20241025093347",
+    "sourceSha256": "2f501467dbeba925b982f56ce714fb11dad41f1524f79bc184dc9ac6b73f9fb7",
+    "assetSha256": "7899de272ac79a7f4b1286fdc6e2ac188ed5dc20a6387f103657a0f4ce657722",
+    "bytes": 269462,
+    "sha256": "7899de272ac79a7f4b1286fdc6e2ac188ed5dc20a6387f103657a0f4ce657722"
+  },
+  {
+    "id": "localization-batslam-loops",
+    "fileName": "localization-batslam-loops.webp",
+    "creator": "Jan Steckel & Herbert Peremans (2013), BatSLAM, Figure 3",
+    "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0054076#pone-0054076-g003",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3554696/",
+    "modifications": "원 논문 그림을 WebP로 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/loop-closure",
+        "sectionId": "revisit",
+        "alt": "반복 주행 중 궤적이 수렴하는 BatSLAM 논문 Figure 3",
+        "caption": "a–d는 초기 반복 주행에서 궤적이 조정되는 과정입니다. e는 기준 궤적(빨강)과 추정 궤적(파랑)을 비교합니다. 재방문은 마지막 점뿐 아니라 지나온 궤적을 제한하는 근거가 됩니다."
+      }
+    ],
+    "width": 981,
+    "height": 1400,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0054076.g003",
+    "sourceSha256": "a2255221b9896d4ab674927210f30857077325bc17688db4a21a40814e99cc74",
+    "assetSha256": "fa878caadcaf5d0d6f65a393c32bbbaf0da1d3bb3ac81c223f65b2569e1813e6",
+    "licenseEvidenceNote": "원 논문 CC BY 선언과 Europe PMC 원문 XML의 permissions, Crossref DOI 메타데이터에서 CC BY 4.0을 확인했습니다.",
+    "bytes": 100452,
+    "sha256": "fa878caadcaf5d0d6f65a393c32bbbaf0da1d3bb3ac81c223f65b2569e1813e6"
+  },
+  {
+    "id": "localization-batslam-map",
+    "fileName": "localization-batslam-map.webp",
+    "creator": "Jan Steckel & Herbert Peremans (2013), BatSLAM, Figure 4",
+    "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0054076#pone-0054076-g004",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3554696/",
+    "modifications": "원 논문 그림을 WebP로 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/maps-and-slam",
+        "sectionId": "joint-problem",
+        "alt": "사무실 평면도 위 BatSLAM 지도와 이동만 누적한 결과를 비교하는 Figure 4",
+        "caption": "왼쪽은 환경 관측과 이동 정보를 결합한 BatSLAM 결과이고 오른쪽은 이동 명령을 누적한 결과입니다. 센서의 환경 단서가 누적 이동 오차를 제한하는 역할을 비교해 보세요."
+      },
+      {
+        "lessonPath": "/education/localization/odometry-and-drift",
+        "sectionId": "drift",
+        "alt": "BatSLAM 결과와 오도메트리만 누적한 궤적의 차이",
+        "caption": "같은 실험에서 이동 정보만 누적한 오른쪽 경로가 크게 틀어져 있습니다. 개별 이동의 작은 차이가 긴 궤적에 누적되는 드리프트의 실제 연구 사례입니다."
+      }
+    ],
+    "width": 1350,
+    "height": 571,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0054076.g004",
+    "sourceSha256": "4f5295f9ad3a3e7b54b931f7414b8d17fc3ed364517d93e2f412e84a01b5f631",
+    "assetSha256": "d79095f56eb55e9cd9097c4043f7278b00f1e53eb23733dca0b6537734c7d1d0",
+    "licenseEvidenceNote": "원 논문 CC BY 선언과 Europe PMC 원문 XML의 permissions, Crossref DOI 메타데이터에서 CC BY 4.0을 확인했습니다.",
+    "bytes": 97538,
+    "sha256": "d79095f56eb55e9cd9097c4043f7278b00f1e53eb23733dca0b6537734c7d1d0"
+  },
+  {
+    "id": "localization-batslam-similarity",
+    "fileName": "localization-batslam-similarity.webp",
+    "creator": "Jan Steckel & Herbert Peremans (2013), BatSLAM, Figure 6",
+    "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0054076#pone-0054076-g006",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3554696/",
+    "modifications": "원 논문 그림을 WebP로 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/uncertainty-and-fusion",
+        "sectionId": "belief",
+        "alt": "위치와 회전 변화에 따른 장소 관측의 유사도 영역을 비교하는 BatSLAM Figure 6",
+        "caption": "복도처럼 비슷한 관측이 이어지는 곳은 위치를 구분하기 어렵습니다. 원 그림의 파란 경계는 관측 유사도 영역이며 공분산 타원은 아닙니다. 방향별로 정보가 다르다는 근거로 읽습니다."
+      },
+      {
+        "lessonPath": "/education/localization/relocalization",
+        "sectionId": "ambiguity",
+        "alt": "서로 다른 장소에서 이동·회전에 따른 관측 유사도 변화를 비교한 그림",
+        "caption": "장소에 따라 비슷한 관측이 유지되는 범위가 다릅니다. 넓은 유사 영역에서는 후보를 하나로 확정하기보다 구분되는 추가 관측이 필요할 수 있습니다."
+      }
+    ],
+    "width": 1470,
+    "height": 1087,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0054076.g006",
+    "sourceSha256": "f061f35b328359507542f2e0c019e89e319b2e96a25bbda33e9b9bd36b579934",
+    "assetSha256": "0b39d9aced7b495998d0685ed4221850ef4b6055b74fd5983f3c51cb8aa5ee08",
+    "licenseEvidenceNote": "원 논문 CC BY 선언과 Europe PMC 원문 XML의 permissions, Crossref DOI 메타데이터에서 CC BY 4.0을 확인했습니다.",
+    "bytes": 141532,
+    "sha256": "0b39d9aced7b495998d0685ed4221850ef4b6055b74fd5983f3c51cb8aa5ee08"
+  },
+  {
+    "id": "learning-cnn",
+    "fileName": "learning-cnn.webp",
+    "creator": "Will Whitney",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Convolutional_Network.png",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Convolutional_Network.png",
+    "modifications": "투명 배경을 흰색으로 합성하고 WebP로 변환. 내용 변경 없음. 변환본도 CC BY-SA 4.0.",
+    "placements": [
+      {
+        "lessonPath": "/education/deepml/representations-and-embeddings",
+        "sectionId": "representation",
+        "alt": "원본 이미지가 여러 특징 지도로 변환되는 합성곱 구조",
+        "caption": "픽셀 배열이 여러 특징 지도로 바뀌는 예입니다. 가운데 지도들이 최종 이름 이전의 중간 표현입니다."
+      },
+      {
+        "lessonPath": "/education/deepml/convolution-and-visual-features",
+        "sectionId": "feature-maps",
+        "alt": "입력 이미지와 합성곱 특징 지도, 풀링 결과",
+        "caption": "같은 가중치가 다른 위치에 쓰이는 연결과, 풀링 뒤 작아지는 특징 지도를 비교해 보세요."
+      }
+    ],
+    "sha256": "122741cb8bf8e7c089c7f8eab25a9e6fec9f30ef26befd7932f794b8f615f497",
+    "licenseEvidenceNote": "Commons 파일의 Licensing 절에서 저작권자 Will Whitney가 해당 그림에 CC BY-SA 4.0을 부여한 것을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 977,
+    "height": 537,
+    "bytes": 24178
+  },
+  {
+    "id": "learning-openvla-model",
+    "fileName": "learning-openvla-model.webp",
+    "creator": "Moo Jin Kim et al. · OpenVLA",
+    "sourceUrl": "https://arxiv.org/html/2406.09246v3#S3.F2",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2406.09246v3",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/deepml/self-supervised-learning",
+        "sectionId": "evaluate-representation",
+        "alt": "OpenVLA에서 DINOv2와 SigLIP 특징이 합쳐지는 모델 그림",
+        "caption": "자기지도 특징의 후속 활용 사례입니다. DINOv2 특징은 다른 표현과 결합된 뒤 행동 학습에 쓰입니다. DINOv3 구조 그림은 아닙니다."
+      },
+      {
+        "lessonPath": "/education/deepml/multimodal-learning",
+        "sectionId": "robot-bridge",
+        "alt": "영상과 언어가 합쳐져 행동 토큰으로 이어지는 OpenVLA 구조",
+        "caption": "영상과 지시가 서로 다른 경로로 들어옵니다. 오른쪽의 토큰 해석 단계까지 따라가며 행동 출력이 붙는 위치를 찾아보세요."
+      },
+      {
+        "lessonPath": "/education/robot-vision/visual-representations",
+        "sectionId": "clip-dino",
+        "alt": "DINOv2와 SigLIP 두 시각 특징을 결합하는 OpenVLA",
+        "caption": "시각 표현의 실제 활용 사례입니다. DINOv2와 SigLIP을 결합하며, 범용 특징 위에 행동을 위한 학습이 이어집니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/openvla-and-action-models",
+        "sectionId": "bridge",
+        "alt": "OpenVLA 원 논문 Figure 2 모델 구조",
+        "caption": "왼쪽의 관측·지시가 가운데 모델을 거쳐 오른쪽의 이동·회전·그리퍼 행동으로 바뀌는 경로를 확인하세요."
+      }
+    ],
+    "sha256": "e22260029b6c2dc2f5032fbf89eb2224ac11d21eb6d8596fc762c703b41c5a34",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1600,
+    "height": 594,
+    "bytes": 57134
+  },
+  {
+    "id": "learning-openvla-bridge",
+    "fileName": "learning-openvla-bridge.webp",
+    "creator": "Moo Jin Kim et al. · OpenVLA",
+    "sourceUrl": "https://arxiv.org/html/2406.09246v3#A2.F7",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2406.09246v3",
+    "modifications": "Figure 7의 상단 시각 일반화 패널만 발췌하고 WebP로 변환.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/sim2real-evaluation",
+        "sectionId": "evaluation-set",
+        "alt": "물체 배치와 방해물을 바꾼 WidowX 로봇의 실제 평가 장면",
+        "caption": "실제 환경 평가의 예입니다. 같은 행동에서도 물체 위치와 주변 방해물이 달라집니다. 이 사진 자체는 Sim2Real 실험이 아닙니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/data-and-evaluation",
+        "sectionId": "generalization",
+        "alt": "OpenVLA의 시각 일반화 평가에서 바뀐 물체 배치",
+        "caption": "목표와 방해물의 배치를 비교하세요. 일반화 평가에서 무엇을 바꿨는지 사진으로 기록한 사례입니다."
+      }
+    ],
+    "sha256": "8a0811f2f9bc1f99c836b538a433c88b47b9694dd9c4f85b4a1c8c1563249080",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 924,
+    "height": 547,
+    "bytes": 82754
+  },
+  {
+    "id": "learning-openvla-franka",
+    "fileName": "learning-openvla-franka.webp",
+    "creator": "Moo Jin Kim et al. · OpenVLA",
+    "sourceUrl": "https://arxiv.org/html/2406.09246v3#A2.F10",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2406.09246v3",
+    "modifications": "Figure 10의 첫 작업 사진과 열 제목을 발췌하고 WebP로 변환.",
+    "placements": [
+      {
+        "lessonPath": "/education/deepml/transfer-learning-and-adaptation",
+        "sectionId": "validation-and-versioning",
+        "alt": "Franka의 당근 넣기 작업을 익숙한 조건과 다른 조건에서 비교한 사진",
+        "caption": "새 로봇에 적응시킨 뒤 평가하는 예입니다. 같은 지시에서도 배경과 물체 배치가 다른 두 조건을 구분합니다."
+      },
+      {
+        "lessonPath": "/education/reinforcement-learning/exploration-and-practice",
+        "sectionId": "curriculum",
+        "alt": "동일 작업의 in-distribution 및 out-of-distribution 실제 평가 장면",
+        "caption": "고정할 시험 조건을 생각하는 예입니다. 훈련 난이도 변화와 별개로, 같은 지시를 어떤 장면에서 시험했는지 남깁니다."
+      }
+    ],
+    "sha256": "64330c7af5114421603c35526ddae009ad5229ce37a7f4c207f36f9eb01b3a8c",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1313,
+    "height": 391,
+    "bytes": 33926
+  },
+  {
+    "id": "learning-droid-setup",
+    "fileName": "learning-droid-setup.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#S3.F0",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/robot-vision/sensing-to-action",
+        "sectionId": "viewpoints",
+        "alt": "고정 스테레오 카메라와 손목 카메라를 장착한 DROID 로봇",
+        "caption": "양옆 카메라와 손목 카메라의 위치를 비교하세요. 전체 작업대와 접촉 주변을 서로 다른 시점에서 봅니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/learning-from-demonstrations",
+        "sectionId": "pairs",
+        "alt": "카메라와 원격 조종 장비를 갖춘 DROID 시연 수집 로봇",
+        "caption": "시연 수집 장치의 실제 구성입니다. 카메라 관측, 로봇 상태, 조종 명령을 같은 시각에 연결해야 합니다."
+      },
+      {
+        "lessonPath": "/education/reinforcement-learning/imitation-offline-posttraining",
+        "sectionId": "behavior-cloning",
+        "alt": "DROID의 Franka 로봇과 카메라 및 원격 조종 장비",
+        "caption": "모방학습 자료를 수집하는 실제 장치입니다. 로봇의 카메라와 원격 조종 입력이 어디에서 나오는지 확인하세요."
+      }
+    ],
+    "sha256": "51da9a2cb902275ac5259ad2d63e95258113f522f971301bbdb22353a42fd050",
+    "licenseEvidenceNote": "논문 HTML에 CC BY 4.0 명시. 본문은 DROID 데이터 자체도 CC BY 4.0으로 공개한다고 명시합니다. 저자 제작 장치 그림입니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1352,
+    "height": 1026,
+    "bytes": 92994
+  },
+  {
+    "id": "learning-droid-pointcloud",
+    "fileName": "learning-droid-pointcloud.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#A7.F13",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/robot-vision/depth-and-frames",
+        "sectionId": "clouds",
+        "alt": "두 카메라 영상과 보정 전후 점구름을 나란히 보여 주는 DROID 그림",
+        "caption": "점구름을 겹쳤을 때 표면이 어긋나는지 보세요. 오른쪽은 보정을 개선한 결과이며 가려진 면까지 복원한 것은 아닙니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/detection-segmentation",
+        "sectionId": "geometry",
+        "alt": "영상의 물체와 공간의 점구름이 연결된 DROID 보정 예",
+        "caption": "영상 영역과 공간 표면은 다른 출력입니다. 물체의 경계를 찾은 뒤에도 좌표와 깊이를 연결해야 합니다."
+      }
+    ],
+    "sha256": "71935020f9b29524b8483a59cbfb1da8edbf3dbf18fb8ec5e5ecf89a36ae548d",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1600,
+    "height": 1257,
+    "bytes": 327144
+  },
+  {
+    "id": "learning-droid-calibration",
+    "fileName": "learning-droid-calibration.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#A6.F11",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "Figure 11의 왼쪽 위 네 장면을 발췌하고 WebP로 변환.",
+    "placements": [
+      {
+        "lessonPath": "/education/robot-vision/depth-and-frames",
+        "sectionId": "calibration",
+        "alt": "실제 카메라 영상 위에 보라색 로봇 모델을 투영한 네 장면",
+        "caption": "보라색 로봇 모델과 실제 팔의 겹침을 보세요. 카메라와 로봇 좌표의 관계를 점검하는 시각화입니다."
+      }
+    ],
+    "sha256": "4db397dca4b106d19c595460821bade85ec7f6c6e7bfedb093620f84ea0dd71f",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1096,
+    "height": 616,
+    "bytes": 77692
+  },
+  {
+    "id": "learning-droid-rollout",
+    "fileName": "learning-droid-rollout.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#S5.F7",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/reward-design",
+        "sectionId": "shaping",
+        "alt": "뚜껑 열기에서 조리 기구 조작까지 단계별 성공과 실패를 비교한 DROID 실행",
+        "caption": "초록·빨강 표시가 갈리는 단계를 보세요. 중간 진행과 최종 성공을 따로 기록할 이유를 보여 주는 모방학습 사례입니다."
+      },
+      {
+        "lessonPath": "/education/reinforcement-learning/return-and-value",
+        "sectionId": "credit",
+        "alt": "여러 단계의 조리 작업에서 어느 단계까지 성공했는지 보여 주는 로봇 사진",
+        "caption": "첫 단계 성공이 전체 완료를 보장하지 않습니다. 앞선 행동과 뒤의 결과를 연결해 읽는 실제 작업 예입니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/embodied-planning",
+        "sectionId": "progress",
+        "alt": "조리 작업의 각 단계에서 성공 여부를 표시한 실제 DROID 로봇 실행",
+        "caption": "왼쪽부터 다음 단계가 이어집니다. 이 자료는 별도의 계획 모델 구조를 증명하지 않으며, 진행 상태를 확인할 실제 장면을 보여 줍니다."
+      }
+    ],
+    "sha256": "df7f2c06e95915c4cd2490cc95cfca2b2ac3469bf33edde1252b110faa4a5a9e",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1600,
+    "height": 701,
+    "bytes": 312248
+  },
+  {
+    "id": "learning-droid-scenes",
+    "fileName": "learning-droid-scenes.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#A2.F10",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/robot-vision/data-and-evaluation",
+        "sectionId": "coverage",
+        "alt": "욕실과 침실, 식탁과 실험실 등 여러 장소에서 수집한 DROID 로봇 장면",
+        "caption": "프레임 수와 장면 다양성을 구분해 보세요. 방의 종류가 달라지면 배경·높이·물체 배치도 함께 달라집니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/pi-models-and-generalization",
+        "sectionId": "open-world",
+        "alt": "여러 실제 가정과 실험실에 배치된 DROID 로봇",
+        "caption": "새 환경이 무엇을 뜻하는지 보여 주는 DROID 수집 사례입니다. π 계열 모델의 실행 결과 사진은 아닙니다."
+      }
+    ],
+    "sha256": "168a17517142de0eed0edbb93e9ee05a62f13101c18fdabce53e933df7ce3f55",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1600,
+    "height": 1545,
+    "bytes": 492448
+  },
+  {
+    "id": "learning-droid-gui",
+    "fileName": "learning-droid-gui.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#A1.F9",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/learning-from-replay",
+        "sectionId": "who-collected",
+        "alt": "과제 선택과 여러 카메라 기록, 장면 변경을 안내하는 DROID 수집 화면",
+        "caption": "경험의 출처를 기록하는 인터페이스입니다. 작업 지시와 관측이 포함된 원격 조종 자료이며 PPO·SAC의 학습 화면은 아닙니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/learning-from-demonstrations",
+        "sectionId": "collection",
+        "alt": "과제와 장면 변경을 안내하는 DROID 데이터 수집 GUI",
+        "caption": "작업 선택과 장면 변경 안내를 구분해 보세요. 시연 횟수뿐 아니라 어떤 변화를 수집할지도 설계합니다."
+      }
+    ],
+    "sha256": "53329e4531094b343e12b33caf8b83d33f211eb6707c00d1986b86865de957ab",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1600,
+    "height": 894,
+    "bytes": 85438
+  },
+  {
+    "id": "learning-octo-model",
+    "fileName": "learning-octo-model.webp",
+    "creator": "Octo Model Team et al.",
+    "sourceUrl": "https://arxiv.org/html/2405.12213v2#S2.F1",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2405.12213v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/deepml/attention-and-transformers",
+        "sectionId": "tokens",
+        "alt": "과제 토큰과 관측 토큰, readout 토큰이 들어가는 Octo Transformer",
+        "caption": "녹색은 과제, 파란색은 관측, 보라색은 출력을 읽는 토큰입니다. 로봇의 서로 다른 입력을 토큰으로 연결한 실제 구조입니다."
+      },
+      {
+        "lessonPath": "/education/deepml/diffusion-and-flow-matching",
+        "sectionId": "actions-and-execution",
+        "alt": "관측과 과제에서 행동 head로 이어지는 Octo 정책 구조",
+        "caption": "확산 방식의 행동 head를 사용하는 Octo 사례입니다. 가운데 표현 처리와 행동 생성 부분을 구분해 보세요. Flow Matching 구조는 아닙니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/action-chunks-and-diffusion",
+        "sectionId": "diffusion",
+        "alt": "관측 토큰을 받아 행동 head로 출력하는 Octo 모델 구조",
+        "caption": "확산 기반 행동 head를 쓰는 또 다른 실제 정책입니다. ACT와 Diffusion Policy 자체의 구조 그림은 아니며, 공유 표현 뒤 생성기가 붙는 위치를 보여 줍니다."
+      }
+    ],
+    "sha256": "6841517cd826a1ce7f54a932d90ad2b5796fd925880097e4266c690d4748323b",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1600,
+    "height": 774,
+    "bytes": 96772
+  },
+  {
+    "id": "learning-dreamer-fig1",
+    "fileName": "learning-dreamer-fig1.webp",
+    "creator": "Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap",
+    "sourceUrl": "https://www.nature.com/articles/s41586-025-08744-2#Fig1",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://www.nature.com/articles/s41586-025-08744-2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/world-models",
+        "sectionId": "recent-research",
+        "alt": "Dreamer의 월드 모델 학습과 상상한 상태에서의 actor-critic 학습 구조",
+        "caption": "왼쪽은 관측으로 환경 예측을 배우는 부분입니다. 오른쪽은 예측한 내부 상태를 이용해 행동과 가치를 배우는 부분입니다."
+      }
+    ],
+    "sha256": "061984602684e3acd6d5003129746aee1a52e7acd41e2a7e8dfea357998beffc",
+    "licenseEvidenceNote": "Nature 논문의 Rights and permissions가 그림을 포함해 CC BY 4.0을 명시하며, Figure 1·3에 별도 권리 유보 표기가 없습니다. 저자 기여 절은 Hafner가 그림을 제작했다고 명시합니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1600,
+    "height": 572,
+    "bytes": 54522
+  },
+  {
+    "id": "learning-dreamer-fig3",
+    "fileName": "learning-dreamer-fig3.webp",
+    "creator": "Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap",
+    "sourceUrl": "https://www.nature.com/articles/s41586-025-08744-2#Fig3",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://www.nature.com/articles/s41586-025-08744-2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/world-models",
+        "sectionId": "model-errors",
+        "alt": "실제 시뮬레이션 프레임과 Dreamer가 예측한 미래 프레임의 비교",
+        "caption": "각 환경에서 True와 Model 행을 비교하세요. 특히 아래 사족 로봇의 자세가 시간이 흐르며 얼마나 어긋나는지 관찰할 수 있습니다."
+      }
+    ],
+    "sha256": "077e91e927e34c81da404535fd79ab0fb295ed346065326591859d2a404f8655",
+    "licenseEvidenceNote": "Nature 논문의 Rights and permissions가 그림을 포함해 CC BY 4.0을 명시하며, Figure 1·3에 별도 권리 유보 표기가 없습니다. 저자 기여 절은 Hafner가 그림을 제작했다고 명시합니다.",
+    "verifiedAt": "2026-10-11",
+    "width": 1600,
+    "height": 585,
+    "bytes": 133074
+  },
+  {
+    "id": "systems-mujoco-structure",
+    "fileName": "systems-mujoco-structure.webp",
+    "creator": "© 2021 DeepMind Technologies Limited / MuJoCo contributors",
+    "sourceUrl": "https://github.com/google-deepmind/mujoco/blob/main/doc/images/overview/bodygeomsite.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/google-deepmind/mujoco/blob/main/README.md#license-and-disclaimer",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/simulation/physics-and-appearance",
+        "sectionId": "inertia-actuation",
+        "alt": "MuJoCo의 노란 geom, 자홍색 site, 붉은 등가 관성 상자 표시",
+        "caption": "노란 형상과 자홍색 기준점 위에 붉은 관성 상자가 겹쳐 있다. 보이는 형상, 기준점, 질량 분포가 서로 다른 모델 요소임을 읽어보자."
+      },
+      {
+        "lessonPath": "/education/simulation/system-identification",
+        "sectionId": "identify",
+        "alt": "MuJoCo 모델의 형상과 등가 관성 상자를 함께 표시한 그림",
+        "caption": "붉은 상자는 물체의 관성 특성을 나타내는 표시다. 실물 반응을 맞출 때 외형뿐 아니라 질량과 관성도 확인할 대상임을 보여 준다. 이 그림 자체가 식별 실험 결과는 아니다."
+      }
+    ],
+    "width": 271,
+    "height": 359,
+    "bytes": 4648,
+    "sha256": "c53569b5c041faa75521c90f983578280b9e02eb28ba014d57083e86f81f351a"
+  },
+  {
+    "id": "systems-mujoco-contact",
+    "fileName": "systems-mujoco-contact.webp",
+    "creator": "© 2021 DeepMind Technologies Limited / MuJoCo contributors",
+    "sourceUrl": "https://github.com/google-deepmind/mujoco/blob/main/doc/images/computation/softcontact.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/google-deepmind/mujoco/blob/main/README.md#license-and-disclaimer",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/simulation/contact-and-friction",
+        "sectionId": "friction",
+        "alt": "마찰 원뿔 근사에 따른 MuJoCo 소프트 접촉 페널티 등고선 비교",
+        "caption": "붉은 실선과 파란 점선은 서로 다른 마찰 원뿔 표현의 접촉 페널티를 비교한다. 왼쪽에서 오른쪽으로 마찰계수가 달라진다. 같은 접촉도 계산 모델의 선택에 따라 반응이 달라질 수 있다."
+      }
+    ],
+    "width": 1396,
+    "height": 487,
+    "bytes": 82540,
+    "sha256": "acd1a4d7a4b98f1dd7fba2e6d3c7634372541f221da919f7cc44b076422a5e4e"
+  },
+  {
+    "id": "systems-mujoco-camera",
+    "fileName": "systems-mujoco-camera.webp",
+    "creator": "© 2021 DeepMind Technologies Limited / MuJoCo contributors",
+    "sourceUrl": "https://github.com/google-deepmind/mujoco/blob/main/doc/images/XMLreference/rfcamera.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/google-deepmind/mujoco/blob/main/README.md#license-and-disclaimer",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/simulation/sensors-and-observations",
+        "sectionId": "sensor-model",
+        "alt": "물체 표면을 향해 여러 측정 광선을 보내는 MuJoCo 거리 카메라 예시",
+        "caption": "노란 선은 거리 측정 광선이다. 광선이 닿은 표면을 통해 관측을 만들기 때문에 내부 물체 위치를 그대로 읽는 것과 다르다. 시야와 가림이 관측을 바꾼다."
+      }
+    ],
+    "width": 1024,
+    "height": 828,
+    "bytes": 90726,
+    "sha256": "0c4f17798050234888fcb9ce01c08f2c015bfe2e92d4b78b79ce32a83e8afad2"
+  },
+  {
+    "id": "systems-mujoco-tactile",
+    "fileName": "systems-mujoco-tactile.webp",
+    "creator": "© 2021 DeepMind Technologies Limited / MuJoCo contributors",
+    "sourceUrl": "https://github.com/google-deepmind/mujoco/blob/main/doc/images/XMLreference/tactile.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/google-deepmind/mujoco/blob/main/README.md#license-and-disclaimer",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/simulation/sensors-and-observations",
+        "sectionId": "state-observation",
+        "alt": "MuJoCo 촉각 센서의 접촉 영역을 붉은 색으로 나타낸 그림",
+        "caption": "붉은 영역은 접촉 부근의 센서 값을 시각화한 것이다. 촉각 관측은 물체 전체의 정확한 상태가 아니라 센서가 놓인 접촉면에서 얻는 정보다."
+      },
+      {
+        "lessonPath": "/education/simulation/contact-and-friction",
+        "sectionId": "detect-and-respond",
+        "alt": "톱니 모양 물체와 접촉한 표면의 센서 값 시각화",
+        "caption": "접촉은 물체 전체에 한 번에 생기는 사건이 아니다. 맞닿는 위치와 방향을 먼저 찾고 그 부근의 반응을 계산한다. 그림의 붉은 영역을 접촉 위치와 연결해 보자."
+      }
+    ],
+    "width": 512,
+    "height": 500,
+    "bytes": 4602,
+    "sha256": "9d52710e1ba27b5dacf41460e3a3aeca726a46bf25b9cfbf3617bc74b93b1c2f"
+  },
+  {
+    "id": "systems-mujoco-rollout",
+    "fileName": "systems-mujoco-rollout.webp",
+    "creator": "© 2021 DeepMind Technologies Limited / MuJoCo contributors",
+    "sourceUrl": "https://github.com/google-deepmind/mujoco/blob/main/doc/images/python/rollout.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/google-deepmind/mujoco/blob/main/README.md#license-and-disclaimer",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/simulation/parallel-simulation",
+        "sectionId": "many-worlds",
+        "alt": "MuJoCo CPU rollout의 묶음 크기와 스텝 수에 따른 처리량 그래프",
+        "caption": "공식 문서의 CPU rollout 비교 예시다. 가로축의 묶음 크기와 스텝 수가 바뀌면 처리량도 달라진다. GPU 엔진의 성능이나 현재 장치의 보장 수치로 읽지 말고 비교 조건을 읽는 연습에 사용하자."
+      },
+      {
+        "lessonPath": "/education/development-setup/reproducible-projects",
+        "sectionId": "snapshot-and-run",
+        "alt": "nbatch와 nstep 조건을 명시한 MuJoCo rollout 처리량 비교",
+        "caption": "그래프 위에 nbatch와 nstep 조건이 명시되어 있다. 결과 숫자뿐 아니라 무엇을 고정하고 무엇을 바꿨는지를 남겨야 다른 실행과 비교할 수 있다. 이 수치는 문서의 해당 실험 예시다."
+      }
+    ],
+    "width": 984,
+    "height": 492,
+    "bytes": 26096,
+    "sha256": "db4b3140a7ea44d5471a75042f794acf1f7c8ce37d801a210d92781c7cf28931"
+  },
+  {
+    "id": "systems-mujoco-humanoid",
+    "fileName": "systems-mujoco-humanoid.webp",
+    "creator": "© 2021 DeepMind Technologies Limited / MuJoCo contributors",
+    "sourceUrl": "https://github.com/google-deepmind/mujoco/blob/main/doc/images/models/humanoid.gif",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/google-deepmind/mujoco/blob/main/README.md#license-and-disclaimer",
+    "modifications": "원본 GIF의 21번째 프레임을 정지 이미지로 추출하고 WebP로 변환. CC BY 4.0으로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/simulation/locomotion-and-support",
+        "sectionId": "contact-phases",
+        "alt": "MuJoCo 인간형 모델이 두 발을 바닥에서 뗀 장면",
+        "caption": "두 발과 바닥 사이의 간격을 보자. 이런 비행 구간에는 지면을 밀어 힘을 전달할 수 없으므로 다음 접촉의 자세와 위치를 준비해야 한다. 공식 모델 갤러리 애니메이션의 한 장면이다."
+      }
+    ],
+    "width": 270,
+    "height": 270,
+    "bytes": 7156,
+    "sha256": "aab16494b3c0766d6b59e0bca628510c11d2fd450bcb4621a33dcb2a8f6cc42b"
+  },
+  {
+    "id": "systems-ros-frames",
+    "fileName": "systems-ros-frames.webp",
+    "creator": "© Open Robotics / ROS 2 documentation contributors",
+    "sourceUrl": "https://github.com/ros2/ros2_documentation/blob/jazzy/source/Concepts/images/ros2_tf2_frames.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/ros2/ros2_documentation/blob/jazzy/LICENSE",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/ros/frames-and-time",
+        "sectionId": "frame-meaning",
+        "alt": "로봇 몸체와 각 관절에 서로 다른 좌표축을 표시한 ROS 2 TF 그림",
+        "caption": "붉은색·초록색·파란색 축이 로봇의 부위마다 따로 붙어 있다. 숫자 하나를 전달해도 어느 축을 기준으로 측정했는지 알아야 같은 실제 방향과 위치를 가리킬 수 있다."
+      }
+    ],
+    "width": 906,
+    "height": 786,
+    "bytes": 67886,
+    "sha256": "9315a53ccbfc2034bdbf3ca3bc53f6526c595ba4ba01922b11f7187c42000702"
+  },
+  {
+    "id": "systems-ros-qos",
+    "fileName": "systems-ros-qos.webp",
+    "creator": "© Open Robotics / ROS 2 documentation contributors",
+    "sourceUrl": "https://github.com/ros2/ros2_documentation/blob/jazzy/source/Releases/images/rqt_graph-qos-incompatibility-2021-05-17.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/ros2/ros2_documentation/blob/jazzy/LICENSE",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/ros/qos-and-latency",
+        "sectionId": "compatibility",
+        "alt": "rqt_graph에서 chatter 토픽의 QoS 비호환 경고를 보여 주는 화면",
+        "caption": "발행자와 구독자가 같은 chatter 토픽에 보이지만 경고에는 QoS 비호환이 표시되어 있다. 그래프에서 이름이 연결되어 보이는 것과 데이터가 실제 전달되는 것은 따로 확인해야 한다."
+      }
+    ],
+    "width": 1090,
+    "height": 632,
+    "bytes": 37412,
+    "sha256": "75f6ed4600a923b0cc1e90f21d130b8d15bb121de65b42a1c10b5d331af71104"
+  },
+  {
+    "id": "systems-ros-rqt",
+    "fileName": "systems-ros-rqt.webp",
+    "creator": "© Open Robotics / ROS 2 documentation contributors",
+    "sourceUrl": "https://github.com/ros2/ros2_documentation/blob/jazzy/source/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/images/rqt.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/ros2/ros2_documentation/blob/jazzy/LICENSE",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/ros/interfaces-and-actions",
+        "sectionId": "stream-and-request",
+        "alt": "rqt Service Caller에서 clear 서비스의 타입과 요청·응답을 확인하는 화면",
+        "caption": "서비스를 고르면 타입과 요청·응답 영역이 따로 보인다. 여기서는 turtlesim의 clear 서비스를 다룬다. 영상처럼 계속 받는 흐름과 한 번 요청해 응답받는 작업을 구분해 보자."
+      },
+      {
+        "lessonPath": "/education/development-setup/data-and-configuration",
+        "sectionId": "contracts",
+        "alt": "ROS 서비스 이름과 타입을 함께 표시한 rqt Service Caller",
+        "caption": "화면은 서비스 이름과 std_srvs/srv/Empty라는 타입을 함께 보여 준다. 작은 요청에도 구조와 해석의 약속이 있다. 데이터가 문법적으로 읽히는 것과 약속한 인터페이스를 따르는 것은 다른 확인이다."
+      }
+    ],
+    "width": 583,
+    "height": 519,
+    "bytes": 17070,
+    "sha256": "1a3bdc41a605e21a37fb081c5af139db9596bbca0bfbb1f9391249eaa76bc8b6"
+  },
+  {
+    "id": "systems-ros-multisim",
+    "fileName": "systems-ros-multisim.webp",
+    "creator": "© Open Robotics / ROS 2 documentation contributors",
+    "sourceUrl": "https://github.com/ros2/ros2_documentation/blob/jazzy/source/Tutorials/Beginner-CLI-Tools/Launching-Multiple-Nodes/images/turtlesim_multisim.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://github.com/ros2/ros2_documentation/blob/jazzy/LICENSE",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/ros/lifecycle-and-composition",
+        "sectionId": "composition",
+        "alt": "ROS 2 다중 노드 실행 예제에서 열린 두 turtlesim 창",
+        "caption": "같은 종류의 프로그램으로 별도의 실행을 만들 수 있다. 다만 창 개수만으로 프로세스 배치를 알 수는 없다. 실제 노드의 책임과 어느 프로세스에 들어 있는지를 실행 구성에서 확인하자."
+      },
+      {
+        "lessonPath": "/education/development-setup/programs-processes-environment",
+        "sectionId": "program-process",
+        "alt": "같은 turtlesim 프로그램을 여러 번 실행해 띄운 두 화면",
+        "caption": "코드 파일은 같아도 실행 인스턴스는 둘이다. 각각의 이름과 입력, 상태를 구분해야 어느 실행을 관찰하고 제어하는지 알 수 있다."
+      }
+    ],
+    "width": 1440,
+    "height": 776,
+    "bytes": 10606,
+    "sha256": "e2b43a41338a2ced921534f018341a385c56230ffdd9307b2430059ced2435ff"
+  },
+  {
+    "id": "systems-turtlebot3",
+    "fileName": "systems-turtlebot3.webp",
+    "creator": "Kuscu0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:TurtleBot3_Burger.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:TurtleBot3_Burger.jpg#Licensing",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음. CC BY-SA 4.0으로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/development-setup/robot-computing-map",
+        "sectionId": "machines",
+        "alt": "상단 센서와 내부 보드, 하단 바퀴가 보이는 TurtleBot3 Burger 사진",
+        "caption": "상단의 센서, 층별로 놓인 전자 보드, 하단 바퀴를 찾아보자. 로봇 한 대의 내부에서도 감지·계산·구동의 역할을 나누어 볼 수 있다. 이 사진의 배선을 특정 수업의 실행 구성과 동일하다고 가정하지는 않는다."
+      }
+    ],
+    "width": 1055,
+    "height": 1440,
+    "bytes": 82256,
+    "sha256": "7485ea75091c1535d3830b2145f981cc91386b58d43057a8833c743156e3751d"
+  },
+  {
+    "id": "systems-raspberry-pi",
+    "fileName": "systems-raspberry-pi.webp",
+    "creator": "Michael H. („Laserlicht“) / Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Raspberry_Pi_4_Model_B_-_Side.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Raspberry_Pi_4_Model_B_-_Side.jpg#Licensing",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음. CC BY-SA 4.0으로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/development-setup/networking-fundamentals",
+        "sectionId": "addresses",
+        "alt": "USB 포트와 이더넷 포트가 보이는 Raspberry Pi 4 Model B 측면 사진",
+        "caption": "오른쪽의 이더넷 포트는 컴퓨터를 네트워크에 연결하는 물리 인터페이스다. 케이블 연결 다음에는 목적지 주소와 그 장치에서 기다리는 프로그램의 포트를 구분해야 한다."
+      },
+      {
+        "lessonPath": "/education/development-setup/containers-and-isolation",
+        "sectionId": "robot-connections",
+        "alt": "USB·이더넷·GPIO 등 실제 장치 연결부가 보이는 Raspberry Pi 보드",
+        "caption": "USB 센서와 네트워크는 호스트의 실제 연결부에서 시작한다. 컨테이너 안의 패키지가 준비됐어도 장치·권한·네트워크 경계를 따로 연결해야 한다. 사진은 물리 연결부를 확인하기 위한 예시다."
+      }
+    ],
+    "width": 1440,
+    "height": 847,
+    "bytes": 135768,
+    "sha256": "05b9b8fd251ad2fe73a6216793378756ccb762e3deb397ce780f2f451c50f88f"
+  },
+  {
+    "id": "systems-jetson-orin",
+    "fileName": "systems-jetson-orin.webp",
+    "creator": "Auledas",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:NVidia_Jetson_Orin_AGX.png",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:NVidia_Jetson_Orin_AGX.png#Licensing",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음. CC BY 4.0으로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/development-setup/compute-memory-and-edge",
+        "sectionId": "edge-vla",
+        "alt": "방열 구조와 입출력 단자가 보이는 Jetson AGX Orin 개발 키트",
+        "caption": "엣지 컴퓨터도 계산 칩만으로 구성되지 않는다. 방열 구조와 전원, 입출력 연결을 함께 고려해야 로봇에서 계속 실행할 수 있다. 사진은 장치 형태의 예시이며 특정 모델의 실행 성능을 보장하지 않는다."
+      }
+    ],
+    "width": 960,
+    "height": 726,
+    "bytes": 50126,
+    "sha256": "e3227cefb53ff34b16c90c980cb024eb371a3478f66cf3c8ff83d896a011a666"
+  }
+]

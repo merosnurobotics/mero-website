@@ -1,0 +1,365 @@
+[
+  {
+    "id": "learning-cnn",
+    "fileName": "learning-cnn.webp",
+    "creator": "Will Whitney",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Convolutional_Network.png",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Convolutional_Network.png",
+    "modifications": "투명 배경을 흰색으로 합성하고 WebP로 변환. 내용 변경 없음. 변환본도 CC BY-SA 4.0.",
+    "placements": [
+      {
+        "lessonPath": "/education/deepml/representations-and-embeddings",
+        "sectionId": "representation",
+        "alt": "원본 이미지가 여러 특징 지도로 변환되는 합성곱 구조",
+        "caption": "픽셀 배열이 여러 특징 지도로 바뀌는 예입니다. 가운데 지도들이 최종 이름 이전의 중간 표현입니다."
+      },
+      {
+        "lessonPath": "/education/deepml/convolution-and-visual-features",
+        "sectionId": "feature-maps",
+        "alt": "입력 이미지와 합성곱 특징 지도, 풀링 결과",
+        "caption": "같은 가중치가 다른 위치에 쓰이는 연결과, 풀링 뒤 작아지는 특징 지도를 비교해 보세요."
+      }
+    ],
+    "sha256": "122741cb8bf8e7c089c7f8eab25a9e6fec9f30ef26befd7932f794b8f615f497",
+    "licenseEvidenceNote": "Commons 파일의 Licensing 절에서 저작권자 Will Whitney가 해당 그림에 CC BY-SA 4.0을 부여한 것을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-openvla-model",
+    "fileName": "learning-openvla-model.webp",
+    "creator": "Moo Jin Kim et al. · OpenVLA",
+    "sourceUrl": "https://arxiv.org/html/2406.09246v3#S3.F2",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2406.09246v3",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/deepml/self-supervised-learning",
+        "sectionId": "evaluate-representation",
+        "alt": "OpenVLA에서 DINOv2와 SigLIP 특징이 합쳐지는 모델 그림",
+        "caption": "자기지도 특징의 후속 활용 사례입니다. DINOv2 특징은 다른 표현과 결합된 뒤 행동 학습에 쓰입니다. DINOv3 구조 그림은 아닙니다."
+      },
+      {
+        "lessonPath": "/education/deepml/multimodal-learning",
+        "sectionId": "robot-bridge",
+        "alt": "영상과 언어가 합쳐져 행동 토큰으로 이어지는 OpenVLA 구조",
+        "caption": "영상과 지시가 서로 다른 경로로 들어옵니다. 오른쪽의 토큰 해석 단계까지 따라가며 행동 출력이 붙는 위치를 찾아보세요."
+      },
+      {
+        "lessonPath": "/education/robot-vision/visual-representations",
+        "sectionId": "clip-dino",
+        "alt": "DINOv2와 SigLIP 두 시각 특징을 결합하는 OpenVLA",
+        "caption": "시각 표현의 실제 활용 사례입니다. DINOv2와 SigLIP을 결합하며, 범용 특징 위에 행동을 위한 학습이 이어집니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/openvla-and-action-models",
+        "sectionId": "bridge",
+        "alt": "OpenVLA 원 논문 Figure 2 모델 구조",
+        "caption": "왼쪽의 관측·지시가 가운데 모델을 거쳐 오른쪽의 이동·회전·그리퍼 행동으로 바뀌는 경로를 확인하세요."
+      }
+    ],
+    "sha256": "e22260029b6c2dc2f5032fbf89eb2224ac11d21eb6d8596fc762c703b41c5a34",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-openvla-bridge",
+    "fileName": "learning-openvla-bridge.webp",
+    "creator": "Moo Jin Kim et al. · OpenVLA",
+    "sourceUrl": "https://arxiv.org/html/2406.09246v3#A2.F7",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2406.09246v3",
+    "modifications": "Figure 7의 상단 시각 일반화 패널만 발췌하고 WebP로 변환.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/sim2real-evaluation",
+        "sectionId": "evaluation-set",
+        "alt": "물체 배치와 방해물을 바꾼 WidowX 로봇의 실제 평가 장면",
+        "caption": "실제 환경 평가의 예입니다. 같은 행동에서도 물체 위치와 주변 방해물이 달라집니다. 이 사진 자체는 Sim2Real 실험이 아닙니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/data-and-evaluation",
+        "sectionId": "generalization",
+        "alt": "OpenVLA의 시각 일반화 평가에서 바뀐 물체 배치",
+        "caption": "목표와 방해물의 배치를 비교하세요. 일반화 평가에서 무엇을 바꿨는지 사진으로 기록한 사례입니다."
+      }
+    ],
+    "sha256": "8a0811f2f9bc1f99c836b538a433c88b47b9694dd9c4f85b4a1c8c1563249080",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-openvla-franka",
+    "fileName": "learning-openvla-franka.webp",
+    "creator": "Moo Jin Kim et al. · OpenVLA",
+    "sourceUrl": "https://arxiv.org/html/2406.09246v3#A2.F10",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2406.09246v3",
+    "modifications": "Figure 10의 첫 작업 사진과 열 제목을 발췌하고 WebP로 변환.",
+    "placements": [
+      {
+        "lessonPath": "/education/deepml/transfer-learning-and-adaptation",
+        "sectionId": "validation-and-versioning",
+        "alt": "Franka의 당근 넣기 작업을 익숙한 조건과 다른 조건에서 비교한 사진",
+        "caption": "새 로봇에 적응시킨 뒤 평가하는 예입니다. 같은 지시에서도 배경과 물체 배치가 다른 두 조건을 구분합니다."
+      },
+      {
+        "lessonPath": "/education/reinforcement-learning/exploration-and-practice",
+        "sectionId": "curriculum",
+        "alt": "동일 작업의 in-distribution 및 out-of-distribution 실제 평가 장면",
+        "caption": "고정할 시험 조건을 생각하는 예입니다. 훈련 난이도 변화와 별개로, 같은 지시를 어떤 장면에서 시험했는지 남깁니다."
+      }
+    ],
+    "sha256": "64330c7af5114421603c35526ddae009ad5229ce37a7f4c207f36f9eb01b3a8c",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-droid-setup",
+    "fileName": "learning-droid-setup.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#S3.F0",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/robot-vision/sensing-to-action",
+        "sectionId": "viewpoints",
+        "alt": "고정 스테레오 카메라와 손목 카메라를 장착한 DROID 로봇",
+        "caption": "양옆 카메라와 손목 카메라의 위치를 비교하세요. 전체 작업대와 접촉 주변을 서로 다른 시점에서 봅니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/learning-from-demonstrations",
+        "sectionId": "pairs",
+        "alt": "카메라와 원격 조종 장비를 갖춘 DROID 시연 수집 로봇",
+        "caption": "시연 수집 장치의 실제 구성입니다. 카메라 관측, 로봇 상태, 조종 명령을 같은 시각에 연결해야 합니다."
+      },
+      {
+        "lessonPath": "/education/reinforcement-learning/imitation-offline-posttraining",
+        "sectionId": "behavior-cloning",
+        "alt": "DROID의 Franka 로봇과 카메라 및 원격 조종 장비",
+        "caption": "모방학습 자료를 수집하는 실제 장치입니다. 로봇의 카메라와 원격 조종 입력이 어디에서 나오는지 확인하세요."
+      }
+    ],
+    "sha256": "51da9a2cb902275ac5259ad2d63e95258113f522f971301bbdb22353a42fd050",
+    "licenseEvidenceNote": "논문 HTML에 CC BY 4.0 명시. 본문은 DROID 데이터 자체도 CC BY 4.0으로 공개한다고 명시합니다. 저자 제작 장치 그림입니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-droid-pointcloud",
+    "fileName": "learning-droid-pointcloud.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#A7.F13",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/robot-vision/depth-and-frames",
+        "sectionId": "clouds",
+        "alt": "두 카메라 영상과 보정 전후 점구름을 나란히 보여 주는 DROID 그림",
+        "caption": "점구름을 겹쳤을 때 표면이 어긋나는지 보세요. 오른쪽은 보정을 개선한 결과이며 가려진 면까지 복원한 것은 아닙니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/detection-segmentation",
+        "sectionId": "geometry",
+        "alt": "영상의 물체와 공간의 점구름이 연결된 DROID 보정 예",
+        "caption": "영상 영역과 공간 표면은 다른 출력입니다. 물체의 경계를 찾은 뒤에도 좌표와 깊이를 연결해야 합니다."
+      }
+    ],
+    "sha256": "71935020f9b29524b8483a59cbfb1da8edbf3dbf18fb8ec5e5ecf89a36ae548d",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-droid-calibration",
+    "fileName": "learning-droid-calibration.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#A6.F11",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "Figure 11의 왼쪽 위 네 장면을 발췌하고 WebP로 변환.",
+    "placements": [
+      {
+        "lessonPath": "/education/robot-vision/depth-and-frames",
+        "sectionId": "calibration",
+        "alt": "실제 카메라 영상 위에 보라색 로봇 모델을 투영한 네 장면",
+        "caption": "보라색 로봇 모델과 실제 팔의 겹침을 보세요. 카메라와 로봇 좌표의 관계를 점검하는 시각화입니다."
+      }
+    ],
+    "sha256": "4db397dca4b106d19c595460821bade85ec7f6c6e7bfedb093620f84ea0dd71f",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-droid-rollout",
+    "fileName": "learning-droid-rollout.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#S5.F7",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/reward-design",
+        "sectionId": "shaping",
+        "alt": "뚜껑 열기에서 조리 기구 조작까지 단계별 성공과 실패를 비교한 DROID 실행",
+        "caption": "초록·빨강 표시가 갈리는 단계를 보세요. 중간 진행과 최종 성공을 따로 기록할 이유를 보여 주는 모방학습 사례입니다."
+      },
+      {
+        "lessonPath": "/education/reinforcement-learning/return-and-value",
+        "sectionId": "credit",
+        "alt": "여러 단계의 조리 작업에서 어느 단계까지 성공했는지 보여 주는 로봇 사진",
+        "caption": "첫 단계 성공이 전체 완료를 보장하지 않습니다. 앞선 행동과 뒤의 결과를 연결해 읽는 실제 작업 예입니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/embodied-planning",
+        "sectionId": "progress",
+        "alt": "조리 작업의 각 단계에서 성공 여부를 표시한 실제 DROID 로봇 실행",
+        "caption": "왼쪽부터 다음 단계가 이어집니다. 이 자료는 별도의 계획 모델 구조를 증명하지 않으며, 진행 상태를 확인할 실제 장면을 보여 줍니다."
+      }
+    ],
+    "sha256": "df7f2c06e95915c4cd2490cc95cfca2b2ac3469bf33edde1252b110faa4a5a9e",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-droid-scenes",
+    "fileName": "learning-droid-scenes.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#A2.F10",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/robot-vision/data-and-evaluation",
+        "sectionId": "coverage",
+        "alt": "욕실과 침실, 식탁과 실험실 등 여러 장소에서 수집한 DROID 로봇 장면",
+        "caption": "프레임 수와 장면 다양성을 구분해 보세요. 방의 종류가 달라지면 배경·높이·물체 배치도 함께 달라집니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/pi-models-and-generalization",
+        "sectionId": "open-world",
+        "alt": "여러 실제 가정과 실험실에 배치된 DROID 로봇",
+        "caption": "새 환경이 무엇을 뜻하는지 보여 주는 DROID 수집 사례입니다. π 계열 모델의 실행 결과 사진은 아닙니다."
+      }
+    ],
+    "sha256": "168a17517142de0eed0edbb93e9ee05a62f13101c18fdabce53e933df7ce3f55",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-droid-gui",
+    "fileName": "learning-droid-gui.webp",
+    "creator": "Alexander Khazatsky et al. · DROID",
+    "sourceUrl": "https://arxiv.org/html/2403.12945v2#A1.F9",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2403.12945v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/learning-from-replay",
+        "sectionId": "who-collected",
+        "alt": "과제 선택과 여러 카메라 기록, 장면 변경을 안내하는 DROID 수집 화면",
+        "caption": "경험의 출처를 기록하는 인터페이스입니다. 작업 지시와 관측이 포함된 원격 조종 자료이며 PPO·SAC의 학습 화면은 아닙니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/learning-from-demonstrations",
+        "sectionId": "collection",
+        "alt": "과제와 장면 변경을 안내하는 DROID 데이터 수집 GUI",
+        "caption": "작업 선택과 장면 변경 안내를 구분해 보세요. 시연 횟수뿐 아니라 어떤 변화를 수집할지도 설계합니다."
+      }
+    ],
+    "sha256": "53329e4531094b343e12b33caf8b83d33f211eb6707c00d1986b86865de957ab",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-octo-model",
+    "fileName": "learning-octo-model.webp",
+    "creator": "Octo Model Team et al.",
+    "sourceUrl": "https://arxiv.org/html/2405.12213v2#S2.F1",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://arxiv.org/html/2405.12213v2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/deepml/attention-and-transformers",
+        "sectionId": "tokens",
+        "alt": "과제 토큰과 관측 토큰, readout 토큰이 들어가는 Octo Transformer",
+        "caption": "녹색은 과제, 파란색은 관측, 보라색은 출력을 읽는 토큰입니다. 로봇의 서로 다른 입력을 토큰으로 연결한 실제 구조입니다."
+      },
+      {
+        "lessonPath": "/education/deepml/diffusion-and-flow-matching",
+        "sectionId": "actions-and-execution",
+        "alt": "관측과 과제에서 행동 head로 이어지는 Octo 정책 구조",
+        "caption": "확산 방식의 행동 head를 사용하는 Octo 사례입니다. 가운데 표현 처리와 행동 생성 부분을 구분해 보세요. Flow Matching 구조는 아닙니다."
+      },
+      {
+        "lessonPath": "/education/robot-vision/action-chunks-and-diffusion",
+        "sectionId": "diffusion",
+        "alt": "관측 토큰을 받아 행동 head로 출력하는 Octo 모델 구조",
+        "caption": "확산 기반 행동 head를 쓰는 또 다른 실제 정책입니다. ACT와 Diffusion Policy 자체의 구조 그림은 아니며, 공유 표현 뒤 생성기가 붙는 위치를 보여 줍니다."
+      }
+    ],
+    "sha256": "6841517cd826a1ce7f54a932d90ad2b5796fd925880097e4266c690d4748323b",
+    "licenseEvidenceNote": "명시적 CC BY 4.0 논문의 저자 제작 그림. 선택한 그림에 별도 권리 유보 표기가 없음을 확인했습니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-dreamer-fig1",
+    "fileName": "learning-dreamer-fig1.webp",
+    "creator": "Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap",
+    "sourceUrl": "https://www.nature.com/articles/s41586-025-08744-2#Fig1",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://www.nature.com/articles/s41586-025-08744-2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/world-models",
+        "sectionId": "recent-research",
+        "alt": "Dreamer의 월드 모델 학습과 상상한 상태에서의 actor-critic 학습 구조",
+        "caption": "왼쪽은 관측으로 환경 예측을 배우는 부분입니다. 오른쪽은 예측한 내부 상태를 이용해 행동과 가치를 배우는 부분입니다."
+      }
+    ],
+    "sha256": "061984602684e3acd6d5003129746aee1a52e7acd41e2a7e8dfea357998beffc",
+    "licenseEvidenceNote": "Nature 논문의 Rights and permissions가 그림을 포함해 CC BY 4.0을 명시하며, Figure 1·3에 별도 권리 유보 표기가 없습니다. 저자 기여 절은 Hafner가 그림을 제작했다고 명시합니다.",
+    "verifiedAt": "2026-10-11"
+  },
+  {
+    "id": "learning-dreamer-fig3",
+    "fileName": "learning-dreamer-fig3.webp",
+    "creator": "Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap",
+    "sourceUrl": "https://www.nature.com/articles/s41586-025-08744-2#Fig3",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://www.nature.com/articles/s41586-025-08744-2",
+    "modifications": "크기 최적화 및 WebP 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/reinforcement-learning/world-models",
+        "sectionId": "model-errors",
+        "alt": "실제 시뮬레이션 프레임과 Dreamer가 예측한 미래 프레임의 비교",
+        "caption": "각 환경에서 True와 Model 행을 비교하세요. 특히 아래 사족 로봇의 자세가 시간이 흐르며 얼마나 어긋나는지 관찰할 수 있습니다."
+      }
+    ],
+    "sha256": "077e91e927e34c81da404535fd79ab0fb295ed346065326591859d2a404f8655",
+    "licenseEvidenceNote": "Nature 논문의 Rights and permissions가 그림을 포함해 CC BY 4.0을 명시하며, Figure 1·3에 별도 권리 유보 표기가 없습니다. 저자 기여 절은 Hafner가 그림을 제작했다고 명시합니다.",
+    "verifiedAt": "2026-10-11"
+  }
+]

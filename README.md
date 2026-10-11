@@ -186,4 +186,14 @@ MERO_EDUCATION_TEST_URL=http://localhost:3100 npx playwright test tests/educatio
 
 `education:concepts`는 `generated/concept-index.json`에 탐색용 메타데이터를 생성합니다. 본문은 서버에서만 불러오므로 사이드바에 전체 원고가 포함되지 않습니다. 원고·선수자료·순서를 바꾸면 메타데이터를 재생성하고 함께 반영합니다. 카탈로그 검사는 영역별 수량·난이도·중복·선수자료·장 구성·참고 출처를, 브라우저 검사는 전체 자료와 앵커·기존 주소·모바일·질문 해설을 확인합니다.
 
+신규 개념 자료는 절마다 한 문장 핵심·짧은 설명·관찰 항목을 두고, 수업별 시각 해설 3개를 본문 사이에 배치합니다. `content/education/concept-visuals/<topic>/<slug>.md`의 extended Markdown을 Answer me with HTML CLI로 렌더링합니다. 패널 제목은 `## <sectionId> | <제목>`이며 본문의 절 ID에 연결됩니다. 작은 화면에서는 흐름도를 세로로, 계층도를 목록으로 다시 렌더링하므로 글자를 축소한 그림만 표시하지 않습니다.
+
+```bash
+npm run education:visuals
+```
+
+일반 사이트 빌드는 CLI를 실행하지 않고 저장된 `concept-visuals.json`과 `concept-visuals.generated.css`를 사용합니다. 원고 해시는 `concept-visual-provenance.json`에 기록됩니다. 도식은 서버에서 본문에 포함되며 별도 브라우저 실행 스크립트를 요구하지 않습니다.
+
+참고 이미지의 원본·저자·개별 사용 조건·변경 내역·삽입 위치는 `content/education/reference-images/*.json`에 보관합니다. 이미지 파일은 `private/education-assets/references/`에 저장하고, 생성 단계에서 크기와 SHA-256을 기록합니다. 사진·논문 그림의 라이선스를 코드 저장소의 라이선스와 구분하며 필요한 고지 파일도 함께 보존합니다. 화면에서는 캡션과 출처·라이선스 링크를 이미지 바로 아래에 표시합니다. 원문 이미지를 추가할 때는 재사용 범위가 해당 파일에 적용되는지 먼저 확인합니다.
+
 실제 로봇 데모는 `src/lib/education/robot-demos.ts`에서 출처·게시자·연도·영상 성격과 수업별 관찰 질문을 관리합니다. RAI UMV 학습/동작, ALOHA·OpenVLA·DayDreamer·SLAM 등의 제작팀 원본을 연결하며 영상·썸네일을 복제하지 않습니다. 클릭 전에는 외부 플레이어를 생성하지 않고, YouTube 개인정보 보호 강화 도메인 또는 제작팀 원본 MP4를 사용합니다. 원본 영상과 연구 페이지 링크는 항상 표시합니다. 데모 연결을 바꿔도 `education:concepts`를 다시 실행해야 목차에 반영됩니다.

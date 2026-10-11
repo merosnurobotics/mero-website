@@ -35,14 +35,18 @@ for (const topic of educationTopics) test(`${topic.title}: sources, complete exp
   const module = await import(`../src/lib/education/concepts/${topic.path.split("/").at(-1)}.ts`);
   const concepts = Object.values(module).find(value => Array.isArray(value) && value[0]?.sections) as ConceptLesson[];
   assert.ok(concepts?.length);
+  const order = Object.values(module).find(value => Array.isArray(value) && typeof value[0] === "string");
+  assert.deepEqual(order, topic.lessons.map(lesson => lesson.path), `${topic.path}: source order export must survive content edits`);
   for (const lesson of concepts) {
     const path = `${topic.path}/${lesson.slug}`;
     assert.ok(paths.has(path), path);
     assert.ok(lesson.sections.length >= 4, path);
-    assert.ok(lesson.sections.every(section => section.paragraphs.length >= 2), path);
-    assert.ok(lesson.sections.flatMap(section => section.paragraphs).join("").length >= 1800, `${path}: explanation too brief`);
-    const explanation = [lesson.sections.flatMap(section => section.paragraphs).join(""), lesson.example.situation, ...lesson.example.walkthrough, lesson.example.takeaway, ...lesson.misconceptions.map(item => item.correction), ...lesson.questions.map(item => item.answer)].join("");
-    assert.ok(explanation.length >= 2400, `${path}: incomplete teaching content`);
+    for (const section of lesson.sections) {
+      assert.ok(section.summary && section.summary.length >= 15, `${path}#${section.id}: missing central idea`);
+      assert.ok(section.paragraphs.length >= 2, `${path}#${section.id}: explanation and application`);
+      assert.ok(section.paragraphs.every(paragraph => paragraph.length >= 45 && paragraph.length <= 350), `${path}#${section.id}: keep explanations substantive and readable`);
+    }
+    assert.ok(lesson.example.walkthrough.length >= 3 && lesson.example.takeaway.length >= 30, `${path}: complete worked example`);
     assert.ok(lesson.sources.length >= 2 && lesson.questions.length >= 2 && lesson.misconceptions.length >= 2, path);
     for (const source of lesson.sources) {
       assert.equal(new URL(source.url).protocol, "https:");

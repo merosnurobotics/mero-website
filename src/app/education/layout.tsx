@@ -5,6 +5,7 @@ import { EducationSidebar } from "@/components/education/sidebar";
 import "./lesson.css";
 import "./diagrams.generated.css";
 import "./deepml.generated.css";
+import "./concept-visuals.generated.css";
 import "./education.css";
 
 export function generateMetadata() { return { robots: { index: !educationMembersOnly(), follow: !educationMembersOnly() } }; }

@@ -339,6 +339,52 @@
 .concept-lesson .education-sources { scroll-margin-top: 106px; }
 @media print { .concept-lesson details > p { display: block; } }
 
+/* Concept lessons alternate short explanations, source figures, and AM diagrams. */
+.concept-lesson .perception-chapter > p { max-width: 64ch; line-height: 1.85; }
+.concept-lesson .perception-chapter > .concept-section-summary {
+  max-width: 100%; margin: -8px 0 28px; padding-left: 16px;
+  border-left: 3px solid var(--accent); font-size: 18px; font-weight: 650; line-height: 1.7;
+}
+.concept-visual { margin-block: 30px; padding: 24px 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--control-radius); min-width: 0; }
+.concept-visual > .concept-visual-label { font-size: 12px; color: var(--accent); font-weight: 650; letter-spacing: .015em; margin: 0 0 8px; }
+.concept-visual > h3 { font-size: 19px; line-height: 1.6; margin: 0 0 22px; }
+.concept-visual-content[data-am-theme][data-am-mode] {
+  --bg: inherit; --line: inherit; --accent: inherit;
+  --paper: var(--surface-raised); --fill: var(--surface-raised); --accent-bg: var(--accent-soft);
+  --ink: var(--text); --ink-2: var(--muted); --ink-3: var(--muted); --line-2: var(--line);
+  --font-sans: var(--font-pretendard), var(--font-pretendard-fallback, sans-serif), sans-serif;
+  --head-font: var(--font-sans); --font-mono: ui-monospace, monospace; --shadow: none;
+  color: var(--text); font-family: var(--font-sans); min-width: 0; padding: 0; margin: 0;
+  background: transparent; font-size: 15px; line-height: 1.8;
+}
+.concept-visual-content .am-diagram { margin: 20px 0; padding: 20px 12px; background: var(--surface-raised); border-radius: 4px; }
+.concept-visual-content .am-diagram svg { display: block; max-width: 100%; height: auto; margin-inline: auto; }
+.concept-visual-content .am-md > p { margin: 16px 0 0; font-size: 14px; line-height: 1.85; }
+.concept-visual-content .am-md > p:first-child { margin-top: 0; }
+.concept-visual-content .am-table-wrap { margin: 14px 0; }
+.concept-visual-content table { width: 100%; font-size: 14px; line-height: 1.75; }
+.concept-visual-content th, .concept-visual-content td { white-space: normal; word-break: keep-all; overflow-wrap: anywhere; }
+.concept-visual-content .cv-mobile { display: none; }
+.concept-reference { overflow: hidden; }
+.concept-reference-media { display: grid; place-items: center; background: #fff; border: 1px solid var(--line); border-radius: var(--control-radius); overflow: hidden; }
+.concept-reference-media a { display: block; width: 100%; }
+.concept-lesson .concept-reference-media img { display: block; width: 100%; max-height: 460px; height: auto; object-fit: contain; border-radius: 0; background: #fff; }
+.concept-reference figcaption { padding-left: 14px; border-left: 2px solid var(--line); }
+.concept-reference figcaption .concept-reference-caption { margin: 0 0 9px; font-size: 14px; line-height: 1.8; color: var(--text); }
+.concept-reference figcaption .concept-reference-credit { margin: 3px 0; font-size: 11px; line-height: 1.7; color: var(--muted); }
+@media (max-width: 767px) {
+  .concept-lesson .perception-chapter > .concept-section-summary { font-size: 16px; padding-left: 12px; }
+  .concept-visual { padding: 20px 14px; margin-block: 26px; }
+  .concept-visual > h3 { font-size: 17px; }
+  .concept-visual-content .am-diagram { padding: 16px 6px; }
+  .concept-visual-content .cv-desktop { display: none; }
+  .concept-visual-content .cv-mobile { display: block; }
+  .concept-visual-content table { font-size: 12px; }
+  .concept-visual-content th, .concept-visual-content td { padding: 10px 7px; }
+  .concept-reference figcaption { padding-left: 10px; }
+}
+@media print { .concept-visual, .concept-reference { break-inside: avoid; } }
+
 .education-topic-links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--line); margin-bottom:40px; }
 .education-topic-links a { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:18px 12px; border-bottom:1px solid var(--line); font-size:15px; }
 .education-topic-links a:hover { color:var(--accent); background:var(--surface); }

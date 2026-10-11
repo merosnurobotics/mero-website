@@ -34,3 +34,16 @@ Manim 렌더링은 사용자 규칙에 따라 영문 전용, Lato 폰트 사용.
 VLA/Gazebo 추가분은 공식 문서·연구 소개의 개념을 참고한 자체 설명·도식이며 외부 본문·이미지를 복제하지 않았다. VLA는 OpenVLA 연구 소개, LeRobot ACT·SmolVLA 공식 문서, Rainbow Robotics RB-Y1 SDK를 참고한다. Gazebo는 공식 ROS 호환 안내와 Harmonic 모델·센서·ROS 연결 튜토리얼을 연결한다. 원문 번역판이나 공식 인증 교육으로 표기하지 않는다. Gazebo·RB-Y1 실행 검증 없이 개념과 실행 경로만 제공한다.
 
 제어 보강은 Modern Robotics 11장의 관절 운동·힘·임피던스 제어 구분과 MuJoCo 공식 구동기 모델을 개념 참고했다. PD 토크·속도 피드포워드 수치와 관절 제어 도식은 자체 예제이다. 교재 본문·그림을 번역 복제하지 않았다. 계산용 계수를 실물 raw gain으로 그대로 사용하지 않는다.
+
+
+## 2026-10-11 · 신규 개념 자료의 시각 해설과 참고 이미지
+
+60개 신규 수업의 240개 절을 핵심 문장·짧은 설명·관찰 항목으로 다시 구성했다. `answer-me-with-html`의 extended Markdown 원고 60개를 작성하고 CLI로 도식·비교표 패널 180개를 생성했다. 원고는 `content/education/concept-visuals/`, 원고 해시는 `generated/concept-visual-provenance.json`에 보관한다. 본문 중 해당 개념 절에 연결하고 모바일용 흐름도·계층도·타임라인도 CLI로 별도 생성한다.
+
+외부 참고 자산은 38종, 58개 수업의 69곳에 배치했다. 터미널·Python 환경처럼 사진보다 관계 설명이 중요한 두 자료에는 도식을 사용한다.
+
+- `content/education/reference-images/learning.json`: OpenVLA·DROID·Octo 논문의 명시적 CC BY 4.0 그림, Nature Dreamer 논문의 CC BY 4.0 그림, Commons의 저자 제작 합성곱 그림(CC BY-SA 4.0). 모델·코드 라이선스를 논문 그림의 사용 허가로 간주하지 않았다. DINOv3·ACT·Diffusion Policy·π0 논문 그림은 arXiv 기본 배포 라이선스만 확인되어 재배포하지 않았다.
+- `control-localization.json`: Commons 개별 파일 라이선스가 있는 구동계·도립진자·센서·로버·Gaussian splatting 그림과 사진, PLOS BatSLAM의 저자 제작 그림(CC BY 4.0). 논문별 라이선스와 이미지 설명을 확인하고 필요한 NASA·Quanser·사진 저작자 고지를 유지한다.
+- `systems.json`: ROS 2 문서의 CC BY 4.0 스크린샷, MuJoCo의 `doc/` 문서·이미지·영상에 명시된 CC BY 4.0 자료, Commons의 개별 라이선스가 있는 Raspberry Pi·Jetson·TurtleBot3 사진. MuJoCo 코드의 Apache 라이선스와 문서 미디어 라이선스를 구분한다.
+
+각 manifest에는 원문 URL, 저작자, 라이선스와 근거 URL, 변환·발췌 내역, 한국어 캡션과 삽입 위치를 기록한다. 생성된 `concept-reference-images.json`에는 크기·파일 크기·SHA-256도 보존한다. WebP 자산은 `private/education-assets/references/`에서 제공하고, 화면에 출처·사용 조건·저작자·변경 내역 및 확대 링크를 함께 표시한다. 논문 속 비교를 다른 알고리즘의 성과로 표시하지 않으며 일반 장치 사진은 해당 방법을 실행한 증거로 설명하지 않는다.

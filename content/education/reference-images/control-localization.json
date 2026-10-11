@@ -1,0 +1,353 @@
+[
+  {
+    "id": "control-rotary-pendulum",
+    "fileName": "control-rotary-pendulum.webp",
+    "creator": "Quanser Inc. — image courtesy, Quanser Inc.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:RotaryInvertedPendulum.JPG",
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:RotaryInvertedPendulum.JPG",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/stability-and-robustness",
+        "sectionId": "local-recovery",
+        "alt": "회전 받침대와 긴 막대로 구성된 Quanser 도립진자 실험 장치",
+        "caption": "실제 회전형 도립진자입니다. 막대의 각도뿐 아니라 넘어가는 속도에 따라 필요한 회복 동작이 달라집니다."
+      },
+      {
+        "lessonPath": "/education/control/state-feedback-and-observers",
+        "sectionId": "state",
+        "alt": "각도와 각속도를 함께 생각할 수 있는 회전형 도립진자",
+        "caption": "같은 각도의 막대라도 넘어지는 중인지 되돌아오는 중인지 구분해야 합니다. 정지 사진에 없는 속도 정보가 상태에 필요한 이유입니다."
+      },
+      {
+        "lessonPath": "/education/control/models-and-feedforward",
+        "sectionId": "dynamics",
+        "alt": "모터로 받침대를 회전시키는 도립진자 장치",
+        "caption": "막대와 회전 받침대의 움직임이 연결된 장치입니다. 자세·가속·질량이 달라질 때 필요한 힘이 어떻게 달라질지 생각해 보세요."
+      }
+    ],
+    "width": 521,
+    "height": 945,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/RotaryInvertedPendulum.JPG",
+    "sourceSha256": "66aa5db0df040b9620576b8374cb9bb73629871d94e2581f1c1ba9536fb8db7b",
+    "assetSha256": "44e79206e265ac14fedf14189c334dbae76634c8799b58cae4c18d6c68690a4c"
+  },
+  {
+    "id": "control-harmonic-drive",
+    "fileName": "control-harmonic-drive.webp",
+    "creator": "Jahobr & Kaboldy",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Harmonic_drive_cross_Legend.svg",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Harmonic_drive_cross_Legend.svg",
+    "modifications": "원본 SVG의 Commons PNG 미리보기를 흰 배경의 WebP로 변환. 도해 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/actuator-command-modes",
+        "sectionId": "transmission",
+        "alt": "입력축과 출력축, 내부 전달 구조가 보이는 파동 기어 감속기 단면",
+        "caption": "1은 입력축, 5는 출력축입니다. 2의 파동 발생기, 3의 유연 기어, 4의 원형 기어를 거쳐 회전이 전달됩니다. 모터와 관절 출력 사이의 전달계를 확인해 보세요."
+      },
+      {
+        "lessonPath": "/education/control/models-and-feedforward",
+        "sectionId": "useful-model",
+        "alt": "파동 기어 감속기의 입력축과 출력축 사이 전달 구조",
+        "caption": "관절 모델을 생각할 때 모터만 아니라 중간 전달계도 포함합니다. 이 단면은 전달 구조의 예시이며 마찰이나 유격의 실제 크기를 보여 주는 측정 결과는 아닙니다."
+      }
+    ],
+    "width": 960,
+    "height": 653,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Harmonic_drive_cross_Legend.svg/960px-Harmonic_drive_cross_Legend.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20180321235422",
+    "sourceSha256": "ef1f8d8caae2234f5776468ebef8b5d4a2e4338c6f40acda3628ec715eb087d8",
+    "assetSha256": "181b0e424286b3c6a3a1a09e6e0604b05fe792ec4d9ba3af4f25ee651187171d"
+  },
+  {
+    "id": "control-robonaut",
+    "fileName": "control-robonaut.webp",
+    "creator": "NASA / Keegan Barber",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Robonaut_2_on_display_at_NASM_(NHQ202410240001).jpg",
+    "license": "Public domain (NASA)",
+    "licenseUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Robonaut_2_on_display_at_NASM_(NHQ202410240001).jpg",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/trajectories-and-timing",
+        "sectionId": "coordination",
+        "alt": "여러 팔 관절과 손목을 가진 Robonaut 2 전시 사진",
+        "caption": "손끝 자세는 어깨·팔꿈치·손목의 조합으로 정해집니다. 여러 관절이 각자 도착하는 것과 같은 시간축에서 협응하는 것의 차이를 생각해 보세요."
+      },
+      {
+        "lessonPath": "/education/control/contact-and-impedance",
+        "sectionId": "contact-changes-task",
+        "alt": "손가락과 손목의 여러 관절이 보이는 Robonaut 2",
+        "caption": "여러 손가락과 손목은 물체에 닿는 위치와 방향을 바꿀 수 있습니다. 사진은 기구의 예시이며 이 수업의 특정 임피던스 제어를 시연한 장면은 아닙니다."
+      },
+      {
+        "lessonPath": "/education/control/whole-body-and-learned-control",
+        "sectionId": "coupled-body",
+        "alt": "팔과 몸통이 이어진 휴머노이드 Robonaut 2의 상체",
+        "caption": "팔과 몸통의 연결을 보세요. 손의 도달 목표를 바꾸면 다른 관절의 자세도 영향을 받습니다. 사진만으로 사용된 제어기나 학습 정책을 판정하지 않습니다."
+      }
+    ],
+    "width": 960,
+    "height": 640,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Robonaut_2_on_display_at_NASM_%28NHQ202410240001%29.jpg/960px-Robonaut_2_on_display_at_NASM_%28NHQ202410240001%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20241025011021",
+    "sourceSha256": "414c04e5eacbc57f651877402e085d6e7e231c7ab2504632d02250c1df769eb9",
+    "assetSha256": "acb72c90f9e852e1970afaac7c2c6709563ff115c7a0088aa0fa269e85669270"
+  },
+  {
+    "id": "control-cart-pendulum",
+    "fileName": "control-cart-pendulum.webp",
+    "creator": "Chojitsa",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cart-pendulum.png",
+    "license": "Public domain (author release)",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:Cart-pendulum.png#Licensing",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Cart-pendulum.png",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/model-predictive-control",
+        "sectionId": "receding-horizon",
+        "alt": "수레에 가해지는 힘과 진자의 각도가 표시된 카트 도립진자 도식",
+        "caption": "수레에 힘을 주면 수레 위치와 진자 각도가 함께 변합니다. 미래 명령을 비교하려면 현재 각도뿐 아니라 속도와 모델도 필요합니다. 그림은 예측 대상을 설명하는 기구도입니다."
+      }
+    ],
+    "width": 616,
+    "height": 487,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Cart-pendulum.png",
+    "sourceSha256": "9b027fb4b0bdc7b537916cfe1b42d5e35627ed06fea9c9a110da3d735a7388d6",
+    "assetSha256": "aa4b9d6fa442f530448f800fb0f6e9c3097a0b44bc5d827588c619596c9a071d"
+  },
+  {
+    "id": "control-encoder",
+    "fileName": "control-encoder.webp",
+    "creator": "I G (qubodup)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rotary_Encoder_(15257349276).jpg",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Rotary_Encoder_(15257349276).jpg",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/control/closed-loop-systems",
+        "sectionId": "feedback-loop",
+        "alt": "축과 전기 단자가 보이는 회전 엔코더 두 개",
+        "caption": "회전량을 전기 신호로 바꾸는 엔코더의 예시입니다. 센서를 장착하는 것에 더해 이 측정값이 다음 명령 계산으로 돌아가야 폐루프가 됩니다."
+      },
+      {
+        "lessonPath": "/education/control/actuator-command-modes",
+        "sectionId": "measurement-contract",
+        "alt": "회전 엔코더의 축과 단자",
+        "caption": "엔코더가 어떤 축에 연결되는지 확인해야 측정값의 의미를 알 수 있습니다. 사진의 부품은 원리를 보여 주는 예시이며 특정 로봇 관절용 센서로 소개하는 것은 아닙니다."
+      }
+    ],
+    "width": 1400,
+    "height": 1050,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Rotary_Encoder_%2815257349276%29.jpg",
+    "sourceSha256": "61122161f5c8ed2497bbcc1d458c5ab6703ec00dac2711f31b11b238b5ea9cf1",
+    "assetSha256": "c032b5bed2e68a0f92191adb6d37f1071feb62613a596788843e775c7097ef8a"
+  },
+  {
+    "id": "localization-k10",
+    "fileName": "localization-k10.webp",
+    "creator": "NASA Ames Research Center",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:K10_red_rover_at_Haughton_Crater.jpg",
+    "license": "Public domain (NASA)",
+    "licenseUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:K10_red_rover_at_Haughton_Crater.jpg",
+    "modifications": "WebP 변환 및 웹 표시용 크기 조정. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/pose-and-frames",
+        "sectionId": "reference",
+        "alt": "차체 위 높은 위치에 LiDAR 센서를 장착한 NASA K10 Red 로버",
+        "caption": "K10 Red의 차체와 위쪽 LiDAR는 서로 다른 위치에 있습니다. 센서에서 본 점을 차체나 지도에 놓으려면 장착 위치·방향과 로봇 포즈를 연결해야 합니다."
+      },
+      {
+        "lessonPath": "/education/localization/odometry-and-drift",
+        "sectionId": "complement",
+        "alt": "바퀴와 상부 LiDAR가 함께 보이는 NASA K10 Red",
+        "caption": "바퀴는 이동의 단서를, LiDAR는 주변 지형의 단서를 제공합니다. 서로 다른 측정 원천이 어디서 도움이 되는지 생각할 수 있는 실제 센서 배치 사례입니다."
+      }
+    ],
+    "width": 876,
+    "height": 1100,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ca/K10_red_rover_at_Haughton_Crater.jpg",
+    "sourceSha256": "1e2766355908f9b5cbcd180333ae0b9cf2c5bf888c31c5d4f7a859d362813e8b",
+    "assetSha256": "261ab8949921a27716ab9bd39d7fb0428087451b9a163dc787bf382694f37d75"
+  },
+  {
+    "id": "localization-imu",
+    "fileName": "localization-imu.webp",
+    "creator": "© Nevit Dilmen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:GY-521_MPU-6050_Module_3_Axis_Gyroscope_%2B_Accelerometer_0487.jpg",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:GY-521_MPU-6050_Module_3_Axis_Gyroscope_%2B_Accelerometer_0487.jpg",
+    "modifications": "웹 표시용 크기 조정 및 WebP 변환. 내용 변경 없음. 동일 CC BY-SA 라이선스로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/visual-inertial-odometry",
+        "sectionId": "two-clues",
+        "alt": "MPU-6050 칩과 통신 핀이 있는 GY-521 관성 센서 보드",
+        "caption": "자이로와 가속도계를 담은 IMU 보드입니다. 이 보드가 지도 좌표를 직접 알려 주는 것은 아닙니다. 영상의 공간 단서와 결합할 운동 측정값을 제공합니다."
+      },
+      {
+        "lessonPath": "/education/localization/uncertainty-and-fusion",
+        "sectionId": "independence",
+        "alt": "GY-521 보드에 실장된 MPU-6050 관성 센서",
+        "caption": "하나의 IMU 측정이 여러 추정기와 토픽에 들어갈 수 있습니다. 출력 이름이 달라도 같은 원천을 공유하는지 데이터 계보를 확인해야 합니다."
+      }
+    ],
+    "width": 500,
+    "height": 641,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/GY-521_MPU-6050_Module_3_Axis_Gyroscope_%2B_Accelerometer_0487.jpg/500px-GY-521_MPU-6050_Module_3_Axis_Gyroscope_%2B_Accelerometer_0487.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20140608072844",
+    "sourceSha256": "d9cd163eed992d783d7b2b6772a43e991c232d1e9ad96fb6d50902063d9e10ef",
+    "assetSha256": "439130e61d7036d91bc2aee6df6c5a77f0e78d6b17a402effb73100dcaddc8ab"
+  },
+  {
+    "id": "localization-particle-filter",
+    "fileName": "localization-particle-filter.webp",
+    "creator": "Eleschinski2000",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Particle_filters.gif",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Particle_filters.gif",
+    "modifications": "원본 GIF의 16번째 프레임을 정지 이미지로 추출하고 WebP로 변환. CC BY-SA 4.0으로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/relocalization",
+        "sectionId": "particles",
+        "alt": "실내 지도 위에 로봇 관측과 위치 후보를 표시한 입자 필터 예시의 정지 프레임",
+        "caption": "입자 필터 위치 추정 애니메이션에서 뽑은 한 순간입니다. 지도와 관측의 일치 정도에 따라 가능한 위치 후보가 달라집니다. 실제 로봇 여러 대를 표시한 그림이 아닙니다."
+      }
+    ],
+    "width": 530,
+    "height": 392,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/Particle_filters.gif",
+    "sourceSha256": "bb25d8468c29d793e7e744f3cf0af9f724aa36d29cbedf826369704af2f397c1",
+    "assetSha256": "5b91f166faac6b34c39becc995b5866b9017b1a2f2ac93925dab1e4f2773374a"
+  },
+  {
+    "id": "localization-gaussian-splat",
+    "fileName": "localization-gaussian-splat.webp",
+    "creator": "Jurdein",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:3dgs_viewer_QIBWA66MsC.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:3dgs_viewer_QIBWA66MsC.jpg",
+    "modifications": "웹 표시용 크기 조정 및 WebP 변환. 내용 변경 없음. 동일 CC BY-SA 라이선스로 제공.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/semantic-and-gaussian-maps",
+        "sectionId": "gaussians",
+        "alt": "Gaussian Splatting으로 표현한 무너진 건물 장면을 VulkanSplatter에서 본 화면",
+        "caption": "Gaussian Splatting으로 재구성한 건물의 외관입니다. 색과 질감을 볼 수 있다는 사실과 충돌 경계·통행 가능한 공간을 정확히 안다는 사실은 별도로 확인해야 합니다."
+      }
+    ],
+    "width": 960,
+    "height": 576,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/3dgs_viewer_QIBWA66MsC.jpg/960px-3dgs_viewer_QIBWA66MsC.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20241025093347",
+    "sourceSha256": "2f501467dbeba925b982f56ce714fb11dad41f1524f79bc184dc9ac6b73f9fb7",
+    "assetSha256": "7899de272ac79a7f4b1286fdc6e2ac188ed5dc20a6387f103657a0f4ce657722"
+  },
+  {
+    "id": "localization-batslam-loops",
+    "fileName": "localization-batslam-loops.webp",
+    "creator": "Jan Steckel & Herbert Peremans (2013), BatSLAM, Figure 3",
+    "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0054076#pone-0054076-g003",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3554696/",
+    "modifications": "원 논문 그림을 WebP로 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/loop-closure",
+        "sectionId": "revisit",
+        "alt": "반복 주행 중 궤적이 수렴하는 BatSLAM 논문 Figure 3",
+        "caption": "a–d는 초기 반복 주행에서 궤적이 조정되는 과정입니다. e는 기준 궤적(빨강)과 추정 궤적(파랑)을 비교합니다. 재방문은 마지막 점뿐 아니라 지나온 궤적을 제한하는 근거가 됩니다."
+      }
+    ],
+    "width": 981,
+    "height": 1400,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0054076.g003",
+    "sourceSha256": "a2255221b9896d4ab674927210f30857077325bc17688db4a21a40814e99cc74",
+    "assetSha256": "fa878caadcaf5d0d6f65a393c32bbbaf0da1d3bb3ac81c223f65b2569e1813e6",
+    "licenseEvidenceNote": "원 논문 CC BY 선언과 Europe PMC 원문 XML의 permissions, Crossref DOI 메타데이터에서 CC BY 4.0을 확인했습니다."
+  },
+  {
+    "id": "localization-batslam-map",
+    "fileName": "localization-batslam-map.webp",
+    "creator": "Jan Steckel & Herbert Peremans (2013), BatSLAM, Figure 4",
+    "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0054076#pone-0054076-g004",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3554696/",
+    "modifications": "원 논문 그림을 WebP로 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/maps-and-slam",
+        "sectionId": "joint-problem",
+        "alt": "사무실 평면도 위 BatSLAM 지도와 이동만 누적한 결과를 비교하는 Figure 4",
+        "caption": "왼쪽은 환경 관측과 이동 정보를 결합한 BatSLAM 결과이고 오른쪽은 이동 명령을 누적한 결과입니다. 센서의 환경 단서가 누적 이동 오차를 제한하는 역할을 비교해 보세요."
+      },
+      {
+        "lessonPath": "/education/localization/odometry-and-drift",
+        "sectionId": "drift",
+        "alt": "BatSLAM 결과와 오도메트리만 누적한 궤적의 차이",
+        "caption": "같은 실험에서 이동 정보만 누적한 오른쪽 경로가 크게 틀어져 있습니다. 개별 이동의 작은 차이가 긴 궤적에 누적되는 드리프트의 실제 연구 사례입니다."
+      }
+    ],
+    "width": 1350,
+    "height": 571,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0054076.g004",
+    "sourceSha256": "4f5295f9ad3a3e7b54b931f7414b8d17fc3ed364517d93e2f412e84a01b5f631",
+    "assetSha256": "d79095f56eb55e9cd9097c4043f7278b00f1e53eb23733dca0b6537734c7d1d0",
+    "licenseEvidenceNote": "원 논문 CC BY 선언과 Europe PMC 원문 XML의 permissions, Crossref DOI 메타데이터에서 CC BY 4.0을 확인했습니다."
+  },
+  {
+    "id": "localization-batslam-similarity",
+    "fileName": "localization-batslam-similarity.webp",
+    "creator": "Jan Steckel & Herbert Peremans (2013), BatSLAM, Figure 6",
+    "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0054076#pone-0054076-g006",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidenceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3554696/",
+    "modifications": "원 논문 그림을 WebP로 변환. 내용 변경 없음.",
+    "placements": [
+      {
+        "lessonPath": "/education/localization/uncertainty-and-fusion",
+        "sectionId": "belief",
+        "alt": "위치와 회전 변화에 따른 장소 관측의 유사도 영역을 비교하는 BatSLAM Figure 6",
+        "caption": "복도처럼 비슷한 관측이 이어지는 곳은 위치를 구분하기 어렵습니다. 원 그림의 파란 경계는 관측 유사도 영역이며 공분산 타원은 아닙니다. 방향별로 정보가 다르다는 근거로 읽습니다."
+      },
+      {
+        "lessonPath": "/education/localization/relocalization",
+        "sectionId": "ambiguity",
+        "alt": "서로 다른 장소에서 이동·회전에 따른 관측 유사도 변화를 비교한 그림",
+        "caption": "장소에 따라 비슷한 관측이 유지되는 범위가 다릅니다. 넓은 유사 영역에서는 후보를 하나로 확정하기보다 구분되는 추가 관측이 필요할 수 있습니다."
+      }
+    ],
+    "width": 1470,
+    "height": 1087,
+    "retrievedAt": "2026-10-11",
+    "downloadUrl": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0054076.g006",
+    "sourceSha256": "f061f35b328359507542f2e0c019e89e319b2e96a25bbda33e9b9bd36b579934",
+    "assetSha256": "0b39d9aced7b495998d0685ed4221850ef4b6055b74fd5983f3c51cb8aa5ee08",
+    "licenseEvidenceNote": "원 논문 CC BY 선언과 Europe PMC 원문 XML의 permissions, Crossref DOI 메타데이터에서 CC BY 4.0을 확인했습니다."
+  }
+]
