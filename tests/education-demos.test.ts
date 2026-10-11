@@ -22,7 +22,9 @@ test("robot demos have attributed original sources and valid lesson connections"
     assert.ok(!connections.has(`${connection.path}/${connection.demoId}`), "Duplicate video on a lesson");
     connections.add(`${connection.path}/${connection.demoId}`);
   }
-  for (const topic of educationTopics) assert.ok(topic.lessons.some(lesson => demosForLesson(lesson.path).length), topic.title);
   assert.deepEqual(demosForLesson("/unknown"), []);
-  assert.ok(demosForLesson("/education/reinforcement-learning/reward-design").some(item => item.demo.id === "umv-training"));
+  assert.ok(demosForLesson("/education/reinforcement-learning/sim2real-evaluation").some(item => item.demo.id === "umv-training"));
+  for (const path of ["/education/deepml/attention-and-transformers", "/education/reinforcement-learning/kimodo-mjwarp", "/education/object-recognition/synthetic-data"]) {
+    assert.deepEqual(demosForLesson(path), [], `Do not substitute an unrelated robot demo: ${path}`);
+  }
 });

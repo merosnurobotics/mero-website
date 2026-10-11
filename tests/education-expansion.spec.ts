@@ -56,7 +56,7 @@ test("concept lessons fit mobile, reveal explanations, and navigate in difficult
 test("official videos load on request, retain attribution, and fit mobile", async ({page}) => {
   await page.setViewportSize({width: 320, height: 900});
   await page.route('https://www.youtube-nocookie.com/**', route => route.fulfill({contentType:'text/html', body:'<p>Embedded player boundary</p>'}));
-  await page.goto(`${baseURL}/education/reinforcement-learning/reward-design`);
+  await page.goto(`${baseURL}/education/reinforcement-learning/sim2real-evaluation`);
   const demos = page.locator('#robot-demos');
   await expect(demos).toContainText('RAI Institute');
   await expect(demos.locator('iframe,video')).toHaveCount(0);
