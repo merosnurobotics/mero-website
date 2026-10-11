@@ -26,7 +26,7 @@ const connections: Record<string, string> = {
   [deepMLLessons[4].path]: "관측·행동·보상으로 모은 경험을 사용해 정책을 학습합니다. 이후 Microban 자료에서는 같은 흐름에 목표 모션과 물리 시뮬레이션을 더합니다.",
   [remoteWorkLessonPath]: "공통 입문 명령은 내 컴퓨터에서 실행합니다. SSH 접속 뒤의 명령부터 Jetson에서 실행합니다. 이후 모터·센서·학습 코드도 같은 방식으로 실행합니다.",
   [pidLessonPath]: "제어의 기본은 목표와 측정값을 비교해 출력을 고치는 것입니다. 뒤에서 다룰 모터 제어와 강화학습도 움직인 결과를 다시 측정합니다.",
-  [openrbDynamixelLessonPath]: "PID에서 구분한 목표값과 측정값을 실제 모터의 목표 각도와 현재 각도로 확인합니다. 이 USB 통신에 나중에 ROS를 연결합니다.",
+  [openrbDynamixelLessonPath]: "ROS 하드웨어 연결에 앞서 목표 각도와 현재 각도를 USB 콘솔로 확인합니다. 다음 자료에서 같은 펌웨어에 ROS command·state 토픽을 연결합니다.",
   [rosBasicsPath]: "모터 명령과 센서 측정값을 여러 프로그램이 주고받도록 연결합니다. ROS는 메시지를 전달하며, 제어 계산은 각 노드가 맡습니다.",
   [rosPythonPath]: "앞에서 터미널로 주고받은 메시지를 Python 코드로 옮깁니다. 발행·구독·콜백은 이후 센서와 모터 노드에도 그대로 쓰입니다.",
   [rosBagRvizPath]: "노드가 주고받는 값을 기록하고 다시 재생합니다. 위치나 제어가 잘못됐을 때 같은 입력으로 원인을 확인하는 방법입니다.",

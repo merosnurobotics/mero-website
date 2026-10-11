@@ -266,6 +266,7 @@ export const rosOrder = [
   "/education/ros/qos-and-latency",
   "/education/ros/localization-topics",
   "/education/ros/arduino-motor",
+  "/education/ros/openrb-dynamixel",
   "/education/ros/dynamixel",
   "/education/ros/lifecycle-and-composition",
 ];

@@ -67,7 +67,7 @@ export const rosArduinoMotorChapters = [
   { id: "hardware", label: "펌웨어 업로드와 실제 연결" },
   { id: "feedback", label: "피드백과 정지 확인" },
 ];
-export const openrbDynamixelLessonPath = `${controlPath}/openrb-dynamixel`;
+export const openrbDynamixelLessonPath = "/education/ros/openrb-dynamixel";
 export const ros2DynamixelLessonPath = "/education/ros/dynamixel";
 export const openrbDynamixelChapters = [
  {id:"roles",label:"OpenRB와 DYNAMIXEL의 역할"}, {id:"setup",label:"Jetson과 준비물"},
@@ -156,6 +156,7 @@ const topics: EducationTopic[] = [
       {author: yeonwooCho, path: rosBagRvizPath, shortTitle:"rosbag과 RViz",label:"기록 · 재생 · 공간에 표시",title:"rosbag과 RViz로 데이터 다시 보기",description:"Pose 메시지를 기록·재생하고 RViz의 Fixed Frame과 표시 항목으로 위치와 방향을 확인합니다.",chapters:rosBagRvizChapters},
       { author: yeonwooCho, path: ros2TopicsLessonPath, shortTitle: "ROS 2 토픽으로 내보내기", label: "위치 계산을 노드로 연결하기", title: "위치 추정 결과를 ROS 2 토픽으로 내보내기", description: "LiDAR 입력을 구독하고 추정 위치를 PoseStamped로 발행합니다. 세 터미널에서 메시지·좌표·시각을 확인합니다.", chapters: ros2TopicsChapters },
       { author: yeonwooCho, path: rosArduinoMotorLessonPath, shortTitle: "ROS로 엔코더 모터 제어하기", label: "Jetson → Arduino → 모터 드라이버", title: "Jetson에서 ROS로 엔코더 모터 제어하기", description: "cmd_vel을 USB 시리얼 통신으로 전달하고, Arduino가 엔코더 피드백으로 모터 드라이버의 PWM을 보정하는 흐름을 따라갑니다.", chapters: rosArduinoMotorChapters },
+      { author: yeonwooCho, path: openrbDynamixelLessonPath, shortTitle: "OpenRB + DYNAMIXEL 기본 사용", label: "ROS 연결 전 하드웨어 준비", title: "Jetson + OpenRB로 DYNAMIXEL 기본 사용하기", description: "전원·ID·baud·펌웨어를 준비하고 USB 콘솔로 토크와 작은 위치 이동을 확인한 뒤, 다음 편의 ROS 연결로 이어갑니다.", chapters: openrbDynamixelChapters },
       { author: yeonwooCho, path: ros2DynamixelLessonPath, shortTitle: "ROS 2로 DYNAMIXEL 제어", label: "같은 펌웨어에 ROS 연결 프로그램 연결", title: "ROS 2 토픽으로 DYNAMIXEL 제어하기", description: "기본 사용에서 확인한 USB 인터페이스에 ROS 2 command와 state 토픽을 연결하고 명령·응답을 확인합니다.", chapters: ros2DynamixelChapters },
     ],
   },
@@ -163,7 +164,6 @@ const topics: EducationTopic[] = [
     title: "제어", path: controlPath,
     description: "피드백 응답과 관절 PD를 익히고, 궤적·접촉·구동기 한계를 로봇 움직임에 연결합니다.",
     lessons: [{ author: yeonwooCho, path: pidLessonPath, shortTitle: "PID 제어", label: "피드백 · 관절 PD · 궤적 · 접촉", title: "그림으로 이해하는 PID 제어", description: "P·I·D 응답을 비교하고 정책 목표·관절 PD·궤적 추종·피드포워드·접촉·출력 제한의 관계를 읽습니다.", chapters: pidChapters },
-      { author: yeonwooCho, path: openrbDynamixelLessonPath, shortTitle: "OpenRB + DYNAMIXEL 기본 사용", label: "USB 연결부터 위치 피드백까지", title: "Jetson + OpenRB로 DYNAMIXEL 기본 사용하기", description: "전원·ID·baud·펌웨어를 준비하고 ROS 없이 USB 콘솔로 토크와 작은 위치 이동을 확인합니다.", chapters: openrbDynamixelChapters },
     ],
   },
   {

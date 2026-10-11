@@ -8,7 +8,7 @@ export const metadata: Metadata = {title:"ROS 2 토픽으로 DYNAMIXEL 제어하
 const repo="https://github.com/merosnurobotics/meroedu-control/tree/main/lessons/04-ros2-dynamixel";
 export default function Page() { return <Lesson topic="ROS" topicPath="/education/ros" path="/education/ros/dynamixel" title="ROS 2 토픽으로 DYNAMIXEL 제어하기" intro="USB로 움직였던 모터에 ROS를 연결합니다. 토픽으로 명령을 보내고, 모터가 실제로 보낸 응답을 다른 토픽에서 확인합니다." repo="meroedu-control">
 <Chapter id="pipeline" title="1. USB 인터페이스 앞에 ROS 노드를 연결한다">
-<p><a href="/education/control/openrb-dynamixel">OpenRB + DYNAMIXEL 기본 사용</a>에서 배선·ID·baud·펌웨어·콘솔 동작을 먼저 확인하세요. 이번 편은 같은 펌웨어를 유지하고 Jetson의 콘솔을 ROS 연결 프로그램로 교체합니다. 이 교육 저장소 전체를 clone하면 필요한 코드가 모두 들어 있습니다.</p>
+<p><a href="/education/ros/openrb-dynamixel">OpenRB + DYNAMIXEL 기본 사용</a>에서 배선·ID·baud·펌웨어·콘솔 동작을 먼저 확인하세요. 이번 편은 같은 펌웨어를 유지하고 Jetson의 콘솔을 ROS 연결 프로그램로 교체합니다. 이 교육 저장소 전체를 clone하면 필요한 코드가 모두 들어 있습니다.</p>
 <FlowDiagram title="ROS command와 실제 응답의 경로" steps={[{title:"ROS publisher",lines:["/dynamixel/command", "std_msgs/msg/String"]},{title:"Jetson bridge",lines:["명령 검증 → USB", "응답 → /dynamixel/state"]},{title:"OpenRB + motor",lines:["ASCII → Protocol 2.0", "현재 위치 · 오류 읽기"]}]} feedback="Motor feedback은 OpenRB → USB → state topic으로 돌아옵니다." caption="토픽의 String, USB 한 줄, DYNAMIXEL 패킷은 서로 다른 구간의 표현입니다."/>
 </Chapter>
 <Chapter id="environment" title="2. 준비한 Jetson과 이전 펌웨어를 그대로 사용한다">
@@ -53,5 +53,5 @@ ros2 topic pub --once /dynamixel/command std_msgs/msg/String "{data: 'DXL_POWER_
 <p>String 계약은 통신을 눈으로 확인하기 위한 시작점입니다. 여러 관절을 제어할 때는 모터 ID·목표 위치·단위·측정 시각을 담은 typed 메시지나 service/action을 정하고 피드백으로 도착 여부를 판정합니다. 여러 발행 노드가 같은 상대 이동을 중복 실행하지 않도록 명령 소유권과 acknowledgment도 설계해야 합니다.</p>
 <p>실습 저장소에는 실제 ROS 2와 pseudo-terminal을 연결하는 test가 있습니다. USB 문자열·피드백·잘못된 명령 거절을 검사하며 모터나 기구 동작을 대신하는 시뮬레이션은 아닙니다.</p>
 </Chapter>
-<footer className="education-sources"><h2>실습 코드와 참고 자료</h2><p><a href={repo}>ROS 연결 프로그램 · 실행 안내 · 통신 test</a> · <a href="/education/control/openrb-dynamixel">기본 사용과 펌웨어</a> · <a href="https://docs.ros.org/en/humble/Concepts/Basic/About-Topics.html">ROS 2 topics</a></p><p><a href="https://github.com/merosnurobotics/meroedu-control/blob/main/UPSTREAM.md">출처·라이선스 기록</a></p></footer>
+<footer className="education-sources"><h2>실습 코드와 참고 자료</h2><p><a href={repo}>ROS 연결 프로그램 · 실행 안내 · 통신 test</a> · <a href="/education/ros/openrb-dynamixel">기본 사용과 펌웨어</a> · <a href="https://docs.ros.org/en/humble/Concepts/Basic/About-Topics.html">ROS 2 topics</a></p><p><a href="https://github.com/merosnurobotics/meroedu-control/blob/main/UPSTREAM.md">출처·라이선스 기록</a></p></footer>
 </Lesson>; }

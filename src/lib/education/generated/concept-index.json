@@ -567,6 +567,58 @@
         ]
       },
       {
+        "path": "/education/control/stability-and-robustness",
+        "shortTitle": "안정성과 강인성",
+        "title": "안정성과 강인성: 조건이 바뀌어도 회복하는 제어",
+        "label": "기초 · 개념 해설",
+        "description": "안정성, 응답 속도, 정확도를 구분하고, 초기 상태와 모델 오차가 달라져도 제어가 유지되는 범위를 생각합니다.",
+        "level": "기초",
+        "minutes": 20,
+        "goals": [
+          "안정성과 빠른 응답·작은 오차가 서로 다른 요구임을 설명합니다.",
+          "국소 안정성과 회복할 수 있는 초기 상태의 범위를 구분합니다.",
+          "모델 불확실성과 외란에 대한 평가 조건을 구체적으로 정합니다."
+        ],
+        "prerequisites": [
+          "/education/control/closed-loop-systems",
+          "/education/control/pid-control"
+        ],
+        "chapters": [
+          {
+            "id": "stability-and-response",
+            "label": "목표 근처에 머무는 것과 빨리 도착하는 것은 다릅니다"
+          },
+          {
+            "id": "local-recovery",
+            "label": "작은 흔들림을 회복한다고 모든 상태에서 돌아오지는 않습니다"
+          },
+          {
+            "id": "uncertainty-and-robustness",
+            "label": "무엇이 얼마나 달라지는지 정해야 강인성을 말할 수 있습니다"
+          },
+          {
+            "id": "evidence-and-limits",
+            "label": "성공한 기록과 보장한 조건을 구분합니다"
+          },
+          {
+            "id": "worked-example",
+            "label": "로봇 사례로 이해하기"
+          },
+          {
+            "id": "misconceptions",
+            "label": "자주 하는 오해"
+          },
+          {
+            "id": "self-check",
+            "label": "이해 확인"
+          },
+          {
+            "id": "sources",
+            "label": "원문과 참고 자료"
+          }
+        ]
+      },
+      {
         "path": "/education/control/trajectories-and-timing",
         "shortTitle": "궤적과 시간 설계",
         "title": "경로와 궤적: 어디로 가는가에 언제 가는가를 더하기",
@@ -3071,10 +3123,10 @@
       "/education/control/closed-loop-systems",
       "/education/control/actuator-command-modes",
       "/education/control/pid-control",
+      "/education/control/stability-and-robustness",
       "/education/control/trajectories-and-timing",
       "/education/control/models-and-feedforward",
       "/education/control/state-feedback-and-observers",
-      "/education/control/openrb-dynamixel",
       "/education/control/contact-and-impedance",
       "/education/control/model-predictive-control",
       "/education/control/whole-body-and-learned-control"
@@ -3088,6 +3140,7 @@
       "/education/ros/qos-and-latency",
       "/education/ros/localization-topics",
       "/education/ros/arduino-motor",
+      "/education/ros/openrb-dynamixel",
       "/education/ros/dynamixel",
       "/education/ros/lifecycle-and-composition"
     ],

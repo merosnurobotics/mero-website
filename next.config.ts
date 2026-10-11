@@ -11,6 +11,7 @@ const config: NextConfig = {
   outputFileTracingIncludes: { "/education-assets/*": ["./private/education-assets/**/*"] },
   async redirects() {
     return [
+      { source: "/education/control/openrb-dynamixel", destination: "/education/ros/openrb-dynamixel", permanent: true },
       { source: "/education/control/ros-arduino-motor", destination: "/education/ros/arduino-motor", permanent: true },
       { source: "/education/control/ros2-dynamixel", destination: "/education/ros/dynamixel", permanent: true },
       { source: "/education/localization/ros2-topics", destination: "/education/ros/localization-topics", permanent: true },

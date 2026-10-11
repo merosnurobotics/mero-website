@@ -175,7 +175,7 @@ Microban 구성 요소 비교는 `scripts/evaluate-microban-ablation.py`로 보�
 
 ### 분야별 개념 교육 확장
 
-개발 환경·제어·ROS·DeepML·위치 추정·시뮬레이션·강화학습 각 10편, 로봇 비전 12편으로 총 82편을 제공합니다. 신규 개념 글은 `src/lib/education/concepts/`의 TypeScript 원고로 관리합니다. 공식 문서와 논문의 핵심 개념을 한국어로 풀고, 자체 로봇 사례·오해·확인 질문과 해설·원문 링크를 함께 제공합니다. 각 원고의 `Order` 배열에 기존 자료까지 포함한 권장 순서를 정의합니다.
+개발 환경·제어·DeepML·위치 추정·시뮬레이션·강화학습 각 10편, ROS 11편, 로봇 비전 12편으로 총 83편을 제공합니다. 신규 개념 글은 `src/lib/education/concepts/`의 TypeScript 원고로 관리합니다. 공식 문서와 논문의 핵심 개념을 한국어로 풀고, 자체 로봇 사례·오해·확인 질문과 해설·원문 링크를 함께 제공합니다. 각 원고의 `Order` 배열에 기존 자료까지 포함한 권장 순서를 정의합니다.
 
 ```sh
 npm run education:concepts
