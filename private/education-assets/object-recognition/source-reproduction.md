@@ -33,7 +33,7 @@ source steps/02-assets.sh
 source ../../steps/full-render.sh
 ```
 
-`datasets/public_fruits360_arena_v1/images/train`, `labels/train`, `_meta/train`의 사진·정답·메타데이터를 비교합니다. 이미지와 라벨이 어긋나거나 누락되면 다음 단계로 진행하지 않습니다. 목표 물체가 없는 사진의 빈 라벨은 정상일 수 있습니다. 렌더 옵션은 `steps/full-render.sh`에 모두 들어 있습니다. 처음에는 worker 하나를 사용합니다.
+`datasets/public_fruits360_coco_v2/images/train`, `labels/train`, `_meta/train`의 사진·정답·메타데이터를 비교합니다. 이미지와 라벨이 어긋나거나 누락되면 다음 단계로 진행하지 않습니다. 목표 물체가 없는 사진의 빈 라벨은 정상일 수 있습니다. 렌더 옵션은 `steps/full-render.sh`에 모두 들어 있습니다. 처음에는 worker 하나를 사용합니다.
 
 ## 3. 장면별 분리
 
@@ -41,9 +41,9 @@ source ../../steps/full-render.sh
 
 ```bash
 python scripts/split_meta_v2_dataset.py \
-  --dataset datasets/public_fruits360_arena_v1 \
-  --out datasets/public_fruits360_arena_v1/split.json --seed 20261006 \
-  --val-ratio 0.10 --test-ratio 0.10
+  --dataset datasets/public_fruits360_coco_v2 \
+  --out datasets/public_fruits360_coco_v2/split.json --seed 20261006 \
+  --val-ratio 0.10 --test-ratio 0.10 --by-id-modulo
 ```
 
 ## 4. 두 모델의 데이터셋 내보내기
@@ -52,20 +52,20 @@ A1은 전체 장면에서 형태를 찾고, face 모델은 큐브 크롭의 과�
 
 ```bash
 python scripts/export_meta_v2_model_datasets.py \
-  --source_dataset datasets/public_fruits360_arena_v1 \
-  --output_root datasets/public_fruits360_arena_v1_models \
-  --split_manifest datasets/public_fruits360_arena_v1/split.json \
+  --source_dataset datasets/public_fruits360_coco_v2 \
+  --output_root datasets/public_fruits360_coco_v2_models \
+  --split_manifest datasets/public_fruits360_coco_v2/split.json \
   --splits train --tasks a1 --copy_mode hardlink --reset
 
 python scripts/export_meta_v2_cube_face_unified_dataset.py \
-  --source_dataset datasets/public_fruits360_arena_v1 \
-  --output_root datasets/public_fruits360_arena_v1_face \
+  --source_dataset datasets/public_fruits360_coco_v2 \
+  --output_root datasets/public_fruits360_coco_v2_face \
   --source_split train \
-  --split_manifest datasets/public_fruits360_arena_v1/split.json \
+  --split_manifest datasets/public_fruits360_coco_v2/split.json \
   --seed 20261006 --crop_size 224 --crop_pad 0.18 --reset
 ```
 
-A1 결과는 `datasets/public_fruits360_arena_v1_models/a1_objectseg`, face 결과는 `datasets/public_fruits360_arena_v1_face`입니다. YAML의 train/val/test 경로를 열어 확인합니다. `--reset`은 해당 export 출력 폴더를 다시 만드는 옵션이므로 처음 실행하거나 재생성할 폴더를 확인한 상태에서 사용합니다.
+A1 결과는 `datasets/public_fruits360_coco_v2_models/a1_objectseg`, face 결과는 `datasets/public_fruits360_coco_v2_face`입니다. YAML의 train/val/test 경로를 열어 확인합니다. `--reset`은 해당 export 출력 폴더를 다시 만드는 옵션이므로 처음 실행하거나 재생성할 폴더를 확인한 상태에서 사용합니다.
 
 ## 5. 학습
 
@@ -74,20 +74,20 @@ A1 결과는 `datasets/public_fruits360_arena_v1_models/a1_objectseg`, face 결�
 ```bash
 python ../training/train_segmentation.py \
   --task a1 \
-  --data datasets/public_fruits360_arena_v1_models/a1_objectseg/data.yaml \
+  --data datasets/public_fruits360_coco_v2_models/a1_objectseg/data.yaml \
   --init yolo26s-seg.yaml --epochs 140 --batch 32 --workers 4 \
   --device 0 --seed 31000000 --lr 0.001 \
-  --project ../../runs/perception --name public_fruits360_arena_v1_a1
+  --project ../../runs/perception --name public_fruits360_coco_v2_a1
 
 python ../training/train_segmentation.py \
   --task face \
-  --data datasets/public_fruits360_arena_v1_face/data.yaml \
+  --data datasets/public_fruits360_coco_v2_face/data.yaml \
   --init yolo26s-seg.yaml --epochs 120 --batch 32 --workers 4 \
   --device 0 --seed 31000000 --lr 0.001 --hsv-h 0 \
-  --project ../../runs/perception --name public_fruits360_arena_v1_face
+  --project ../../runs/perception --name public_fruits360_coco_v2_face
 ```
 
-가중치는 강의 폴더의 `runs/perception/public_fruits360_arena_v1_a1/weights/best.pt`와 `public_fruits360_arena_v1_face/weights/best.pt`에 저장됩니다. Epoch는 데이터를 한 바퀴 보는 단위입니다. Training loss만으로 실제 카메라 성능을 판단하지 않습니다.
+가중치는 강의 폴더의 `runs/perception/public_fruits360_coco_v2_a1/weights/best.pt`와 `public_fruits360_coco_v2_face/weights/best.pt`에 저장됩니다. Epoch는 데이터를 한 바퀴 보는 단위입니다. Training loss만으로 실제 카메라 성능을 판단하지 않습니다.
 
 ## 6. 학습에 쓰지 않은 split으로 평가
 
@@ -95,20 +95,18 @@ python ../training/train_segmentation.py \
 
 ```bash
 cd ../..
-yolo segment val model=runs/perception/public_fruits360_arena_v1_a1/weights/best.pt data=perception/generation/datasets/public_fruits360_arena_v1_models/a1_objectseg/data.yaml imgsz=640 split=test device=0
-yolo segment val model=runs/perception/public_fruits360_arena_v1_face/weights/best.pt data=perception/generation/datasets/public_fruits360_arena_v1_face/data.yaml imgsz=224 split=test device=0
+yolo segment val model=runs/perception/public_fruits360_coco_v2_a1/weights/best.pt data=perception/generation/datasets/public_fruits360_coco_v2_models/a1_objectseg/data.yaml imgsz=640 split=test device=0
+yolo segment val model=runs/perception/public_fruits360_coco_v2_face/weights/best.pt data=perception/generation/datasets/public_fruits360_coco_v2_face/data.yaml imgsz=224 split=test device=0
 ```
 
-합성 test 점수와 실제 사진 결과를 함께 봅니다. 실제 큐브 크롭이 준비되면 `scripts/predict_examples.py --model runs/perception/public_fruits360_arena_v1_face/weights/best.pt --source my-crop.jpg --output runs/my-predictions --imgsz 224 --device 0`으로 입력과 mask를 비교할 수 있습니다. 이 문서의 명령은 전체 렌더와 학습을 새로 완료했다는 결과 보고가 아닙니다.
+합성 test 점수와 실제 사진 결과를 함께 봅니다. 실제 큐브 크롭이 준비되면 `scripts/predict_examples.py --model runs/perception/public_fruits360_coco_v2_face/weights/best.pt --source my-crop.jpg --output runs/my-predictions --imgsz 224 --device 0`으로 입력과 mask를 비교할 수 있습니다. 이 문서의 명령은 전체 렌더와 학습을 새로 완료했다는 결과 보고가 아닙니다.
 
-## 7. COCO 배경으로 변경
+## 7. COCO 배경과 분리를 확인하기
 
-기본 예시는 방 형태 배경을 생성합니다. COCO 사진으로 바꾸려면 `perception/generation`에서 준비합니다.
+기본 120장 실습과 50,000장 확장 모두 COCO 실사 배경을 사용합니다. `steps/02-assets.sh`가 5,000장짜리 val2017과 사진별 라이선스 정보를 준비합니다. CC BY / CC BY-SA 사진을 train·val·test 풀로 나누고 출처·SHA256을 기록합니다.
 
-```bash
-python scripts/download_coco2017_backgrounds.py --split val2017 --output datasets/backgrounds/coco2017
-```
+`--background_dir datasets/backgrounds/coco2017/pools --arena_background_ratio 0.0 --background_split_by_id`가 기본값입니다. 장면 ID의 마지막 자리가 0이면 val 배경, 1이면 test 배경, 나머지면 train 배경을 무작위로 고릅니다. 장면 분리도 `--by-id-modulo`를 사용해야 합니다. 배경의 원래 사물은 이번 목표 클래스 라벨로 사용하지 않습니다.
 
-`steps/full-render.sh`를 별도 실험용으로 복사해 `--background_dir`을 `datasets/backgrounds/coco2017/val2017`, `--arena_background_ratio`를 `0.0`으로 바꿉니다. 새 seed와 출력 폴더를 사용하고, 이 문서의 split/export/train/evaluate 경로도 새 출력 이름으로 일관되게 바꿉니다. 사진 배경의 원래 사물은 목표 클래스 라벨로 사용하지 않습니다.
+사진별 Flickr URL과 라이선스 링크는 `backgrounds-manifest.json`에 보존합니다. 합성 사진을 공유할 때에는 원본 출처와 이미지가 합성·크롭·색상 변경되었다는 고지도 유지하세요.
 
 코드 출처·사용 조건은 저장소의 `UPSTREAM.json`과 `LICENSE`, 다운로드된 데이터의 attribution manifest에 기록돼 있습니다.

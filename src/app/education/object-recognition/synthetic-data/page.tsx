@@ -58,7 +58,7 @@ export default async function PerceptionLessonPage() {
         <p>소개 메시지에서 말한 “공중에 오브젝트를 섞는다”는 것은 다양한 배경 앞에 물체를 배치해 많은 시점과 겹침을 만드는 방식입니다. 로봇이 실제로 물체를 공중에서 찾는다는 뜻은 아닙니다.</p>
         <h3>왜 배경과 밝기를 일부러 바꿀까?</h3>
         <p>모든 사과가 같은 책상에서 찍혔다면 모델이 사과 대신 책상을 단서로 사용할 수 있습니다. 배경과 조명을 계속 바꾸면 우연한 단서에 의존하기 어려워집니다. 이런 방식을 <strong>도메인 랜덤화</strong>라고 합니다. 도메인은 촬영 환경이나 데이터가 만들어지는 조건을 뜻합니다.</p>
-        <div className="education-note"><p><strong>당시 실험과 지금의 공개 실습</strong></p><p>당시에는 COCO 사진을 배경으로 넣고 색감·밝기 등을 바꿨습니다. 현재 고정한 공개 재현 레시피는 <code>--arena_background_ratio 1.0</code>으로 경기장 배경을 생성합니다. 둘 다 데이터의 다양성을 만들지만 결과 이미지는 다릅니다. COCO 배경 실험은 뒤의 확장 실습에서 다룹니다.</p></div>
+        <div className="education-note"><p><strong>공개 실습도 COCO 실사 배경을 사용합니다</strong></p><p>COCO 사진을 무작위로 골라 자르고, 색감·밝기·블러를 바꿔 물체 뒤에 합성합니다. <code>--arena_background_ratio 0.0</code>이므로 고정된 경기장 배경은 사용하지 않습니다. 배경 사진도 학습·검증·시험 풀로 분리해 같은 배경이 학습과 시험에 섞이지 않게 합니다.</p></div>
         <p>“약 5만 장”은 소개한 실험의 규모입니다. “정다면체는 약 5천 장으로도 잘 됐다”는 당시 경험이며, 모든 문제에 필요한 최소 장수를 뜻하지 않습니다. 장면 한 장에 물체가 여러 개일 수 있고, 큐브를 잘라 만든 면 이미지 수는 장면 수보다 많을 수도 있습니다. 데이터 개수에는 무엇을 세었는지 함께 적어야 합니다.</p>
         <p>랜덤화만으로 실제 카메라와의 차이가 모두 없어지지는 않습니다. 과일 그림 크기, 종이의 반사, 카메라 흔들림처럼 실제로 중요한 조건도 넣어야 합니다.</p>
       </Chapter>
@@ -78,17 +78,17 @@ export default async function PerceptionLessonPage() {
         <p>가상환경은 프로젝트 전용 Python 패키지 공간입니다. 이 실습의 기준은 Python 3.11, BlenderProc 2.8.0, Blender 4.2.1, PyTorch 2.10.0, torchvision 0.25.0, Ultralytics 8.4.54입니다. 첫 단계는 CPU용 PyTorch를 설치합니다. 첫 렌더 실행 때 BlenderProc가 별도 Blender 4.2.1과 렌더용 패키지를 내려받으므로 인터넷과 추가 설치 시간이 필요합니다. GPU로 확장할 때는 같은 가상환경에 다른 Torch를 덮어넣지 말고 원본 GPU 설치 단계로 새 환경을 만드세요.</p>
         <Recipe name="01-environment" label="01 환경 설치"/>
         <p>설치 후 버전 출력이 나오는지 확인합니다. 터미널을 새로 열었다면 회차 루트에서 <code>source .venv-perception/bin/activate</code>로 환경을 다시 활성화합니다. 이하 단계는 같은 터미널에서 순서대로 진행하세요.</p>
-        <CodeExample label="공개 이미지와 3D 물체 준비" code={'source steps/02-assets.sh\n# 이 단계 후 작업 위치: perception/generation'}/>
+        <CodeExample label="COCO 배경·과일 이미지·3D 물체 준비" code={'source steps/02-assets.sh\n# 이 단계 후 작업 위치: perception/generation'}/>
         <Recipe name="02-assets" label="02 학습 재료 준비"/>
-        <p>공개 Fruits-360 이미지 일부를 과일 면의 재료로 내려받고 8cm 물체를 만듭니다. 이미지의 해시와 출처는 <code>assets-manifest.json</code>에 기록됩니다. 생성 데이터나 텍스처를 공유할 때 Fruits-360의 CC BY-SA 4.0 출처 고지도 함께 유지하세요.</p>
+        <p>COCO val2017 사진 5,000장을 내려받고, 합성에 사용할 CC BY / CC BY-SA 사진을 배경 풀로 나눕니다. 공개 Fruits-360 이미지 일부도 과일 면의 재료로 내려받고 8cm 물체를 만듭니다. COCO 다운로드 압축파일은 약 778MiB이고 주석 압축파일도 내려받으므로 시간과 디스크 공간이 필요합니다. 과일 이미지의 해시와 출처는 <code>assets-manifest.json</code>, COCO 사진별 출처·라이선스·분리는 <code>backgrounds-manifest.json</code>에 기록됩니다. 생성 데이터나 텍스처를 공유할 때 Fruits-360의 CC BY-SA 4.0 출처 고지도 함께 유지하세요.</p>
       </Chapter>
 
       <Chapter id="render" title="6. 120장부터 만들고 정답을 눈으로 확인한다">
         <CodeExample label="소규모 렌더링" code={'# 현재 위치: perception/generation\nsource ../../steps/03-render.sh'}/>
         <Recipe name="03-render" label="03 사진 120장 생성"/>
-        <div className="education-table-wrap"><table><caption>처음 알아두면 좋은 생성 옵션</caption><tbody><tr><th>num_images 120</th><td>만들 장면 수</td></tr><tr><th>workers 1</th><td>Blender 프로세스 한 개로 시작</td></tr><tr><th>samples 4</th><td>렌더 품질·계산량을 정하는 샘플 수</td></tr><tr><th>seed 31000000</th><td>무작위 선택의 시작값. 서로 다른 실행의 중복을 추적하는 기준</td></tr><tr><th>negative_ratio 0.18</th><td>목표 물체가 없는 예시 비율. 비슷한 물체를 무조건 정답으로 잡지 않게 함</td></tr><tr><th>meta_v2</th><td>물체와 면의 가시성 등 학습용 추가 기록 저장</td></tr></tbody></table></div>
+        <div className="education-table-wrap"><table><caption>처음 알아두면 좋은 생성 옵션</caption><tbody><tr><th>num_images 120</th><td>만들 장면 수</td></tr><tr><th>workers 1</th><td>Blender 프로세스 한 개로 시작</td></tr><tr><th>samples 4</th><td>렌더 품질·계산량을 정하는 샘플 수</td></tr><tr><th>seed 31000000</th><td>무작위 선택의 시작값. 서로 다른 실행의 중복을 추적하는 기준</td></tr><tr><th>negative_ratio 0.18</th><td>목표 물체가 없는 예시 비율. 비슷한 물체를 무조건 정답으로 잡지 않게 함</td></tr><tr><th>background_split_by_id</th><td>장면 ID에 맞는 COCO 학습·검증·시험 배경 풀에서 무작위 선택</td></tr><tr><th>shape_material varied</th><td>형상별로 같은 분포에서 물체 색·표면 거칠기 변경</td></tr><tr><th>meta_v2</th><td>물체와 면의 가시성 등 학습용 추가 기록 저장</td></tr></tbody></table></div>
         <p>출력은 <code>datasets/smoke120</code>입니다. <code>images/train</code>의 사진, <code>labels/train</code>의 정답, <code>_meta/train</code>의 JSON 기록이 한 세트인지 봅니다. 여기의 train 폴더 이름은 렌더러의 원시 저장 위치이며, 최종 학습·검증 분리는 다음 단계에서 합니다.</p>
-        <ul><li>물체 경계와 라벨이 같은 위치인가?</li><li>보이지 않는 과일에 정답이 붙지 않았는가?</li><li>클래스가 빠지거나 같은 장면만 반복되지 않는가?</li><li>목표 물체가 없는 사진의 빈 라벨도 정상적으로 저장됐는가?</li></ul>
+        <ul><li>물체 경계와 라벨이 같은 위치인가?</li><li>보이지 않는 과일에 정답이 붙지 않았는가?</li><li>클래스가 빠지거나 같은 장면만 반복되지 않는가?</li><li>메타데이터의 background가 서로 다른 COCO 사진을 가리키는가?</li><li>목표 물체가 없는 사진의 빈 라벨도 정상적으로 저장됐는가?</li></ul>
         <p>이미지 저장 개수만 보고 성공으로 판단하지 마세요. 오류 로그와 누락된 정답이 있다면 여기서 해결합니다. 중단한 작업은 같은 명령에 <code>--resume</code>을 붙여 재개할 수 있습니다. 재개하면서 seed나 재료·설정을 바꾸지 마세요.</p>
         <Check><p>사진은 120장인데 라벨은 110개라면 학습부터 시작하지 않습니다. 누락된 이미지·라벨·메타데이터 세트를 먼저 확인합니다. 빈 라벨 파일은 목표 물체가 없는 정상 예시일 수 있습니다.</p></Check>
       </Chapter>
@@ -96,7 +96,7 @@ export default async function PerceptionLessonPage() {
       <Chapter id="split" title="7. 공부할 문제와 시험 문제를 분리한다">
         <p>학습한 사진으로 다시 시험하면 외운 것을 잘 맞혔는지만 알게 됩니다. 새 장면에서도 작동하는지 알려면 데이터를 나눠야 합니다.</p>
         <dl className="education-definitions"><div><dt>train · 학습용</dt><dd>가중치를 바꾸는 데 사용합니다.</dd></div><div><dt>val · 검증용</dt><dd>학습 중 모델과 설정을 선택할 때 사용합니다.</dd></div><div><dt>test · 최종 평가용</dt><dd>선택을 끝낸 모델을 마지막으로 평가합니다.</dd></div></dl>
-        <p>이 레시피는 장면 단위로 80%·10%·10%를 나눕니다. 한 장면에서 잘라낸 모든 크롭은 같은 데이터 묶음에 넣습니다. 같은 장면의 사과는 train, 다른 큐브는 val로 넣으면 배경과 조명이 겹쳐 시험 점수가 부풀려질 수 있습니다. 이를 <strong>데이터 누출</strong>이라고 합니다.</p>
+        <p>이 레시피는 장면 ID의 마지막 자리로 분리합니다. 0은 검증, 1은 시험, 나머지는 학습입니다. 120장에서는 96·12·12장이며, COCO 배경 풀도 이 분리에 맞춰 선택합니다. 한 장면에서 잘라낸 모든 크롭은 같은 데이터 묶음에 넣습니다. 같은 장면의 사과는 train, 다른 큐브는 val로 넣으면 배경과 조명이 겹쳐 시험 점수가 부풀려질 수 있습니다. 이를 <strong>데이터 누출</strong>이라고 합니다.</p>
         <CodeExample label="장면 분리와 모델별 데이터 내보내기" code={'# 현재 위치: perception/generation\nsource ../../steps/04-split.sh\nsource ../../steps/05-export.sh'}/>
         <Recipe name="04-split" label="04 장면 분리"/><Recipe name="05-export" label="05 모델별 데이터 내보내기"/>
         <p>분리 기준은 <code>datasets/smoke120/split.json</code>에 저장됩니다. 내보내기는 원시 메타데이터에서 A1의 형태 정답과 큐브 크롭의 면 정답을 따로 만듭니다. <code>smoke120_models/a1_objectseg/data.yaml</code>과 <code>smoke120_face/data.yaml</code>을 확인하세요.</p>
@@ -138,25 +138,25 @@ export default async function PerceptionLessonPage() {
       </Chapter>
 
       <Chapter id="shape-assignment" title="형상 박스 디텍션 과제">
-        <p>과일 면 인식을 제외하고 cube·octahedron·dodecahedron·icosahedron 네 형상의 위치와 이름만 찾는 예제입니다. Fruits-360이나 외부 배경 사진 없이 3D 물체와 방 배경을 생성합니다. 정답은 segmentation 마스크 대신 bounding box입니다.</p>
+        <p>과일 면 인식을 제외하고 cube·octahedron·dodecahedron·icosahedron 네 형상의 위치와 이름만 찾는 예제입니다. Fruits-360 없이 3D 물체를 만들고 COCO 실사 사진을 무작위로 배경에 합성합니다. 물체의 색·표면·조명·회전·크기·카메라도 바뀝니다. 정답은 segmentation 마스크 대신 bounding box입니다.</p>
         <p>회차 루트에 추가한 <code>scripts/shape_detection.py</code>를 실행합니다. 형상별 총 100장을 학습 80·검증 10·시험 10장으로 나눕니다. 총 400장, 320px 입력, CPU 렌더 6 threads이며, 사전학습된 <code>yolo26n.pt</code>를 CPU에서 30 epoch 미세조정합니다.</p>
-        <CodeExample label="형상 데이터 생성·학습" code={'# 회차 루트, 환경 설치 후\npython scripts/shape_detection.py generate --per-class 100\npython scripts/shape_detection.py train --epochs 30'}/>
-        <p>Ryzen 5 3600에서 실제 CPU 실행은 400장 생성 3분 36초, 30 epoch 학습 7분 29초였습니다. 시험 40장의 box mAP50은 88.91%, precision은 78.06%, recall은 76.88%입니다. 큐브 recall은 50%였으며 시험은 형상별 10장으로 작습니다. <a href={`${assets}/cpu-validation.md`} download>전체 실행 검증표</a> · <a href={`${assets}/synthetic-data-summary.html`}>속도·성능·비교 사진 요약</a>에 조건과 클래스별 점수를 기록했습니다.</p>
-        <p>이 예제는 실제 CPU/GPU 생성·학습·시험을 완료했습니다. 실행 설명과 측정 결과는 <a href={`${assets}/shape-assignment.md`} download>형상 과제 안내</a>에서 확인할 수 있습니다. 한 물체가 있는 합성 장면 시험이며 실물 카메라 정확도를 나타내지는 않습니다.</p>
+        <CodeExample label="형상 데이터 생성·학습" code={'# 회차 루트, 환경과 COCO 배경 준비 후\npython scripts/shape_detection.py generate --per-class 100\npython scripts/shape_detection.py train --epochs 30'}/>
+        <p>COCO 배경으로 형상별 100장·1,000장의 데이터 생성과 정답 검사를 완료했습니다. 모델 학습과 CPU 단독 속도 재측정은 진행 중이며, 두 모델은 같은 합성 시험 사진 400장으로 비교합니다. <a href={`${assets}/cpu-validation.md`} download>전체 실행 검증표</a> · <a href={`${assets}/synthetic-data-summary.html`}>CPU 장당 속도·P/R·mAP50·mAP90·비교 사진 요약</a>에서 조건과 결과를 확인하세요.</p>
+        <p>이 예제의 COCO 데이터 생성·정답 검사를 실제 CPU/GPU에서 완료했습니다. 새 성능 결과는 학습·시험 완료 후 요약 보고서에 반영합니다. 실행 설명과 측정 결과는 <a href={`${assets}/shape-assignment.md`} download>형상 과제 안내</a>에서 확인할 수 있습니다. 한 물체가 있는 합성 장면 시험이며 실물 카메라 정확도를 나타내지는 않습니다.</p>
       </Chapter>
 
       <Chapter id="improve" title="10. 실습 확장하기">
         <h3>GPU와 5만 장으로 확장하기</h3>
         <p>전체 학습 예시는 50,000장, 렌더 samples 16, A1 140 epoch, 과일 면 120 epoch를 사용합니다. GPU 환경에서 한 worker부터 시작해 안정성을 확인하세요. 배치와 worker 수는 장비에 맞춰 조정하되 바꾼 설정을 기록합니다. 아래 전체 레시피에서는 출력 폴더 이름도 바뀌므로 분리·내보내기·학습 단계를 모두 같은 이름으로 이어야 합니다.</p>
         <p><a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서 다운로드</a> · <a href={`${assets}/full-render.sh`} download>5만 장 GPU 렌더 명령 다운로드</a></p>
-        <h3>COCO 배경으로 다양성 늘리기</h3>
-        <p><code>perception/generation</code>에서 배경을 준비한 후 렌더 명령의 <code>background_dir</code>을 아래 경로로 바꾸고 <code>arena_background_ratio</code>를 0.0으로 설정합니다. 새 출력 폴더와 별도의 seed를 사용하세요. COCO 배경 사진 속 원래 사물은 이번 목표 클래스의 정답이 아닙니다. 이 실험은 공개 경기장 레시피와 따로 평가합니다.</p>
-        <CodeExample label="COCO 배경 준비" code={'python scripts/download_coco2017_backgrounds.py \\\n  --split val2017 --output datasets/backgrounds/coco2017\n# 렌더 명령에서 변경할 두 옵션:\n# --background_dir datasets/backgrounds/coco2017/val2017\n# --arena_background_ratio 0.0'}/>
+        <h3>COCO 배경 설정과 출처 확인하기</h3>
+        <p><code>perception/generation</code>에서 배경을 준비한 후 렌더 명령의 <code>background_dir</code>이 아래의 분리된 풀을 가리키는지 확인합니다. 기본 실습과 형상 과제 모두 <code>arena_background_ratio</code>는 0.0이고 <code>background_split_by_id</code>를 사용합니다. 새 출력 폴더와 별도의 seed를 사용하세요. COCO 배경 사진 속 원래 사물은 이번 목표 클래스의 정답이 아닙니다. 목표 형상이 잘리는지, 같은 배경 사진이 다른 데이터 분리에 들어가지 않는지도 확인합니다.</p>
+        <CodeExample label="COCO 배경 준비" code={'python scripts/download_coco2017_backgrounds.py \\\n  --split val2017 --output datasets/backgrounds/coco2017\n# 기본 렌더 명령의 배경 옵션:\n# --background_dir datasets/backgrounds/coco2017/pools\n# --arena_background_ratio 0.0 --background_split_by_id'}/>
         <h3>Codex에게 재현을 맡길 때</h3>
         <CodeExample label="실습 도움 요청 예시" code={'이 저장소의 README와 docs를 읽고 CPU 120장 실습을 따라갈 수 있게 도와줘.\n먼저 Python 버전과 가상환경, 현재 작업 경로를 확인해줘.\n사진·라벨·메타데이터가 모두 생성되고 정답이 맞는지 확인한 다음 진행해줘.\n같은 장면의 크롭은 train/val/test를 넘지 않게 유지하고 클래스 순서를 바꾸지 마.\n오류가 나면 원인과 수정한 설정을 기록해줘.\nGPU 5만 장 렌더링이나 장시간 학습은 장비와 설정을 확인한 후 진행하자.'}/>
         <Check><p>학습 데이터를 늘릴 때도 사진·정답·생성 기록을 함께 보관합니다. 형태 모델과 과일 면 모델은 따로 학습하고, 학습에 쓰지 않은 사진으로 평가합니다.</p></Check>
       </Chapter>
-      <footer className="education-sources"><h2>참고 자료와 실습 기록</h2><p>이 페이지의 CPU 120장·1 epoch 명령은 데이터 생성부터 평가까지 연결하는 첫 실습입니다. 웹페이지와 명령 형식은 검증했으며, 새 렌더링이나 재학습은 수행하지 않았습니다. 위 네 가지 예시는 미리 학습된 가중치로 직접 실행한 추론 결과입니다. 예시 이미지의 개수로 모델 전체 성능을 판단하지 않습니다.</p><ul><li><a href={`${repo}/tree/main/lessons/01-synthetic-data`}>실습 코드와 단계별 실행 안내</a></li><li><a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서</a></li><li><a href="https://docs.ultralytics.com/modes/train">Ultralytics 학습 문서</a></li><li><a href={`${assets}/LICENSE.txt`}>코드 사용 조건</a> · <a href={`${assets}/provenance.json`}>코드·이미지 출처 기록</a></li></ul></footer>
+      <footer className="education-sources"><h2>참고 자료와 실습 기록</h2><p>이 페이지의 CPU 120장·1 epoch 명령은 데이터 생성부터 평가까지 연결하는 첫 실습입니다. COCO 배경을 기본값으로 바꾼 명령은 새 환경에서 데이터 생성·학습·시험을 실행해 검증합니다. 측정 결과는 연결된 요약 보고서에 기록합니다. 위 네 가지 예시는 미리 학습된 가중치로 직접 실행한 추론 결과입니다. 예시 이미지의 개수로 모델 전체 성능을 판단하지 않습니다.</p><ul><li><a href={`${repo}/tree/main/lessons/01-synthetic-data`}>실습 코드와 단계별 실행 안내</a></li><li><a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서</a></li><li><a href="https://docs.ultralytics.com/modes/train">Ultralytics 학습 문서</a></li><li><a href={`${assets}/LICENSE.txt`}>코드 사용 조건</a> · <a href={`${assets}/provenance.json`}>코드·이미지 출처 기록</a></li></ul></footer>
     </article>
     <LessonNavigation path="/education/object-recognition/synthetic-data"/>
   </>;

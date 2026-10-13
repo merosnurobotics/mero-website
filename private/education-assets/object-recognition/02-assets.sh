@@ -4,5 +4,6 @@
 # 같은 터미널에서 01부터 순서대로 source 명령으로 실행
 set -e
 cd perception/generation
+python scripts/download_coco2017_backgrounds.py --split val2017 --output datasets/backgrounds/coco2017
 python prepare_assets.py --out datasets/fruit_textures/public_fruits360_256 --per-class 256
 python scripts/make_polyhedron_objs.py --out assets/generated --size 0.08

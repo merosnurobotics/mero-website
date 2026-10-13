@@ -5,8 +5,8 @@ python scripts/run_yolo_parallel.py \
   --num_images 50000 --workers 1 --worker_start_delay 0 \
   --asset_dir assets/generated \
   --fruit_texture_dir datasets/fruit_textures/public_fruits360_256 \
-  --background_dir datasets/backgrounds/unused \
-  --arena_background_ratio 1.0 --output datasets/public_fruits360_arena_v1 \
+  --background_dir datasets/backgrounds/coco2017/pools \
+  --arena_background_ratio 0.0 --background_split_by_id --shape_material varied --output datasets/public_fruits360_coco_v2 \
   --width 640 --height 640 --samples 16 --cpu_threads 1 \
   --seed 31000000 --min_objects 1 --max_objects 4 \
   --scale_min 0.40 --scale_max 2.45 --negative_ratio 0.18 \

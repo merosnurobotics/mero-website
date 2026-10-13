@@ -6,7 +6,11 @@
     "120 scenes",
     "CPU torch and inference",
     "1 epoch, batch 4, workers 0",
-    "shared smoke120 dataset naming"
+    "shared smoke120 dataset naming",
+    "Random COCO photographs with disjoint source SHA256 pools",
+    "Class-shared material randomization",
+    "Modulo-10 scene/background split",
+    "Reject stale arena data and changed-recipe resume"
   ],
   "executed": true,
   "inference_examples": {
@@ -15,7 +19,26 @@
     "weights_sha256": "3d2d4dba14c6bf709b49e5654f537cbad05db931a6b3a454eb0c71e534734927",
     "count": 4
   },
-  "cpu_validation": {
+  "coco_validation": {
+    "date": "2026-10-13",
+    "report": "synthetic-data-summary.html",
+    "backgrounds": 1274,
+    "background_pool_counts": {
+      "train": 1020,
+      "val": 127,
+      "test": 127
+    },
+    "generated_scenes": {
+      "intro": 120,
+      "shapes100": 400,
+      "shapes1000": 4000
+    },
+    "training_and_cpu_remeasurement": "in progress",
+    "original_scenes_end_to_end_verified": true,
+    "background_and_image_hash_checks": true,
+    "lesson_commit": "7b784636de4f7756bdc5df9d3bee3a2f2316586e"
+  },
+  "arena_validation_archive": {
     "date": "2026-10-13",
     "report": "cpu-validation.md",
     "lesson_commit": "6585ea7e2ec7316d5f12b6680327abcac15821e6",

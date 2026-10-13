@@ -6,4 +6,4 @@ set -e
 python scripts/split_meta_v2_dataset.py \
   --dataset datasets/smoke120 \
   --out datasets/smoke120/split.json --seed 20261006 \
-  --val-ratio 0.10 --test-ratio 0.10
+  --val-ratio 0.10 --test-ratio 0.10 --by-id-modulo
