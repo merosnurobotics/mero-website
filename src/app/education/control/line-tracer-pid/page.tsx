@@ -35,7 +35,7 @@ export default function LineTracerLesson() { return <Lesson topic="제어" topic
     <h3>가중 평균으로 라인 위치를 계산한다</h3>
     <p>센서 8개의 위치를 가운데 기준으로 −42, −30, …, +30, +42 mm라고 두고, 각 센서 값 w를 가중치로 평균을 냅니다. 라인 폭이 30 mm이고 센서 간격이 12 mm이므로 보통 2~3개가 동시에 라인을 봅니다. 두 센서 사이에 라인이 있으면 두 값이 비슷하게 나와 평균이 사이 값이 됩니다. 센서가 8개뿐이어도 <strong>1 mm 단위의 연속적인 오차</strong>를 얻을 수 있는 이유입니다.</p>
     <Figure src={`${a}/sensor-array.png`} width={1040} height={420} alt="흰 라인이 가운데에서 왼쪽으로 10 mm 떨어져 있을 때 8개 센서의 위치와 읽은 값, 가중 평균 오차 계산" caption="라인이 왼쪽으로 10 mm 치우친 경우입니다. +6, +18 mm 센서가 1에 가깝고 −6 mm 센서는 라인 가장자리만 일부 봅니다. 가중 평균은 +9.2 mm로 실제 10 mm와 가깝고, +이므로 왼쪽으로 돌아야 합니다."/>
-    <CodeExample label="센서 값 → 라인 오차 (mm)" code={`SENSOR_Y = [42, 30, 18, 6, -6, -18, -30, -42]   # mm, 왼쪽이 +
+    <CodeExample language="python" label="센서 값 → 라인 오차 (mm)" code={`SENSOR_Y = [42, 30, 18, 6, -6, -18, -30, -42]   # mm, 왼쪽이 +
 LOST_ERROR = 48                                   # 센서 줄 끝(42)보다 바깥
 
 def line_error(raw, min_v, max_v, last_error):
@@ -54,7 +54,7 @@ def line_error(raw, min_v, max_v, last_error):
   <Chapter id="control" title="3. 오차를 좌우 바퀴 속도로 나누기">
     <FlowDiagram title="라인트레이서의 PID 루프 (100 Hz)" steps={[{title:"IR 8개 읽기",lines:["보정 후 0~1","라인 = 1"]},{title:"라인 오차 e",lines:["가중 평균 (mm)","놓치면 ±48"]},{title:"PID → u",lines:["Kp·e + Ki·Σe·dt","+ Kd·Δe/dt"]},{title:"좌우 PWM",lines:["왼쪽 = 기본 − u","오른쪽 = 기본 + u"]}]} feedback="로봇이 돌면 라인과 센서의 상대 위치가 바뀌고, 다음 주기에 다시 읽습니다." caption="목표: 오차 0 · 측정: 라인 위치 · 출력: 좌우 바퀴의 PWM 차이"/>
     <p>기본 PWM(이 자료에서는 170)으로 앞으로 가면서, PID 출력 u만큼 한쪽을 빼고 다른 쪽에 더합니다. 라인이 왼쪽(+)에 있으면 u가 +가 되어 오른쪽 바퀴가 빨라지고 로봇은 왼쪽으로 돕니다. 부호가 반대면 로봇은 라인에서 도망칩니다. 처음 연결할 때 손으로 로봇을 들고 라인을 왼쪽에 대 보며 오른쪽 바퀴가 빨라지는지 먼저 확인하세요.</p>
-    <CodeExample label="100 Hz 제어 주기 한 번" code={`dt = 0.01
+    <CodeExample language="python" label="100 Hz 제어 주기 한 번" code={`dt = 0.01
 e = line_error(raw, min_v, max_v, last_error)
 
 integral += e * dt
@@ -123,7 +123,7 @@ right_pwm = clamp(BASE_PWM + u, -255, 255)`}/>
       <p><strong>3. 상태를 나눈다</strong>: 정지가 끝나면 바로 FOLLOW로 가지 않고 RESUME 상태를 거칩니다. RESUME에서는 가로선 감지를 끄고 기본 PWM으로 똑바로 나아갑니다. 흰 센서가 3개 이하인 상태가 5번 연속 나오면, 즉 <strong>센서가 가로선을 벗어난 것을 확인하면</strong> FOLLOW로 돌아갑니다. 거리를 몰라도 센서로 “지나갔다”를 판단할 수 있습니다. 시간만으로 무시 구간을 두면 배터리 전압이나 부하가 바뀔 때 거리가 달라집니다.</p>
       <p><strong>4. 정지 중 PID 초기화</strong>: PAUSE에 들어갈 때 적분값을 0으로 비우고, 출발 후 첫 주기의 D는 0으로 둡니다. 멈춰 있는 동안 적분이 쌓이거나 7초 전 오차로 미분을 계산하면 출발하자마자 한쪽으로 튑니다. 또 7초는 <code>sleep(7)</code>처럼 프로그램을 멈추지 말고 시작 시각과 비교해 세야 합니다. 그래야 기다리는 동안에도 센서를 읽고 정지 명령을 계속 보낼 수 있습니다.</p>
       <FlowDiagram title="Pause & Resume 상태 머신" steps={[{title:"FOLLOW",lines:["라인 PID 주행","흰 센서 ≥ 6이 2회 연속 → PAUSE"]},{title:"PAUSE",lines:["PWM 0 + 브레이크","적분·이전 오차 초기화","7초 경과 → RESUME"]},{title:"RESUME",lines:["가로선 감지 끔, 직진","흰 센서 ≤ 3이 5회 연속 → FOLLOW"]}]} feedback="FOLLOW로 돌아가면 다음 가로선에서 같은 과정을 반복합니다." caption="‘가로선 위에 있다’는 상태가 아니라 ‘가로선에 새로 들어왔다’는 사건에만 정지합니다."/>
-      <CodeExample label="상태 머신 (100 Hz 루프 안)" code={`white = sum(1 for wi in w if wi > 0.5)
+      <CodeExample language="python" label="상태 머신 (100 Hz 루프 안)" code={`white = sum(1 for wi in w if wi > 0.5)
 
 if state == "FOLLOW":
     streak = streak + 1 if white >= 6 else 0

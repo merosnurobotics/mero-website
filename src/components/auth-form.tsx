@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ArrowRight } from "./icons";
 import { api } from "@/lib/client-api";
 import type { Member } from "@/lib/types";
 
@@ -35,7 +34,7 @@ export function AuthForm({ mode, next }: { mode: "login" | "signup"; next?: stri
       <PasswordField name="password" label="비밀번호" autoComplete={signup ? "new-password" : "current-password"} minLength={signup ? 10 : undefined}/>
       {signup && <><p className="auth-note" style={{ marginTop: -12 }}>비밀번호는 10자 이상으로 입력해 주세요.</p><PasswordField name="confirm-password" label="비밀번호 확인" autoComplete="new-password" minLength={10}/><label className="checkbox-field"><input type="checkbox" name="consent" required/><span>회원 확인과 관리를 위한 이름·이메일 수집에 동의합니다. <Link href="/privacy" target="_blank">개인정보 안내</Link></span></label></>}
       {error && <p id="auth-form-error" className="form-error" role="alert">{error}</p>}
-      <button className="button button-full" type="submit" disabled={busy} aria-busy={busy}>{busy ? signup ? "가입 처리 중…" : "로그인 중…" : signup ? "회원가입" : "로그인"}{!busy && <ArrowRight size={18}/>}</button>
+      <button className="button button-full" type="submit" disabled={busy} aria-busy={busy}>{busy ? signup ? "가입 처리 중…" : "로그인 중…" : signup ? "회원가입" : "로그인"}</button>
     </form>
     <p className="auth-switch">{signup ? "이미 회원이신가요?" : "아직 MERO 회원이 아니신가요?"}<Link href={signup ? `/login${next ? `?next=${encodeURIComponent(next)}` : ""}` : "/signup"}>{signup ? "로그인" : "회원가입"}</Link></p>
     {!signup && <p className="auth-note">비밀번호를 잊으셨다면 MERO 운영진에게 문의해 주세요.</p>}

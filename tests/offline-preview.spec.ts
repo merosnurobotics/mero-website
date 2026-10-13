@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const file = pathToFileURL(resolve("output/MERO-preview.html")).href;
-test.beforeEach(async ({ page }) => { await page.goto(file); await expect(page.locator("main h1")).toContainText("상상을 설계하고"); });
+test.beforeEach(async ({ page }) => { await page.goto(file); await expect(page.locator("main h1")).toContainText("MERO"); });
 
 test("all 19 pages work with embedded assets and no HTTP requests", async ({ page }) => {
   const requests: string[] = []; const errors: string[] = [];

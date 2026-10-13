@@ -17,7 +17,7 @@ export default function ObjectLocalizationLesson() { return <Lesson topic="위�
     <p>RGB는 픽셀의 색을, 깊이는 픽셀 방향의 깊이를 저장합니다. 두 센서는 보는 위치나 해상도가 다를 수 있습니다. 따라서 RGB의 (u, v)로 깊이를 읽으려면 깊이를 RGB에 <strong>align</strong>해 같은 픽셀이 같은 광선을 가리키도록 해야 합니다. 배열 크기가 같다는 것만으로 정렬됐다고 판단할 수 없습니다.</p>
     <MaskDepthDiagram/>
     <p>마스크의 가장 아래쪽 두 행에서 u의 평균과 가장 아래쪽 v를 대표 픽셀로 고릅니다. 그 주변 패치에서 유효 깊이의 중앙값을 읽습니다. 한 픽셀만 읽으면 경계의 빈 깊이에 취약하기 때문입니다. 교육 코드는 마스크 밖 배경을 제외하고, 0·NaN·무한대·범위 밖 깊이도 버립니다. 쓸 수 있는 값이 부족하면 위치를 만들지 않습니다.</p>
-    <CodeExample label="하단 대표 픽셀과 유효 깊이 · 정리한 교육 함수" code={`u, v = mask_bottom_pixel(mask)\ndepth_m = masked_depth_median(\n    depth, mask, u, v, scale_m=0.001\n)`}/>
+    <CodeExample language="python" label="하단 대표 픽셀과 유효 깊이 · 정리한 교육 함수" code={`u, v = mask_bottom_pixel(mask)\ndepth_m = masked_depth_median(\n    depth, mask, u, v, scale_m=0.001\n)`}/>
     <p><code>scale_m</code>은 저장값 하나당 m입니다. 저장값이 mm이면 0.001, 이미 m이면 1.0입니다. RealSense에서는 장치가 제공하는 깊이 scale을 읽습니다. raw uint16이 언제나 mm 단위라고 가정하면 안 됩니다.</p>
     <Check><p>물체를 둘러싼 사각형인 바운딩 박스에는 배경이 섞일 수 있습니다. 물체 표면의 깊이도 균일하지 않아 박스 중심의 깊이 하나로 위치를 정하기 어렵습니다. 마스크를 이용해 물체 쪽 측정을 고르되 경계의 혼합 깊이도 확인해야 합니다.</p></Check>
   </Chapter>

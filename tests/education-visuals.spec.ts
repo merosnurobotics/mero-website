@@ -34,6 +34,6 @@ for (const [topic, lessons] of Object.entries(index.metadata)) test(`${topic}: v
   // The same diagrams inherit the site's dark palette without altering source photos.
   await page.evaluate(() => document.documentElement.dataset.theme = "dark");
   const ink = await page.locator(".concept-visual-content").first().evaluate(node => getComputedStyle(node).getPropertyValue("--ink").trim());
-  expect(ink).toBe("#eef1fb");
+  expect(ink).toBe("#e9edf7");
   expect(errors).toEqual([]);
 });

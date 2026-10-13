@@ -45,7 +45,7 @@ export default function RemoteWorkLesson() { return <Lesson topic="개발 환경
     <CodeExample label="로컬 ~/.ssh/config · Jetson 별칭" code={`Host jetson\n    HostName 100.101.102.103\n    User robot\n    IdentityFile ~/.ssh/id_ed25519_jetson\n    IdentitiesOnly yes\n    ServerAliveInterval 30\n    ServerAliveCountMax 3`}/>
     <p>Linux·macOS는 <code>chmod 600 ~/.ssh/config</code>를 실행합니다. Windows는 <code>$HOME/.ssh/config</code>에 확장자 없이 저장합니다. 메모장이 <code>config.txt</code>로 저장하지 않았는지 확인하세요.</p>
     <FlowDiagram title="ssh jetson → 저장된 접속 설정" steps={[{title:"로컬 터미널",lines:["ssh jetson"]},{title:"~/.ssh/config",lines:["HostName: 실제 주소", "User: Jetson 계정", "IdentityFile: 로컬 키"]},{title:"Jetson shell",lines:["hostname / whoami", "Jetson에서 명령 실행"]}]} caption="별칭 파일은 Jetson이 아니라 접속을 시작하는 로컬 컴퓨터에 둡니다."/>
-    <CodeExample label="로컬 · 별칭 확인과 접속" code={`ssh -G jetson\n# hostname, user, identityfile이 의도한 값인지 확인\nssh jetson\n# 접속 후 아래 명령은 Jetson에서 실행됩니다.\nhostname\nwhoami\npwd\nexit`}/>
+    <CodeExample language="bash" label="로컬 · 별칭 확인과 접속" code={`ssh -G jetson\n# hostname, user, identityfile이 의도한 값인지 확인\nssh jetson\n# 접속 후 아래 명령은 Jetson에서 실행됩니다.\nhostname\nwhoami\npwd\nexit`}/>
     <p>IP 대신 MagicDNS 이름을 HostName으로 넣는 것도 가능합니다. 먼저 그 이름으로 연결되는지 확인하세요. <code>jetson</code>이라는 별칭 자체는 DNS 이름이 아니므로, config가 없으면 이 자료의 방식으로 동작하지 않습니다.</p>
       <ExecutionResult id="ssh-config" alt="ssh jetson에 적용되는 HostName, 사용자, 키 경로"/>
 </Chapter>

@@ -58,7 +58,7 @@ ros2 topic pub --rate 10 /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.03}, a
 </Chapter>
 <Chapter id="hardware" title="6. 펌웨어를 올리고 실제 장치를 연결한다">
 <p>Arduino IDE에서 UNO board와 실제 port를 선택해 <code>firmware/encoder_motor/encoder_motor.ino</code>를 Verify 후 Upload합니다. Arduino CLI를 사용한다면 <a href={`${repo}/README.md`}>README의 compile/upload 절차</a>를 따르세요. 업로드 중에는 연결 프로그램와 Serial monitor를 닫습니다.</p>
-<CodeExample label="터미널 A · 실제 USB와 실측 geometry" code={`# PORT와 치수는 자신의 장치로 바꿉니다. 아래 치수는 예시입니다.
+<CodeExample language="bash" label="터미널 A · 실제 USB와 실측 geometry" code={`# PORT와 치수는 자신의 장치로 바꿉니다. 아래 치수는 예시입니다.
 PORT=/dev/serial/by-id/여기에는-실제-장치명
 /usr/bin/python3 bridge_node.py --ros-args \
   -p dry_run:=false -p serial_port:="$PORT" \

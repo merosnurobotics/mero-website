@@ -1,4 +1,5 @@
 import { findConceptLesson } from "@/lib/education/concepts";
+import { highlightHtmlBlocks } from "@/lib/highlight";
 import { ConceptLessonContent } from "@/components/education/concept-lesson";
 import { educationTopics } from "@/lib/education/catalog";
 import { TinyRLEnvironment } from "@/components/education/tiny-rl-environment";
@@ -41,7 +42,7 @@ export default async function DeepMLLessonPage({ params }: Props) {
       {chapters.map((chapter, index) => <section className="perception-chapter" id={chapter.id} key={chapter.id}>
         <h2>{index + 1}. {chapter.title}</h2>
         {lesson.slug === "neural-networks" && chapter.id === "loss" && <picture className="deepml-network-animation"><source media="(prefers-reduced-motion: reduce)" srcSet="/education-assets/deepml/neural-network.png"/><img src="/education-assets/deepml/neural-network.gif" width="960" height="540" loading="lazy" alt="신경망의 순전파·역전파·가중치 수정 흐름"/></picture>}
-        <div className="deepml-content" data-am-theme="shadcn" data-am-mode="light" dangerouslySetInnerHTML={{ __html: chapter.html }}/>
+        <div className="deepml-content" data-am-theme="shadcn" data-am-mode="light" dangerouslySetInnerHTML={{ __html: highlightHtmlBlocks(chapter.html) }}/>
         {chapter.id === "tiny-environment" && <TinyRLEnvironment/>}
       </section>)}
       <footer className="education-sources">

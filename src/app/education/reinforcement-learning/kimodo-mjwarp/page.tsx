@@ -1,4 +1,5 @@
 import notes from "@/lib/education/generated/microban-notes.json";
+import { highlightHtmlBlocks } from "@/lib/highlight";
 import { LessonAuthor } from "@/components/education/lesson-author";
 import { requireEducationMember } from "@/lib/education/access";
 import type { Metadata } from "next";
@@ -9,11 +10,12 @@ import { kimodoTopicPath } from "@/lib/education/catalog";
 import { LessonContext, LessonNavigation } from "@/components/education/lesson-context";
 import { ExecutionResult } from "@/components/education/execution-result";
 
-const validation = kimodoLessonHtml.match(/<section id="validation" class="chapter wrap">([\s\S]*?)<\/section>/);
+const lessonHtml = highlightHtmlBlocks(kimodoLessonHtml);
+const validation = lessonHtml.match(/<section id="validation" class="chapter wrap">([\s\S]*?)<\/section>/);
 if (!validation || validation.index === undefined) throw new Error("The authored lesson is missing its validation section.");
-const beforeValidation = kimodoLessonHtml.slice(0, validation.index);
+const beforeValidation = lessonHtml.slice(0, validation.index);
 const validationBody = validation[1];
-const afterValidation = kimodoLessonHtml.slice(validation.index + validation[0].length);
+const afterValidation = lessonHtml.slice(validation.index + validation[0].length);
 
 export const metadata: Metadata = {
   title: "Kimodo + MuJoCo Warp 모방 강화학습",
@@ -28,7 +30,7 @@ export default async function KimodoLessonPage() {
     <LessonContext path="/education/reinforcement-learning/kimodo-mjwarp"/>
     <article id="kimodo-lesson" className="education-lesson">
       <div dangerouslySetInnerHTML={{ __html: beforeValidation }}/>
-      {Object.entries(notes).map(([id,note])=><section id={id} className="chapter wrap" key={id}><h2>{note.title}</h2><div className="deepml-content" data-am-theme="shadcn" data-am-mode="light" dangerouslySetInnerHTML={{__html:note.html}}/></section>)}
+      {Object.entries(notes).map(([id,note])=><section id={id} className="chapter wrap" key={id}><h2>{note.title}</h2><div className="deepml-content" data-am-theme="shadcn" data-am-mode="light" dangerouslySetInnerHTML={{__html:highlightHtmlBlocks(note.html)}}/></section>)}
       <section id="validation" className="chapter wrap">
         <div dangerouslySetInnerHTML={{ __html: validationBody }}/>
         <h3>CPU에서 정책 재실행</h3>
