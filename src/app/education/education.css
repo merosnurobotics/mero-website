@@ -2,7 +2,7 @@
 .education-content { min-width: 0; }
 .education-catalog-toggle { display: none; }
 .education-sidebar { position: sticky; top: 106px; max-height: calc(100dvh - 130px); overflow-y: auto; padding-right: 24px; border-right: 1px solid var(--line); font-size: 13px; }
-.education-index-link { display: block; font-size: 17px; font-weight: 700; padding: 0 10px 22px; }
+.education-index-link { display: block; font-size: 17px; font-weight: 700; padding: 10px; margin-bottom: 12px; border-radius: var(--control-radius); }
 .education-sidebar summary { cursor: pointer; padding: 12px 10px; font-weight: 650; }
 .education-sidebar summary::marker { color: var(--muted); }
 .education-topic-tree > summary > span { float: right; font-size: 11px; color: var(--muted); font-weight: 400; }
@@ -64,7 +64,7 @@
   .education-catalog-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
   .education-sidebar .education-mobile-collapsed { display: none; }
   .education-sidebar nav { margin-top: 16px; }
-  .education-index-link { padding-bottom: 8px; }
+  .education-index-link { margin-bottom: 4px; }
   .education-tree-content { padding-left: 16px; }
   .education-intro { padding-block: 20px 30px; }
   .education-series-row { grid-template-columns: 25px minmax(0, 1fr) 20px; gap: 12px; padding-block: 26px; }
@@ -209,7 +209,7 @@
 .education-stage-count { font-size: 12px; color: var(--muted); white-space: nowrap; }
 .education-stage-content { padding: 0 0 30px 56px; }
 @media (max-width: 767px) {
-  :is(.education-stage, .education-route) > summary { grid-template-columns: 24px minmax(0,1fr) 16px; gap: 12px; }
+  :is(.education-stage, .education-route) > summary { grid-template-columns: 36px minmax(0,1fr) 16px; gap: 12px; }
   .education-stage-count { display: none; }
   .education-stage-content { padding-left: 36px; }
 }
@@ -313,6 +313,8 @@
 [data-theme="dark"] .cartpole-outcome.is-stopped { color: #f1b586; }
 .education-browse-label { color: var(--muted); font-size: 12px; line-height: 1.6; margin: 8px 0 20px; }
 .education-reference-order { margin-top: 32px; border-top: 1px solid var(--line); padding-top: 24px; }
+/* The route list already closes with a rule; a second one right below reads as a double line. */
+.education-series-list + .education-reference-order { border-top: 0; margin-top: 8px; }
 .education-reference-order > summary,.education-preparation > summary { cursor: pointer; font-weight: 600; }
 .education-reference-order > p { color: var(--muted); }
 .education-format { font-size: 12px; font-weight: 600; color: var(--accent); }
@@ -434,3 +436,6 @@
 .education-stage-content p { font-size: 16px; }
 .education-reading-links a { font-size: 15px; }
 .education-reference-order > summary { font-size: 17px; }
+
+/* English mode: lesson bodies remain Korean; flag that once above the content. */
+.education-language-notice { margin: 0 0 20px; padding: 10px 14px; border-radius: var(--control-radius); background: var(--accent-soft); color: var(--accent); font-size: 14px; font-weight: 600; line-height: 1.5; }

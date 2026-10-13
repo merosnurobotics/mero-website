@@ -4,7 +4,8 @@ import { ZodError, z } from "zod";
 import QRCode from "qrcode";
 import { audit, databaseAvailable, getDb, getMember, getMembers, getRobot, getRobots, publicRobot, saveRobot } from "@/lib/db";
 import { canAccessRobot, canAdmin, createSession, destroySession, hashPassword, sessionMember, SESSION_COOKIE, SESSION_SECONDS, takeRateLimit, verifyPassword } from "@/lib/security";
-import { loginSchema, memberUpdateSchema, passwordSchema, robotSchema, signupSchema } from "@/lib/validation";
+import { localizeMessage, loginSchema, memberUpdateSchema, passwordSchema, robotSchema, signupSchema } from "@/lib/validation";
+import { LOCALE_COOKIE, toLocale } from "@/lib/i18n";
 import { connectionConfigured, setupScript, sshConfig } from "@/lib/ssh";
 import type { Member, Robot } from "@/lib/types";
 
@@ -220,10 +221,11 @@ async function dispatch(request: NextRequest, context: Context) {
 async function handle(request: NextRequest, context: Context) {
   try { return await dispatch(request, context); }
   catch (error) {
-    if (error instanceof ApiError) return json({ error: error.message }, error.status);
-    if (error instanceof ZodError) return json({ error: error.issues[0]?.message || "입력 내용을 확인해 주세요." }, 400);
+    const message = (text: string) => localizeMessage(text, toLocale(request.cookies.get(LOCALE_COOKIE)?.value));
+    if (error instanceof ApiError) return json({ error: message(error.message) }, error.status);
+    if (error instanceof ZodError) return json({ error: message(error.issues[0]?.message || "입력 내용을 확인해 주세요.") }, 400);
     console.error("MERO API failure", error instanceof Error ? error.name : "unknown");
-    return json({ error: "처리 중 문제가 생겼습니다. 잠시 후 다시 시도해 주세요." }, 500);
+    return json({ error: message("처리 중 문제가 생겼습니다. 잠시 후 다시 시도해 주세요.") }, 500);
   }
 }
 export const GET = handle;

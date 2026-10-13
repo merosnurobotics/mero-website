@@ -1,4 +1,5 @@
-import type { Project, Robot } from "./types";
+import type { Locale } from "./i18n";
+import type { MemberStatus, Project, PublicRobot, Robot, RobotStatus } from "./types";
 
 export const club = {
   name: "MERO", university: "서울대학교", location: "서울대학교 301동",
@@ -99,3 +100,92 @@ export const seedRobots: Robot[] = [
 ];
 
 export function getProject(id: string) { return projects.find(project => project.id === id); }
+
+type ProjectCopy = Pick<Project, "title" | "summary" | "description" | "imageCredit" | "tags" | "goals" | "milestones" | "links">;
+const projectsEn: Record<string, ProjectCopy> = {
+  "qdd-quadruped": {
+    title: "QDD Quadruped Robot", summary: "A robot that explores the world on four legs.",
+    description: "We build a quadruped robot from scratch on a Mini Cheetah–style structure with QDD actuators. Starting from mechanical design and assembly, we study perception on a Jetson Orin Nano and locomotion control that adapts to the terrain.",
+    imageCredit: "Project sketch based on the real Mini Cheetah", tags: ["QDD", "Mechanical design", "Locomotion control"],
+    goals: [
+      { title: "A drivetrain we build ourselves", text: "Design joints and links that make the most of low-ratio actuators, and build a robot platform we can assemble." },
+      { title: "Seeing the terrain and moving", text: "Aim to perceive slopes, steps and gaps, and choose a gait strategy the robot can actually execute." },
+    ],
+    milestones: [
+      { title: "Design and build", text: "Review actuators, links, electronics and the computing setup" },
+      { title: "Locomotion and perception", text: "Validate basic walking, then experiment with terrain sensing and dynamic control" },
+    ],
+    links: [{ title: "MIT Mini Cheetah, the original platform", url: "https://news.mit.edu/2019/mit-mini-cheetah-first-four-legged-robot-to-backflip-0304" }],
+  },
+  "mini-humanoid": {
+    title: "Microban Mini Humanoid", summary: "Whole-body control, starting with a small robot.",
+    description: "We build a roughly 30 cm, 19-joint humanoid based on Rhoban's open-source Microban. We learn 3D printing and assembly, experiment with reinforcement learning in MuJoCo, MJLab and Isaac Lab, and turn the results into purpose-built hardware improvements.",
+    imageCredit: "Project sketch based on the real Microban", tags: ["3D printing", "Reinforcement learning", "Whole-body control"],
+    goals: [
+      { title: "Learning by replicating", text: "Understand the published design and parts list, then build a real platform through printing, assembly and wiring." },
+      { title: "Experimenting in simulation", text: "Study walking, posture transitions and obstacle crossing. Compare how reward design and domain randomization shape behavior." },
+      { title: "Adapting it to our goals", text: "While checking the gap between simulation and the real robot, improve the foot shape, contacts and structure, and prepare missions linked with the QDD robot." },
+    ],
+    milestones: [
+      { title: "Build the original", text: "Understand the Microban structure, print and assemble the parts" },
+      { title: "Train and compare", text: "Train policies for walking and obstacle tasks and check reproducibility" },
+      { title: "Improve the hardware", text: "Design purpose-built parts and validate them on the real robot" },
+    ],
+    links: [
+      { title: "Microban open-source project", url: "https://github.com/Rhoban/microban" },
+      { title: "Demo video of the original platform", url: "https://www.youtube.com/watch?v=1pnFrT_jfXQ" },
+      { title: "MJLab Microban training environment", url: "https://github.com/Rhoban/mjlab_microban" },
+    ],
+  },
+  "vla-manipulation": {
+    title: "RBY1 VLA Manipulation", summary: "A robot that sees, understands and picks things up.",
+    description: "Using Rainbow Robotics' RBY1, a mobile dual-arm robot, we study VLA-based manipulation that connects vision, language and action. Aiming for the Picking in Clutter track of the ICRA Robotic Grasping and Manipulation Competition, we work on recognizing and grasping objects in cluttered scenes.",
+    imageCredit: "Project sketch based on the real RBY1", tags: ["RBY1", "VLA", "ICRA RGMC"],
+    goals: [
+      { title: "Setting up the RBY1 workspace", text: "Understand the control interface and sensing setup of the mobile dual-arm platform, and prepare a data collection environment." },
+      { title: "Connecting vision, language and action", text: "Connect models that understand objects and task instructions to robot motion, and experiment with manipulation data." },
+      { title: "Preparing for Picking in Clutter", text: "Prepare for the competition by focusing on picking target objects from mixed piles. The competition year and detailed schedule will be announced once confirmed." },
+    ],
+    milestones: [
+      { title: "Platform and data", text: "Set up the RBY1 environment and collect sensing and task data" },
+      { title: "Models and control", text: "Experiment with VLA policies and connect them to grasping motions" },
+      { title: "Competition prep", text: "Repeated evaluation tailored to the Picking in Clutter task" },
+    ],
+    links: [
+      { title: "Rainbow Robotics RBY1", url: "https://rainbow-robotics.com/en/products/rb-y1/" },
+      { title: "RBY1 SDK and official manual", url: "https://rainbowrobotics.github.io/rby1-dev/" },
+      { title: "ICRA RGMC track overview (2026)", url: "https://2026.ieee-icra.org/program/competitions/" },
+    ],
+  },
+};
+export function localizeProject(project: Project, locale: Locale): Project {
+  const copy = locale === "en" ? projectsEn[project.id] : undefined;
+  return copy ? { ...project, ...copy } : project;
+}
+export function getProjects(locale: Locale) { return projects.map(project => localizeProject(project, locale)); }
+export function getLocalizedProject(id: string, locale: Locale) { const project = getProject(id); return project && localizeProject(project, locale); }
+
+const robotStatusLabelsEn: Record<RobotStatus, string> = { building: "In development", ready: "Available", maintenance: "Under maintenance", archived: "Archived" };
+const memberStatusLabelsEn: Record<MemberStatus, string> = { pending: "Awaiting approval", active: "Active member", suspended: "Suspended" };
+export const robotStatusLabel = (status: RobotStatus, locale: Locale) => (locale === "en" ? robotStatusLabelsEn : robotStatusLabels)[status];
+export const memberStatusLabel = (status: MemberStatus, locale: Locale) => (locale === "en" ? memberStatusLabelsEn : memberStatusLabels)[status];
+
+// Robot records live in the database and are edited by admins in Korean. English copy covers the seeded robots and
+// is applied only while a field still matches its seeded Korean text, so an admin edit is never hidden by stale English.
+const robotsEn: Record<string, { platform: string; description: string; creators: string[]; guide: Robot["guide"] }> = {
+  "qdd-01": { platform: "QDD / Mini Cheetah–style", description: "Development platform for the QDD quadruped robot project. It ties together mechanical design, the drivetrain and locomotion control.", creators: ["QDD project team"], guide: [{ title: "Project operating guide", body: "Once the responsible team registers the access address, launch commands and the operating procedure for the actual hardware, you can find them here." }] },
+  "microban-01": { platform: "Microban / 19 joints", description: "A small humanoid platform built with 3D printing and used for reinforcement learning experiments. We build and improve it from the published original design.", creators: ["Mini humanoid project team"], guide: [{ title: "Build and training resources", body: "Assembly and operating material for the original design is available from the Rhoban Microban project. The runtime environment and policies for MERO's robot are registered after the responsible team validates them." }] },
+  "rby1-01": { platform: "Rainbow Robotics RBY1", description: "A mobile dual-arm robot platform used for VLA-based manipulation and preparation for the ICRA Picking in Clutter competition.", creators: ["VLA Manipulation project team"], guide: [{ title: "Official RBY1 resources", body: "Refer to Rainbow Robotics' SDK and Web Manual. The network setup for each unit and MERO's working environment are registered by an admin." }] },
+};
+export function localizeRobot<T extends PublicRobot & Partial<Pick<Robot, "guide">>>(robot: T, locale: Locale): T {
+  const copy = locale === "en" ? robotsEn[robot.id] : undefined; const seed = seedRobots.find(item => item.id === robot.id);
+  if (!copy || !seed) return robot;
+  const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
+  return {
+    ...robot,
+    platform: robot.platform === seed.platform ? copy.platform : robot.platform,
+    description: robot.description === seed.description ? copy.description : robot.description,
+    creators: same(robot.creators, seed.creators) ? copy.creators : robot.creators,
+    ...(robot.guide && same(robot.guide, seed.guide) ? { guide: copy.guide } : {}),
+  };
+}
