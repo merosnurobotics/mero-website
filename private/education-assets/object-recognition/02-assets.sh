@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MERO 객체인식 입문: 저장소 루트에서 시작
+# MERO 객체인식 입문: 회차 루트(lessons/01-synthetic-data)에서 시작
 # 코드 출처·사용 조건: 별도 출처 기록 및 LICENSE
 # 같은 터미널에서 01부터 순서대로 source 명령으로 실행
 set -e

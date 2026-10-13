@@ -75,7 +75,7 @@ export default async function PerceptionLessonPage() {
         <p>먼저 CPU로 120장을 만들고 모델을 1 epoch 학습해 전체 연결을 확인합니다. Epoch는 학습 데이터를 한 바퀴 보는 단위입니다. 이것은 동작 확인용이며 정확도가 높은 완성 모델을 만드는 실험은 아닙니다. CPU 렌더링과 학습도 시간이 걸립니다.</p>
         <p>Linux 또는 WSL에서 Git, Python 3.11, 인터넷 연결을 준비하세요. 이 자료의 명령은 Bash 기준이며, Windows에서는 WSL을 사용합니다. GPU로 확장할 때는 <a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서</a>를 따라갑니다. 교육 저장소에는 필요한 생성·학습 소스를 고정 버전으로 담았습니다.</p>
         <CodeExample label="교육 저장소 복제" code={'git clone https://github.com/merosnurobotics/meroedu-detection.git\ncd meroedu-detection/lessons/01-synthetic-data\nsource steps/01-environment.sh'}/>
-        <p>가상환경은 프로젝트 전용 Python 패키지 공간입니다. 이 실습의 기준은 Python 3.11, BlenderProc 2.8.0, bpy 5.0.1, PyTorch 2.10.0, torchvision 0.25.0, Ultralytics 8.4.54입니다. 첫 단계는 CPU용 PyTorch를 설치합니다. GPU로 확장할 때는 같은 가상환경에 다른 Torch를 덮어넣지 말고 원본 GPU 설치 단계로 새 환경을 만드세요.</p>
+        <p>가상환경은 프로젝트 전용 Python 패키지 공간입니다. 이 실습의 기준은 Python 3.11, BlenderProc 2.8.0, Blender 4.2.1, PyTorch 2.10.0, torchvision 0.25.0, Ultralytics 8.4.54입니다. 첫 단계는 CPU용 PyTorch를 설치합니다. 첫 렌더 실행 때 BlenderProc가 별도 Blender 4.2.1과 렌더용 패키지를 내려받으므로 인터넷과 추가 설치 시간이 필요합니다. GPU로 확장할 때는 같은 가상환경에 다른 Torch를 덮어넣지 말고 원본 GPU 설치 단계로 새 환경을 만드세요.</p>
         <Recipe name="01-environment" label="01 환경 설치"/>
         <p>설치 후 버전 출력이 나오는지 확인합니다. 터미널을 새로 열었다면 회차 루트에서 <code>source .venv-perception/bin/activate</code>로 환경을 다시 활성화합니다. 이하 단계는 같은 터미널에서 순서대로 진행하세요.</p>
         <CodeExample label="공개 이미지와 3D 물체 준비" code={'source steps/02-assets.sh\n# 이 단계 후 작업 위치: perception/generation'}/>
@@ -135,6 +135,14 @@ export default async function PerceptionLessonPage() {
         <Figure name="scan-overlay.jpg" alt="실제 로봇의 경기장 스캔 이미지에 detection box와 클래스, 거리, 격자 위치가 표시됨">미리 학습된 모델을 실제 로봇에서 실행한 결과입니다. 이번 120장 실습의 성능 결과가 아닙니다.</Figure>
         <video controls preload="none" poster={`${assets}/scan-overlay.jpg`} aria-label="실제 로봇의 경기장 12회 스캔"><source src={`${assets}/scan.mp4`} type="video/mp4"/>브라우저가 영상을 지원하지 않습니다. <a href={`${assets}/scan.mp4`}>영상 다운로드</a></video>
         <p>모델의 confidence는 예측 확신도를 나타내는 점수입니다. 0.9라고 해서 실제 정답일 확률이 항상 90%인 것은 아닙니다. 밝은 흰 물체를 큐브로 잘못 읽는 것처럼 높은 점수의 오탐도 직접 확인해야 합니다.</p>
+      </Chapter>
+
+      <Chapter id="shape-assignment" title="형상 박스 디텍션 과제">
+        <p>과일 면 인식을 제외하고 cube·octahedron·dodecahedron·icosahedron 네 형상의 위치와 이름만 찾는 예제입니다. Fruits-360이나 외부 배경 사진 없이 3D 물체와 방 배경을 생성합니다. 정답은 segmentation 마스크 대신 bounding box입니다.</p>
+        <p>회차 루트에 추가한 <code>scripts/shape_detection.py</code>를 실행합니다. 형상별 총 100장을 학습 80·검증 10·시험 10장으로 나눕니다. 총 400장, 320px 입력, CPU 렌더 6 threads이며, 사전학습된 <code>yolo26n.pt</code>를 CPU에서 30 epoch 미세조정합니다.</p>
+        <CodeExample label="형상 데이터 생성·학습" code={'# 회차 루트, 환경 설치 후\npython scripts/shape_detection.py generate --per-class 100\npython scripts/shape_detection.py train --epochs 30'}/>
+        <p>Ryzen 5 3600에서 실제 CPU 실행은 400장 생성 3분 36초, 30 epoch 학습 7분 29초였습니다. 시험 40장의 box mAP50은 88.91%, precision은 78.06%, recall은 76.88%입니다. 큐브 recall은 50%였으며 시험은 형상별 10장으로 작습니다. <a href={`${assets}/cpu-validation.md`} download>전체 실행 검증표</a> · <a href={`${assets}/synthetic-data-summary.html`}>속도·성능·비교 사진 요약</a>에 조건과 클래스별 점수를 기록했습니다.</p>
+        <p>이 예제는 실제 CPU/GPU 생성·학습·시험을 완료했습니다. 실행 설명과 측정 결과는 <a href={`${assets}/shape-assignment.md`} download>형상 과제 안내</a>에서 확인할 수 있습니다. 한 물체가 있는 합성 장면 시험이며 실물 카메라 정확도를 나타내지는 않습니다.</p>
       </Chapter>
 
       <Chapter id="improve" title="10. 실습 확장하기">

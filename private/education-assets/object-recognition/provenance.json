@@ -8,11 +8,20 @@
     "1 epoch, batch 4, workers 0",
     "shared smoke120 dataset naming"
   ],
-  "executed": false,
+  "executed": true,
   "inference_examples": {
     "record": "inference-examples.json",
     "executed": true,
     "weights_sha256": "3d2d4dba14c6bf709b49e5654f537cbad05db931a6b3a454eb0c71e534734927",
     "count": 4
+  },
+  "cpu_validation": {
+    "date": "2026-10-13",
+    "report": "cpu-validation.md",
+    "lesson_commit": "6585ea7e2ec7316d5f12b6680327abcac15821e6",
+    "original_scenes": 120,
+    "shape_only_scenes": 400,
+    "original_negative_schedule": "published modulo schedule; probability fix separately rendered and tested",
+    "deployment": "local only"
   }
 }
