@@ -10,6 +10,9 @@ import type { Member } from "@/lib/types";
 const navigation = [{ href: "/about", label: "동아리 소개" }, { href: "/activities", label: "활동" }, { href: "/education", label: "교육" }, { href: "/robots", label: "로봇 안내" }];
 // Pages that open with a full-bleed photo hero; the header floats over it until it scrolls away.
 const photoHeroPath = (path: string) => path === "/" || path === "/about" || path.startsWith("/activities");
+// On the home page the header stays out of the way until the visitor scrolls a little.
+const revealOnScrollPath = (path: string) => path === "/";
+const REVEAL_SCROLL_Y = 80;
 const isActive = (path: string, href: string) => path.startsWith(href) || (href === "/activities" && path.startsWith("/projects"));
 
 export function Header({ member }: { member: Member | null }) {
@@ -24,13 +27,21 @@ export function Header({ member }: { member: Member | null }) {
     observer.observe(hero);
     return () => observer.disconnect();
   }, [path]);
+  const [hiddenAtTop, setHiddenAtTop] = useState(() => revealOnScrollPath(path));
+  useEffect(() => {
+    if (!revealOnScrollPath(path)) { setHiddenAtTop(false); return; }
+    const update = () => setHiddenAtTop(window.scrollY < REVEAL_SCROLL_Y);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [path]);
   async function logout() {
     setBusy(true); setError("");
     try { await api("/api/auth/logout", "POST", {}); setOpen(false); router.push("/"); router.refresh(); }
     catch (err) { setError(err instanceof Error ? err.message : "로그아웃하지 못했습니다."); }
     finally { setBusy(false); }
   }
-  return <header className={`site-header${overPhoto && !open ? " over-photo" : ""}`}>
+  return <header className={`site-header${overPhoto && !open ? " over-photo" : ""}${hiddenAtTop && !open ? " hidden-at-top" : ""}`}>
     <div className="container header-inner">
       <Link href="/" className="brand-lockup" aria-label="MERO 홈" onClick={() => setOpen(false)}><span className="mero-brand-mark" aria-hidden="true"/><span className="brand-word">MERO</span></Link>
       <nav className="desktop-nav" aria-label="주 메뉴">
