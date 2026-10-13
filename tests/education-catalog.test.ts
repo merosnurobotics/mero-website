@@ -46,13 +46,12 @@ for (const topic of educationTopics) test(`${topic.title}: sources, complete exp
       assert.ok(section.paragraphs.length >= 2, `${path}#${section.id}: explanation and application`);
       assert.ok(section.paragraphs.every(paragraph => paragraph.length >= 45 && paragraph.length <= 350), `${path}#${section.id}: keep explanations substantive and readable`);
     }
-    assert.ok(lesson.example.walkthrough.length >= 3 && lesson.example.takeaway.length >= 30, `${path}: complete worked example`);
     assert.ok(lesson.sources.length >= 2 && lesson.questions.length >= 2 && lesson.misconceptions.length >= 2, path);
     for (const source of lesson.sources) {
       assert.equal(new URL(source.url).protocol, "https:");
       assert.ok(source.note.trim().length > 10, `${path}: source scope`);
     }
-    const ids = [...lesson.sections.map(section => section.id), "worked-example", "misconceptions", "self-check", "sources"];
+    const ids = [...lesson.sections.map(section => section.id), "misconceptions", "self-check", "sources"];
     assert.equal(new Set(ids).size, ids.length, `${path}: duplicate anchors`);
     for (const prerequisite of lesson.prerequisites) {
       const [base, hash] = prerequisite.split("#");

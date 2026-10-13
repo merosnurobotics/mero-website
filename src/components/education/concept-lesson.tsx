@@ -40,11 +40,6 @@ export async function ConceptLessonContent({ lesson, topicSlug }: { lesson: Conc
           <tbody>{section.comparison.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>)}</tbody>
         </table></div>}
       </section>)}
-      <section className="perception-chapter" id="worked-example">
-        <h2>로봇 사례 · {lesson.example.title}</h2><p>{lesson.example.situation}</p>
-        <ol className="education-process">{lesson.example.walkthrough.map((step, i) => <li key={i}>{step}</li>)}</ol>
-        <aside className="education-note"><p>{lesson.example.takeaway}</p></aside>
-      </section>
       <section className="perception-chapter" id="misconceptions"><h2>자주 하는 오해</h2>
         {lesson.misconceptions.map(item => <div key={item.claim}><h3>{item.claim}</h3><p>{item.correction}</p></div>)}
       </section>
@@ -52,9 +47,9 @@ export async function ConceptLessonContent({ lesson, topicSlug }: { lesson: Conc
         {lesson.questions.map((question, i) => <details className="education-check" key={question.prompt}><summary>{i + 1}. {question.prompt}</summary><p>{question.answer}</p></details>)}
       </section>
       <footer className="education-sources" id="sources"><h2>원문과 참고 자료</h2>
-        <p>공식 문서와 연구 자료의 핵심 용어를 한국어로 풀고, MERO의 로봇 사례와 해설을 더했습니다. 각 링크에서 원문의 정의와 적용 범위를 함께 확인할 수 있습니다.</p>
+        <p>공식 문서와 연구 자료의 핵심 용어를 한국어로 풀고, MERO의 해설을 더했습니다. 각 링크에서 원문의 정의와 적용 범위를 함께 확인할 수 있습니다.</p>
         <ul>{lesson.sources.map(source => <li key={source.url}><a href={source.url}>{source.title}</a><p>{source.note}</p></li>)}</ul>
-        <p>자료 검토: <time dateTime={lesson.updatedAt}>{lesson.updatedAt}</time> · 사례의 수치와 상황은 별도 표시가 없으면 개념을 설명하기 위한 예시입니다.</p>
+        <p>자료 검토: <time dateTime={lesson.updatedAt}>{lesson.updatedAt}</time> · 본문의 수치와 상황은 별도 표시가 없으면 개념을 설명하기 위한 예시입니다.</p>
       </footer>
     </article><LessonNavigation path={path}/>
   </>;

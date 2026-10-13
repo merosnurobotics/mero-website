@@ -33,10 +33,6 @@
             "label": "전체 실패를 작은 경계의 질문으로 바꿉니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -82,10 +78,6 @@
           {
             "id": "read-before-run",
             "label": "명령의 결과를 위치와 대상의 변화로 읽습니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -135,10 +127,6 @@
             "label": "시작·실행·종료를 하나의 흐름으로 관리합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -186,10 +174,6 @@
             "label": "설치가 끝나면 작은 실제 동작을 확인합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -235,10 +219,6 @@
           {
             "id": "contracts",
             "label": "입력 경계에서 작은 약속을 검증합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -289,10 +269,6 @@
             "label": "연결 성공 다음에는 지연과 최신성을 봅니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -339,10 +315,6 @@
           {
             "id": "reproduce",
             "label": "다른 사람이 작은 실행을 해 보면 기록의 빈틈이 보입니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -394,10 +366,6 @@
             "label": "엣지 추론은 큰 모델을 현실의 실행 조건과 연결합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -447,10 +415,6 @@
             "label": "로봇과 연결할 경계는 의도적으로 엽니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -498,10 +462,6 @@
             "label": "오차가 줄어든 과정까지 평가합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -547,10 +507,6 @@
           {
             "id": "measurement-contract",
             "label": "어디서 측정한 값인지까지 확인합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -601,10 +557,6 @@
             "label": "성공한 기록과 보장한 조건을 구분합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -651,10 +603,6 @@
           {
             "id": "tracking-and-replanning",
             "label": "목표가 나쁜지, 목표를 못 따르는지 나눠 봅니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -705,10 +653,6 @@
             "label": "단순한 모델부터 작업에 필요한 만큼 확장합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -754,10 +698,6 @@
           {
             "id": "lqr-and-limits",
             "label": "여러 오차를 함께 다루되 유효한 범위를 확인합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -806,10 +746,6 @@
           {
             "id": "whole-body-contact",
             "label": "최근 조작 연구는 몸의 여러 접촉을 함께 다룹니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -861,10 +797,6 @@
             "label": "발을 어디에 언제 딛는지도 미래 계획의 일부입니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -911,10 +843,6 @@
           {
             "id": "recent-loco-manipulation",
             "label": "2026년 연구도 추정과 몸의 협응을 함께 다룹니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -966,10 +894,6 @@
             "label": "실패한 기능을 통신 경계별로 나눠 봅니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1015,10 +939,6 @@
           {
             "id": "ros-clock",
             "label": "재생과 시뮬레이션에서는 시간도 입력입니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -1069,10 +989,6 @@
             "label": "도착 이후의 계산도 지연을 만듭니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1119,10 +1035,6 @@
           {
             "id": "recovery-and-measurement",
             "label": "배치와 복구는 측정 가능한 가설로 정합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -1175,10 +1087,6 @@
             "label": "그럴듯한 그림보다 실패하는 이웃을 봅니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1226,10 +1134,6 @@
             "label": "특징 추출기와 작업별 출력기를 나눠 읽습니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1275,10 +1179,6 @@
           {
             "id": "architecture-and-cost",
             "label": "구조, 학습 목표, 제품의 능력을 구분합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -1329,10 +1229,6 @@
             "label": "얼마나 적게 바꿔도 쓸 수 있는지 확인합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1379,10 +1275,6 @@
           {
             "id": "validation-and-versioning",
             "label": "적응의 성공은 새 데이터와 이전 조건에서 확인합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -1433,10 +1325,6 @@
             "label": "멀티모달 이해에서 행동으로 가는 연결을 확인합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1483,10 +1371,6 @@
           {
             "id": "actions-and-execution",
             "label": "행동 생성에서는 계산 시간과 재관측이 중요합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -1536,10 +1420,6 @@
             "label": "올바른 변환도 시각이 다르면 틀린 결과를 만듭니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1587,10 +1467,6 @@
             "label": "오차를 줄이려면 경로와 조건을 먼저 나눕니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1636,10 +1512,6 @@
           {
             "id": "calibration",
             "label": "잘 믿는 능력도 실험으로 확인해야 합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -1690,10 +1562,6 @@
             "label": "좋은 지도 작성은 관측 조건을 설계하는 일입니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1739,10 +1607,6 @@
           {
             "id": "amcl",
             "label": "AMCL은 이미 있는 지도 안에서 위치를 찾습니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -1793,10 +1657,6 @@
             "label": "루프가 닫힌 순간 전후를 따로 읽어 봅니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1845,10 +1705,6 @@
             "label": "ORB-SLAM3와 cuVSLAM을 기능과 조건으로 읽습니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -1895,10 +1751,6 @@
           {
             "id": "task-validity",
             "label": "보기 좋은 지도와 행동에 충분한 지도를 각각 검증합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -1950,10 +1802,6 @@
             "label": "작은 실험으로 모델의 의미를 확인합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2000,10 +1848,6 @@
           {
             "id": "experiments",
             "label": "밀기·경사·낙하를 나누어 원인을 찾습니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -2054,10 +1898,6 @@
             "label": "가상과 실물을 같은 질문으로 비교합니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2104,10 +1944,6 @@
           {
             "id": "robust-gait",
             "label": "한 번의 멋진 동작보다 반복과 회복을 함께 봅니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -2159,10 +1995,6 @@
             "label": "UMV 사례는 실험과 모델 수정이 연결되는 모습을 보여 줍니다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2209,10 +2041,6 @@
           {
             "id": "meaningful-scale",
             "label": "더 큰 규모가 더 좋은 실험이 되려면 비교 조건을 지켜야 합니다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -2265,10 +2093,6 @@
             "label": "한 번의 멋진 성공보다 결과의 분포"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2315,10 +2139,6 @@
           {
             "id": "model-errors",
             "label": "그럴듯한 미래와 쓸 수 있는 미래"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -2369,10 +2189,6 @@
             "label": "잘되는 후학습에는 관찰 가능한 순환이 있다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2421,10 +2237,6 @@
             "label": "사람에게 비교를 부탁하는 보상도 있다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2470,10 +2282,6 @@
           {
             "id": "horizon",
             "label": "얼마나 먼 미래를 보고 있는가"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -2524,10 +2332,6 @@
             "label": "알고리즘 이름보다 실험의 비용 구조"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2573,10 +2377,6 @@
           {
             "id": "curriculum",
             "label": "연습 난이도와 시험 난이도를 함께 설계하기"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -2626,10 +2426,6 @@
             "label": "한 번 보고 끝내지 않는 관측과 행동의 순환"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2675,10 +2471,6 @@
           {
             "id": "confidence",
             "label": "점수와 화면을 함께 읽어야 한다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -2728,10 +2520,6 @@
             "label": "틀린 방향, 틀린 크기, 늦은 시각을 나누어 본다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2777,10 +2565,6 @@
           {
             "id": "affordance",
             "label": "물체를 알아보는 것에서 할 수 있는 행동으로"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -2830,10 +2614,6 @@
             "label": "일반화는 한 개의 점수가 아니라 변화의 종류다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2881,10 +2661,6 @@
             "label": "많은 시연보다 무엇이 다른 시연인지 설계한다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -2930,10 +2706,6 @@
           {
             "id": "timing",
             "label": "정책의 품질과 제시간에 실행하는 능력을 함께 본다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -2985,10 +2757,6 @@
             "label": "범용 모델과 작업 전용 정책은 필요한 능력이 다르다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -3034,10 +2802,6 @@
           {
             "id": "availability",
             "label": "연구 계보와 실제 사용할 체크포인트를 구분한다"
-          },
-          {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
           },
           {
             "id": "misconceptions",
@@ -3087,10 +2851,6 @@
             "label": "기억과 성공 확인이 긴 작업을 이어 준다"
           },
           {
-            "id": "worked-example",
-            "label": "로봇 사례로 이해하기"
-          },
-          {
             "id": "misconceptions",
             "label": "자주 하는 오해"
           },
@@ -3123,6 +2883,7 @@
       "/education/control/closed-loop-systems",
       "/education/control/actuator-command-modes",
       "/education/control/pid-control",
+      "/education/control/line-tracer-pid",
       "/education/control/stability-and-robustness",
       "/education/control/trajectories-and-timing",
       "/education/control/models-and-feedforward",

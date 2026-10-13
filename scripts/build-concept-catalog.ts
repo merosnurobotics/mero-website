@@ -32,7 +32,6 @@ for (const [domain, contentName, orderName] of domains) {
     prerequisites: lesson.prerequisites,
     chapters: [
       ...lesson.sections.map(section => ({ id: section.id, label: section.title })),
-      { id: "worked-example", label: "로봇 사례로 이해하기" },
       { id: "misconceptions", label: "자주 하는 오해" },
       { id: "self-check", label: "이해 확인" },
       { id: "sources", label: "원문과 참고 자료" },

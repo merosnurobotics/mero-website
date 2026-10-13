@@ -57,6 +57,14 @@ export const objectLocalizationChapters = [
 ];
 export const controlPath = "/education/control";
 export const pidLessonPath = `${controlPath}/pid-control`;
+export const lineTracerLessonPath = `${controlPath}/line-tracer-pid`;
+export const lineTracerChapters = [
+  { id: "setup", label: "로봇과 코스" },
+  { id: "sensors", label: "IR 8개로 라인 위치 읽기" },
+  { id: "control", label: "오차를 좌우 바퀴로 나누기" },
+  { id: "tuning", label: "P·I·D 튜닝 비교" },
+  { id: "bonus", label: "보너스: Pause & Resume 라인" },
+];
 export const rosArduinoMotorLessonPath = "/education/ros/arduino-motor";
 export const rosArduinoMotorChapters = [
   { id: "pipeline", label: "Jetson부터 모터까지" },
@@ -164,6 +172,7 @@ const topics: EducationTopic[] = [
     title: "제어", path: controlPath,
     description: "피드백 응답과 관절 PD를 익히고, 궤적·접촉·구동기 한계를 로봇 움직임에 연결합니다.",
     lessons: [{ author: yeonwooCho, path: pidLessonPath, shortTitle: "PID 제어", label: "피드백 · 관절 PD · 궤적 · 접촉", title: "그림으로 이해하는 PID 제어", description: "P·I·D 응답을 비교하고 정책 목표·관절 PD·궤적 추종·피드포워드·접촉·출력 제한의 관계를 읽습니다.", chapters: pidChapters },
+      { path: lineTracerLessonPath, shortTitle: "PID 라인트레이서", label: "IR 센서 8개 · 차동 구동 · 튜닝 비교", title: "PID로 라인트레이서 제어하기", description: "IR 센서 8개로 라인 위치 오차를 만들고, PID 출력으로 좌우 바퀴 속도를 나눕니다. 미리 계산한 2D 주행 27개를 비교하며 게인을 튜닝하고, 정지선 처리를 보너스 문제로 풉니다.", chapters: lineTracerChapters },
     ],
   },
   {
@@ -175,7 +184,7 @@ const topics: EducationTopic[] = [
 
 const legacyLevels: Record<string, EducationLesson["level"]> = {
   [remoteWorkLessonPath]: "응용",
-  [pidLessonPath]: "기초", [openrbDynamixelLessonPath]: "응용",
+  [pidLessonPath]: "기초", [lineTracerLessonPath]: "기초", [openrbDynamixelLessonPath]: "응용",
   [rosBasicsPath]: "입문", [rosPythonPath]: "기초", [rosBagRvizPath]: "기초",
   [ros2TopicsLessonPath]: "응용", [rosArduinoMotorLessonPath]: "응용", [ros2DynamixelLessonPath]: "응용",
   [deepMLLessons[0].path]: "입문", [deepMLLessons[1].path]: "기초", [deepMLLessons[2].path]: "기초",

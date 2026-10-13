@@ -1045,6 +1045,7 @@ export const controlOrder: string[] = [
   "/education/control/closed-loop-systems",
   "/education/control/actuator-command-modes",
   "/education/control/pid-control",
+  "/education/control/line-tracer-pid",
   "/education/control/stability-and-robustness",
   "/education/control/trajectories-and-timing",
   "/education/control/models-and-feedforward",
