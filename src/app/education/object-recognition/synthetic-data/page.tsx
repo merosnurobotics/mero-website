@@ -141,8 +141,8 @@ export default async function PerceptionLessonPage() {
         <p>과일 면 인식을 제외하고 cube·octahedron·dodecahedron·icosahedron 네 형상의 위치와 이름만 찾는 예제입니다. Fruits-360 없이 3D 물체를 만들고 COCO 실사 사진을 무작위로 배경에 합성합니다. 물체의 색·표면·조명·회전·크기·카메라도 바뀝니다. 정답은 segmentation 마스크 대신 bounding box입니다.</p>
         <p>회차 루트에 추가한 <code>scripts/shape_detection.py</code>를 실행합니다. 형상별 총 100장을 학습 80·검증 10·시험 10장으로 나눕니다. 총 400장, 320px 입력, CPU 렌더 6 threads이며, 사전학습된 <code>yolo26n.pt</code>를 CPU에서 30 epoch 미세조정합니다.</p>
         <CodeExample label="형상 데이터 생성·학습" code={'# 회차 루트, 환경과 COCO 배경 준비 후\npython scripts/shape_detection.py generate --per-class 100\npython scripts/shape_detection.py train --epochs 30'}/>
-        <p>COCO 배경으로 형상별 100장·1,000장의 데이터 생성과 정답 검사를 완료했습니다. 모델 학습과 CPU 단독 속도 재측정은 진행 중이며, 두 모델은 같은 합성 시험 사진 400장으로 비교합니다. <a href={`${assets}/cpu-validation.md`} download>전체 실행 검증표</a> · <a href={`${assets}/synthetic-data-summary.html`}>CPU 장당 속도·P/R·mAP50·mAP90·비교 사진 요약</a>에서 조건과 결과를 확인하세요.</p>
-        <p>이 예제의 COCO 데이터 생성·정답 검사를 실제 CPU/GPU에서 완료했습니다. 새 성능 결과는 학습·시험 완료 후 요약 보고서에 반영합니다. 실행 설명과 측정 결과는 <a href={`${assets}/shape-assignment.md`} download>형상 과제 안내</a>에서 확인할 수 있습니다. 한 물체가 있는 합성 장면 시험이며 실물 카메라 정확도를 나타내지는 않습니다.</p>
+        <p>COCO 배경으로 형상별 100장·1,000장의 데이터 생성과 정답 검사를 완료했습니다. CPU 단독 속도 재측정과 두 모델의 30 epoch 학습·시험을 완료했습니다. 두 모델을 같은 합성 시험 사진 400장으로 비교했습니다. <a href={`${assets}/cpu-validation.md`} download>전체 실행 검증표</a> · <a href={`${assets}/synthetic-data-summary.html`}>CPU 장당 속도·P/R·mAP50·mAP90·비교 사진 요약</a>에서 조건과 결과를 확인하세요.</p>
+        <p>이 예제의 COCO 데이터 생성·정답 검사를 실제 CPU/GPU에서 완료했습니다. P/R·mAP50·mAP90과 동일 시험 사진의 bbox 비교를 요약 보고서에 기록했습니다. 실행 설명과 측정 결과는 <a href={`${assets}/shape-assignment.md`} download>형상 과제 안내</a>에서 확인할 수 있습니다. 한 물체가 있는 합성 장면 시험이며 실물 카메라 정확도를 나타내지는 않습니다.</p>
       </Chapter>
 
       <Chapter id="improve" title="10. 실습 확장하기">
@@ -156,7 +156,7 @@ export default async function PerceptionLessonPage() {
         <CodeExample label="실습 도움 요청 예시" code={'이 저장소의 README와 docs를 읽고 CPU 120장 실습을 따라갈 수 있게 도와줘.\n먼저 Python 버전과 가상환경, 현재 작업 경로를 확인해줘.\n사진·라벨·메타데이터가 모두 생성되고 정답이 맞는지 확인한 다음 진행해줘.\n같은 장면의 크롭은 train/val/test를 넘지 않게 유지하고 클래스 순서를 바꾸지 마.\n오류가 나면 원인과 수정한 설정을 기록해줘.\nGPU 5만 장 렌더링이나 장시간 학습은 장비와 설정을 확인한 후 진행하자.'}/>
         <Check><p>학습 데이터를 늘릴 때도 사진·정답·생성 기록을 함께 보관합니다. 형태 모델과 과일 면 모델은 따로 학습하고, 학습에 쓰지 않은 사진으로 평가합니다.</p></Check>
       </Chapter>
-      <footer className="education-sources"><h2>참고 자료와 실습 기록</h2><p>이 페이지의 CPU 120장·1 epoch 명령은 데이터 생성부터 평가까지 연결하는 첫 실습입니다. COCO 배경을 기본값으로 바꾼 명령은 새 환경에서 데이터 생성·학습·시험을 실행해 검증합니다. 측정 결과는 연결된 요약 보고서에 기록합니다. 위 네 가지 예시는 미리 학습된 가중치로 직접 실행한 추론 결과입니다. 예시 이미지의 개수로 모델 전체 성능을 판단하지 않습니다.</p><ul><li><a href={`${repo}/tree/main/lessons/01-synthetic-data`}>실습 코드와 단계별 실행 안내</a></li><li><a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서</a></li><li><a href="https://docs.ultralytics.com/modes/train">Ultralytics 학습 문서</a></li><li><a href={`${assets}/LICENSE.txt`}>코드 사용 조건</a> · <a href={`${assets}/provenance.json`}>코드·이미지 출처 기록</a></li></ul></footer>
+      <footer className="education-sources"><h2>참고 자료와 실습 기록</h2><p>이 페이지의 CPU 120장·1 epoch 명령은 데이터 생성부터 평가까지 연결하는 첫 실습입니다. COCO 배경을 기본값으로 바꾼 명령은 새 환경에서 데이터 생성·학습·시험을 실행해 검증했습니다. 측정 결과는 연결된 요약 보고서에 기록합니다. 위 네 가지 예시는 미리 학습된 가중치로 직접 실행한 추론 결과입니다. 예시 이미지의 개수로 모델 전체 성능을 판단하지 않습니다.</p><ul><li><a href={`${repo}/tree/main/lessons/01-synthetic-data`}>실습 코드와 단계별 실행 안내</a></li><li><a href={`${assets}/source-reproduction.md`} download>전체 학습 설정과 실행 순서</a></li><li><a href="https://docs.ultralytics.com/modes/train">Ultralytics 학습 문서</a></li><li><a href={`${assets}/LICENSE.txt`}>코드 사용 조건</a> · <a href={`${assets}/provenance.json`}>코드·이미지 출처 기록</a></li></ul></footer>
     </article>
     <LessonNavigation path="/education/object-recognition/synthetic-data"/>
   </>;
